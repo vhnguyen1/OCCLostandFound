@@ -60,6 +60,7 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
                 (LayoutInflater) this.mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(this.mResourceId, null);
 
+        /*
         itemListLinearLayout = (LinearLayout) view.findViewById(R.id.itemListLinearLayout);
         itemListNameTextView = (TextView) view.findViewById(R.id.itemListNameTextView);
         itemListDescriptionTextView = (TextView) view.findViewById(R.id.itemListDescriptionTextView);
@@ -67,7 +68,7 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
         itemListLastLocationTextView = (TextView) view.findViewById(R.id.itemListLastLocationTextView);
         itemListStatusTextView = (TextView) view.findViewById(R.id.itemListStatusTextView);
         itemListImageView = (ImageView) view.findViewById(R.id.itemListImageView);
-
+*/
         final Item item = this.mLostItemsList.get(pos);
         itemListLinearLayout.setTag(item);
 
@@ -77,14 +78,14 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
         String lastKnownLocation = item.getLastLocation();
         String status = ((item.getStatus())? "Found" : "Missing");
         Uri imageURI = item.getImageUri();
-
+/*
         itemListNameTextView.setText(name);
         itemListDescriptionTextView.setText(description);
         itemListDateLostTextView.setText(dateLost);
         itemListLastLocationTextView.setText(lastKnownLocation);
         itemListStatusTextView.setText(status);
         itemListImageView.setImageURI(imageURI);
-
+*/
         return view;
     }
 }
