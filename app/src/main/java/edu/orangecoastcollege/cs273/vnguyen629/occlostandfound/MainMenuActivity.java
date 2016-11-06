@@ -10,7 +10,6 @@ import android.os.Bundle;
  * @author Vincent Nguyen
  */
 public class MainMenuActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

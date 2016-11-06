@@ -19,9 +19,6 @@ public class Item {
     private boolean mFound;
     private Uri mItemImage;
 
-    // Number of lost items
-    public static int numLostItems = 0;
-
     /**
      * Creates a new <code>Item</code> from its ID, description, date lost,
      * last known location, status, and image.
@@ -42,7 +39,6 @@ public class Item {
         this.mLastLocation = newLastLocation;
         this.mFound = status;
         this.mItemImage = newImage;
-        numLostItems++;
     }
 
     /**
@@ -68,7 +64,6 @@ public class Item {
                 String newLastLocation, boolean status, Uri newImage) {
         this(-1, newName, newDescription, newDateLost, newLastLocation,
                 status, newImage);
-        numLostItems++;
     }
 
     /**
@@ -79,7 +74,6 @@ public class Item {
     public Item(Item other) {
         this(-1, other.mName, other.mDescription, other.mDateLost,
                 other.mLastLocation, other.mFound, other.mItemImage);
-        numLostItems++;
     }
 
     /**
@@ -99,7 +93,7 @@ public class Item {
     }
 
     /**
-     * Gets the name of the <code>Pet</code>.
+     * Gets the name of the <code>Item</code>.
      * @return The description of the missing item
      */
     public String getDescription() {
@@ -107,7 +101,7 @@ public class Item {
     }
 
     /**
-     * Gets the name of the <code>Pet</code>.
+     * Gets the name of the <code>Item</code>.
      * @return The date lost of the missing item
      */
     public String getDateLost() {
@@ -115,7 +109,7 @@ public class Item {
     }
 
     /**
-     * Gets the name of the <code>Pet</code>.
+     * Gets the last known location of the <code>Item</code>.
      * @return The last known location of the missing item
      */
     public String getLastLocation() {
@@ -123,7 +117,7 @@ public class Item {
     }
 
     /**
-     * Gets the name of the <code>Pet</code>.
+     * Gets the current status of the <code>Item</code>.
      * @return The current status of the missing item
      */
     public boolean getStatus() {
@@ -131,7 +125,7 @@ public class Item {
     }
 
     /**
-     * Gets the name of the <code>Pet</code>.
+     * Gets the image URI of the <code>Item</code>.
      * @return The image URI of the missing item
      */
     public Uri getImageUri() {
@@ -176,8 +170,6 @@ public class Item {
      */
     public void setStatus(boolean newStatus) {
         this.mFound = newStatus;
-        if (this.mFound)
-            numLostItems--;
     }
 
     /**
