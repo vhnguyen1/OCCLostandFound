@@ -20,8 +20,8 @@ import static android.R.attr.id;
  * @author Vincent Nguyen
  */
 class ItemDBHelper extends SQLiteOpenHelper {
-    static final String DATABASE_NAME = "OCCLostAndFound";
-    private static final String DATABASE_TABLE = "Items";
+    static final String DATABASE_NAME = "Items";
+    private static final String DATABASE_TABLE = "LostItems";
     private static final int DATABASE_VERSION = 1;
 
     private static final String KEY_FIELD_ID = "id";

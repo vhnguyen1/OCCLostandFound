@@ -1,6 +1,8 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
 import android.net.Uri;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 /**
  * The <code>Item</code> class maintains information about a lost item,
@@ -10,7 +12,7 @@ import android.net.Uri;
  *
  * @author Vincent Nguyen
  */
-public class Item {
+public class Item implements Parcelable {
     private int mID;
     private String mName;
     private String mDescription;
@@ -42,12 +44,16 @@ public class Item {
     }
 
     /**
-     * Creates a default <code>Item</code> with an id of -1, empty name,
-     * empty description, empty date in which it was lost, empty last known location,
-     * status and image set to a default value
+     *
+     * @param source
      */
-    public Item() {
-        this(-1, "", "", "", "", false, null);
+    private Item(Parcel source) {
+        this.mID = source.readInt();
+        this.mName = source.readString();
+        this.mDescription = source.readString();
+        this.mDateLost = source.readString();
+        this.mLastLocation = source.readString();
+        this.mItemImage = Uri.parse(source.readString());
     }
 
     /**
@@ -64,6 +70,15 @@ public class Item {
                 String newLastLocation, boolean status, Uri newImage) {
         this(-1, newName, newDescription, newDateLost, newLastLocation,
                 status, newImage);
+    }
+
+    /**
+     * Creates a default <code>Item</code> with an id of -1, empty name,
+     * empty description, empty date in which it was lost, empty last known location,
+     * status and image set to a default value
+     */
+    public Item() {
+        this(-1, "", "", "", "", false, null);
     }
 
     /**
@@ -195,4 +210,53 @@ public class Item {
                 "," + ((mFound)? "Found" : "Missing") +
                 '}';
     }
+
+    /**
+     *
+     * @param parcel
+     * @param i
+     */
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(mID);
+        parcel.writeString(mName);
+        parcel.writeString(mDescription);
+        parcel.writeString(mDateLost);
+        parcel.writeString(mLastLocation);
+        parcel.writeString(mItemImage.toString());
+    }
+
+    /**
+     *
+     * @return
+     */
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    /**
+     *
+     */
+    public static final Parcelable.Creator<Item> CREATOR = new Parcelable.Creator<Item>() {
+        /**
+         *
+         * @param source
+         * @return
+         */
+        @Override
+        public Item createFromParcel(Parcel source) {
+            return new Item(source);
+        }
+
+        /**
+         *
+         * @param size
+         * @return
+         */
+        @Override
+        public Item[] newArray(int size) {
+            return new Item[size];
+        }
+    };
 }
