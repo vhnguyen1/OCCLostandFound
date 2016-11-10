@@ -9,8 +9,6 @@ import android.net.Uri;
 
 import java.util.ArrayList;
 
-import static android.R.attr.id;
-
 /**
  * Provides the necessary functions and tools to put information
  * regarding reported missing items inside an SQLite database while
@@ -121,7 +119,7 @@ class ItemDBHelper extends SQLiteOpenHelper {
                 boolean status = ((cursor.getInt(5) == 1)? true : false);
                 Uri imageUri = Uri.parse(cursor.getString(6));
 
-                Item item = new Item(id, name, description, dateLost, lastLocation,
+                Item item = new Item(itemID, name, description, dateLost, lastLocation,
                         status, imageUri);
                 itemArrayList.add(item);
 
@@ -158,7 +156,7 @@ class ItemDBHelper extends SQLiteOpenHelper {
         boolean status = ((cursor.getInt(5) == 1)? true : false);
         Uri imageUri = Uri.parse(cursor.getString(6));
 
-        Item item = new Item(id, name, description, dateLost, lastLocation,
+        Item item = new Item(itemID, name, description, dateLost, lastLocation,
                 status, imageUri);
 
         db.close();
