@@ -17,9 +17,9 @@ import java.util.ArrayList;
  *
  * @author Vincent Nguyen
  */
-class ItemDBHelper extends SQLiteOpenHelper {
-    static final String DATABASE_NAME = "Items";
-    private static final String DATABASE_TABLE = "LostItems";
+class DBHelper extends SQLiteOpenHelper {
+    static final String ITEMS_NAME = "Items";
+    private static final String ITEMS_TABLE = "LostItems";
     private static final int DATABASE_VERSION = 1;
 
     private static final String KEY_FIELD_ID = "id";
@@ -34,8 +34,8 @@ class ItemDBHelper extends SQLiteOpenHelper {
      * Creates a database
      * @param context
      */
-    public ItemDBHelper (Context context){
-        super (context, DATABASE_NAME, null, DATABASE_VERSION);
+    public DBHelper (Context context){
+        super (context, ITEMS_NAME, null, DATABASE_VERSION);
     }
 
     /**
@@ -44,7 +44,7 @@ class ItemDBHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate (SQLiteDatabase db){
-        String petTable = "CREATE TABLE " + DATABASE_TABLE + "("
+        String petTable = "CREATE TABLE " + ITEMS_TABLE + "("
                 + KEY_FIELD_ID + "  INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + FIELD_NAME + " TEXT, "
                 + FIELD_DESCRIPTION + " TEXT, "
@@ -65,9 +65,11 @@ class ItemDBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db,
                           int oldVersion,
                           int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + ITEMS_TABLE);
         onCreate(db);
     }
+
+    /************* Item database functions *************/
 
     /**
      * Adds a new <code>Item</code> into the current database
@@ -91,7 +93,7 @@ class ItemDBHelper extends SQLiteOpenHelper {
         values.put(FIELD_STATUS, status);
         values.put(FIELD_IMAGE_URI, imageURI);
 
-        db.insert(DATABASE_TABLE, null, values);
+        db.insert(ITEMS_TABLE, null, values);
         db.close();
     }
 
@@ -104,7 +106,7 @@ class ItemDBHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
-                DATABASE_TABLE,
+                ITEMS_TABLE,
                 new String[]{KEY_FIELD_ID, FIELD_NAME, FIELD_DESCRIPTION, FIELD_DATE_LOST,
                         FIELD_LAST_LOCATION, FIELD_STATUS, FIELD_IMAGE_URI},
                 null, null, null, null, null, null );
@@ -138,7 +140,7 @@ class ItemDBHelper extends SQLiteOpenHelper {
     public Item getItem(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
-                DATABASE_TABLE,
+                ITEMS_TABLE,
                 new String[]{KEY_FIELD_ID, FIELD_NAME, FIELD_DESCRIPTION, FIELD_DATE_LOST,
                         FIELD_LAST_LOCATION, FIELD_STATUS, FIELD_IMAGE_URI},
                 KEY_FIELD_ID + "=?",
@@ -185,7 +187,7 @@ class ItemDBHelper extends SQLiteOpenHelper {
         values.put(FIELD_STATUS, status);
         values.put(FIELD_IMAGE_URI, imageURI);
 
-        db.update(DATABASE_TABLE, values, KEY_FIELD_ID + " = ?",
+        db.update(ITEMS_TABLE, values, KEY_FIELD_ID + " = ?",
                 new String[]{String.valueOf(item.getID())});
         db.close();
     }
@@ -195,7 +197,7 @@ class ItemDBHelper extends SQLiteOpenHelper {
      */
     public void deleteAllItems() {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(DATABASE_TABLE, null, null);
+        db.delete(ITEMS_TABLE, null, null);
         db.close();
     }
 }
