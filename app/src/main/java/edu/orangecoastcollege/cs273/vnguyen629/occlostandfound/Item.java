@@ -202,12 +202,12 @@ public class Item implements Parcelable {
      */
     public String toString() {
         return "Item{" +
-                "Id=" + mID +
-                ", Name='" + mName + '\'' +
-                ", Description='" + mDescription + '\'' +
-                ", Date=" + mDateLost +
-                ", Location=" + mLastLocation +
-                "," + ((mFound)? "Found" : "Missing") +
+                "Id=" + this.mID +
+                ", Name='" + this.mName + '\'' +
+                ", Description='" + this.mDescription + '\'' +
+                ", Date=" + this.mDateLost +
+                ", Location=" + this.mLastLocation +
+                "," + ((this.mFound)? "Found" : "Missing") +
                 '}';
     }
 
@@ -218,12 +218,12 @@ public class Item implements Parcelable {
      */
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(mID);
-        parcel.writeString(mName);
-        parcel.writeString(mDescription);
-        parcel.writeString(mDateLost);
-        parcel.writeString(mLastLocation);
-        parcel.writeString(mItemImage.toString());
+        parcel.writeInt(this.mID);
+        parcel.writeString(this.mName);
+        parcel.writeString(this.mDescription);
+        parcel.writeString(this.mDateLost);
+        parcel.writeString(this.mLastLocation);
+        parcel.writeString(this.mItemImage.toString());
     }
 
     /**
