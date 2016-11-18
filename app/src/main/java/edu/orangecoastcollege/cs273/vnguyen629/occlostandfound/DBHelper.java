@@ -20,7 +20,7 @@ import java.util.ArrayList;
 class DBHelper extends SQLiteOpenHelper {
     static final String ITEMS_NAME = "Items";
     private static final String ITEMS_TABLE = "LostItems";
-    private static final int DATABASE_VERSION = 1;
+    private static final int ITEM_DATABASE_VERSION = 1;
 
     private static final String KEY_FIELD_ID = "id";
     private static final String FIELD_NAME = "name";
@@ -35,7 +35,7 @@ class DBHelper extends SQLiteOpenHelper {
      * @param context
      */
     public DBHelper (Context context){
-        super (context, ITEMS_NAME, null, DATABASE_VERSION);
+        super (context, ITEMS_NAME, null, ITEM_DATABASE_VERSION);
     }
 
     /**
@@ -200,4 +200,8 @@ class DBHelper extends SQLiteOpenHelper {
         db.delete(ITEMS_TABLE, null, null);
         db.close();
     }
+
+    /************* User Account database functions *************/
+
+    /************* Report database functions *************/
 }

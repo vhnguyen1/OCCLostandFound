@@ -16,6 +16,10 @@ public class ItemDetailsActivity extends AppCompatActivity {
     private TextView itemDetailsDescriptionTextView;
     private ImageView itemDetailsImageView;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
