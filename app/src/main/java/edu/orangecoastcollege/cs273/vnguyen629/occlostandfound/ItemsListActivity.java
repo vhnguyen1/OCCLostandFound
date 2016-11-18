@@ -7,7 +7,6 @@ import android.os.Bundle;
  *
  */
 public class ItemsListActivity extends AppCompatActivity {
-
     /**
      *
      * @param savedInstanceState

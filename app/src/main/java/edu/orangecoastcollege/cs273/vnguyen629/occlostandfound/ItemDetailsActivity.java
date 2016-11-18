@@ -9,7 +9,6 @@ import android.widget.TextView;
  *
  */
 public class ItemDetailsActivity extends AppCompatActivity {
-
     private TextView itemDetailsNameTextView;
     private TextView itemDetailsDateLostTextView;
     private TextView itemDetailsLocationTextView;
