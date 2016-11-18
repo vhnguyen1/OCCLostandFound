@@ -44,7 +44,7 @@ class DBHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate (SQLiteDatabase db){
-        String petTable = "CREATE TABLE " + ITEMS_TABLE + "("
+        String itemTable = "CREATE TABLE " + ITEMS_TABLE + "("
                 + KEY_FIELD_ID + "  INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + FIELD_NAME + " TEXT, "
                 + FIELD_DESCRIPTION + " TEXT, "
@@ -52,7 +52,7 @@ class DBHelper extends SQLiteOpenHelper {
                 + FIELD_LAST_LOCATION + " TEXT, "
                 + FIELD_STATUS + " INTEGER, "
                 + FIELD_IMAGE_URI + " TEXT" + ")";
-        db.execSQL(petTable);
+        db.execSQL(itemTable);
     }
 
     /**
@@ -203,5 +203,5 @@ class DBHelper extends SQLiteOpenHelper {
 
     /************* User Account database functions *************/
 
-    /************* Report database functions *************/
+    /************* Report database functions *******************/
 }
