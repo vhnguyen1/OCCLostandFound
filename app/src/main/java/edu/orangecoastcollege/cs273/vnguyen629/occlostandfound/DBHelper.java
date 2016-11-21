@@ -2,12 +2,19 @@ package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
+import android.util.Log;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Provides the necessary functions and tools to put information
@@ -18,10 +25,12 @@ import java.util.ArrayList;
  * @author Vincent Nguyen
  */
 class DBHelper extends SQLiteOpenHelper {
-    static final String ITEMS_NAME = "Items";
-    private static final String ITEMS_TABLE = "LostItems";
-    private static final int ITEM_DATABASE_VERSION = 1;
+    private Context mContext;
 
+    static final String DATABASE_NAME = "Items";
+    private static final int DATABASE_VERSION = 1;
+
+    private static final String ITEMS_TABLE = "LostItems";
     private static final String KEY_FIELD_ID = "id";
     private static final String FIELD_NAME = "name";
     private static final String FIELD_DESCRIPTION = "description";
@@ -35,7 +44,8 @@ class DBHelper extends SQLiteOpenHelper {
      * @param context
      */
     public DBHelper (Context context){
-        super (context, ITEMS_NAME, null, ITEM_DATABASE_VERSION);
+        super (context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.mContext = context;
     }
 
     /**
@@ -199,6 +209,38 @@ class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(ITEMS_TABLE, null, null);
         db.close();
+    }
+
+    public boolean importItemFromCSV(String csvFileName) {
+        AssetManager manager = mContext.getAssets();
+        InputStream inStream;
+        try {
+            inStream = manager.open(csvFileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        BufferedReader buffer = new BufferedReader(new InputStreamReader(inStream));
+        String line;
+        try {
+            while ((line = buffer.readLine()) != null) {
+                String[] fields = line.split(",");
+                if (fields.length != 4) {
+                    Log.d("OCC Lost and Found", "Skipping Bad CSV Row: " + Arrays.toString(fields));
+                    continue;
+                }
+                //int id = Integer.parseInt(fields[0].trim());
+                //String alpha = fields[1].trim();
+                //String number = fields[2].trim();
+                //String title = fields[3].trim();
+                //addItem(new Item(id, alpha, number, title));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
     /************* User Account database functions *************/

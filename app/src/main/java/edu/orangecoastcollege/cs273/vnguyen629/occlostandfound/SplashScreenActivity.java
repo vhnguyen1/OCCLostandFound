@@ -9,6 +9,7 @@ import java.util.TimerTask;
 
 /**
  *
+ * @author Vincent Nguyen
  */
 public class SplashScreenActivity extends AppCompatActivity {
 
