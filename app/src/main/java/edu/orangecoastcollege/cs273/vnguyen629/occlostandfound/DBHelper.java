@@ -211,6 +211,11 @@ class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     *
+     * @param csvFileName
+     * @return
+     */
     public boolean importItemFromCSV(String csvFileName) {
         AssetManager manager = mContext.getAssets();
         InputStream inStream;
