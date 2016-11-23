@@ -22,6 +22,19 @@ public class Item implements Parcelable {
     private Uri mItemImage;
 
     /**
+     *
+     * @param source
+     */
+    private Item(Parcel source) {
+        this.mID = source.readInt();
+        this.mName = source.readString();
+        this.mDescription = source.readString();
+        this.mDateLost = source.readString();
+        this.mLastLocation = source.readString();
+        this.mItemImage = Uri.parse(source.readString());
+    }
+
+    /**
      * Creates a new <code>Item</code> from its ID, description, date lost,
      * last known location, status, and image.
      * @param newID The new items id
@@ -41,19 +54,6 @@ public class Item implements Parcelable {
         this.mLastLocation = newLastLocation;
         this.mFound = status;
         this.mItemImage = newImage;
-    }
-
-    /**
-     *
-     * @param source
-     */
-    private Item(Parcel source) {
-        this.mID = source.readInt();
-        this.mName = source.readString();
-        this.mDescription = source.readString();
-        this.mDateLost = source.readString();
-        this.mLastLocation = source.readString();
-        this.mItemImage = Uri.parse(source.readString());
     }
 
     /**

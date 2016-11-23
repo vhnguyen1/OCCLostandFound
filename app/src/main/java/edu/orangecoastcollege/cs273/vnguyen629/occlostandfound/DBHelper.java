@@ -23,6 +23,7 @@ import java.util.Arrays;
  * and modifications.
  *
  * @author Vincent Nguyen
+ * @version 1.0
  */
 class DBHelper extends SQLiteOpenHelper {
     private Context mContext;
@@ -31,16 +32,16 @@ class DBHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     private static final String ITEMS_TABLE = "LostItems";
-    private static final String KEY_FIELD_ID = "id";
-    private static final String FIELD_NAME = "name";
-    private static final String FIELD_DESCRIPTION = "description";
-    private static final String FIELD_DATE_LOST = "date_lost";
-    private static final String FIELD_LAST_LOCATION = "last_location";
-    private static final String FIELD_STATUS = "last_location";
-    private static final String FIELD_IMAGE_URI = "image_uri";
+    private static final String ITEM_KEY_FIELD_ID = "id";
+    private static final String FIELD_ITEM_NAME = "name";
+    private static final String FIELD_ITEM_DESCRIPTION = "description";
+    private static final String FIELD_ITEM_DATE_LOST = "date_lost";
+    private static final String FIELD_ITEM_LAST_LOCATION = "last_location";
+    private static final String FIELD_ITEM_STATUS = "last_location";
+    private static final String FIELD_ITEM_IMAGE_URI = "image_uri";
 
     /**
-     * Creates a database
+     * Creates a new database
      * @param context
      */
     public DBHelper (Context context){
@@ -55,13 +56,13 @@ class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate (SQLiteDatabase db){
         String itemTable = "CREATE TABLE " + ITEMS_TABLE + "("
-                + KEY_FIELD_ID + "  INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + FIELD_NAME + " TEXT, "
-                + FIELD_DESCRIPTION + " TEXT, "
-                + FIELD_DATE_LOST + " TEXT, "
-                + FIELD_LAST_LOCATION + " TEXT, "
-                + FIELD_STATUS + " INTEGER, "
-                + FIELD_IMAGE_URI + " TEXT" + ")";
+                + ITEM_KEY_FIELD_ID + "  INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + FIELD_ITEM_NAME + " TEXT, "
+                + FIELD_ITEM_DESCRIPTION + " TEXT, "
+                + FIELD_ITEM_DATE_LOST + " TEXT, "
+                + FIELD_ITEM_LAST_LOCATION + " TEXT, "
+                + FIELD_ITEM_STATUS + " INTEGER, "
+                + FIELD_ITEM_IMAGE_URI + " TEXT" + ")";
         db.execSQL(itemTable);
     }
 
@@ -96,12 +97,12 @@ class DBHelper extends SQLiteOpenHelper {
         int status = ((newItem.getStatus())? 1 : 0);
         String imageURI = newItem.getImageUri().toString();
 
-        values.put(FIELD_NAME, name);
-        values.put(FIELD_DESCRIPTION, description);
-        values.put(FIELD_LAST_LOCATION, lastLocation);
-        values.put(FIELD_DATE_LOST, dateLost);
-        values.put(FIELD_STATUS, status);
-        values.put(FIELD_IMAGE_URI, imageURI);
+        values.put(FIELD_ITEM_NAME, name);
+        values.put(FIELD_ITEM_DESCRIPTION, description);
+        values.put(FIELD_ITEM_LAST_LOCATION, lastLocation);
+        values.put(FIELD_ITEM_DATE_LOST, dateLost);
+        values.put(FIELD_ITEM_STATUS, status);
+        values.put(FIELD_ITEM_IMAGE_URI, imageURI);
 
         db.insert(ITEMS_TABLE, null, values);
         db.close();
@@ -117,8 +118,8 @@ class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 ITEMS_TABLE,
-                new String[]{KEY_FIELD_ID, FIELD_NAME, FIELD_DESCRIPTION, FIELD_DATE_LOST,
-                        FIELD_LAST_LOCATION, FIELD_STATUS, FIELD_IMAGE_URI},
+                new String[]{ITEM_KEY_FIELD_ID, FIELD_ITEM_NAME, FIELD_ITEM_DESCRIPTION, FIELD_ITEM_DATE_LOST,
+                        FIELD_ITEM_LAST_LOCATION, FIELD_ITEM_STATUS, FIELD_ITEM_IMAGE_URI},
                 null, null, null, null, null, null );
 
         if (cursor.moveToFirst()){
@@ -151,9 +152,9 @@ class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 ITEMS_TABLE,
-                new String[]{KEY_FIELD_ID, FIELD_NAME, FIELD_DESCRIPTION, FIELD_DATE_LOST,
-                        FIELD_LAST_LOCATION, FIELD_STATUS, FIELD_IMAGE_URI},
-                KEY_FIELD_ID + "=?",
+                new String[]{ITEM_KEY_FIELD_ID, FIELD_ITEM_NAME, FIELD_ITEM_DESCRIPTION, FIELD_ITEM_DATE_LOST,
+                        FIELD_ITEM_LAST_LOCATION, FIELD_ITEM_STATUS, FIELD_ITEM_IMAGE_URI},
+                ITEM_KEY_FIELD_ID + "=?",
                 new String[]{String.valueOf(id)},
                 null, null, null, null );
 
@@ -190,14 +191,14 @@ class DBHelper extends SQLiteOpenHelper {
         int status = ((item.getStatus())? 1 : 0);
         String imageURI = item.getImageUri().toString();
 
-        values.put(FIELD_NAME, name);
-        values.put(FIELD_DESCRIPTION, description);
-        values.put(FIELD_LAST_LOCATION, lastLocation);
-        values.put(FIELD_DATE_LOST, dateLost);
-        values.put(FIELD_STATUS, status);
-        values.put(FIELD_IMAGE_URI, imageURI);
+        values.put(FIELD_ITEM_NAME, name);
+        values.put(FIELD_ITEM_DESCRIPTION, description);
+        values.put(FIELD_ITEM_LAST_LOCATION, lastLocation);
+        values.put(FIELD_ITEM_DATE_LOST, dateLost);
+        values.put(FIELD_ITEM_STATUS, status);
+        values.put(FIELD_ITEM_IMAGE_URI, imageURI);
 
-        db.update(ITEMS_TABLE, values, KEY_FIELD_ID + " = ?",
+        db.update(ITEMS_TABLE, values, ITEM_KEY_FIELD_ID + " = ?",
                 new String[]{String.valueOf(item.getID())});
         db.close();
     }
@@ -212,17 +213,17 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     *
-     * @param csvFileName
-     * @return
+     * Imports/reads lost item data from a CSV file to populate the database with.
+     * @param csvFileName Name of the file to import data from
+     * @return Whether or not the file data was open and imported successfully
      */
     public boolean importItemFromCSV(String csvFileName) {
         AssetManager manager = mContext.getAssets();
         InputStream inStream;
         try {
             inStream = manager.open(csvFileName);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException err) {
+            err.printStackTrace();
             return false;
         }
 
@@ -232,17 +233,24 @@ class DBHelper extends SQLiteOpenHelper {
             while ((line = buffer.readLine()) != null) {
                 String[] fields = line.split(",");
                 if (fields.length != 4) {
-                    Log.d("OCC Lost and Found", "Skipping Bad CSV Row: " + Arrays.toString(fields));
+                    Log.d("OCC Lost and Found", "Skipping Bad CSV Row: "
+                            + Arrays.toString(fields));
                     continue;
                 }
-                //int id = Integer.parseInt(fields[0].trim());
-                //String alpha = fields[1].trim();
-                //String number = fields[2].trim();
-                //String title = fields[3].trim();
-                //addItem(new Item(id, alpha, number, title));
+
+                int id = Integer.parseInt(fields[0].replaceAll("\\s+",""));
+                String name = fields[1].trim();
+                String description = fields[2].trim();
+                String dateLost = fields[3].trim();
+                String lastLocation = fields[4].trim();
+                boolean status = ((fields[5].replaceAll("\\s+","") == "Found")? true : false);
+                Uri itemImageURI = Uri.parse(fields[5].trim());
+
+                addItem(new Item(id, name, description, dateLost, lastLocation,
+                        status, itemImageURI));
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException err) {
+            err.printStackTrace();
             return false;
         }
         return true;
@@ -251,4 +259,5 @@ class DBHelper extends SQLiteOpenHelper {
     /************* User Account database functions *************/
 
     /************* Report database functions *******************/
+
 }
