@@ -5,9 +5,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by vnguyen678 on 11/10/2016.
  * Student Account info class
  * Create a student account with Student info
+ *
+ * @author Vu Nguyen
  */
 public class UserAccount implements Parcelable {
 
@@ -18,6 +19,15 @@ public class UserAccount implements Parcelable {
     int    mStudentID;
     Uri    mStudentProfilePic;
 
+    /**
+     *
+     * @param mStudentUserName
+     * @param mStudentPassword
+     * @param mStudentPhoneNum
+     * @param mStudentEmail
+     * @param mStudentID
+     * @param mStudentProfilePic
+     */
     public UserAccount(String mStudentUserName, String mStudentPassword, String mStudentPhoneNum, String mStudentEmail, int mStudentID, Uri mStudentProfilePic) {
         this.mStudentUserName = mStudentUserName;
         this.mStudentPassword = mStudentPassword;
@@ -27,6 +37,10 @@ public class UserAccount implements Parcelable {
         this.mStudentProfilePic = mStudentProfilePic;
     }
 
+    /**
+     *
+     * @param source
+     */
     public UserAccount(Parcel source) {
         this.mStudentUserName   = source.readString();
         this.mStudentPassword   = source.readString();
@@ -147,8 +161,23 @@ public class UserAccount implements Parcelable {
     }
 
     /**
+     * writeToParcel function
+     * @param dest
+     * @param flags
+     */
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(mStudentUserName);
+        dest.writeString(mStudentPassword);
+        dest.writeString(mStudentPhoneNum);
+        dest.writeString(mStudentEmail);
+        dest.writeInt(mStudentID);
+        dest.writeString(mStudentProfilePic.toString());
+    }
+
+    /**
      * describeContents
-     * @return notthing
+     * @return nothing
      */
     @Override
     public int describeContents() {
@@ -156,36 +185,26 @@ public class UserAccount implements Parcelable {
     }
 
     /**
-     * writeToParcel funtion
-     * @param dest
-     * @param flags
-     */
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
-
-        dest.writeString(mStudentUserName);
-        dest.writeString(mStudentPassword);
-        dest.writeString(mStudentPhoneNum);
-        dest.writeString(mStudentEmail);
-        dest.writeInt(mStudentID);
-        dest.writeString(mStudentProfilePic.toString());
-
-    }
-
-    /**
      *
      */
-    public static final Parcelable.Creator CREATOR = new Parcelable.ClassLoaderCreator<UserAccount>()
-    {
+    public static final Parcelable.Creator<UserAccount> CREATOR = new Parcelable.Creator<UserAccount>() {
+        /**
+         *
+         * @param source
+         * @return
+         */
         @Override
-        public UserAccount createFromParcelable(Parcel source)
-        {
+        public UserAccount createFromParcel(Parcel source) {
             return new UserAccount(source);
         }
+
+        /**
+         *
+         * @param size
+         * @return
+         */
         @Override
-        public UserAccount[] newArray(int size)
-        {
+        public UserAccount[] newArray(int size) {
             return new UserAccount[size];
         }
     };
