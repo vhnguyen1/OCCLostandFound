@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ *
+ */
 public class LoginActvity extends AppCompatActivity {
 
     private EditText usernameLoginEditText;
@@ -18,9 +21,12 @@ public class LoginActvity extends AppCompatActivity {
 
         usernameLoginEditText = (EditText) findViewById(R.id.usernameLoginEditText);
         passwordLoginEditText= (EditText) findViewById(R.id.passwordLoginEditText);
-
     }
 
+    /**
+     *
+     * @param view
+     */
     public void loginButton(View view)
     {
         boolean found = false;
@@ -39,5 +45,4 @@ public class LoginActvity extends AppCompatActivity {
         else
             Toast.makeText(this, "Username or password is invalid.", Toast.LENGTH_SHORT).show();
     }
-
 }

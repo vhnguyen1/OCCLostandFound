@@ -8,7 +8,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- *
+ * Starts up when the user first opens the app, where a timer loads
+ * a splash screen for about 3 seconds, in which it loads the main
+ * menu right after
  * @author Vincent Nguyen
  */
 public class SplashScreenActivity extends AppCompatActivity {

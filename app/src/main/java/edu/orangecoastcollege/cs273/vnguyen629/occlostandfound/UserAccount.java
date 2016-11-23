@@ -21,6 +21,19 @@ public class UserAccount implements Parcelable {
 
     /**
      *
+     * @param source
+     */
+    public UserAccount(Parcel source) {
+        this.mStudentUserName   = source.readString();
+        this.mStudentPassword   = source.readString();
+        this.mStudentPhoneNum   = source.readString();
+        this.mStudentEmail      = source.readString();
+        this.mStudentID         = source.readInt();
+        this.mStudentProfilePic = Uri.parse(source.readString());
+    }
+
+    /**
+     *
      * @param mStudentUserName
      * @param mStudentPassword
      * @param mStudentPhoneNum
@@ -35,19 +48,6 @@ public class UserAccount implements Parcelable {
         this.mStudentEmail = mStudentEmail;
         this.mStudentID = mStudentID;
         this.mStudentProfilePic = mStudentProfilePic;
-    }
-
-    /**
-     *
-     * @param source
-     */
-    public UserAccount(Parcel source) {
-        this.mStudentUserName   = source.readString();
-        this.mStudentPassword   = source.readString();
-        this.mStudentPhoneNum   = source.readString();
-        this.mStudentEmail      = source.readString();
-        this.mStudentID         = source.readInt();
-        this.mStudentProfilePic = Uri.parse(source.readString());
     }
 
     /**
@@ -208,5 +208,4 @@ public class UserAccount implements Parcelable {
             return new UserAccount[size];
         }
     };
-
 }
