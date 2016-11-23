@@ -18,6 +18,24 @@ public class UserAccount implements Parcelable {
     int    mStudentID;
     Uri    mStudentProfilePic;
 
+    public UserAccount(String mStudentUserName, String mStudentPassword, String mStudentPhoneNum, String mStudentEmail, int mStudentID, Uri mStudentProfilePic) {
+        this.mStudentUserName = mStudentUserName;
+        this.mStudentPassword = mStudentPassword;
+        this.mStudentPhoneNum = mStudentPhoneNum;
+        this.mStudentEmail = mStudentEmail;
+        this.mStudentID = mStudentID;
+        this.mStudentProfilePic = mStudentProfilePic;
+    }
+
+    public UserAccount(Parcel source) {
+        this.mStudentUserName   = source.readString();
+        this.mStudentPassword   = source.readString();
+        this.mStudentPhoneNum   = source.readString();
+        this.mStudentEmail      = source.readString();
+        this.mStudentID         = source.readInt();
+        this.mStudentProfilePic = Uri.parse(source.readString());
+    }
+
     /**
      * getStudentUserName function
      * @return mStudentUserName
@@ -158,11 +176,10 @@ public class UserAccount implements Parcelable {
     /**
      *
      */
-    /*public static final Parcelable.Creator CREATOR = new Parcelable.ClassLoaderCreator<UserAccount>()
+    public static final Parcelable.Creator CREATOR = new Parcelable.ClassLoaderCreator<UserAccount>()
     {
         @Override
         public UserAccount createFromParcelable(Parcel source)
-
         {
             return new UserAccount(source);
         }
@@ -171,6 +188,6 @@ public class UserAccount implements Parcelable {
         {
             return new UserAccount[size];
         }
-    }*/
+    };
 
 }
