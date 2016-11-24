@@ -7,8 +7,7 @@ import android.os.Parcelable;
 /**
  * The <code>Item</code> class maintains information about a lost item,
  * including its id number, name, description, recorded date lost,
- * last location known location, current status, and image. It also keeps
- * track of how many recorded lost items are in the database.
+ * last location known location, current status, and image.
  *
  * @author Vincent Nguyen
  */
