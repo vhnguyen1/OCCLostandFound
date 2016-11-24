@@ -10,7 +10,6 @@ import android.widget.ImageView;
  *
  */
 public class MapActivity extends AppCompatActivity {
-
     private ImageView mapImageView;
 
     /**

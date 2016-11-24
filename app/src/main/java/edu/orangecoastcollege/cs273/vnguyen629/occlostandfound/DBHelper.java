@@ -133,9 +133,8 @@ class DBHelper extends SQLiteOpenHelper {
                 boolean status = ((cursor.getInt(5) == 1)? true : false);
                 Uri imageUri = Uri.parse(cursor.getString(6));
 
-                Item item = new Item(itemID, name, description, dateLost, lastLocation,
-                        status, imageUri);
-                itemArrayList.add(item);
+                itemArrayList.add(new Item(itemID, name, description, dateLost, lastLocation,
+                        status, imageUri));
 
             } while (cursor.moveToNext());
         }
@@ -171,11 +170,11 @@ class DBHelper extends SQLiteOpenHelper {
         boolean status = ((cursor.getInt(5) == 1)? true : false);
         Uri imageUri = Uri.parse(cursor.getString(6));
 
-        Item item = new Item(itemID, name, description, dateLost, lastLocation,
+        final Item ITEM = new Item(itemID, name, description, dateLost, lastLocation,
                 status, imageUri);
 
         db.close();
-        return item;
+        return ITEM;
     }
 
     /**
@@ -260,6 +259,8 @@ class DBHelper extends SQLiteOpenHelper {
 
     /************* User Account database functions *************/
 
+
     /************* Report database functions *******************/
+
 
 }
