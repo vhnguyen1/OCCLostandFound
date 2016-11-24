@@ -1,12 +1,14 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
  *
+ *
+ * @author Vu Nguyen
  */
 public class ItemDetailsActivity extends AppCompatActivity {
     private TextView itemDetailsNameTextView;

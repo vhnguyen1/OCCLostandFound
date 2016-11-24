@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 /**
  * Student Account info class
- * Create a student account with Student info
+ * Creates a <code>Student</code> account with Student info
  *
  * @author Vu Nguyen
  */
@@ -41,7 +41,8 @@ public class UserAccount implements Parcelable {
      * @param mStudentID
      * @param mStudentProfilePic
      */
-    public UserAccount(String mStudentUserName, String mStudentPassword, String mStudentPhoneNum, String mStudentEmail, int mStudentID, Uri mStudentProfilePic) {
+    public UserAccount(String mStudentUserName, String mStudentPassword, String mStudentPhoneNum,
+                       String mStudentEmail, int mStudentID, Uri mStudentProfilePic) {
         this.mStudentUserName = mStudentUserName;
         this.mStudentPassword = mStudentPassword;
         this.mStudentPhoneNum = mStudentPhoneNum;

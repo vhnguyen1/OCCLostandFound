@@ -11,10 +11,12 @@ import java.util.TimerTask;
  * Starts up when the user first opens the app, where a timer loads
  * a splash screen for about 3 seconds, in which it loads the main
  * menu right after
+ *
  * @author Vincent Nguyen
  */
 public class SplashScreenActivity extends AppCompatActivity {
-
+    private Timer splashTimer;
+    private TimerTask splashTimerTask;
     /**
      *
      * @param savedInstanceState
@@ -24,7 +26,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
-        TimerTask timerTask = new TimerTask() {
+        splashTimerTask = new TimerTask() {
             /**
              *
              */
@@ -35,7 +37,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             }
         };
 
-        Timer timer = new Timer();
-        timer.schedule(timerTask, 3000);
+        splashTimer = new Timer();
+        splashTimer.schedule(splashTimerTask, 3000);
     }
 }

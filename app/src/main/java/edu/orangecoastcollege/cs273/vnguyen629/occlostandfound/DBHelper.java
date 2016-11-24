@@ -55,7 +55,7 @@ class DBHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate (SQLiteDatabase db){
-        String itemTable = "CREATE TABLE " + ITEMS_TABLE + "("
+        String itemsTable = "CREATE TABLE " + ITEMS_TABLE + "("
                 + ITEM_KEY_FIELD_ID + "  INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + FIELD_ITEM_NAME + " TEXT, "
                 + FIELD_ITEM_DESCRIPTION + " TEXT, "
@@ -63,7 +63,7 @@ class DBHelper extends SQLiteOpenHelper {
                 + FIELD_ITEM_LAST_LOCATION + " TEXT, "
                 + FIELD_ITEM_STATUS + " INTEGER, "
                 + FIELD_ITEM_IMAGE_URI + " TEXT" + ")";
-        db.execSQL(itemTable);
+        db.execSQL(itemsTable);
     }
 
     /**
@@ -118,8 +118,9 @@ class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 ITEMS_TABLE,
-                new String[]{ITEM_KEY_FIELD_ID, FIELD_ITEM_NAME, FIELD_ITEM_DESCRIPTION, FIELD_ITEM_DATE_LOST,
-                        FIELD_ITEM_LAST_LOCATION, FIELD_ITEM_STATUS, FIELD_ITEM_IMAGE_URI},
+                new String[]{ITEM_KEY_FIELD_ID, FIELD_ITEM_NAME, FIELD_ITEM_DESCRIPTION,
+                        FIELD_ITEM_DATE_LOST, FIELD_ITEM_LAST_LOCATION, FIELD_ITEM_STATUS,
+                        FIELD_ITEM_IMAGE_URI},
                 null, null, null, null, null, null );
 
         if (cursor.moveToFirst()){
@@ -152,8 +153,9 @@ class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 ITEMS_TABLE,
-                new String[]{ITEM_KEY_FIELD_ID, FIELD_ITEM_NAME, FIELD_ITEM_DESCRIPTION, FIELD_ITEM_DATE_LOST,
-                        FIELD_ITEM_LAST_LOCATION, FIELD_ITEM_STATUS, FIELD_ITEM_IMAGE_URI},
+                new String[]{ITEM_KEY_FIELD_ID, FIELD_ITEM_NAME, FIELD_ITEM_DESCRIPTION,
+                        FIELD_ITEM_DATE_LOST, FIELD_ITEM_LAST_LOCATION, FIELD_ITEM_STATUS,
+                        FIELD_ITEM_IMAGE_URI},
                 ITEM_KEY_FIELD_ID + "=?",
                 new String[]{String.valueOf(id)},
                 null, null, null, null );

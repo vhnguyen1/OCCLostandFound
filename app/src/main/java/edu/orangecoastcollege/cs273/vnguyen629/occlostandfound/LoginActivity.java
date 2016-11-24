@@ -10,14 +10,14 @@ import android.widget.Toast;
 /**
  *
  */
-public class LoginActvity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText usernameLoginEditText;
     private EditText passwordLoginEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_actvity);
+        setContentView(R.layout.activity_login_activity);
 
         usernameLoginEditText = (EditText) findViewById(R.id.usernameLoginEditText);
         passwordLoginEditText= (EditText) findViewById(R.id.passwordLoginEditText);
