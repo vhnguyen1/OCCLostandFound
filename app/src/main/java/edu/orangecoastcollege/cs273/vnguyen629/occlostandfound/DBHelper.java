@@ -1,5 +1,6 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
+import android.accounts.Account;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -28,9 +29,11 @@ import java.util.Arrays;
 class DBHelper extends SQLiteOpenHelper {
     private Context mContext;
 
+
     static final String DATABASE_NAME = "Items";
     private static final int DATABASE_VERSION = 1;
 
+    // Item database start
     private static final String ITEMS_TABLE = "LostItems";
     private static final String ITEM_KEY_FIELD_ID = "id";
     private static final String FIELD_ITEM_NAME = "name";
@@ -39,6 +42,17 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String FIELD_ITEM_LAST_LOCATION = "last_location";
     private static final String FIELD_ITEM_STATUS = "last_location";
     private static final String FIELD_ITEM_IMAGE_URI = "image_uri";
+    // Item database end
+
+    // Account table start
+    private static final String ACCOUNT_TABLE = "Account";
+    private static final String FIELD_ACCOUNT_USERNAME = "name";
+    private static final String FIELD_ACCOUNT_PASSWORD = "password";
+    private static final String FIELD_ACCOUNT_PHONE_NUMBER = "phone_number";
+    private static final String FIELD_ACCOUNT_EMAIL = "email";
+    private static final String FIELD_ACCOUNT_STUDENT_ID = "student_id";
+    private static final String FIELD_ACCOUNT_PROFILE_PICTURE = "profile_pic";
+    // Account table end
 
     /**
      * Creates a new database
@@ -55,6 +69,7 @@ class DBHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate (SQLiteDatabase db){
+        // Oncreate Item
         String itemsTable = "CREATE TABLE " + ITEMS_TABLE + "("
                 + ITEM_KEY_FIELD_ID + "  INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + FIELD_ITEM_NAME + " TEXT, "
@@ -63,6 +78,18 @@ class DBHelper extends SQLiteOpenHelper {
                 + FIELD_ITEM_LAST_LOCATION + " TEXT, "
                 + FIELD_ITEM_STATUS + " INTEGER, "
                 + FIELD_ITEM_IMAGE_URI + " TEXT" + ")";
+        //
+
+        //Oncreate Account
+        String accountTable =  "CREATE TABLE " + ACCOUNT_TABLE + "("
+                + FIELD_ACCOUNT_USERNAME + " TEXT, "
+                + FIELD_ACCOUNT_PASSWORD + " TEXT, "
+                + FIELD_ACCOUNT_PHONE_NUMBER + " TEXT, "
+                + FIELD_ACCOUNT_EMAIL + " TEXT, "
+                + FIELD_ACCOUNT_STUDENT_ID + " INTEGER, "
+                + FIELD_ACCOUNT_PROFILE_PICTURE + " TEXT, "
+                + ")";
+        //
         db.execSQL(itemsTable);
     }
 
@@ -77,6 +104,7 @@ class DBHelper extends SQLiteOpenHelper {
                           int oldVersion,
                           int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + ITEMS_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + ACCOUNT_TABLE);
         onCreate(db);
     }
 
@@ -259,6 +287,98 @@ class DBHelper extends SQLiteOpenHelper {
 
     /************* User Account database functions *************/
 
+    public void addAccount(UserAccount account)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(FIELD_ACCOUNT_USERNAME, account.getStudentUserName());
+        values.put(FIELD_ACCOUNT_PASSWORD, account.getStudentPassword());
+        values.put(FIELD_ACCOUNT_PHONE_NUMBER, account.getStudentPhoneNum());
+        values.put(FIELD_ACCOUNT_EMAIL, account.getStudentEmail());
+        values.put(FIELD_ACCOUNT_STUDENT_ID, account.getStudentID());
+        values.put(FIELD_ACCOUNT_PROFILE_PICTURE, account.getStudentProfilePic().toString());
+
+        db.insert(ACCOUNT_TABLE, null, values);
+        db.close();
+    }
+
+    public ArrayList<UserAccount> getAllUserAccount()
+    {
+        ArrayList<UserAccount> accountList = new ArrayList<>();
+        SQLiteDatabase database = this.getReadableDatabase();
+        Cursor cursor = database.query(
+                ACCOUNT_TABLE,
+                new String[]{FIELD_ACCOUNT_USERNAME,FIELD_ACCOUNT_PASSWORD, FIELD_ACCOUNT_PHONE_NUMBER,
+                           FIELD_ACCOUNT_EMAIL, FIELD_ACCOUNT_STUDENT_ID, FIELD_ACCOUNT_PROFILE_PICTURE},
+                null,null,null,null,null,null
+        );
+        if (cursor.moveToFirst())
+        {
+            do {
+                UserAccount account =
+                        new UserAccount(cursor.getString(0), cursor.getString(1),
+                                cursor.getString(2), cursor.getString(3),
+                                cursor.getInt(4), Uri.parse(cursor.getString(5).toString()));
+                accountList.add(account);
+
+            }while (cursor.moveToNext());
+        }
+        return accountList;
+    }
+
+    public void deleteUserAccount(UserAccount account) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        // DELETE THE TABLE ROW
+        db.delete(ACCOUNT_TABLE, FIELD_ACCOUNT_STUDENT_ID + " = ?",
+                new String[]{String.valueOf(account.getStudentID())});
+        db.close();
+    }
+
+    public void deleteAllUserAccounts() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(ACCOUNT_TABLE, null, null);
+        db.close();
+    }
+
+    public void updateAccount(UserAccount account) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(FIELD_ACCOUNT_USERNAME, account.getStudentUserName());
+        values.put(FIELD_ACCOUNT_PASSWORD, account.getStudentPassword());
+        values.put(FIELD_ACCOUNT_PHONE_NUMBER, account.getStudentPhoneNum());
+        values.put(FIELD_ACCOUNT_EMAIL, account.getStudentEmail());
+        values.put(FIELD_ACCOUNT_STUDENT_ID, account.getStudentID());
+        values.put(FIELD_ACCOUNT_PROFILE_PICTURE, account.getStudentProfilePic().toString());
+
+        db.update(ACCOUNT_TABLE, values, FIELD_ACCOUNT_STUDENT_ID + " = ?",
+                new String[]{String.valueOf(account.getStudentID())});
+        db.close();
+    }
+
+    public UserAccount getUserAccount(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(
+                ACCOUNT_TABLE,
+                new String[]{FIELD_ACCOUNT_USERNAME,FIELD_ACCOUNT_PASSWORD, FIELD_ACCOUNT_PHONE_NUMBER,
+                        FIELD_ACCOUNT_EMAIL, FIELD_ACCOUNT_STUDENT_ID, FIELD_ACCOUNT_PROFILE_PICTURE},
+                FIELD_ACCOUNT_STUDENT_ID + "=?",
+                new String[]{String.valueOf(id)},
+                null, null, null, null);
+
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        UserAccount account =
+                new UserAccount(cursor.getString(0), cursor.getString(1),
+                        cursor.getString(2), cursor.getString(3),
+                        cursor.getInt(4), Uri.parse(cursor.getString(5).toString()));
+
+        db.close();
+        return account;
+    }
 
     /************* Report database functions *******************/
 
