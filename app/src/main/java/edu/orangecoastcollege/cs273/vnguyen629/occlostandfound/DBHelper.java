@@ -119,7 +119,7 @@ class DBHelper extends SQLiteOpenHelper {
      * Adds a new <code>Item</code> into the current database
      * @param newItem New <code>Item</code> to be added too the database
      */
-    public void addItem(Item newItem) {
+    public void addItem(final Item newItem) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -181,7 +181,7 @@ class DBHelper extends SQLiteOpenHelper {
      * @param id The unique id of the <code>Item</code>
      * @return The item with the matching unique ID
      */
-    public Item getItem(int id) {
+    public Item getItem(final int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 ITEMS_TABLE,
@@ -214,7 +214,7 @@ class DBHelper extends SQLiteOpenHelper {
      * Applies changes/updates to a <code>Item</code>
      * @param item <code>Item</code> to be updated in the database
      */
-    public void updateItem(Item item){
+    public void updateItem(final Item item){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -251,7 +251,7 @@ class DBHelper extends SQLiteOpenHelper {
      * @param csvFileName Name of the file to import data from
      * @return Whether or not the file data was open and imported successfully
      */
-    public boolean importItemFromCSV(String csvFileName) {
+    public boolean importItemFromCSV(final String csvFileName) {
         AssetManager manager = mContext.getAssets();
         InputStream inStream;
         try {
