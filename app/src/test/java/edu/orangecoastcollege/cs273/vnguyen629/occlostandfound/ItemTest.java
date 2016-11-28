@@ -106,7 +106,8 @@ public class ItemTest {
      */
     @Test
     public void getLocation() throws Exception {
-
+        //mItem.setLastLocation("Test Last Known Location");
+        assertEquals("Error Found!", "Test Last Known Location", mItem.getDateLost());
     }
 
     /**
@@ -115,7 +116,8 @@ public class ItemTest {
      */
     @Test
     public void setLocation() throws Exception {
-
+        //mItem.setLastLocation("Test Last Known Location");
+        assertEquals("Error Found!", "Test Last Known Location", mItem.getDateLost());
     }
 
     /**
