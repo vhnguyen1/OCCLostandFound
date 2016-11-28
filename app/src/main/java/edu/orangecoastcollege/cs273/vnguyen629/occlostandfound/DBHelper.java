@@ -27,7 +27,6 @@ import java.util.Arrays;
  */
 class DBHelper extends SQLiteOpenHelper {
     private Context mContext;
-
     static final String DATABASE_NAME = "LostAndFound";
     private static final int DATABASE_VERSION = 1;
 
@@ -43,7 +42,7 @@ class DBHelper extends SQLiteOpenHelper {
     // Item Database End
 
     // Account Table Start
-    private static final String ACCOUNT_TABLE = "Account";
+    private static final String ACCOUNT_TABLE = "Accounts";
     private static final String FIELD_ACCOUNT_USERNAME = "name";
     private static final String FIELD_ACCOUNT_PASSWORD = "password";
     private static final String FIELD_ACCOUNT_PHONE_NUMBER = "phone_number";
@@ -51,6 +50,12 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String FIELD_ACCOUNT_STUDENT_ID = "student_id";
     private static final String FIELD_ACCOUNT_PROFILE_PICTURE = "profile_pic";
     // Account Table End
+
+    // Report Table Start
+    private static final String REPORT_TABLE  = "Reports";
+
+
+    // Report Table End
 
     /**
      * Creates a new database
@@ -86,6 +91,9 @@ class DBHelper extends SQLiteOpenHelper {
                 + FIELD_ACCOUNT_STUDENT_ID + " INTEGER, "
                 + FIELD_ACCOUNT_PROFILE_PICTURE + " TEXT, "
                 + ")";
+        db.execSQL(table);
+
+        table =  "CREATE TABLE " + REPORT_TABLE + "(";
         db.execSQL(table);
     }
 
