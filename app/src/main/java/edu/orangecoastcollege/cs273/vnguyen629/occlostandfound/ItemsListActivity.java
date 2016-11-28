@@ -58,9 +58,7 @@ public class ItemsListActivity extends AppCompatActivity {
      */
     public void viewItemDetails(View view) {
         if (view instanceof LinearLayout) {
-            LinearLayout selectedLayout = (LinearLayout) view;
-
-            final Item SELECTED_GAME = (Item) selectedLayout.getTag();
+            final Item SELECTED_GAME = (Item) view.getTag();
             Log.i("OCC Lost and Found", SELECTED_GAME.toString());
 
             Intent detailsIntent = new Intent(this, ItemDetailsActivity.class);

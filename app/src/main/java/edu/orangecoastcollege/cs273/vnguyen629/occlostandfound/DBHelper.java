@@ -1,6 +1,5 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
-import android.accounts.Account;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -29,11 +28,10 @@ import java.util.Arrays;
 class DBHelper extends SQLiteOpenHelper {
     private Context mContext;
 
-
-    static final String DATABASE_NAME = "Items";
+    static final String DATABASE_NAME = "LostAndFound";
     private static final int DATABASE_VERSION = 1;
 
-    // Item database start
+    // Item Database Start
     private static final String ITEMS_TABLE = "LostItems";
     private static final String ITEM_KEY_FIELD_ID = "id";
     private static final String FIELD_ITEM_NAME = "name";
@@ -42,9 +40,9 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String FIELD_ITEM_LAST_LOCATION = "last_location";
     private static final String FIELD_ITEM_STATUS = "last_location";
     private static final String FIELD_ITEM_IMAGE_URI = "image_uri";
-    // Item database end
+    // Item Database End
 
-    // Account table start
+    // Account Table Start
     private static final String ACCOUNT_TABLE = "Account";
     private static final String FIELD_ACCOUNT_USERNAME = "name";
     private static final String FIELD_ACCOUNT_PASSWORD = "password";
@@ -52,7 +50,7 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String FIELD_ACCOUNT_EMAIL = "email";
     private static final String FIELD_ACCOUNT_STUDENT_ID = "student_id";
     private static final String FIELD_ACCOUNT_PROFILE_PICTURE = "profile_pic";
-    // Account table end
+    // Account Table End
 
     /**
      * Creates a new database
@@ -69,8 +67,7 @@ class DBHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate (SQLiteDatabase db){
-        // Oncreate Item
-        String itemsTable = "CREATE TABLE " + ITEMS_TABLE + "("
+        String table = "CREATE TABLE " + ITEMS_TABLE + "("
                 + ITEM_KEY_FIELD_ID + "  INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + FIELD_ITEM_NAME + " TEXT, "
                 + FIELD_ITEM_DESCRIPTION + " TEXT, "
@@ -78,10 +75,10 @@ class DBHelper extends SQLiteOpenHelper {
                 + FIELD_ITEM_LAST_LOCATION + " TEXT, "
                 + FIELD_ITEM_STATUS + " INTEGER, "
                 + FIELD_ITEM_IMAGE_URI + " TEXT" + ")";
-        //
+        db.execSQL(table);
 
-        //Oncreate Account
-        String accountTable =  "CREATE TABLE " + ACCOUNT_TABLE + "("
+
+        table =  "CREATE TABLE " + ACCOUNT_TABLE + "("
                 + FIELD_ACCOUNT_USERNAME + " TEXT, "
                 + FIELD_ACCOUNT_PASSWORD + " TEXT, "
                 + FIELD_ACCOUNT_PHONE_NUMBER + " TEXT, "
@@ -89,8 +86,7 @@ class DBHelper extends SQLiteOpenHelper {
                 + FIELD_ACCOUNT_STUDENT_ID + " INTEGER, "
                 + FIELD_ACCOUNT_PROFILE_PICTURE + " TEXT, "
                 + ")";
-        //
-        db.execSQL(itemsTable);
+        db.execSQL(table);
     }
 
     /**
@@ -287,6 +283,10 @@ class DBHelper extends SQLiteOpenHelper {
 
     /************* User Account database functions *************/
 
+    /**
+     *
+     * @param account
+     */
     public void addAccount(UserAccount account)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -303,6 +303,10 @@ class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<UserAccount> getAllUserAccount()
     {
         ArrayList<UserAccount> accountList = new ArrayList<>();
@@ -327,6 +331,10 @@ class DBHelper extends SQLiteOpenHelper {
         return accountList;
     }
 
+    /**
+     *
+     * @param account
+     */
     public void deleteUserAccount(UserAccount account) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -336,12 +344,19 @@ class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     *
+     */
     public void deleteAllUserAccounts() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(ACCOUNT_TABLE, null, null);
         db.close();
     }
 
+    /**
+     *
+     * @param account
+     */
     public void updateAccount(UserAccount account) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -358,6 +373,11 @@ class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public UserAccount getUserAccount(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
