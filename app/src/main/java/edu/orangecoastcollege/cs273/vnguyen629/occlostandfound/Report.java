@@ -108,7 +108,7 @@ public class Report implements Parcelable {
      * Sets the associated account of the <code>Report</code>.
      * @param newAccount The reports new account
      */
-    public void setDescription(String newAccount) {
+    public void setAccount(String newAccount) {
         this.mAccount = newAccount;
     }
 
