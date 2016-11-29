@@ -53,6 +53,10 @@ class DBHelper extends SQLiteOpenHelper {
 
     // Report Table Start
     private static final String REPORT_TABLE  = "Reports";
+    private static final String REPORT_KEY_FIELD_ID = "id";
+    private static final String FIELD_REPORT_ACCOUNT = "account";
+    private static final String FIELD_REPORT_ITEM_NAME = "name";
+    private static final String FIELD_REPORT_DATE_LOST = "date_lost";
 
 
     // Report Table End
@@ -67,8 +71,8 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Creates a new <code>Item</code> database
-     * @param db The <code>Item</code> database
+     * Creates a new database
+     * @param db The new database
      */
     @Override
     public void onCreate (SQLiteDatabase db){
@@ -93,7 +97,11 @@ class DBHelper extends SQLiteOpenHelper {
                 + ")";
         db.execSQL(table);
 
-        table =  "CREATE TABLE " + REPORT_TABLE + "(";
+        table =  "CREATE TABLE " + REPORT_TABLE + "("
+                + REPORT_KEY_FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + FIELD_REPORT_ACCOUNT + " TEXT, "
+                + FIELD_REPORT_ITEM_NAME + " TEXT, "
+                + FIELD_REPORT_DATE_LOST + " TEXT" + ")";
         db.execSQL(table);
     }
 
@@ -323,7 +331,7 @@ class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = database.query(
                 ACCOUNT_TABLE,
                 new String[]{FIELD_ACCOUNT_USERNAME,FIELD_ACCOUNT_PASSWORD, FIELD_ACCOUNT_PHONE_NUMBER,
-                           FIELD_ACCOUNT_EMAIL, FIELD_ACCOUNT_STUDENT_ID, FIELD_ACCOUNT_PROFILE_PICTURE},
+                        FIELD_ACCOUNT_EMAIL, FIELD_ACCOUNT_STUDENT_ID, FIELD_ACCOUNT_PROFILE_PICTURE},
                 null,null,null,null,null,null
         );
         if (cursor.moveToFirst())
@@ -411,5 +419,153 @@ class DBHelper extends SQLiteOpenHelper {
 
     /************* Report database functions *******************/
 
+    /**
+     * Adds a new <code>Report</code> into the current database
+     * @param newReport New <code>Report</code> to be added too the database
+     */
+    public void addReport(final Report newReport) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        String account = newReport.getAccount();
+        String name = newReport.getName();
+        String dateLost = newReport.getDateLost();
+
+        values.put(FIELD_REPORT_ACCOUNT, account);
+        values.put(FIELD_REPORT_ITEM_NAME, name);
+        values.put(FIELD_REPORT_DATE_LOST, dateLost);
+
+        db.insert(REPORT_TABLE, null, values);
+        db.close();
+    }
+
+    /**
+     * Returns a list of all the reports inside the database
+     * @return The list of all the reports
+     */
+    public ArrayList<Report> getAllReports() {
+        ArrayList<Report> reportArrayList = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(
+                REPORT_TABLE,
+                new String[]{REPORT_KEY_FIELD_ID, FIELD_REPORT_ACCOUNT, FIELD_REPORT_ITEM_NAME,
+                        FIELD_REPORT_DATE_LOST},
+                null, null, null, null, null, null );
+
+        if (cursor.moveToFirst()){
+            do {
+                int reportID = cursor.getInt(0);
+                String account = cursor.getString(1);
+                String name = cursor.getString(2);
+                String dateLost = cursor.getString(3);
+
+                reportArrayList.add(new Report(reportID, account, name, dateLost));
+
+            } while (cursor.moveToNext());
+        }
+
+        db.close();
+        return reportArrayList;
+    }
+
+    /**
+     * Retrieves a specified <code>Report</code> from the database
+     * @param id The unique id of the <code>Report</code>
+     * @return The report with the matching unique ID
+     */
+    public Report getReport(final int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(
+                REPORT_TABLE,
+                new String[]{REPORT_KEY_FIELD_ID, FIELD_REPORT_ACCOUNT, FIELD_REPORT_ITEM_NAME,
+                        FIELD_REPORT_DATE_LOST},
+                REPORT_KEY_FIELD_ID + "=?",
+                new String[]{String.valueOf(id)},
+                null, null, null, null );
+
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        int itemID = cursor.getInt(0);
+        String account = cursor.getString(1);
+        String name = cursor.getString(2);
+        String dateLost = cursor.getString(3);
+
+        final Report REPORT = new Report(itemID, account, name, dateLost);
+
+        db.close();
+        return REPORT;
+    }
+
+    /**
+     * Applies changes/updates to a <code>Report</code>
+     * @param report <code>Report</code> to be updated in the database
+     */
+    public void updateReport(final Report report){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        String account = report.getAccount();
+        String name = report.getName();
+        String dateLost = report.getDateLost();
+
+        values.put(FIELD_REPORT_ACCOUNT, account);
+        values.put(FIELD_REPORT_ITEM_NAME, name);
+        values.put(FIELD_REPORT_DATE_LOST, dateLost);
+
+        db.update(REPORT_TABLE, values, REPORT_KEY_FIELD_ID + " = ?",
+                new String[]{String.valueOf(report.getID())});
+        db.close();
+    }
+
+    /**
+     * Delete all the reports in the current database
+     */
+    public void deleteAllReports() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(REPORT_TABLE, null, null);
+        db.close();
+    }
+
+    /**
+     * Imports/reads reports data from a CSV file to populate the database with.
+     * @param csvFileName Name of the file to import data from
+     * @return Whether or not the file data was open and imported successfully
+     */
+    public boolean importReportFromCSV(final String csvFileName) {
+        AssetManager manager = mContext.getAssets();
+        InputStream inStream;
+        try {
+            inStream = manager.open(csvFileName);
+        } catch (IOException err) {
+            err.printStackTrace();
+            return false;
+        }
+
+        BufferedReader buffer = new BufferedReader(new InputStreamReader(inStream));
+        String line;
+        try {
+            while ((line = buffer.readLine()) != null) {
+                String[] fields = line.split(",");
+                if (fields.length != 4) {
+                    Log.d("OCC Lost and Found", "Skipping Bad CSV Row: "
+                            + Arrays.toString(fields));
+                    continue;
+                }
+
+                int id = Integer.parseInt(fields[0].replaceAll("\\s+",""));
+                String account = fields[1].trim();
+                String name = fields[2].trim();
+                String dateLost = fields[3].trim();
+
+                addReport(new Report(id, account, name, dateLost));
+            }
+        } catch (IOException err) {
+            err.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 
 }
