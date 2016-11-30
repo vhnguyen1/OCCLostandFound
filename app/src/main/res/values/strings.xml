@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">OCC Lost and Found</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="office_title">Associated Students of Orange Coast College</string>
 </resources>

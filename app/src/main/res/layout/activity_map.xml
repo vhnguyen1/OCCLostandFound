@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_map"
@@ -12,25 +12,17 @@
     tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.MapActivity"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/mapImageView"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:background="@drawable/occ_map_hidden"
+    <fragment
         android:layout_width="match_parent"
-        android:layout_height="400dp" />
+        android:layout_height="0dp"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:id="@+id/googleMapFragment"
+        android:layout_weight="1" />
 
-    <Button
-        android:text="Show only LF Building"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/changeMapButton"
-        android:gravity="center_horizontal"
-        android:layout_below="@+id/mapImageView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:onClick="mapChange" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-</RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>
