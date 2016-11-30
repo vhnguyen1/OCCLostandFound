@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".MainMenuActivity" />
         <activity android:name=".ItemsListActivity" />
-        <activity android:name=".ItemDetailsActivity"></activity>
+        <activity android:name=".ItemDetailsActivity" />
+        <activity android:name=".UserAccountCreateActivity"></activity>
     </application>
 
 </manifest>

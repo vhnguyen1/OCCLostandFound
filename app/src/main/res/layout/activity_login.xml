@@ -32,10 +32,17 @@
         android:gravity="center_vertical|center" />
 
     <Button
-        android:text="Enter"
+        android:text="Login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/loginButton"
         android:onClick="loginButton (LoginActivity)" />
+
+    <Button
+        android:text="Create an Account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/createAccountButton"
+        android:onClick="createAccountButton (LoginActivity)" />
 
 </LinearLayout>
