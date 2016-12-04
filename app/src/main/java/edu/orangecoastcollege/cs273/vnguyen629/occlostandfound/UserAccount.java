@@ -16,7 +16,7 @@ public class UserAccount implements Parcelable {
     String mStudentPassword;
     String mStudentPhoneNum;
     String mStudentEmail;
-    int    mStudentID;
+    String mStudentID;
     Uri    mStudentProfilePic;
 
     /**
@@ -28,7 +28,7 @@ public class UserAccount implements Parcelable {
         this.mStudentPassword   = source.readString();
         this.mStudentPhoneNum   = source.readString();
         this.mStudentEmail      = source.readString();
-        this.mStudentID         = source.readInt();
+        this.mStudentID         = source.readString();
         this.mStudentProfilePic = Uri.parse(source.readString());
     }
 
@@ -42,13 +42,17 @@ public class UserAccount implements Parcelable {
      * @param mStudentProfilePic
      */
     public UserAccount(String mStudentUserName, String mStudentPassword, String mStudentPhoneNum,
-                       String mStudentEmail, int mStudentID, Uri mStudentProfilePic) {
+                       String mStudentEmail, String mStudentID, Uri mStudentProfilePic) {
         this.mStudentUserName = mStudentUserName;
         this.mStudentPassword = mStudentPassword;
         this.mStudentPhoneNum = mStudentPhoneNum;
         this.mStudentEmail = mStudentEmail;
         this.mStudentID = mStudentID;
         this.mStudentProfilePic = mStudentProfilePic;
+    }
+
+    public UserAccount() {
+        this("", "", "", "", "",null);
     }
 
     /**
@@ -87,7 +91,7 @@ public class UserAccount implements Parcelable {
      * Get Student ID Class
      * @return mStudentID
      */
-    public int getStudentID() {
+    public String getStudentID() {
         return mStudentID;
     }
 
@@ -135,7 +139,7 @@ public class UserAccount implements Parcelable {
      * setStudentID function
      * @param mStudentID
      */
-    public void setStudentID(int mStudentID) {
+    public void setStudentID(String mStudentID) {
         this.mStudentID = mStudentID;
     }
 
@@ -172,7 +176,7 @@ public class UserAccount implements Parcelable {
         dest.writeString(mStudentPassword);
         dest.writeString(mStudentPhoneNum);
         dest.writeString(mStudentEmail);
-        dest.writeInt(mStudentID);
+        dest.writeString(mStudentID);
         dest.writeString(mStudentProfilePic.toString());
     }
 

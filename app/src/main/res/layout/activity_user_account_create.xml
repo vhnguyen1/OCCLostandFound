@@ -25,13 +25,13 @@
         android:ems="10"
         android:id="@+id/userEditText"
         android:layout_weight="0"
-        android:hint="Enter User Name" />
+        android:hint="User Name" />
 
     <TextView
         android:text="Enter Password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2"
+        android:id="@+id/passwordTextView"
         android:layout_weight="0" />
 
     <EditText
@@ -41,13 +41,13 @@
         android:ems="10"
         android:id="@+id/passwordEditText"
         android:layout_weight="0"
-        android:hint="Enter Password" />
+        android:hint="Password" />
 
     <TextView
         android:text="Re-Enter Password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView4"
+        android:id="@+id/renterPassEditText"
         android:layout_weight="0" />
 
     <EditText
@@ -63,7 +63,7 @@
         android:text="Enter Student Email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView5"
+        android:id="@+id/emailTextView"
         android:layout_weight="0" />
 
     <EditText
@@ -73,7 +73,23 @@
         android:ems="10"
         android:id="@+id/emailEditText"
         android:layout_weight="0"
-        android:hint="Enter your student email" />
+        android:hint="Student Email" />
+
+    <TextView
+        android:text="Enter Student ID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView6"
+        android:layout_weight="0" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/idEditText"
+        android:layout_weight="0"
+        android:hint="Student ID" />
 
     <LinearLayout
         android:orientation="horizontal"
