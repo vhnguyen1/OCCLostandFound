@@ -18,7 +18,7 @@ public class UserAccount implements Parcelable {
     String mStudentEmail;
     String mStudentID;
     Uri    mStudentProfilePic;
-    AccontInfo mAccontInfo;
+    AccountInfo mAccountInfo;
 
     /**
      *

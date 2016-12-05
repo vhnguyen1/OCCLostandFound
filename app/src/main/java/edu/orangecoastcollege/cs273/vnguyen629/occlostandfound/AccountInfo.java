@@ -4,20 +4,20 @@ package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
  * Created by Vu Nguyen on 12/4/2016.
  */
 
-public class AccontInfo
+public class AccountInfo
 {
 
 
     private String mName;
     private String mLastName;
 
-    public AccontInfo(String mName, String mLastName)
+    public AccountInfo(String mName, String mLastName)
     {
         this.mName = mName;
         this.mLastName = mLastName;
     }
 
-    public AccontInfo() {
+    public AccountInfo() {
        this("","");
     }
 

@@ -7,7 +7,7 @@ import android.widget.EditText;
 
 public class UserSettingActivity extends AppCompatActivity {
 
-    private AccontInfo accontInfo;
+    private AccountInfo accountInfo;
     private EditText accountInfoNameEditText;
     private EditText accountInfoLastNameEditText;
 
@@ -19,14 +19,14 @@ public class UserSettingActivity extends AppCompatActivity {
         accountInfoNameEditText = (EditText) findViewById(R.id.accountInfoNameEditTExt);
         accountInfoLastNameEditText = (EditText) findViewById(R.id.accountInfoLastNameEditText);
 
-        accountInfoNameEditText.setText(accontInfo.getName());
-        accountInfoLastNameEditText.setText(accontInfo.getLastName());
+        accountInfoNameEditText.setText(accountInfo.getName());
+        accountInfoLastNameEditText.setText(accountInfo.getLastName());
     }
 
     public void saveInfoButton(View view)
     {
-        accontInfo.setName(accountInfoNameEditText.getText().toString());
-        accontInfo.setLastName(accountInfoLastNameEditText.getText().toString());
+        accountInfo.setName(accountInfoNameEditText.getText().toString());
+        accountInfo.setLastName(accountInfoLastNameEditText.getText().toString());
         ///tiung
     }
 
