@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         usernameLoginEditText = (EditText) findViewById(R.id.usernameLoginEditText);
-        passwordLoginEditText= (EditText) findViewById(R.id.passwordLoginEditText);
+        passwordLoginEditText = (EditText) findViewById(R.id.passwordLoginEditText);
 
         accountList = database.getAllUserAccount();
     }

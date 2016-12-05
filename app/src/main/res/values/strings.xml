@@ -2,6 +2,12 @@
     <string name="app_name">OCC Lost and Found</string>
     <string name="title_activity_maps">Map</string>
     <string name="office_title">Associated Students of Orange Coast College</string>
-    <string name="need_account_text">Not signed in?</string>
-    <string name="click_here_text"><u>here.</u></string>
+    <string name="need_account_text">Not signed in? Click</string>
+    <string name="here_text"><u>here.</u></string>
+    <string name="reported_lost_items_text">Reported Lost Items</string>
+    <string name="reported_lost_items_description_text">Report or view lost item(s).</string>
+    <string name="map_text">Map</string>
+    <string name="map_description_text">View the campus map.</string>
+    <string name="faq_text">FAQ</string>
+    <string name="faq_description_text">View frequently asked questions.</string>
 </resources>
