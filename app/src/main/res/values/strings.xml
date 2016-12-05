@@ -10,4 +10,14 @@
     <string name="map_description_text">View the campus map.</string>
     <string name="faq_text">FAQ</string>
     <string name="faq_description_text">View frequently asked questions.</string>
+    <string name="name">Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="save">Save Info</string>
+    <string name="enter_user_name">Enter Your User Name</string>
+    <string name="enter_password">Enter Your Password</string>
+    <string name="reenter_password">Re-Enter Your Password</string>
+    <string name="enter_email">Enter Your Email</string>
+    <string name="enter_id">Enter Your Student ID</string>
+    <string name="create_account">CREATE ACCOUNT</string>
+    <string name="back">BACK</string>
 </resources>

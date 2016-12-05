@@ -12,7 +12,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:text="Enter User Name"
+        android:text="@string/enter_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
@@ -28,7 +28,7 @@
         android:hint="User Name" />
 
     <TextView
-        android:text="Enter Password"
+        android:text="@string/enter_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/passwordTextView"
@@ -44,7 +44,7 @@
         android:hint="Password" />
 
     <TextView
-        android:text="Re-Enter Password"
+        android:text="@string/reenter_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/renterPassEditText"
@@ -60,7 +60,7 @@
         android:hint="Re-Enter Password" />
 
     <TextView
-        android:text="Enter Student Email"
+        android:text="@string/enter_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/emailTextView"
@@ -76,7 +76,7 @@
         android:hint="Student Email" />
 
     <TextView
-        android:text="Enter Student ID"
+        android:text="@string/enter_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView6"
@@ -97,14 +97,14 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:text="Create Account"
+            android:text="@string/create_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/CreateButton"
             android:layout_weight="1" />
 
         <Button
-            android:text="Back"
+            android:text="@string/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/backButton"
