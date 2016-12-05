@@ -9,6 +9,25 @@
     tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.MainMenuActivity">
 
     <ImageView
+        app:srcCompat="@drawable/occ_image"
+        android:id="@+id/occMainMenuImageView"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:layout_column="0"
+        android:layout_row="0"
+        android:layout_rowSpan="5"
+        android:layout_columnSpan="5"
+        android:elevation="1dp"
+        android:cropToPadding="true"
+        android:layout_alignParentTop="true"
+        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
         app:srcCompat="@drawable/item_list_icon"
         android:id="@+id/menuReportItemImageView"
         android:adjustViewBounds="true"
@@ -45,12 +64,12 @@
         android:layout_below="@+id/menuReportItemTitleTextView"
         android:layout_toRightOf="@+id/menuReportItemImageView"
         android:id="@+id/menuReportItemDescriptionTextView"
-        android:layout_alignBottom="@+id/menuReportItemImageView"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:textSize="18sp"
         android:clickable="true"
-        android:onClick="openReportedItemsList" />
+        android:onClick="openReportedItemsList"
+        android:layout_above="@+id/menuMapTitleTextView" />
 
     <ImageView
         android:clickable="true"
@@ -90,6 +109,20 @@
         android:layout_alignParentEnd="true"
         android:layout_toRightOf="@+id/menuMapImageView"
         android:layout_toEndOf="@+id/menuMapImageView" />
+
+    <ImageView
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        app:srcCompat="@drawable/faq_icon"
+        android:id="@+id/menuFAQImageView"
+        android:cropToPadding="true"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:clickable="true"
+        android:layout_below="@+id/menuMapImageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:onClick="openFAQ" />
 
     <TextView
         android:text="@string/faq_text"
@@ -184,6 +217,18 @@
         android:layout_toEndOf="@+id/menuContactInfoImageView"
         android:onClick="openContactInfo" />
 
+    <TextView
+        android:text="@string/contact_information_description_text"
+        android:textSize="18sp"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuContactInfoDescriptionTextView"
+        android:onClick="openContactInfo"
+        android:layout_below="@+id/menuContactInfoTitleTextView"
+        android:layout_toRightOf="@+id/menuContactInfoImageView"
+        android:layout_toEndOf="@+id/menuContactInfoImageView" />
+
     <ImageView
         app:srcCompat="@drawable/about_icon"
         android:layout_below="@+id/menuContactInfoDescriptionTextView"
@@ -224,6 +269,18 @@
         android:onClick="openAbout" />
 
     <TextView
+        android:text="@string/need_account_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuNotSignedInTextView"
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/menuAboutImageView"
+        android:layout_toEndOf="@+id/menuAboutImageView"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp" />
+
+    <TextView
         android:text="@string/here_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -237,62 +294,5 @@
         android:textStyle="normal|bold"
         android:paddingLeft="5dp"
         android:onClick="openLogin" />
-
-    <TextView
-        android:text="@string/need_account_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/menuNotSignedInTextView"
-        android:textSize="18sp"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/menuAboutImageView"
-        android:layout_toEndOf="@+id/menuAboutImageView"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp" />
-
-    <ImageView
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        app:srcCompat="@drawable/faq_icon"
-        android:id="@+id/menuFAQImageView"
-        android:cropToPadding="true"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:clickable="true"
-        android:layout_below="@+id/menuMapImageView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="openFAQ" />
-
-    <TextView
-        android:text="@string/contact_information_description_text"
-        android:textSize="18sp"
-        android:clickable="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/menuContactInfoDescriptionTextView"
-        android:onClick="openContactInfo"
-        android:layout_below="@+id/menuContactInfoTitleTextView"
-        android:layout_toRightOf="@+id/menuContactInfoImageView"
-        android:layout_toEndOf="@+id/menuContactInfoImageView" />
-
-    <ImageView
-        app:srcCompat="@drawable/occ_image"
-        android:id="@+id/occMainMenuImageView"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:layout_column="0"
-        android:layout_row="0"
-        android:layout_rowSpan="5"
-        android:layout_columnSpan="5"
-        android:elevation="1dp"
-        android:cropToPadding="true"
-        android:layout_alignParentTop="true"
-        android:layout_height="200dp"
-        android:layout_width="match_parent"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

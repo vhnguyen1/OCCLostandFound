@@ -25,12 +25,9 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
     private List<Item> mLostItemsList = new ArrayList<>();
 
     private LinearLayout itemListLinearLayout;
-    private TextView itemListNameTextView;
-    private TextView itemListDescriptionTextView;
-    private TextView itemListDateLostTextView;
-    private TextView itemListLastLocationTextView;
-    private TextView itemListStatusTextView;
     private ImageView itemListImageView;
+    private TextView itemListNameTextView;
+    private TextView itemListStatusTextView;
 
     /**
      * Creates a new <code>ItemListAdapter</code> given a mContext, resource id
@@ -60,32 +57,23 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
                 (LayoutInflater) this.mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(this.mResourceId, null);
 
-        /*
-        itemListLinearLayout = (LinearLayout) view.findViewById(R.id.itemListLinearLayout);
-        itemListNameTextView = (TextView) view.findViewById(R.id.itemListNameTextView);
-        itemListDescriptionTextView = (TextView) view.findViewById(R.id.itemListDescriptionTextView);
-        itemListDateLostTextView = (TextView) view.findViewById(R.id.itemListDateLostTextView);
-        itemListLastLocationTextView = (TextView) view.findViewById(R.id.itemListLastLocationTextView);
-        itemListStatusTextView = (TextView) view.findViewById(R.id.itemListStatusTextView);
-        itemListImageView = (ImageView) view.findViewById(R.id.itemListImageView);
-*/
-        final Item item = this.mLostItemsList.get(pos);
-        itemListLinearLayout.setTag(item);
+        final Item ITEM = this.mLostItemsList.get(pos);
+        itemListLinearLayout.setTag(ITEM);
 
-        String name = item.getName();
-        String description = item.getDescription();
-        String dateLost = item.getDateLost();
-        String lastKnownLocation = item.getLastLocation();
-        String status = ((item.getStatus())? "Found" : "Missing");
-        Uri imageURI = item.getImageUri();
-/*
-        itemListNameTextView.setText(name);
-        itemListDescriptionTextView.setText(description);
-        itemListDateLostTextView.setText(dateLost);
-        itemListLastLocationTextView.setText(lastKnownLocation);
-        itemListStatusTextView.setText(status);
-        itemListImageView.setImageURI(imageURI);
-*/
+        final Uri IMAGE_URI = ITEM.getImageUri();
+        final String NAME = ITEM.getName();
+        // go back and re-use the string in strings.xml
+        final String STATUS = ((ITEM.getStatus())? "Found!" : "Not Found.");
+
+        itemListLinearLayout = (LinearLayout) view.findViewById(R.id.itemListLinearLayout);
+        itemListImageView = (ImageView) view.findViewById(R.id.itemListImageView)
+        itemListNameTextView = (TextView) view.findViewById(R.id.itemListNameTextView);
+        itemListStatusTextView = (TextView) view.findViewById(R.id.itemListStatusTextView);
+
+        itemListImageView.setImageURI(IMAGE_URI);
+        itemListNameTextView.setText(NAME);
+        itemListStatusTextView.setText(STATUS);
+
         return view;
     }
 }

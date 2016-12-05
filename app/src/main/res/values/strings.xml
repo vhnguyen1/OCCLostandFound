@@ -22,4 +22,6 @@
     <string name="report_item_text">Report Lost Item</string>
     <string name="select_category_text">[Select Category]</string>
     <string name="enter_item_name_text">Enter Item Name...</string>
+    <string name="found_text">Found!</string>
+    <string name="not_found_text">Not Found.</string>
 </resources>
