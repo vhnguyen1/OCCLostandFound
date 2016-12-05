@@ -27,6 +27,7 @@ public class UserSettingActivity extends AppCompatActivity {
     {
         accontInfo.setName(accountInfoNameEditText.getText().toString());
         accontInfo.setLastName(accountInfoLastNameEditText.getText().toString());
+        ///tiung
     }
 
 }
