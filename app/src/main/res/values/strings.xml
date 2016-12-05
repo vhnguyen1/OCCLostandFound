@@ -6,6 +6,12 @@
     <string name="here_text"><u>here.</u></string>
     <string name="reported_lost_items_text">Reported Lost Items</string>
     <string name="reported_lost_items_description_text">Report or view lost item(s).</string>
+    <string name="settings_text">Settings</string>
+    <string name="settings_description_text">Configure the application settings</string>
+    <string name="about_text">About</string>
+    <string name="about_description_text">View information regarding the application.</string>
+    <string name="contact_information_text">Contact Information</string>
+    <string name="contact_information_description_text">View important contact information.</string>
     <string name="map_text">Map</string>
     <string name="map_description_text">View the campus map.</string>
     <string name="faq_text">FAQ</string>

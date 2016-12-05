@@ -9,23 +9,6 @@
     tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.MainMenuActivity">
 
     <ImageView
-        app:srcCompat="@drawable/occ_image"
-        android:id="@+id/occMainMenuImageView"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
-        android:scaleType="fitCenter"
-        android:layout_column="0"
-        android:layout_row="0"
-        android:layout_rowSpan="5"
-        android:layout_columnSpan="5"
-        android:elevation="1dp"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <ImageView
         app:srcCompat="@drawable/item_list_icon"
         android:id="@+id/menuReportItemImageView"
         android:adjustViewBounds="true"
@@ -49,7 +32,7 @@
         android:layout_below="@+id/occMainMenuImageView"
         android:layout_toEndOf="@+id/menuReportItemImageView"
         android:id="@+id/menuReportItemTitleTextView"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:layout_toRightOf="@+id/menuReportItemImageView"
         android:clickable="true"
         android:onClick="openReportedItemsList"
@@ -85,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/menuMapTitleTextView"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:clickable="true"
         android:onClick="openMap"
         android:layout_below="@+id/menuReportItemImageView"
@@ -115,7 +98,7 @@
         android:layout_below="@+id/menuMapDescriptionTextView"
         android:layout_toRightOf="@+id/menuMapImageView"
         android:layout_toEndOf="@+id/menuMapImageView"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:clickable="true"
         android:id="@+id/menuFAQTitleTextView"
         android:layout_marginTop="5dp"
@@ -150,8 +133,7 @@
         android:onClick="openSettings" />
 
     <TextView
-        android:text="@string/settings_text"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -159,7 +141,8 @@
         android:layout_below="@+id/menuFAQImageView"
         android:layout_alignLeft="@+id/menuFAQDescriptionTextView"
         android:layout_alignStart="@+id/menuFAQDescriptionTextView"
-        android:onClick="openSettings" />
+        android:onClick="openSettings"
+        android:text="@string/settings_text" />
 
     <TextView
         android:text="@string/settings_description_text"
@@ -194,23 +177,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/menuContactInfoTitleTextView"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:clickable="true"
         android:layout_below="@+id/menuSettingsImageView"
         android:layout_toRightOf="@+id/menuContactInfoImageView"
         android:layout_toEndOf="@+id/menuContactInfoImageView"
-        android:onClick="openContactInfo" />
-
-    <TextView
-        android:text="@string/contact_information_description_text"
-        android:textSize="18sp"
-        android:clickable="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/menuContactInfoTitleTextView"
-        android:layout_toRightOf="@+id/menuContactInfoImageView"
-        android:layout_toEndOf="@+id/menuContactInfoImageView"
-        android:id="@+id/menuContactInfoDescriptionTextView"
         android:onClick="openContactInfo" />
 
     <ImageView
@@ -229,7 +200,7 @@
 
     <TextView
         android:text="@string/about_text"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:clickable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -292,5 +263,36 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:onClick="openFAQ" />
+
+    <TextView
+        android:text="@string/contact_information_description_text"
+        android:textSize="18sp"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuContactInfoDescriptionTextView"
+        android:onClick="openContactInfo"
+        android:layout_below="@+id/menuContactInfoTitleTextView"
+        android:layout_toRightOf="@+id/menuContactInfoImageView"
+        android:layout_toEndOf="@+id/menuContactInfoImageView" />
+
+    <ImageView
+        app:srcCompat="@drawable/occ_image"
+        android:id="@+id/occMainMenuImageView"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:layout_column="0"
+        android:layout_row="0"
+        android:layout_rowSpan="5"
+        android:layout_columnSpan="5"
+        android:elevation="1dp"
+        android:cropToPadding="true"
+        android:layout_alignParentTop="true"
+        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
