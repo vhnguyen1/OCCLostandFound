@@ -10,4 +10,10 @@
     <string name="map_description_text">View the campus map.</string>
     <string name="faq_text">FAQ</string>
     <string name="faq_description_text">View frequently asked questions.</string>
+    <string name="settings_text">Settings</string>
+    <string name="settings_description_text">Configure the application settings.</string>
+    <string name="contact_information_text">Contact Information</string>
+    <string name="contact_information_description_text">View important contact information. </string>
+    <string name="about_text">About</string>
+    <string name="about_description_text">View details regarding ASOCC.</string>
 </resources>
