@@ -57,8 +57,6 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String FIELD_REPORT_ACCOUNT = "account";
     private static final String FIELD_REPORT_ITEM_NAME = "name";
     private static final String FIELD_REPORT_DATE_LOST = "date_lost";
-
-
     // Report Table End
 
     /**

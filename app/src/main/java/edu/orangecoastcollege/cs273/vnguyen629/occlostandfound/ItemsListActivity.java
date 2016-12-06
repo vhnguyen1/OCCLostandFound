@@ -90,7 +90,7 @@ public class ItemsListActivity extends AppCompatActivity {
              */
             @Override
             public void onShake() {
-                startActivity(new Intent(MainMenuActivity.this, ItemsListActivity.class));
+                startActivity(new Intent(ItemsListActivity.this, ReportItemActivity.class));
             }
         });
     }

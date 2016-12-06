@@ -13,7 +13,7 @@
     android:orientation="vertical">
 
     <ImageView
-        app:srcCompat="@mipmap/ic_launcher"
+        app:srcCompat="@drawable/logo"
         android:id="@+id/itemDetailsImageView"
         android:cropToPadding="false"
         android:scaleType="fitCenter"
@@ -70,6 +70,17 @@
         android:layout_alignParentEnd="true"
         android:textSize="24sp"
         android:gravity="center"
+        android:textColor="@android:color/background_dark" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/itemDetailsStatusTextView"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:text="@string/status_text"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
         android:textColor="@android:color/background_dark" />
 
 </LinearLayout>

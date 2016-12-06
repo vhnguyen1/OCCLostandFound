@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -17,6 +19,9 @@ public class LoginActivity extends AppCompatActivity {
     private EditText usernameLoginEditText;
     private EditText passwordLoginEditText;
 
+    private ImageView loginButton;
+    private TextView createAccountTextView;
+
     private DBHelper database;
     private List<UserAccount> accountList;
 
@@ -25,8 +30,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        usernameLoginEditText = (EditText) findViewById(R.id.usernameLoginEditText);
-        passwordLoginEditText = (EditText) findViewById(R.id.passwordLoginEditText);
+        loginButton = (EditText) findViewById(R.id.usernameLoginEditText);
+        createAccountTextView = (EditText) findViewById(R.id.passwordLoginEditText);
+
+        usernameLoginEditText = (ImageView) findViewById(R.id.loginButtonImageView);
+        passwordLoginEditText = (EditText) findViewById(R.id.createAccountTextView);
 
         accountList = database.getAllUserAccount();
     }
@@ -35,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
      * login button
      * @param view
      */
-    public void loginButton(View view)
+    public void login(View view)
     {
         boolean found = false;
         Intent intent = new Intent(this, ItemsListActivity.class);
@@ -44,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         // TODO: loop thought list to check if user exist
         for(UserAccount userAccount : accountList)
         {
-            if(userAccount.getStudentUserName() == usernameLoginEditText.getText().toString()) {
+            if(userAccount.getStudentUserName() == usernameLoginEditText.getText().toString().trim()) {
                 found = true;
                 break;
             }
@@ -69,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
      * Create Account Button
      * @param view
      */
-    public void createAccountButton(View view) {
+    public void createAccount(View view) {
         Intent intent = new Intent(this, UserAccountCreateActivity.class);
         startActivity(intent);
     }

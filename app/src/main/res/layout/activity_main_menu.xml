@@ -269,18 +269,6 @@
         android:onClick="openAbout" />
 
     <TextView
-        android:text="@string/need_account_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/menuNotSignedInTextView"
-        android:textSize="18sp"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/menuAboutImageView"
-        android:layout_toEndOf="@+id/menuAboutImageView"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp" />
-
-    <TextView
         android:text="@string/here_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -294,5 +282,17 @@
         android:textStyle="normal|bold"
         android:paddingLeft="5dp"
         android:onClick="openLogin" />
+
+    <TextView
+        android:text="@string/not_signed_in_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuNotSignedInTextView"
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/menuAboutImageView"
+        android:layout_toEndOf="@+id/menuAboutImageView"
+        android:layout_marginLeft="34dp"
+        android:layout_marginStart="34dp" />
 
 </RelativeLayout>

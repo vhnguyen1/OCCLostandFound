@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_login_activity"
     android:layout_width="match_parent"
@@ -9,8 +10,94 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.LoginActivity"
-    android:orientation="vertical"
-    android:background="@android:color/holo_blue_bright">
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/logo"
+        android:id="@+id/occLogoLoginImageView"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:cropToPadding="true"
+        android:layout_above="@+id/usernameLoginEditText"
+        android:layout_alignRight="@+id/textView5"
+        android:layout_alignEnd="@+id/textView5" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/passwordLoginEditText"
+        android:hint="@string/enter_password_text"
+        android:gravity="center_vertical|center"
+        android:layout_marginBottom="11dp"
+        android:layout_above="@+id/loginButtonImageView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:text="@string/here_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuClickToSignInTextView"
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/menuNotSignedInTextView"
+        android:layout_toRightOf="@+id/menuNotSignedInTextView"
+        android:textColor="@android:color/holo_orange_dark"
+        android:clickable="true"
+        android:textStyle="normal|bold"
+        android:paddingLeft="5dp"
+        android:onClick="openLogin" />
+
+    <TextView
+        android:text="@string/need_account_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuNotSignedInTextView"
+        android:textSize="18sp"
+        android:layout_marginLeft="59dp"
+        android:layout_marginStart="59dp"
+        android:layout_alignBaseline="@+id/menuClickToSignInTextView"
+        android:layout_alignBottom="@+id/menuClickToSignInTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/login_Button"
+        android:id="@+id/loginButtonImageView"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:scaleType="fitCenter"
+        android:layout_width="200dp"
+        android:layout_above="@+id/menuClickToSignInTextView"
+        android:layout_alignRight="@+id/textView5"
+        android:layout_alignEnd="@+id/textView5"
+        android:layout_alignLeft="@+id/menuNotSignedInTextView"
+        android:layout_alignStart="@+id/menuNotSignedInTextView"
+        android:layout_marginBottom="5dp"
+        android:clickable="true"
+        android:onClick="login" />
+
+    <TextView
+        android:text="@string/here_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView5"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        android:layout_below="@+id/loginButtonImageView"
+        android:layout_toEndOf="@+id/menuClickToSignInTextView"
+        android:layout_toRightOf="@+id/menuClickToSignInTextView"
+        android:layout_marginLeft="5dp"
+        android:clickable="true"
+        android:onClick="createAccount" />
 
     <EditText
         android:layout_width="match_parent"
@@ -19,30 +106,10 @@
         android:ems="10"
         android:id="@+id/usernameLoginEditText"
         android:gravity="center_vertical|center"
-        android:hint="Username"
-        android:layout_marginTop="200dp" />
+        android:hint="@string/enter_username_text"
+        android:layout_above="@+id/passwordLoginEditText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="5dp" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/passwordLoginEditText"
-        android:hint="Password"
-        android:gravity="center_vertical|center" />
-
-    <Button
-        android:text="Login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/loginButton"
-        android:onClick="loginButton (LoginActivity)" />
-
-    <Button
-        android:text="Create an Account"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/createAccountButton"
-        android:onClick="createAccountButton (LoginActivity)" />
-
-</LinearLayout>
+</RelativeLayout>
