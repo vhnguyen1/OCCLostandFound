@@ -14,9 +14,9 @@
     tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.ItemsListActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="208dp"
-        app:srcCompat="@drawable/occ_image"
+        app:srcCompat="@drawable/lost_and_found_display"
         android:id="@+id/itemListDisplayImageView"
         android:layout_marginBottom="10dp" />
 
