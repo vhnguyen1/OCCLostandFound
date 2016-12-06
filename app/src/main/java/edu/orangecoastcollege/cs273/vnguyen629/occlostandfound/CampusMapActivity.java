@@ -8,7 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 /**
+ * An activity that displays an enlarged image of the OCC campus
  *
+ * @author Vincent Nguyen
  */
 public class CampusMapActivity extends AppCompatActivity {
     private Sensor accelerometer;

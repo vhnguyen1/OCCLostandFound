@@ -38,7 +38,7 @@ public class UserAccountCreateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_account_create);
 
         userEditText = (EditText) findViewById(R.id.userEditText);
-        userEditText.addTextChangedListener(userNameTextWather);
+        userEditText.addTextChangedListener(userNameTextWatcher);
         passwordEditText = (EditText) findViewById(R.id.passwordEditText) ;
         reenterPasswordEditText = (EditText) findViewById(R.id.reenterPasswordEditText);
         emailEditText = (EditText) findViewById(R.id.emailEditText);
@@ -105,7 +105,7 @@ public class UserAccountCreateActivity extends AppCompatActivity {
     /**
      *
      */
-    public TextWatcher userNameTextWather = new TextWatcher() {
+    public TextWatcher userNameTextWatcher = new TextWatcher() {
         /**
          * Unused
          */
