@@ -52,7 +52,7 @@ public class ItemsListActivity extends AppCompatActivity {
 
     /**
      *
-     * @param savedInstanceState
+     * @param savedInstanceState The state of the application saved into a bundle
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class ItemsListActivity extends AppCompatActivity {
 
         this.deleteDatabase(DBHelper.DATABASE_NAME);
         database = new DBHelper(this);
-        database.importItemFromCSV("items.csv");
+        database.importItemFromCSV("reported_items.csv");
 
         searchNameFilterEditText = (EditText) findViewById(R.id.searchNameFilterEditText);
         searchNameFilterEditText.addTextChangedListener(itemNameSearchTextWatcher);
@@ -95,6 +95,10 @@ public class ItemsListActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Retrieves all the <code>Item</code> names
+     * @return A string array of all the <code>Item</code> names
+     */
     private String[] getItemNames() {
         String itemNames[] = new String[allItemsList.size() + 1];
         itemNames[0] = "[Select Category]";
@@ -105,7 +109,8 @@ public class ItemsListActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Monitors the EditText for searching item names in the database. It displays results
+     * as the text is typed/deleted accordingly.
      */
     public TextWatcher itemNameSearchTextWatcher = new TextWatcher() {
         /**
@@ -115,11 +120,12 @@ public class ItemsListActivity extends AppCompatActivity {
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
         /**
-         *
-         * @param charSequence
-         * @param i
-         * @param i1
-         * @param i2
+         * Monitors the EditText for searching item names in the database. It displays results
+         * as the text is typed/deleted accordingly.
+         * @param charSequence The input from the EditText
+         * @param i Unused
+         * @param i1 Unused
+         * @param i2 Unused
          */
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -174,8 +180,10 @@ public class ItemsListActivity extends AppCompatActivity {
                         }
 
                 /**
+                 * If the user clicks on the category filter spinner but ends up not choosing a
+                 * category, the default value is set
                  *
-                 * @param parent
+                 * @param parent The category filter spinner
                  */
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
@@ -184,8 +192,9 @@ public class ItemsListActivity extends AppCompatActivity {
             };
 
     /**
-     *
-     * @param view
+     * Allows the user to click and choose a specific item from the database to view
+     * in more detail, opening up the ItemDetailsActivity
+     * @param view The ItemList ListView displaying all the items in the database
      */
     public void viewItemDetails(View view) {
         if (view instanceof LinearLayout) {
@@ -199,8 +208,8 @@ public class ItemsListActivity extends AppCompatActivity {
     }
 
     /**
-     *
-     * @param view
+     * Clears all the current items inside the database
+     * @param view The widget to clear all the items inside the database
      */
     public void clearAllItems(View view) {
         if (!allItemsList.isEmpty()) {
@@ -213,16 +222,17 @@ public class ItemsListActivity extends AppCompatActivity {
     }
 
     /**
-     *
-     * @param view
+     * Opens up the ReportItemActivity so the user may submit a report
+     * @param view The Button that loads up the ReportItemActivity
      */
     public void reportLostItem(View view) {
         startActivity(new Intent(ItemsListActivity.this, ReportItemActivity.class));
     }
 
     /**
-     *
-     * @param view
+     * Clears the item name search EditText and category filter spinner, resetting them
+     * to default values
+     * @param view The reset filters Button
      */
     public void resetFilters(View view) {
         searchNameFilterEditText.setText("");

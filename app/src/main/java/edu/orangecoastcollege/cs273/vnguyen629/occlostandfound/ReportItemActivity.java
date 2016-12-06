@@ -17,7 +17,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -42,7 +41,7 @@ public class ReportItemActivity extends AppCompatActivity {
 
     /**
      *
-     * @param savedInstanceState
+     * @param savedInstanceState The state of the application saved into a bundle
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +61,8 @@ public class ReportItemActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * If the necessary fields are not empty, then the data is then submitted and entered
+     * into the databases.
      * @param view The submit button ImageView that submits and adds the item to the database
      */
     public void submitReport(View view) {

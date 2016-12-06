@@ -5,12 +5,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+/**
+ *
+ */
 public class UserSettingsActivity extends AppCompatActivity {
 
     private AccountInfo accountInfo;
     private EditText accountInfoNameEditText;
     private EditText accountInfoLastNameEditText;
 
+    /**
+     *
+     * @param savedInstanceState The state of the application saved into a bundle
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +30,10 @@ public class UserSettingsActivity extends AppCompatActivity {
         accountInfoLastNameEditText.setText(accountInfo.getLastName());
     }
 
+    /**
+     *
+     * @param view
+     */
     public void saveInfoButton(View view)
     {
         accountInfo.setName(accountInfoNameEditText.getText().toString());

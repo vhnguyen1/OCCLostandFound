@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+/**
+ *
+ */
 public class UserAccountCreateActivity extends AppCompatActivity {
 
     private EditText userEditText;
@@ -25,7 +28,10 @@ public class UserAccountCreateActivity extends AppCompatActivity {
 
     private boolean nameIsNotSame = false;
 
-
+    /**
+     *
+     * @param savedInstanceState The state of the application saved into a bundle
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +52,10 @@ public class UserAccountCreateActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     * @param view
+     */
     public void createAccount(View view)
     {
         boolean noError = true;
@@ -92,12 +102,23 @@ public class UserAccountCreateActivity extends AppCompatActivity {
     }
 
 
+    /**
+     *
+     */
     public TextWatcher userNameTextWather = new TextWatcher() {
+        /**
+         * Unused
+         */
         @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-        }
-
+        /**
+         *
+         * @param s
+         * @param start
+         * @param before
+         * @param count
+         */
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count)
         {
@@ -119,9 +140,10 @@ public class UserAccountCreateActivity extends AppCompatActivity {
 
         }
 
+        /**
+         * Unused
+         */
         @Override
-        public void afterTextChanged(Editable s) {
-
-        }
+        public void afterTextChanged(Editable s) {}
     };
 }

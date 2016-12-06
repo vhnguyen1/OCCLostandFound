@@ -21,8 +21,9 @@ public class Item implements Parcelable {
     private Uri mItemImage;
 
     /**
-     *
-     * @param source
+     * Parcelable constructor that creates an <code>Item</code> object from a parcel/cursor
+     * object
+     * @param source The parcel/cursor object to obtain data from
      */
     private Item(Parcel source) {
         this.mID = source.readInt();
@@ -34,8 +35,8 @@ public class Item implements Parcelable {
     }
 
     /**
-     * Creates a new <code>Item</code> from its ID, description, date lost,
-     * last known location, status, and image.
+     * Overloaded constructor that creates a new <code>Item</code> from its ID, description,
+     * date lost, last known location, status, and image.
      * @param newID The new items id
      * @param newName The new items name
      * @param newDescription The new items description
@@ -56,7 +57,7 @@ public class Item implements Parcelable {
     }
 
     /**
-     * Creates a new <code>Item</code> from user input, ID is irrelevant
+     * Overloaded constructor that creates a new <code>Item</code> from user input, ID is irrelevant
      * and assigned by the database
      * @param newName The new items name
      * @param newDescription The new items description
@@ -72,7 +73,22 @@ public class Item implements Parcelable {
     }
 
     /**
-     * Creates a default <code>Item</code> with an id of -1, empty name,
+     * Overloaded constructor that creates a new <code>Item</code> from user input, ID is irrelevant
+     * and assigned by the database. Used if there is no image uri given
+     * @param newName The new items name
+     * @param newDescription The new items description
+     * @param newDateLost The new items date in which it was lost
+     * @param newLastLocation The new items last known location
+     * @param status The new items current status
+     */
+    public Item(String newName, String newDescription, String newDateLost,
+                String newLastLocation, boolean status) {
+        this(-1, newName, newDescription, newDateLost, newLastLocation,
+                status, null);
+    }
+
+    /**
+     * Default Constructor that creates a default <code>Item</code> with an id of -1, empty name,
      * empty description, empty date in which it was lost, empty last known location,
      * status and image set to a default value
      */
@@ -81,7 +97,7 @@ public class Item implements Parcelable {
     }
 
     /**
-     * Creates a new <code>Item</code> object, copying the information from
+     * Copy Constructor that creates a new <code>Item</code> object, copying the information from
      * each part of the parameter item into the calling item
      * @param other <code>Item</code> to be copied
      */
@@ -211,9 +227,9 @@ public class Item implements Parcelable {
     }
 
     /**
-     *
-     * @param parcel
-     * @param i
+     * Writes an <code>Item</code> objects data into a parcel/cursor object
+     * @param parcel The parcelable/cursor object to write the data to
+     * @param i Unused
      */
     @Override
     public void writeToParcel(Parcel parcel, int i) {
@@ -226,8 +242,8 @@ public class Item implements Parcelable {
     }
 
     /**
-     *
-     * @return
+     * Returns 0
+     * @return An integer of 0
      */
     @Override
     public int describeContents() {
@@ -235,13 +251,14 @@ public class Item implements Parcelable {
     }
 
     /**
-     *
+     * Creates parcelable <code>Item</code> objects
      */
     public static final Parcelable.Creator<Item> CREATOR = new Parcelable.Creator<Item>() {
         /**
-         *
-         * @param source
-         * @return
+         * Uses the Parcelable constructor to create an <code>Item/code> object from a
+         * parcel/cursor object
+         * @param source The parcel/cursor object to obtain data from
+         * @return A new <code>Item</code> object with data copied from the parcel/cursor object
          */
         @Override
         public Item createFromParcel(Parcel source) {
@@ -249,8 +266,8 @@ public class Item implements Parcelable {
         }
 
         /**
-         *
-         * @param size
+         * Returns an array of <code>Item</code> objects with a given size
+         * @param size The size of the <code>Item</code> array
          * @return
          */
         @Override

@@ -4,7 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 /**
+ * An activity displaying the various contact information for OCC, the ASOCC offices, and also
+ * the OCC Campus Safety office.
  *
+ * @author Vincent Nguyen
  */
 public class ContactInfoActivity extends AppCompatActivity {
 

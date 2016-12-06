@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      *
-     * @param savedInstanceState
+     * @param savedInstanceState The state of the application saved into a bundle
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +44,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     /**
-     * login button
-     * @param view
+     * Allows the user to login to their account if the information they
+     * provided is appropriate.
+     * @param view The login button ImageView
      */
     public void login(View view)
     {
@@ -78,8 +79,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
     /**
-     * Create Account Button
-     * @param view
+     * Loads up the UserAccountCreateActivity so the user may create a new account
+     * @param view The clickable TextView that loads up the UserAccountCreateActivity
      */
     public void createAccount(View view) {
         Intent intent = new Intent(this, UserAccountCreateActivity.class);

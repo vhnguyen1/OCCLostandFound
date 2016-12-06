@@ -4,7 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 /**
+ * An activity that shows the users potential and frequently asked questions with a series
+ * of answers.
  *
+ * @author Vincent Nguyen
  */
 public class FAQActivity extends AppCompatActivity {
 
