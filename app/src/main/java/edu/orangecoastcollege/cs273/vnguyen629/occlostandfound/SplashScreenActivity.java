@@ -18,8 +18,9 @@ public class SplashScreenActivity extends AppCompatActivity {
     private Timer splashTimer;
     private TimerTask splashTimerTask;
     /**
-     *
-     * @param savedInstanceState
+     * Starts up the activity and prepares loads a 3 second TimerTask before automatically
+     * opening up the MainMenuActivity
+     * @param savedInstanceState The state of the application saved into a bundle
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,8 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         splashTimerTask = new TimerTask() {
             /**
-             *
+             * After the TimerTasks finishes loading up, the main menu
+             * is loaded up automatically.
              */
             @Override
             public void run() {

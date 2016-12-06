@@ -8,8 +8,8 @@ import android.hardware.SensorManager;
 /**
  * Takes in device movements, analyzing and determining whether or not
  * the movements are appropriate shakes. The user can shake their phone
- * to easily open up the item list/report lost item page from any location in
- * the app.
+ * to easily open up the item list/report lost item page from most of the
+ * activities inside the app.
  *
  * @author Vincent Nguyen
  */

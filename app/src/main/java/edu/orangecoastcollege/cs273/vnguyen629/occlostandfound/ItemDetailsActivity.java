@@ -10,7 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- *
+ * Loads intent data from the ItemListActivity, displaying the selected
+ * item's data more specifically
  *
  * @author Vu Nguyen
  */
@@ -27,8 +28,11 @@ public class ItemDetailsActivity extends AppCompatActivity {
     private ShakeDetector shakeDetector;
 
     /**
-     *
-     * @param savedInstanceState
+     * Starts up the activity and loads up the intent data from the ItemListActivity
+     * that the user selects from the ListView, displaying the data. It also
+     * prepares the ShakeDetector to monitor any movements that constitute as shakes
+     * where the ListItemActivity may load up if found
+     * @param savedInstanceState The state of the application saved into a bundle
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

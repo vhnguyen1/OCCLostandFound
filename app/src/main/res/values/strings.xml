@@ -34,4 +34,5 @@
     <string name="description_guide_text">Please describe the item in the best way you can.
         The more specific, the better. You may also leave any additional comments below.</string>
     <string name="enter_item_description_text">Enter item description and any additional comments...</string>
+    <string name="click_to_change_image_text">Click above to select the image of your item (if possible)</string>
 </resources>

@@ -9,7 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 /**
+ * The main menu of the application. It allows the user to select and
+ * load up any activity from the application.
  *
+ * @author Vincent Nguyen
  */
 public class MainMenuActivity extends AppCompatActivity {
     private Sensor accelerometer;
@@ -40,6 +43,68 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     /**
+     * Opens up ItemListActivity where the user may report a lost item or view
+     * the list of all the reported items saved in the database.
+     * @param view The ImageView or TextViews that open up the ItemListActivity
+     */
+    public void openReportedItemsList(View view) {
+        startActivity(new Intent(MainMenuActivity.this, ItemsListActivity.class));
+    }
+
+    /**
+     * Opens up the the MapActivity where the user may view the location of
+     * the Lost and Found, reported areas, or OCC the campus map.
+     * @param view The ImageView or TextViews that open up the MapActivity
+     */
+    public void openMap(View view) {
+        startActivity(new Intent(MainMenuActivity.this, MapActivity.class));
+    }
+
+    /**
+     *
+     * @param view
+     */
+    public void openFAQ(View view) {
+        startActivity(new Intent(MainMenuActivity.this, FAQActivity.class));
+    }
+
+    /**
+     * Opens up the SettingsActivity where the user may change various settings in regards
+     * to their account, or settings about the application itself
+     * @param view The ImageView or TextViews that open up the SettingsActivity
+     */
+    public void openSettings(View view) {
+        startActivity(new Intent(MainMenuActivity.this, SettingsActivity.class));
+    }
+
+    /**
+     * Opens up the ContactInfoActivity where the user may view contact information
+     * for either the ASOCC or the OCC Campus Safety office
+     * @param view The ImageView or TextViews that open up the ContactInfoActivity
+     */
+    public void openContactInfo(View view) {
+        startActivity(new Intent(MainMenuActivity.this, ContactInfoActivity.class));
+    }
+
+    /**
+     * Opens up the AboutActivity so that the user can view various information
+     * in regards to application purposes and functionality
+     * @param view The ImageView or TextViews that open up the LoginActivity
+     */
+    public void openAbout(View view) {
+        startActivity(new Intent(MainMenuActivity.this, AboutActivity.class));
+    }
+
+    /**
+     * Opens up the LoginActivity so the user can either login to their account
+     * or create a new one
+     * @param view The clickable TextView that opens up the LoginActivity
+     */
+    public void openLogin(View view) {
+        startActivity(new Intent(MainMenuActivity.this, LoginActivity.class));
+    }
+
+    /**
      * When the user re-enters the app, the sensors start back up and begin
      * monitoring device movements/g-forces in a 3D (x-y-z) span
      */
@@ -59,61 +124,5 @@ public class MainMenuActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         sensorManager.unregisterListener(shakeDetector);
-    }
-
-    /**
-     *
-     * @param view
-     */
-    public void openReportedItemsList(View view) {
-        startActivity(new Intent(MainMenuActivity.this, ItemsListActivity.class));
-    }
-
-    /**
-     *
-     * @param view
-     */
-    public void openMap(View view) {
-        startActivity(new Intent(MainMenuActivity.this, MapActivity.class));
-    }
-
-    /**
-     *
-     * @param view
-     */
-    public void openFAQ(View view) {
-        startActivity(new Intent(MainMenuActivity.this, FAQActivity.class));
-    }
-
-    /**
-     *
-     * @param view
-     */
-    public void openSettings(View view) {
-        startActivity(new Intent(MainMenuActivity.this, SettingsActivity.class));
-    }
-
-    /**
-     *
-     * @param view
-     */
-    public void openContactInfo(View view) {
-        startActivity(new Intent(MainMenuActivity.this, ContactInfoActivity.class));
-    }
-
-    /**
-     *
-     * @param view
-     */
-    public void openAbout(View view) {
-        startActivity(new Intent(MainMenuActivity.this, AboutActivity.class));
-    }
-
-    /**
-     *
-     * @param view
-     */
-    public void openLogin(View view) {
-        startActivity(new Intent(MainMenuActivity.this, LoginActivity.class));
     }
 }

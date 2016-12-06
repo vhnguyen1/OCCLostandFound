@@ -15,19 +15,28 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import static android.R.attr.data;
-
 /**
+ * The activity where the user submits a report of any lost
+ * item(s).
  *
+ * @author Vincent Nguyen
  */
 public class ReportItemActivity extends AppCompatActivity {
     private Uri imageUri;
     private ImageView reportItemImageView;
+    private EditText reportItemNameEditText;
+    private EditText reportItemDateLostEditText;
+    private EditText reportItemLastLocationEditText;
+    private EditText reportItemDescriptionEditText;
+
+    private ImageView submitButtonImageView;
 
     private static final int REQUEST_CODE = 13;
 
@@ -40,10 +49,45 @@ public class ReportItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_item);
 
+        reportItemImageView = (ImageView) findViewById(R.id.reportItemImageView);
+        reportItemNameEditText = (EditText) findViewById(R.id.reportItemNameEditText);
+        reportItemDateLostEditText = (EditText) findViewById(R.id.reportItemDateLostEditText);
+        reportItemLastLocationEditText = (EditText) findViewById(R.id.reportItemLastLocationEditText);
+        reportItemDescriptionEditText = (EditText) findViewById(R.id.reportItemDescriptionEditText);
+
         imageUri = getUriToResource(this, R.drawable.defaultImage);
         reportItemImageView.setImageURI(imageUri);
+
+        submitButtonImageView = (ImageView) findViewById(R.id.submitButtonImageView);
     }
 
+    /**
+     *
+     * @param view The submit button ImageView that submits and adds the item to the database
+     */
+    public void submitReport(View view) {
+        final String NAME = reportItemNameEditText.getText().toString().replaceAll("\\s+","");
+        final String DATE_LOST = reportItemDateLostEditText.getText().toString().replaceAll("\\s+","");
+        final String LAST_LOCATION = reportItemLastLocationEditText.getText().toString().replaceAll("\\s+","");
+        //final String DESCRIPTION = reportItemDescriptionEditText.getText().toString().replaceAll("\\s+","");
+
+        if (NAME.equals("") || DATE_LOST.equals("") || LAST_LOCATION.equals(""))
+            Toast.makeText(this, "All fields except item image and description are mandatory.",
+                    Toast.LENGTH_SHORT).show();
+        else {
+            final String NEW_ITEM_NAME = reportItemNameEditText.getText().toString().trim();
+            final String NEW_ITEM_DATE_LOST = reportItemDateLostEditText.getText().toString().trim();
+            final String NEW_ITEM_LAST_LOCATION = reportItemLastLocationEditText.getText().toString().trim();
+            final String NEW_ITEM_DESCRIPTION = reportItemDescriptionEditText.getText().toString().trim();
+        }
+    }
+
+    /**
+     *
+     * @param requestCode A predefined code to compare to the result code
+     * @param resultCode The actual response from selecting an image, if it is 13 then it is allowed
+     * @param data The selected image uri to set the item's image to
+     */
     @Override
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -54,8 +98,12 @@ public class ReportItemActivity extends AppCompatActivity {
     }
 
     /**
+     * Asks the user for camera and writing/reading external storages
+     * permissions. If the user allows both of these permissions, then
+     * it opens up the gallery allowing the user to select an image of the item
+     * that was lost.
      *
-     * @param view
+     * @param view The ImageView in the ReportActivity.
      */
     public void selectItemImage(View view) {
         ArrayList<String> permList =  new ArrayList<>();

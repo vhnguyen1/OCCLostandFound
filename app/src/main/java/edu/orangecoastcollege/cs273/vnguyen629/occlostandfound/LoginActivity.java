@@ -25,6 +25,10 @@ public class LoginActivity extends AppCompatActivity {
     private DBHelper database;
     private List<UserAccount> accountList;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
