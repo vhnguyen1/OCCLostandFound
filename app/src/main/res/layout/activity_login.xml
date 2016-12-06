@@ -21,83 +21,37 @@
         android:scaleType="fitCenter"
         android:cropToPadding="true"
         android:layout_above="@+id/usernameLoginEditText"
-        android:layout_alignRight="@+id/textView5"
-        android:layout_alignEnd="@+id/textView5" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/passwordLoginEditText"
-        android:hint="@string/enter_password_text"
-        android:gravity="center_vertical|center"
-        android:layout_marginBottom="11dp"
-        android:layout_above="@+id/loginButtonImageView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <TextView
-        android:text="@string/here_text"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/menuClickToSignInTextView"
-        android:textSize="18sp"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/menuNotSignedInTextView"
-        android:layout_toRightOf="@+id/menuNotSignedInTextView"
-        android:textColor="@android:color/holo_orange_dark"
-        android:clickable="true"
-        android:textStyle="normal|bold"
-        android:paddingLeft="5dp"
-        android:onClick="openLogin" />
+        android:layout_alignRight="@+id/createAccountTextView"
+        android:layout_alignEnd="@+id/createAccountTextView"
+        android:layout_marginBottom="5dp" />
 
     <TextView
         android:text="@string/need_account_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/menuNotSignedInTextView"
+        android:id="@+id/notSignedInTextView"
         android:textSize="18sp"
         android:layout_marginLeft="59dp"
         android:layout_marginStart="59dp"
-        android:layout_alignBaseline="@+id/menuClickToSignInTextView"
-        android:layout_alignBottom="@+id/menuClickToSignInTextView"
+        android:layout_alignBaseline="@+id/doNotDeleteTextView"
+        android:layout_alignBottom="@+id/doNotDeleteTextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
-    <ImageView
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/login_Button"
-        android:id="@+id/loginButtonImageView"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
-        android:scaleType="fitCenter"
-        android:layout_width="200dp"
-        android:layout_above="@+id/menuClickToSignInTextView"
-        android:layout_alignRight="@+id/textView5"
-        android:layout_alignEnd="@+id/textView5"
-        android:layout_alignLeft="@+id/menuNotSignedInTextView"
-        android:layout_alignStart="@+id/menuNotSignedInTextView"
-        android:layout_marginBottom="5dp"
-        android:clickable="true"
-        android:onClick="login" />
 
     <TextView
         android:text="@string/here_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView5"
+        android:id="@+id/createAccountTextView"
         android:textColor="@android:color/holo_orange_dark"
         android:textStyle="normal|bold"
         android:textSize="18sp"
-        android:layout_below="@+id/loginButtonImageView"
-        android:layout_toEndOf="@+id/menuClickToSignInTextView"
-        android:layout_toRightOf="@+id/menuClickToSignInTextView"
-        android:layout_marginLeft="5dp"
         android:clickable="true"
-        android:onClick="createAccount" />
+        android:onClick="createAccount"
+        android:layout_below="@+id/passwordLoginEditText"
+        android:layout_toRightOf="@+id/doNotDeleteTextView"
+        android:layout_toEndOf="@+id/doNotDeleteTextView"
+        android:layout_marginLeft="5dp" />
 
     <EditText
         android:layout_width="match_parent"
@@ -110,6 +64,51 @@
         android:layout_above="@+id/passwordLoginEditText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="5dp" />
+        android:layout_marginBottom="5dp"
+        android:maxLines="1"
+        android:singleLine="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/passwordLoginEditText"
+        android:hint="@string/enter_password_text"
+        android:gravity="center_vertical|center"
+        android:layout_marginRight="17dp"
+        android:layout_marginEnd="17dp"
+        android:layout_above="@+id/doNotDeleteTextView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="72dp"
+        android:maxLines="1"
+        android:singleLine="true" />
+
+    <ImageView
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/login_button"
+        android:id="@+id/loginButtonImageView"
+        android:layout_marginBottom="13dp"
+        android:layout_alignBottom="@+id/notSignedInTextView"
+        android:layout_alignLeft="@+id/occLogoLoginImageView"
+        android:layout_alignStart="@+id/occLogoLoginImageView"
+        android:layout_alignRight="@+id/createAccountTextView"
+        android:layout_alignEnd="@+id/createAccountTextView" />
+
+    <TextView
+        android:text="@string/here_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/doNotDeleteTextView"
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/notSignedInTextView"
+        android:layout_toRightOf="@+id/notSignedInTextView"
+        android:textColor="@android:color/holo_orange_dark"
+        android:clickable="false"
+        android:textStyle="normal|bold"
+        android:paddingLeft="5dp" />
 
 </RelativeLayout>

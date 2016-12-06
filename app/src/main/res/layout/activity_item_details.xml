@@ -10,7 +10,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.LostItemsDetailsActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <ImageView
         app:srcCompat="@drawable/logo"
@@ -20,9 +21,10 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:adjustViewBounds="true"
-        android:layout_width="200dp"
+        android:layout_width="206dp"
         android:layout_height="250dp"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:layout_weight="0.05" />
 
     <TextView
         android:layout_width="match_parent"
@@ -36,6 +38,17 @@
         android:layout_alignParentStart="true"
         android:textColor="@android:color/background_dark"
         android:textColorHighlight="@android:color/background_light" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/itemDetailsStatusTextView"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:text="@string/status_text"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/background_dark" />
 
     <TextView
         android:layout_width="match_parent"
@@ -70,17 +83,6 @@
         android:layout_alignParentEnd="true"
         android:textSize="24sp"
         android:gravity="center"
-        android:textColor="@android:color/background_dark" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/itemDetailsStatusTextView"
-        android:textSize="24sp"
-        android:gravity="center"
-        android:text="@string/status_text"
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentStart="true"
         android:textColor="@android:color/background_dark" />
 
 </LinearLayout>

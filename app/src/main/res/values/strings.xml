@@ -16,8 +16,8 @@
     <string name="map_description_text">View the campus map.</string>
     <string name="faq_text">FAQ</string>
     <string name="faq_description_text">View frequently asked questions.</string>
-    <string name="filter_by_name_text">Filter By Item Name</string>
-    <string name="filter_by_category_text">Filter By Category</string>
+    <string name="filter_by_name_text">Filter By Item Name:</string>
+    <string name="filter_by_category_text">Filter By Category:</string>
     <string name="reset_filters_text">Reset Filters</string>
     <string name="report_item_text">Report Lost Item</string>
     <string name="select_category_text">[Select Category]</string>
@@ -28,4 +28,10 @@
     <string name="enter_username_text">Enter Username...</string>
     <string name="enter_password_text">Enter Password...</string>
     <string name="status_text">Status</string>
+    <string name="item_lost_text">Enter item lost...</string>
+    <string name="date_lost_text">Enter date lost...</string>
+    <string name="enter_last_known_location_text">Enter last known location...</string>
+    <string name="description_guide_text">Please describe the item in the best way you can.
+        The more specific, the better. You may also leave any additional comments below.</string>
+    <string name="enter_item_description_text">Enter item description and any additional comments...</string>
 </resources>
