@@ -23,7 +23,6 @@ import java.util.Arrays;
  * and modifications.
  *
  * @author Vincent Nguyen
- * @version 1.0
  */
 class DBHelper extends SQLiteOpenHelper {
     private Context mContext;
@@ -565,5 +564,4 @@ class DBHelper extends SQLiteOpenHelper {
         }
         return true;
     }
-
 }

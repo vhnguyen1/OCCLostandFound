@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-public class UserSettingActivity extends AppCompatActivity {
+public class UserSettingsActivity extends AppCompatActivity {
 
     private AccountInfo accountInfo;
     private EditText accountInfoNameEditText;

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_course_search"
     android:layout_width="match_parent"
@@ -11,6 +12,13 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.ItemsListActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="208dp"
+        app:srcCompat="@drawable/occ_image"
+        android:id="@+id/itemListDisplayImageView"
+        android:layout_marginBottom="10dp" />
 
     <LinearLayout
         android:orientation="horizontal"

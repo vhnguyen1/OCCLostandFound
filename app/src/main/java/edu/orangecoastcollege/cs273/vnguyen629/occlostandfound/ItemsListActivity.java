@@ -109,11 +109,7 @@ public class ItemsListActivity extends AppCompatActivity {
      */
     public TextWatcher itemNameSearchTextWatcher = new TextWatcher() {
         /**
-         *
-         * @param charSequence
-         * @param i
-         * @param i1
-         * @param i2
+         * Unused
          */
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -144,8 +140,7 @@ public class ItemsListActivity extends AppCompatActivity {
         }
 
         /**
-         *
-         * @param editable
+         * Unused
          */
         @Override
         public void afterTextChanged(Editable editable) {}
@@ -201,14 +196,6 @@ public class ItemsListActivity extends AppCompatActivity {
             detailsIntent.putExtra("Selected", SELECTED_ITEM);
             startActivity(detailsIntent);
         }
-    }
-
-    /**
-     *
-     * @param view
-     */
-    public void addItem(View view) {
-
     }
 
     /**

@@ -85,18 +85,6 @@
         android:maxLines="1"
         android:singleLine="true" />
 
-    <ImageView
-        android:layout_width="200sp"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/login_button"
-        android:id="@+id/loginButtonImageView"
-        android:layout_marginBottom="13dp"
-        android:layout_alignBottom="@+id/notSignedInTextView"
-        android:layout_alignLeft="@+id/occLogoLoginImageView"
-        android:layout_alignStart="@+id/occLogoLoginImageView"
-        android:layout_alignRight="@+id/createAccountTextView"
-        android:layout_alignEnd="@+id/createAccountTextView" />
-
     <TextView
         android:text="@string/here_text"
         android:layout_width="0dp"
@@ -110,5 +98,22 @@
         android:clickable="false"
         android:textStyle="normal|bold"
         android:paddingLeft="5dp" />
+
+    <ImageView
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/login_button"
+        android:id="@+id/loginButtonImageView"
+        android:layout_marginBottom="10dp"
+        android:cropToPadding="true"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:layout_above="@+id/notSignedInTextView"
+        android:layout_alignRight="@+id/createAccountTextView"
+        android:layout_alignEnd="@+id/createAccountTextView"
+        android:layout_alignLeft="@+id/occLogoLoginImageView"
+        android:layout_alignStart="@+id/occLogoLoginImageView"
+        android:layout_margin="10dp"
+        android:onClick="login" />
 
 </RelativeLayout>
