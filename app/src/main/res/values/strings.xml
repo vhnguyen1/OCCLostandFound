@@ -35,4 +35,12 @@
         The more specific, the better. You may also leave any additional comments below.</string>
     <string name="enter_item_description_text">Enter item description and any additional comments...</string>
     <string name="click_to_change_image_text">Click above to select the image of your item (if possible)</string>
+    <string name="reenter_password">Re-Enter Your Password</string>
+    <string name="enter_email">Enter Your Student Email</string>
+    <string name="enter_student_id">Enter Your Student ID</string>
+    <string name="create_account_button">Create New Account</string>
+    <string name="back_button">Back</string>
+    <string name="frist_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="save">SAVE</string>
 </resources>

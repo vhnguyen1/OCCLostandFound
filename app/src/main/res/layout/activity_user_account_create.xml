@@ -12,7 +12,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:text="@string/enter_user_name"
+        android:text="@string/enter_username_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
@@ -28,7 +28,7 @@
         android:hint="User Name" />
 
     <TextView
-        android:text="@string/enter_password"
+        android:text="@string/enter_password_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/passwordTextView"
@@ -76,7 +76,7 @@
         android:hint="Student Email" />
 
     <TextView
-        android:text="@string/enter_id"
+        android:text="@string/enter_student_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView6"
@@ -97,14 +97,14 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:text="@string/create_account"
+            android:text="@string/create_account_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/CreateButton"
             android:layout_weight="1" />
 
         <Button
-            android:text="@string/back"
+            android:text="@string/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/backButton"
