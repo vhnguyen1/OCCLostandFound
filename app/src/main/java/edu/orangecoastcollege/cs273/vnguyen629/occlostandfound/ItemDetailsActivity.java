@@ -31,8 +31,8 @@ public class ItemDetailsActivity extends AppCompatActivity {
      * Starts up the activity and loads up the intent data from the ItemListActivity
      * that the user selects from the ListView, displaying the data. It also
      * prepares the ShakeDetector to monitor any movements that constitute as shakes
-     * where the ListItemActivity may load up if found
-     * @param savedInstanceState The state of the application saved into a bundle
+     * where the ListItemActivity may load up if found.
+     * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +72,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
     /**
      * When the user re-enters the app, the sensors start back up and begin
-     * monitoring device movements/g-forces in a 3D (x-y-z) span
+     * monitoring device movements/g-forces in a 3D (x-y-z) span.
      */
     @Override
     protected void onResume() {
@@ -84,7 +84,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
     /**
      * When the user switches apps or clicks on the home button without closing the app,
      * all the sensors that monitor device movements and g-forces are then paused
-     * to preserve battery life
+     * to preserve battery life.
      */
     @Override
     protected void onPause() {

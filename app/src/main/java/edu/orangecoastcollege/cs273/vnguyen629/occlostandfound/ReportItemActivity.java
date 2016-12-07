@@ -40,7 +40,8 @@ public class ReportItemActivity extends AppCompatActivity {
     private static final int REPORT_ITEM_REQUEST_CODE = 13;
 
     /**
-     *
+     * Sets up the page where the user may input various information about their lost item to
+     * submit to the database.
      * @param savedInstanceState The state of the application saved into a bundle
      */
     @Override
@@ -63,7 +64,7 @@ public class ReportItemActivity extends AppCompatActivity {
     /**
      * If the necessary fields are not empty, then the data is then submitted and entered
      * into the databases.
-     * @param view The submit button ImageView that submits and adds the item to the database
+     * @param view The submit button ImageView that submits and adds the item to the database.
      */
     public void submitReport(View view) {
         final String NAME = reportItemNameEditText.getText().toString().replaceAll("\\s+","");
@@ -83,10 +84,11 @@ public class ReportItemActivity extends AppCompatActivity {
     }
 
     /**
-     *
-     * @param requestCode A predefined code to compare to the result code
-     * @param resultCode The actual response from selecting an image, if it is 13 then it is allowed
-     * @param data The selected image uri to set the item's image to
+     * After finished with the gallery, it onActivityResult checks to see if a valid action/image
+     * was successfully chosen and changes the report item image if it is.
+     * @param requestCode A predefined code to compare to the result code.
+     * @param resultCode The actual response from selecting an image, if it is 13 then it is allowed.
+     * @param data The selected image uri to set the item's image to.
      */
     @Override
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
@@ -98,11 +100,10 @@ public class ReportItemActivity extends AppCompatActivity {
     }
 
     /**
-     * Asks the user for camera and writing/reading external storages
+     * Asks the user for camera and writing/reading external storage
      * permissions. If the user allows both of these permissions, then
      * it opens up the gallery allowing the user to select an image of the item
      * that was lost.
-     *
      * @param view The ImageView in the ReportActivity.
      */
     public void selectItemImage(View view) {
@@ -151,17 +152,17 @@ public class ReportItemActivity extends AppCompatActivity {
 
     /**
      * Get uri to any resource type within an Android Studio project. Method is public static to
-     * allow other classes to use it as a helper function
-     * @param context The current context
-     * @param resID The resource identifier for drawable
-     * @return Uri to resource by given id
+     * allow other classes to use it as a helper function.
+     * @param context The current context.
+     * @param resID The resource identifier for drawable.
+     * @return Uri to resource by given id.
      * @throws Resources.NotFoundException If the given resource id does not exist.
      */
     public static Uri getUriToResource(@NonNull Context context, @AnyRes int resID)
             throws Resources.NotFoundException {
-        /** Return a Resources instance for your application's package */
+        /** Return a Resources instance for your application's package. */
         Resources res = context.getResources();
-        /** return URI */
+        /** return URI. */
         return Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
                 "://" + res.getResourcePackageName(resID)
                 + '/' + res.getResourceTypeName(resID)

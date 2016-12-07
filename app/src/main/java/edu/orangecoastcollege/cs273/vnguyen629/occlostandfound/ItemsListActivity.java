@@ -47,7 +47,7 @@ public class ItemsListActivity extends AppCompatActivity {
 
     /**
      * Loads up the database and ListView of all the reported items.
-     * @param savedInstanceState The state of the application saved into a bundle
+     * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,8 +91,8 @@ public class ItemsListActivity extends AppCompatActivity {
     }
 
     /**
-     * Retrieves all the <code>Item</code> names
-     * @return A string array of all the <code>Item</code> names
+     * Retrieves all the <code>Item</code> names.
+     * @return A string array of all the <code>Item</code> names.
      */
     private String[] getItemNames() {
         String itemNames[] = new String[allItemsList.size() + 1];
@@ -117,7 +117,7 @@ public class ItemsListActivity extends AppCompatActivity {
         /**
          * Monitors the EditText for searching item names in the database. It displays results
          * as the text is typed/deleted accordingly.
-         * @param charSequence The input from the EditText
+         * @param charSequence The input from the EditText.
          * @param i Unused
          * @param i1 Unused
          * @param i2 Unused
@@ -181,8 +181,7 @@ public class ItemsListActivity extends AppCompatActivity {
                 }
                 /**
                  * If the user clicks on the category filter spinner but ends up not choosing a
-                 * category, the default value is set
-                 *
+                 * category, the default value is set.
                  * @param parent The category filter spinner
                  */
                 @Override
@@ -193,8 +192,8 @@ public class ItemsListActivity extends AppCompatActivity {
 
     /**
      * Allows the user to click and choose a specific item from the database to view
-     * in more detail, opening up the ItemDetailsActivity
-     * @param view The ItemList ListView displaying all the items in the database
+     * in more detail, opening up the ItemDetailsActivity.
+     * @param view The ItemList ListView displaying all the items in the database.
      */
     public void viewItemDetails(View view) {
         if (view instanceof LinearLayout) {
@@ -208,8 +207,8 @@ public class ItemsListActivity extends AppCompatActivity {
     }
 
     /**
-     * Clears all the current items inside the database
-     * @param view The widget to clear all the items inside the database
+     * Clears all the current items inside the database.
+     * @param view The widget to clear all the items inside the database.
      */
     public void clearAllItems(View view) {
         if (!allItemsList.isEmpty()) {
@@ -224,7 +223,7 @@ public class ItemsListActivity extends AppCompatActivity {
     /**
      * Opens up the ReportItemActivity so the user may submit a report. If the user
      * is not signed in, they will not be able to report a lost item.
-     * @param view The Button that loads up the ReportItemActivity
+     * @param view The Button that loads up the ReportItemActivity.
      */
     public void reportLostItem(View view) {
         if (UserAccount.isLoggedIn)
@@ -235,8 +234,8 @@ public class ItemsListActivity extends AppCompatActivity {
 
     /**
      * Clears the item name search EditText and category filter spinner, resetting them
-     * to default values
-     * @param view The reset filters Button
+     * to default values.
+     * @param view The reset filters Button.
      */
     public void resetFilters(View view) {
         searchNameFilterEditText.setText("");
@@ -246,7 +245,7 @@ public class ItemsListActivity extends AppCompatActivity {
     /**
      * When the user re-enters the app, the sensors start back up and begin
      * monitoring device movements/g-forces in a 3D (x-y-z) span. Only loads up the
-     * ReportActivity if the user is logged in
+     * ReportActivity if the user is logged in.
      */
     @Override
     protected void onResume() {
@@ -260,7 +259,7 @@ public class ItemsListActivity extends AppCompatActivity {
     /**
      * When the user switches apps or clicks on the home button without closing the app,
      * all the sensors that monitor device movements and g-forces are then paused
-     * to preserve battery life
+     * to preserve battery life.
      */
     @Override
     protected void onPause() {

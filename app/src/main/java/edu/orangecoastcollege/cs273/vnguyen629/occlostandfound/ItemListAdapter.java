@@ -32,10 +32,9 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
     /**
      * Creates a new <code>ItemListAdapter</code> given a mContext, resource id
      * and list of lost items.
-     *
-     * @param c The mContext for which the adapter is being used (typically an activity)
-     * @param rId The resource id (typically the layout file name)
-     * @param lostItems The list of items to display
+     * @param c The mContext for which the adapter is being used (typically an activity).
+     * @param rId The resource id (typically the layout file name).
+     * @param lostItems The list of items to display.
      */
     public ItemListAdapter(Context c, int rId, List<Item> lostItems) {
         super(c, rId, lostItems);
@@ -48,7 +47,7 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
      * Gets the view associated with the layout.
      * @param pos The position of the <code>Item</code> selected in the list.
      * @param convertView The converted view.
-     * @param parent The parent - ArrayAdapter
+     * @param parent The parent - ArrayAdapter.
      * @return The new view with all content set.
      */
     @Override

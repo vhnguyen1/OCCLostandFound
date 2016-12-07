@@ -9,7 +9,7 @@ import android.os.Bundle;
 
 /**
  * The activity where the user can view various information
- * in regards to the application's features, functionality, and purpose
+ * in regards to the application's features, functionality, and purpose.
  *
  * @author Vincent Nguyen
  */
@@ -21,8 +21,8 @@ public class AboutActivity extends AppCompatActivity {
     /**
      * Starts up the activity and prepares the ShakeDetector to monitor any
      * movements that constitute as shakes where the ListItemActivity may load
-     * up if found
-     * @param savedInstanceState The state of the application saved into a bundle
+     * up if found.
+     * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class AboutActivity extends AppCompatActivity {
 
     /**
      * When the user re-enters the app, the sensors start back up and begin
-     * monitoring device movements/g-forces in a 3D (x-y-z) span
+     * monitoring device movements/g-forces in a 3D (x-y-z) span.
      */
     @Override
     protected void onResume() {
@@ -57,7 +57,7 @@ public class AboutActivity extends AppCompatActivity {
     /**
      * When the user switches apps or clicks on the home button without closing the app,
      * all the sensors that monitor device movements and g-forces are then paused
-     * to preserve battery life
+     * to preserve battery life.
      */
     @Override
     protected void onPause() {

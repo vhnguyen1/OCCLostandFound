@@ -22,8 +22,8 @@ public final class ShakeDetector implements SensorEventListener {
 
     /**
      * Overloaded constructor that creates a ShakeDetector object based off of a specified
-     * listener
-     * @param listener The predefined shake listener
+     * listener.
+     * @param listener The predefined shake listener.
      */
     public ShakeDetector(final OnShakeListener listener) {
         mShakeListener = listener;
@@ -32,8 +32,8 @@ public final class ShakeDetector implements SensorEventListener {
     /**
      * Calculates the amount of g-forces applied in an 3D (x-y-z) span where it
      * then determines if the motion constitutes as a shake. Only applies
-     * for Accelerometers
-     * @param sensorEvent The type of event
+     * for Accelerometers.
+     * @param sensorEvent The type of event.
      */
     @Override
     public void onSensorChanged(final SensorEvent sensorEvent) {
@@ -71,7 +71,7 @@ public final class ShakeDetector implements SensorEventListener {
 
     /**
      * Custom interface for the other activities to call the onShake() method.
-     * The activities implement the method itself
+     * The activities implement the method itself.
      */
     public interface OnShakeListener {
         void onShake();

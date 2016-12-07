@@ -23,6 +23,7 @@ import java.util.Arrays;
  * and modifications.
  *
  * @author Vincent Nguyen
+ * @version 1.0
  */
 class DBHelper extends SQLiteOpenHelper {
     private Context mContext;
@@ -38,7 +39,7 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String FIELD_ITEM_LAST_LOCATION = "last_location";
     private static final String FIELD_ITEM_STATUS = "last_location";
     private static final String FIELD_ITEM_IMAGE_URI = "image_uri";
-    private static final String FIELD_REPORTING_USER = "user_account";
+    private static final String FIELD_REPORTING_USER = "user_account_name";
     // Item Database End
 
     // Account Table Start
@@ -60,7 +61,7 @@ class DBHelper extends SQLiteOpenHelper {
     // Report Table End
 
     /**
-     * Creates a new database
+     * Creates a new SQL database.
      * @param context
      */
     public DBHelper (Context context){
@@ -69,8 +70,8 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Creates a new database
-     * @param db The new database
+     * Creates a new database.
+     * @param db The new database.
      */
     @Override
     public void onCreate (SQLiteDatabase db){
@@ -105,10 +106,10 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Upgrades the current <code>Item</code> database for newer versions
-     * @param db The <code>Item</code> database
-     * @param oldVersion The previous database version number
-     * @param newVersion The new database version number
+     * Upgrades the current <code>Item</code> database for newer versions.
+     * @param db The <code>Item</code> database.
+     * @param oldVersion The previous database version number.
+     * @param newVersion The new database version number.
      */
     @Override
     public void onUpgrade(SQLiteDatabase db,
@@ -123,8 +124,8 @@ class DBHelper extends SQLiteOpenHelper {
     /************* Item database functions *************/
 
     /**
-     * Adds a new <code>Item</code> into the current database
-     * @param newItem New <code>Item</code> to be added too the database
+     * Adds a new <code>Item</code> into the current database.
+     * @param newItem New <code>Item</code> to be added too the database.
      */
     public void addItem(final Item newItem) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -151,8 +152,8 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Returns a list of all the lost items inside the database
-     * @return The list of all the lost items
+     * Returns a list of all the lost items inside the database.
+     * @return The list of all the lost items.
      */
     public ArrayList<Item> getAllItems() {
         ArrayList<Item> itemArrayList = new ArrayList<>();
@@ -189,9 +190,9 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Retrieves a specified <code>Item</code> from the database
-     * @param id The unique id of the <code>Item</code>
-     * @return The item with the matching unique ID
+     * Retrieves a specified <code>Item</code> from the database.
+     * @param id The unique id of the <code>Item</code>.
+     * @return The item with the matching unique ID.
      */
     public Item getItem(final int id) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -226,8 +227,8 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Applies changes/updates to a <code>Item</code>
-     * @param item <code>Item</code> to be updated in the database
+     * Applies changes/updates to a <code>Item</code>.
+     * @param item <code>Item</code> to be updated in the database.
      */
     public void updateItem(final Item item){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -255,8 +256,8 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Deletes a specific <code>Item</code>
-     * @param id The unique ID of the <code>Item</code> object
+     * Deletes a specific <code>Item</code>.
+     * @param id The unique ID of the <code>Item</code> object.
      */
     public void deleteItem(final int id)
     {
@@ -266,7 +267,7 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Delete all the items in the current database
+     * Delete all the items in the current database.
      */
     public void deleteAllItems() {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -276,8 +277,8 @@ class DBHelper extends SQLiteOpenHelper {
 
     /**
      * Imports/reads lost item data from a CSV file to populate the database with.
-     * @param csvFileName Name of the file to import data from
-     * @return Whether or not the file data was open and imported successfully
+     * @param csvFileName Name of the file to import data from.
+     * @return Whether or not the file data was open and imported successfully.
      */
     public boolean importItemFromCSV(final String csvFileName) {
         AssetManager manager = mContext.getAssets();

@@ -17,7 +17,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     /**
      *
-     * @param savedInstanceState The state of the application saved into a bundle
+     * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class SettingsActivity extends AppCompatActivity {
         shakeDetector = new ShakeDetector(new ShakeDetector.OnShakeListener() {
             /**
              * When a 3D motion that the sensors constitute as a shake has been detected,
-             * the ItemListActivity is loaded
+             * the ItemListActivity is loaded.
              */
             @Override
             public void onShake() {
@@ -40,7 +40,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     /**
      * When the user re-enters the app, the sensors start back up and begin
-     * monitoring device movements/g-forces in a 3D (x-y-z) span
+     * monitoring device movements/g-forces in a 3D (x-y-z) span.
      */
     @Override
     protected void onResume() {
@@ -52,7 +52,7 @@ public class SettingsActivity extends AppCompatActivity {
     /**
      * When the user switches apps or clicks on the home button without closing the app,
      * all the sensors that monitor device movements and g-forces are then paused
-     * to preserve battery life
+     * to preserve battery life.
      */
     @Override
     protected void onPause() {

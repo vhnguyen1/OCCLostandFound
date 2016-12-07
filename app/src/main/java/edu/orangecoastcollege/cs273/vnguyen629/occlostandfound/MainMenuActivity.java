@@ -28,7 +28,7 @@ public class MainMenuActivity extends AppCompatActivity {
      * movements that constitute as shakes where the ListItemActivity may load
      * up if found. Also checks to see if the user is signed into an account. If the user
      * is signed in, then the text for the sign out/in icon changes accordingly.
-     * @param savedInstanceState The state of the application saved into a bundle
+     * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class MainMenuActivity extends AppCompatActivity {
         shakeDetector = new ShakeDetector(new ShakeDetector.OnShakeListener() {
             /**
              * When a 3D motion that the sensors constitute as a shake has been detected,
-             * the ItemListActivity is loaded
+             * the ItemListActivity is loaded.
              */
             @Override
             public void onShake() {
@@ -64,7 +64,7 @@ public class MainMenuActivity extends AppCompatActivity {
     /**
      * Opens up ItemListActivity where the user may report a lost item or view
      * the list of all the reported items saved in the database.
-     * @param view The ImageView or TextViews that open up the ItemListActivity
+     * @param view The ImageView or TextViews that open up the ItemListActivity.
      */
     public void openReportedItemsList(View view) {
         startActivity(new Intent(MainMenuActivity.this, ItemsListActivity.class));
@@ -73,7 +73,7 @@ public class MainMenuActivity extends AppCompatActivity {
     /**
      * Opens up the the MapActivity where the user may view the location of
      * the Lost and Found, reported areas, or OCC the campus map.
-     * @param view The ImageView or TextViews that open up the MapActivity
+     * @param view The ImageView or TextViews that open up the MapActivity.
      */
     public void openMap(View view) {
         startActivity(new Intent(MainMenuActivity.this, MapActivity.class));
@@ -81,8 +81,8 @@ public class MainMenuActivity extends AppCompatActivity {
 
     /**
      * Opens up the SettingsActivity where the user may change various settings in regards
-     * to their account, or settings about the application itself
-     * @param view The ImageView or TextViews that open up the SettingsActivity
+     * to their account, or settings about the application itself.
+     * @param view The ImageView or TextViews that open up the SettingsActivity.
      */
     public void openSettings(View view) {
         startActivity(new Intent(MainMenuActivity.this, SettingsActivity.class));
@@ -90,8 +90,8 @@ public class MainMenuActivity extends AppCompatActivity {
 
     /**
      * Opens up the LoginActivity so the user can either sign in to their account,
-     * or create a new account, or sign off
-     * @param view The clickable ImageView or TextView that opens up the LoginActivity
+     * or create a new account, or sign off.
+     * @param view The clickable ImageView or TextView that opens up the LoginActivity.
      */
     public void openLogin(View view) {
         if (UserAccount.isLoggedIn) {
@@ -104,7 +104,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
     /**
      * When the user re-enters the app, the sensors start back up and begin
-     * monitoring device movements/g-forces in a 3D (x-y-z) span
+     * monitoring device movements/g-forces in a 3D (x-y-z) span.
      */
     @Override
     protected void onResume() {
@@ -116,7 +116,7 @@ public class MainMenuActivity extends AppCompatActivity {
     /**
      * When the user switches apps or clicks on the home button without closing the app,
      * all the sensors that monitor device movements and g-forces are then paused
-     * to preserve battery life
+     * to preserve battery life.
      */
     @Override
     protected void onPause() {
