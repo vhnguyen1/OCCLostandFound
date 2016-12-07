@@ -243,6 +243,17 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
+     * Deletes a specific <code>Item</code>
+     * @param id The unique ID of the <code>Item</code> object
+     */
+    public void deleteItem(final int id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(ITEMS_TABLE, ITEM_KEY_FIELD_ID + " = ?", new String[] {String.valueOf(id)});
+        db.close();
+    }
+
+    /**
      * Delete all the items in the current database
      */
     public void deleteAllItems() {

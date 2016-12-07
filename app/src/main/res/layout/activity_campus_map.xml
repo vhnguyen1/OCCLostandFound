@@ -15,7 +15,8 @@
         android:adjustViewBounds="true"
         android:cropToPadding="true"
         android:scaleType="fitCenter"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="38dp" />
 </RelativeLayout>
