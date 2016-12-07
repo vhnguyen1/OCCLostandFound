@@ -46,7 +46,7 @@ public class ItemsListActivity extends AppCompatActivity {
     private ShakeDetector shakeDetector;
 
     /**
-     *
+     * Loads up the database and ListView of all the reported items.
      * @param savedInstanceState The state of the application saved into a bundle
      */
     @Override
@@ -56,13 +56,12 @@ public class ItemsListActivity extends AppCompatActivity {
 
         this.deleteDatabase(DBHelper.DATABASE_NAME);
         database = new DBHelper(this);
-        database.importItemFromCSV("reported_items.csv");
+        //database.importItemFromCSV("reported_items.csv");
 
         searchNameFilterEditText = (EditText) findViewById(R.id.searchNameFilterEditText);
         searchNameFilterEditText.addTextChangedListener(itemNameSearchTextWatcher);
 
         reportLostItemButton = (Button) findViewById(R.id.reportLostItemButton);
-        resetFiltersButton = (Button) findViewById(R.id.resetFiltersButton);
 
         allItemsList = database.getAllItems();
         filteredItemsList = new ArrayList<>(allItemsList);
@@ -75,6 +74,7 @@ public class ItemsListActivity extends AppCompatActivity {
 
         itemsListView = (ListView) findViewById(R.id.itemsListView);
         itemsListAdapter = new ItemListAdapter(this, R.layout.list_item, filteredItemsList);
+        itemsListView.setAdapter(itemsListAdapter);
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -96,7 +96,7 @@ public class ItemsListActivity extends AppCompatActivity {
      */
     private String[] getItemNames() {
         String itemNames[] = new String[allItemsList.size() + 1];
-        itemNames[0] = "[Select Category]";
+        itemNames[0] = "[All Reported Items]";
 
         for (int i = 1; i < itemNames.length; i++)
             itemNames[i] = allItemsList.get(i-1).getName();
@@ -134,7 +134,7 @@ public class ItemsListActivity extends AppCompatActivity {
                 String itemName;
                 for (Item item : allItemsList) {
                     itemName = String.valueOf(categoryFilterSpinner.getSelectedItem());
-                    if (item.getName().toLowerCase().contains(input))
+                    if (itemName.toLowerCase().contains(input))
                         itemsListAdapter.add(item);
                 }
             }
@@ -161,19 +161,23 @@ public class ItemsListActivity extends AppCompatActivity {
                  */
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
-                    String selectedInstructorName = String.valueOf(parent.getItemAtPosition(position));
+                    String selectedCategory = String.valueOf(parent.getItemAtPosition(position));
                     itemsListAdapter.clear();
 
-                    if (selectedInstructorName.equals("[Select Category]"))
+                    if (selectedCategory.equals("[All Reported Items]"))
                         for (Item item : allItemsList)
                             itemsListAdapter.add(item);
                     else {
-                        //for (Item item : allItemsList) {
-                            //if (item.getFullName().equals(selectedInstructorName)) {
-                                //offeringListAdapter.add(offering);
+                        if (UserAccount.isLoggedIn) {
+                            for (Item item : allItemsList) {
+                                if (item.getReportedUsername().equals(
+                                        UserAccount.singedInUserAccountName)) {
+                                    itemsListAdapter.add(item);
+                                }
                             }
                         }
-
+                    }
+                }
                 /**
                  * If the user clicks on the category filter spinner but ends up not choosing a
                  * category, the default value is set
@@ -217,11 +221,15 @@ public class ItemsListActivity extends AppCompatActivity {
     }
 
     /**
-     * Opens up the ReportItemActivity so the user may submit a report
+     * Opens up the ReportItemActivity so the user may submit a report. If the user
+     * is not signed in, they will not be able to report a lost item.
      * @param view The Button that loads up the ReportItemActivity
      */
     public void reportLostItem(View view) {
-        startActivity(new Intent(ItemsListActivity.this, ReportItemActivity.class));
+        if (UserAccount.isLoggedIn)
+            startActivity(new Intent(ItemsListActivity.this, ReportItemActivity.class));
+        else
+            Toast.makeText(this, "You must be signed in to report a lost item.", Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -236,13 +244,16 @@ public class ItemsListActivity extends AppCompatActivity {
 
     /**
      * When the user re-enters the app, the sensors start back up and begin
-     * monitoring device movements/g-forces in a 3D (x-y-z) span
+     * monitoring device movements/g-forces in a 3D (x-y-z) span. Only loads up the
+     * ReportActivity if the user is logged in
      */
     @Override
     protected void onResume() {
-        super.onResume();
-        sensorManager.registerListener(shakeDetector, accelerometer,
-                SensorManager.SENSOR_DELAY_UI);
+        if (UserAccount.isLoggedIn) {
+            super.onResume();
+            sensorManager.registerListener(shakeDetector, accelerometer,
+                    SensorManager.SENSOR_DELAY_UI);
+        }
     }
 
     /**

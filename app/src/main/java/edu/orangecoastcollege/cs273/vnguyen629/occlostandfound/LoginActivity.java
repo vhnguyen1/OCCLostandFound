@@ -64,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
         {
             if(passwordLoginEditText.getText().toString() == accountList.get(pos).getStudentPassword()) {
                 UserAccount.isLoggedIn = true;
+                UserAccount.singedInUserAccountName = usernameLoginEditText.getText().toString();
                 startActivity(intent);
             }
             else

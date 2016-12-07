@@ -26,7 +26,8 @@ public class MainMenuActivity extends AppCompatActivity {
     /**
      * Starts up the activity and prepares the ShakeDetector to monitor any
      * movements that constitute as shakes where the ListItemActivity may load
-     * up if found
+     * up if found. Also checks to see if the user is signed into an account. If the user
+     * is signed in, then the text for the sign out/in icon changes accordingly.
      * @param savedInstanceState The state of the application saved into a bundle
      */
     @Override
@@ -93,8 +94,10 @@ public class MainMenuActivity extends AppCompatActivity {
      * @param view The clickable ImageView or TextView that opens up the LoginActivity
      */
     public void openLogin(View view) {
-        if (UserAccount.isLoggedIn)
+        if (UserAccount.isLoggedIn) {
             UserAccount.isLoggedIn = false;
+            UserAccount.singedInUserAccountName = "";
+        }
         else
             startActivity(new Intent(MainMenuActivity.this, LoginActivity.class));
     }

@@ -14,6 +14,7 @@ public class UserAccount implements Parcelable {
     // User must log in each time they open the app, but this may change
     // if the user successfully logs in
     public static boolean isLoggedIn = false;
+    public static String singedInUserAccountName = "";
 
     String mStudentUserName;
     String mStudentPassword;

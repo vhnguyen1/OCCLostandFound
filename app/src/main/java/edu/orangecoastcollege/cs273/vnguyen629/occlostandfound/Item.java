@@ -19,11 +19,12 @@ public class Item implements Parcelable {
     private String mLastLocation;
     private boolean mFound;
     private Uri mItemImage;
+    private String mReportingUserName;
 
     /**
      * Parcelable constructor that creates an <code>Item</code> object from a parcel/cursor
      * object
-     * @param source The parcel/cursor object to obtain data from
+     * @param source The parcel object to obtain data from
      */
     private Item(Parcel source) {
         this.mID = source.readInt();
@@ -32,11 +33,12 @@ public class Item implements Parcelable {
         this.mDateLost = source.readString();
         this.mLastLocation = source.readString();
         this.mItemImage = Uri.parse(source.readString());
+        this.mReportingUserName = source.readString();
     }
 
     /**
      * Overloaded constructor that creates a new <code>Item</code> from its ID, description,
-     * date lost, last known location, status, and image.
+     * date lost, last known location, status, reported user, and image.
      * @param newID The new items id
      * @param newName The new items name
      * @param newDescription The new items description
@@ -44,9 +46,10 @@ public class Item implements Parcelable {
      * @param newLastLocation The new items last known location
      * @param status The new items current status
      * @param newImage The new items image
+     * @param newReportingUser The user who reported the lost item
      */
     public Item(int newID, String newName, String newDescription, String newDateLost,
-                String newLastLocation, boolean status, Uri newImage) {
+                String newLastLocation, boolean status, Uri newImage, String newReportingUser) {
         this.mID = newID;
         this.mName = newName;
         this.mDescription = newDescription;
@@ -54,6 +57,7 @@ public class Item implements Parcelable {
         this.mLastLocation = newLastLocation;
         this.mFound = status;
         this.mItemImage = newImage;
+        this.mReportingUserName = newReportingUser;
     }
 
     /**
@@ -65,11 +69,12 @@ public class Item implements Parcelable {
      * @param newLastLocation The new items last known location
      * @param status The new items current status
      * @param newImage The new items image
+     * @param newReportingUser The user who reported the lost item
      */
     public Item(String newName, String newDescription, String newDateLost,
-                String newLastLocation, boolean status, Uri newImage) {
+                String newLastLocation, boolean status, Uri newImage, String newReportingUser) {
         this(-1, newName, newDescription, newDateLost, newLastLocation,
-                status, newImage);
+                status, newImage, newReportingUser);
     }
 
     /**
@@ -80,20 +85,21 @@ public class Item implements Parcelable {
      * @param newDateLost The new items date in which it was lost
      * @param newLastLocation The new items last known location
      * @param status The new items current status
+     * @param newReportingUser The user who reported the lost item
      */
     public Item(String newName, String newDescription, String newDateLost,
-                String newLastLocation, boolean status) {
+                String newLastLocation, boolean status, String newReportingUser) {
         this(-1, newName, newDescription, newDateLost, newLastLocation,
-                status, null);
+                status, null, newReportingUser);
     }
 
     /**
      * Default Constructor that creates a default <code>Item</code> with an id of -1, empty name,
      * empty description, empty date in which it was lost, empty last known location,
-     * status and image set to a default value
+     * status, reported user, and image set to a default value
      */
     public Item() {
-        this(-1, "", "", "", "", false, null);
+        this(-1, "N/A", "N/A", "N/A", "N/A", false, null, "N/A");
     }
 
     /**
@@ -103,7 +109,7 @@ public class Item implements Parcelable {
      */
     public Item(Item other) {
         this(-1, other.mName, other.mDescription, other.mDateLost,
-                other.mLastLocation, other.mFound, other.mItemImage);
+                other.mLastLocation, other.mFound, other.mItemImage, other.mReportingUserName);
     }
 
     /**
@@ -163,6 +169,14 @@ public class Item implements Parcelable {
     }
 
     /**
+     * Gets the username of the user who reported the lost <code>Item</code>
+     * @return The user's username
+     */
+    public String getReportedUsername() {
+        return this.mReportingUserName;
+    }
+
+    /**
      * Sets the name of the <code>Item</code>.
      * @param newName The items new name
      */
@@ -211,6 +225,14 @@ public class Item implements Parcelable {
     }
 
     /**
+     * Sets the username of the <code>Item</code>.
+     * @param newUsername The user's new username
+     */
+    public void setImageURI(String newUsername) {
+        this.mReportingUserName = newUsername;
+    }
+
+    /**
      * Creates a String representation of a given <code>Item</code>,
      * with all member variables displayed.
      * @return The string representation of the object
@@ -239,6 +261,7 @@ public class Item implements Parcelable {
         parcel.writeString(this.mDateLost);
         parcel.writeString(this.mLastLocation);
         parcel.writeString(this.mItemImage.toString());
+        parcel.writeString(this.mReportingUserName);
     }
 
     /**

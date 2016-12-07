@@ -38,6 +38,7 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String FIELD_ITEM_LAST_LOCATION = "last_location";
     private static final String FIELD_ITEM_STATUS = "last_location";
     private static final String FIELD_ITEM_IMAGE_URI = "image_uri";
+    private static final String FIELD_REPORTING_USER = "user_account";
     // Item Database End
 
     // Account Table Start
@@ -80,9 +81,10 @@ class DBHelper extends SQLiteOpenHelper {
                 + FIELD_ITEM_DATE_LOST + " TEXT, "
                 + FIELD_ITEM_LAST_LOCATION + " TEXT, "
                 + FIELD_ITEM_STATUS + " INTEGER, "
-                + FIELD_ITEM_IMAGE_URI + " TEXT" + ")";
+                + FIELD_ITEM_IMAGE_URI + " TEXT"
+                + "FOREIGN KEY(" + FIELD_REPORTING_USER + ") REFERENCES "
+                + ACCOUNT_TABLE + "(" + KEY_FIELD_ACCOUNT_USERNAME + ")" +")";
         db.execSQL(table);
-
 
         table =  "CREATE TABLE " + ACCOUNT_TABLE + "("
                 + KEY_FIELD_ACCOUNT_USERNAME + " TEXT PRIMARY KEY, "
@@ -134,6 +136,7 @@ class DBHelper extends SQLiteOpenHelper {
         String lastLocation = newItem.getLastLocation();
         int status = ((newItem.getStatus())? 1 : 0);
         String imageURI = newItem.getImageUri().toString();
+        String username = newItem.getReportedUsername();
 
         values.put(FIELD_ITEM_NAME, name);
         values.put(FIELD_ITEM_DESCRIPTION, description);
@@ -141,6 +144,7 @@ class DBHelper extends SQLiteOpenHelper {
         values.put(FIELD_ITEM_DATE_LOST, dateLost);
         values.put(FIELD_ITEM_STATUS, status);
         values.put(FIELD_ITEM_IMAGE_URI, imageURI);
+        values.put(FIELD_REPORTING_USER, username);
 
         db.insert(ITEMS_TABLE, null, values);
         db.close();
@@ -158,7 +162,7 @@ class DBHelper extends SQLiteOpenHelper {
                 ITEMS_TABLE,
                 new String[]{ITEM_KEY_FIELD_ID, FIELD_ITEM_NAME, FIELD_ITEM_DESCRIPTION,
                         FIELD_ITEM_DATE_LOST, FIELD_ITEM_LAST_LOCATION, FIELD_ITEM_STATUS,
-                        FIELD_ITEM_IMAGE_URI},
+                        FIELD_ITEM_IMAGE_URI, FIELD_REPORTING_USER},
                 null, null, null, null, null, null );
 
         if (cursor.moveToFirst()){
@@ -170,9 +174,10 @@ class DBHelper extends SQLiteOpenHelper {
                 String lastLocation = cursor.getString(4);
                 boolean status = ((cursor.getInt(5) == 1)? true : false);
                 Uri imageUri = Uri.parse(cursor.getString(6));
+                String username = cursor.getString(7);
 
                 itemArrayList.add(new Item(itemID, name, description, dateLost, lastLocation,
-                        status, imageUri));
+                        status, imageUri, username));
 
             } while (cursor.moveToNext());
         }
@@ -194,7 +199,7 @@ class DBHelper extends SQLiteOpenHelper {
                 ITEMS_TABLE,
                 new String[]{ITEM_KEY_FIELD_ID, FIELD_ITEM_NAME, FIELD_ITEM_DESCRIPTION,
                         FIELD_ITEM_DATE_LOST, FIELD_ITEM_LAST_LOCATION, FIELD_ITEM_STATUS,
-                        FIELD_ITEM_IMAGE_URI},
+                        FIELD_ITEM_IMAGE_URI, FIELD_REPORTING_USER},
                 ITEM_KEY_FIELD_ID + "=?",
                 new String[]{String.valueOf(id)},
                 null, null, null, null );
@@ -209,9 +214,10 @@ class DBHelper extends SQLiteOpenHelper {
         String lastLocation = cursor.getString(4);
         boolean status = ((cursor.getInt(5) == 1)? true : false);
         Uri imageUri = Uri.parse(cursor.getString(6));
+        String username = cursor.getString(7);
 
         final Item ITEM = new Item(itemID, name, description, dateLost, lastLocation,
-                status, imageUri);
+                status, imageUri, username);
 
         db.close();
         cursor.close();
@@ -233,6 +239,7 @@ class DBHelper extends SQLiteOpenHelper {
         String lastLocation = item.getLastLocation();
         int status = ((item.getStatus())? 1 : 0);
         String imageURI = item.getImageUri().toString();
+        String username = item.getReportedUsername();
 
         values.put(FIELD_ITEM_NAME, name);
         values.put(FIELD_ITEM_DESCRIPTION, description);
@@ -240,6 +247,7 @@ class DBHelper extends SQLiteOpenHelper {
         values.put(FIELD_ITEM_DATE_LOST, dateLost);
         values.put(FIELD_ITEM_STATUS, status);
         values.put(FIELD_ITEM_IMAGE_URI, imageURI);
+        values.put(FIELD_REPORTING_USER, username);
 
         db.update(ITEMS_TABLE, values, ITEM_KEY_FIELD_ID + " = ?",
                 new String[]{String.valueOf(item.getID())});
@@ -299,9 +307,10 @@ class DBHelper extends SQLiteOpenHelper {
                 String lastLocation = fields[4].trim();
                 boolean status = ((fields[5].replaceAll("\\s+","") == "Found")? true : false);
                 Uri itemImageURI = Uri.parse(fields[5].trim());
+                String username = fields[6].trim();
 
                 addItem(new Item(id, name, description, dateLost, lastLocation,
-                        status, itemImageURI));
+                        status, itemImageURI, username));
             }
         } catch (IOException err) {
             err.printStackTrace();
@@ -359,6 +368,7 @@ class DBHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
+        database.close();
 
         return accountList;
     }
