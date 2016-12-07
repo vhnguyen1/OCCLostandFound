@@ -45,7 +45,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
+        android:weightSum="1">
 
         <TextView
             android:text="@string/filter_by_name_text"
@@ -61,7 +61,9 @@
             android:inputType="textPersonName"
             android:ems="10"
             android:hint="@string/enter_item_name_text"
-            android:layout_marginLeft="5dp" />
+            android:layout_marginLeft="5dp"
+            android:singleLine="true"
+            android:layout_weight="1.38" />
 
     </LinearLayout>
 

@@ -295,7 +295,7 @@ class DBHelper extends SQLiteOpenHelper {
             while ((line = buffer.readLine()) != null) {
                 String[] fields = line.split(",");
                 if (fields.length != 4) {
-                    Log.d("OCC Lost and Found", "Skipping Bad CSV Row: "
+                    Log.d("OCC Lost and Found", mContext.getString(R.string.skipping_bad_csv_row_text)
                             + Arrays.toString(fields));
                     continue;
                 }
@@ -355,6 +355,7 @@ class DBHelper extends SQLiteOpenHelper {
                         FIELD_ACCOUNT_EMAIL, FIELD_ACCOUNT_STUDENT_ID, FIELD_ACCOUNT_PROFILE_PICTURE},
                 null,null,null,null,null,null
         );
+
         if (cursor.moveToFirst())
         {
             do {
@@ -591,7 +592,7 @@ class DBHelper extends SQLiteOpenHelper {
             while ((line = buffer.readLine()) != null) {
                 String[] fields = line.split(",");
                 if (fields.length != 4) {
-                    Log.d("OCC Lost and Found", "Skipping Bad CSV Row: "
+                    Log.d("OCC Lost and Found", mContext.getString(R.string.skipping_bad_csv_row_text)
                             + Arrays.toString(fields));
                     continue;
                 }

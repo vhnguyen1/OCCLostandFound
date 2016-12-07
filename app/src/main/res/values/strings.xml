@@ -40,7 +40,7 @@
     <string name="enter_student_id">Enter Your Student ID</string>
     <string name="create_account_button">Create New Account</string>
     <string name="back_button">Back</string>
-    <string name="frist_name">First Name</string>
+    <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="save">SAVE</string>
     <string name="view_items_list_text">View Items List</string>
@@ -49,4 +49,12 @@
     <string name="occ_campus_map_text">Orange Coast College Campus Map</string>
     <string name="sign_in_text">Sign In</string>
     <string name="sign_out_text">Sign Out</string>
+    <string name="invalid_username_password_text">Username or password is invalid.</string>
+    <string name="skipping_bad_csv_row_text">Skipping Bad CSV Row: </string>
+    <string name="all_reported_items_text">[All Reported Items]</string>
+    <string name="list_empty_text">List is already empty.</string>
+    <string name="all_fields_mandatory_text">All fields except item image and description are mandatory.</string>
+    <string name="camera_and_external_permissions">OCC Lost and Found requires camera and external storage permissions.</string>
+    <string name="camera_permissions">OCC Lost and Found requires camera permissions.</string>
+    <string name="external_permissions">OCC Lost and Found requires external storage permissions.</string>
 </resources>

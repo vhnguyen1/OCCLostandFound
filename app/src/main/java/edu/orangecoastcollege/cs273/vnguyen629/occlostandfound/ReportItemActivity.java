@@ -37,7 +37,7 @@ public class ReportItemActivity extends AppCompatActivity {
 
     private ImageView submitButtonImageView;
 
-    private static final int REQUEST_CODE = 13;
+    private static final int REPORT_ITEM_REQUEST_CODE = 13;
 
     /**
      *
@@ -72,7 +72,7 @@ public class ReportItemActivity extends AppCompatActivity {
         //final String DESCRIPTION = reportItemDescriptionEditText.getText().toString().replaceAll("\\s+","");
 
         if (NAME.equals("") || DATE_LOST.equals("") || LAST_LOCATION.equals(""))
-            Toast.makeText(this, "All fields except item image and description are mandatory.",
+            Toast.makeText(this, getString(R.string.all_fields_mandatory_text),
                     Toast.LENGTH_SHORT).show();
         else {
             final String NEW_ITEM_NAME = reportItemNameEditText.getText().toString().trim();
@@ -91,7 +91,7 @@ public class ReportItemActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (data != null && requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+        if (data != null && requestCode == REPORT_ITEM_REQUEST_CODE && resultCode == RESULT_OK) {
             imageUri = data.getData();
             reportItemImageView.setImageURI(imageUri);
         }
@@ -124,7 +124,7 @@ public class ReportItemActivity extends AppCompatActivity {
 
         if (permList.size() > 0) {
             String[] perms = new String[permList.size()];
-            ActivityCompat.requestPermissions(this, permList.toArray(perms), REQUEST_CODE);
+            ActivityCompat.requestPermissions(this, permList.toArray(perms), REPORT_ITEM_REQUEST_CODE);
         }
 
         if (cameraPermission == PackageManager.PERMISSION_GRANTED
@@ -132,19 +132,19 @@ public class ReportItemActivity extends AppCompatActivity {
                 && readPermission == PackageManager.PERMISSION_GRANTED) {
             Intent galleryIntent = new Intent(Intent.ACTION_PICK,
                     MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(galleryIntent, REQUEST_CODE);
+            startActivityForResult(galleryIntent, REPORT_ITEM_REQUEST_CODE);
         }
         else {
             if (cameraPermission != PackageManager.PERMISSION_GRANTED
                     && writePermission != PackageManager.PERMISSION_GRANTED
                     && readPermission != PackageManager.PERMISSION_GRANTED)
-                Toast.makeText(this, "OCC Lost and Found requires camera and " +
-                        "external storage permissions.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.camera_and_external_permissions),
+                        Toast.LENGTH_SHORT).show();
             else if (cameraPermission != PackageManager.PERMISSION_GRANTED)
-                Toast.makeText(this, "OCC Lost and Found requires camera permissions.",
+                Toast.makeText(this, getString(R.string.camera_permissions),
                         Toast.LENGTH_SHORT).show();
             else
-                Toast.makeText(this, "OCC Lost and Found requires external storage permissions.",
+                Toast.makeText(this, getString(R.string.external_permissions),
                         Toast.LENGTH_SHORT).show();
         }
     }

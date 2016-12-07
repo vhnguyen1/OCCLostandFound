@@ -96,7 +96,7 @@ public class ItemsListActivity extends AppCompatActivity {
      */
     private String[] getItemNames() {
         String itemNames[] = new String[allItemsList.size() + 1];
-        itemNames[0] = "[All Reported Items]";
+        itemNames[0] = this.getString(R.string.all_reported_items_text);
 
         for (int i = 1; i < itemNames.length; i++)
             itemNames[i] = allItemsList.get(i-1).getName();
@@ -132,6 +132,7 @@ public class ItemsListActivity extends AppCompatActivity {
                     itemsListAdapter.add(item);
             else {
                 String itemName;
+
                 for (Item item : allItemsList) {
                     itemName = String.valueOf(categoryFilterSpinner.getSelectedItem());
                     if (itemName.toLowerCase().contains(input))
@@ -164,7 +165,7 @@ public class ItemsListActivity extends AppCompatActivity {
                     String selectedCategory = String.valueOf(parent.getItemAtPosition(position));
                     itemsListAdapter.clear();
 
-                    if (selectedCategory.equals("[All Reported Items]"))
+                    if (selectedCategory.equals(getString(R.string.all_reported_items_text)))
                         for (Item item : allItemsList)
                             itemsListAdapter.add(item);
                     else {
@@ -217,7 +218,7 @@ public class ItemsListActivity extends AppCompatActivity {
             itemsListAdapter.notifyDataSetChanged();
         }
         else
-            Toast.makeText(this, "List is already empty.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.list_empty_text), Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -229,7 +230,7 @@ public class ItemsListActivity extends AppCompatActivity {
         if (UserAccount.isLoggedIn)
             startActivity(new Intent(ItemsListActivity.this, ReportItemActivity.class));
         else
-            Toast.makeText(this, "You must be signed in to report a lost item.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.list_empty_text), Toast.LENGTH_SHORT).show();
     }
 
     /**

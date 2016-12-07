@@ -53,7 +53,8 @@ public class ItemDetailsActivity extends AppCompatActivity {
         itemDetailsDescriptionTextView.setText(ITEM.getDescription());
         itemDetailsDateLostTextView.setText(ITEM.getDateLost());
         itemDetailsLocationTextView.setText(ITEM.getLastLocation());
-        itemDetailsStatusTextView.setText((ITEM.getStatus())? "Found!" : "Not Found.");
+        itemDetailsStatusTextView.setText((ITEM.getStatus())? this.getString(R.string.found_text)
+                : this.getString(R.string.not_found_text));
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -67,8 +68,6 @@ public class ItemDetailsActivity extends AppCompatActivity {
                 startActivity(new Intent(ItemDetailsActivity.this, ItemsListActivity.class));
             }
         });
-
-        //this.finish();
     }
 
     /**

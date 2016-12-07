@@ -235,7 +235,7 @@ public class Item implements Parcelable {
     /**
      * Creates a String representation of a given <code>Item</code>,
      * with all member variables displayed.
-     * @return The string representation of the object
+     * @return The string representation of the <code>Item</code> object
      */
     public String toString() {
         return "Item{" +
