@@ -106,6 +106,10 @@ public class ItemsListActivity extends AppCompatActivity {
     public TextWatcher itemNameSearchTextWatcher = new TextWatcher() {
         /**
          * Unused
+         * @param charSequence Unused
+         * @param i Unused
+         * @param i1 Unused
+         * @param i2 Unused
          */
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
@@ -128,7 +132,6 @@ public class ItemsListActivity extends AppCompatActivity {
                     itemsListAdapter.add(item);
             else {
                 String itemName;
-
                 for (Item item : allItemsList) {
                     itemName = String.valueOf(categoryFilterSpinner.getSelectedItem());
                     if (itemName.toLowerCase().contains(input))
@@ -139,6 +142,7 @@ public class ItemsListActivity extends AppCompatActivity {
 
         /**
          * Unused
+         * @param editable Unused
          */
         @Override
         public void afterTextChanged(Editable editable) {}
@@ -150,11 +154,13 @@ public class ItemsListActivity extends AppCompatActivity {
     public AdapterView.OnItemSelectedListener categoryFilterSpinnerListener =
             new AdapterView.OnItemSelectedListener() {
                 /**
-                 *
-                 * @param parent
-                 * @param view
-                 * @param position
-                 * @param l
+                 * If the user selects a valid category, it displays all the
+                 * <code>Item/code> objects that meet that specified
+                 * criteria.
+                 * @param parent Unused
+                 * @param view Unused
+                 * @param position Unused
+                 * @param l Unused
                  */
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
