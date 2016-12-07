@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+//TODO checkBoxOfShake, checkBoxforSMS, allow to phone number
+
 /**
  *
  */
@@ -21,7 +23,7 @@ public class UserSettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_setting);
+        setContentView(R.layout.activity_user_settings);
 
         accountInfoNameEditText = (EditText) findViewById(R.id.accountInfoNameEditTExt);
         accountInfoLastNameEditText = (EditText) findViewById(R.id.accountInfoLastNameEditText);
@@ -38,7 +40,7 @@ public class UserSettingsActivity extends AppCompatActivity {
     {
         accountInfo.setName(accountInfoNameEditText.getText().toString());
         accountInfo.setLastName(accountInfoLastNameEditText.getText().toString());
-        ///tiung
+
     }
 
 }

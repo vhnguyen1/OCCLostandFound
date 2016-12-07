@@ -42,7 +42,7 @@ class DBHelper extends SQLiteOpenHelper {
 
     // Account Table Start
     private static final String ACCOUNT_TABLE = "Accounts";
-    private static final String FIELD_ACCOUNT_USERNAME = "name";
+    private static final String KEY_FIELD_ACCOUNT_USERNAME = "name";
     private static final String FIELD_ACCOUNT_PASSWORD = "password";
     private static final String FIELD_ACCOUNT_PHONE_NUMBER = "phone_number";
     private static final String FIELD_ACCOUNT_EMAIL = "email";
@@ -85,7 +85,7 @@ class DBHelper extends SQLiteOpenHelper {
 
 
         table =  "CREATE TABLE " + ACCOUNT_TABLE + "("
-                + FIELD_ACCOUNT_USERNAME + " TEXT, "
+                + KEY_FIELD_ACCOUNT_USERNAME + " TEXT PRIMARY KEY, "
                 + FIELD_ACCOUNT_PASSWORD + " TEXT, "
                 + FIELD_ACCOUNT_PHONE_NUMBER + " TEXT, "
                 + FIELD_ACCOUNT_EMAIL + " TEXT, "
@@ -306,7 +306,7 @@ class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(FIELD_ACCOUNT_USERNAME, account.getStudentUserName());
+        values.put(KEY_FIELD_ACCOUNT_USERNAME, account.getStudentUserName());
         values.put(FIELD_ACCOUNT_PASSWORD, account.getStudentPassword());
         values.put(FIELD_ACCOUNT_PHONE_NUMBER, account.getStudentPhoneNum());
         values.put(FIELD_ACCOUNT_EMAIL, account.getStudentEmail());
@@ -327,7 +327,7 @@ class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getReadableDatabase();
         Cursor cursor = database.query(
                 ACCOUNT_TABLE,
-                new String[]{FIELD_ACCOUNT_USERNAME,FIELD_ACCOUNT_PASSWORD, FIELD_ACCOUNT_PHONE_NUMBER,
+                new String[]{KEY_FIELD_ACCOUNT_USERNAME,FIELD_ACCOUNT_PASSWORD, FIELD_ACCOUNT_PHONE_NUMBER,
                         FIELD_ACCOUNT_EMAIL, FIELD_ACCOUNT_STUDENT_ID, FIELD_ACCOUNT_PROFILE_PICTURE},
                 null,null,null,null,null,null
         );
@@ -337,7 +337,7 @@ class DBHelper extends SQLiteOpenHelper {
                 UserAccount account =
                         new UserAccount(cursor.getString(0), cursor.getString(1),
                                 cursor.getString(2), cursor.getString(3),
-                                cursor.getInt(4), Uri.parse(cursor.getString(5).toString()));
+                                cursor.getString(4), Uri.parse(cursor.getString(5).toString()));
                 accountList.add(account);
 
             }while (cursor.moveToNext());
@@ -375,7 +375,7 @@ class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(FIELD_ACCOUNT_USERNAME, account.getStudentUserName());
+        values.put(KEY_FIELD_ACCOUNT_USERNAME, account.getStudentUserName());
         values.put(FIELD_ACCOUNT_PASSWORD, account.getStudentPassword());
         values.put(FIELD_ACCOUNT_PHONE_NUMBER, account.getStudentPhoneNum());
         values.put(FIELD_ACCOUNT_EMAIL, account.getStudentEmail());
@@ -396,7 +396,7 @@ class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 ACCOUNT_TABLE,
-                new String[]{FIELD_ACCOUNT_USERNAME,FIELD_ACCOUNT_PASSWORD, FIELD_ACCOUNT_PHONE_NUMBER,
+                new String[]{KEY_FIELD_ACCOUNT_USERNAME,FIELD_ACCOUNT_PASSWORD, FIELD_ACCOUNT_PHONE_NUMBER,
                         FIELD_ACCOUNT_EMAIL, FIELD_ACCOUNT_STUDENT_ID, FIELD_ACCOUNT_PROFILE_PICTURE},
                 FIELD_ACCOUNT_STUDENT_ID + "=?",
                 new String[]{String.valueOf(id)},
@@ -408,7 +408,7 @@ class DBHelper extends SQLiteOpenHelper {
         UserAccount account =
                 new UserAccount(cursor.getString(0), cursor.getString(1),
                         cursor.getString(2), cursor.getString(3),
-                        cursor.getInt(4), Uri.parse(cursor.getString(5).toString()));
+                        cursor.getString(4), Uri.parse(cursor.getString(5).toString()));
 
         db.close();
         return account;

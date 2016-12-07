@@ -66,7 +66,7 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
         final String STATUS = ((ITEM.getStatus())? "Found!" : "Not Found.");
 
         itemListLinearLayout = (LinearLayout) view.findViewById(R.id.itemListLinearLayout);
-        itemListImageView = (ImageView) view.findViewById(R.id.itemListImageView)
+        itemListImageView = (ImageView) view.findViewById(R.id.itemListImageView);
         itemListNameTextView = (TextView) view.findViewById(R.id.itemListNameTextView);
         itemListStatusTextView = (TextView) view.findViewById(R.id.itemListStatusTextView);
 

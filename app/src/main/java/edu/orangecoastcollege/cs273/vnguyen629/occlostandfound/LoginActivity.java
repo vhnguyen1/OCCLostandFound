@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -19,8 +17,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText usernameLoginEditText;
     private EditText passwordLoginEditText;
 
-    private ImageView loginButton;
-    private TextView createAccountTextView;
+
 
     private DBHelper database;
     private List<UserAccount> accountList;
@@ -34,11 +31,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        loginButton = (EditText) findViewById(R.id.usernameLoginEditText);
-        createAccountTextView = (EditText) findViewById(R.id.passwordLoginEditText);
-
-        usernameLoginEditText = (ImageView) findViewById(R.id.loginButtonImageView);
-        passwordLoginEditText = (EditText) findViewById(R.id.createAccountTextView);
+        usernameLoginEditText = (EditText) findViewById(R.id.usernameLoginEditText);
+        passwordLoginEditText = (EditText) findViewById(R.id.passwordLoginEditText);
 
         accountList = database.getAllUserAccount();
     }

@@ -114,6 +114,7 @@
         android:layout_alignLeft="@+id/occLogoLoginImageView"
         android:layout_alignStart="@+id/occLogoLoginImageView"
         android:layout_margin="10dp"
-        android:onClick="login" />
+        android:onClick="login"
+        android:clickable="true" />
 
 </RelativeLayout>
