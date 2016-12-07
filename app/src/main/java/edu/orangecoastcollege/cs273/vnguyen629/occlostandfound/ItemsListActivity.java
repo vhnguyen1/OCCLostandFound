@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -38,8 +37,6 @@ public class ItemsListActivity extends AppCompatActivity {
 
     private Spinner categoryFilterSpinner;
     private EditText searchNameFilterEditText;
-    private Button reportLostItemButton;
-    private Button resetFiltersButton;
 
     private Sensor accelerometer;
     private SensorManager sensorManager;
@@ -60,8 +57,6 @@ public class ItemsListActivity extends AppCompatActivity {
 
         searchNameFilterEditText = (EditText) findViewById(R.id.searchNameFilterEditText);
         searchNameFilterEditText.addTextChangedListener(itemNameSearchTextWatcher);
-
-        reportLostItemButton = (Button) findViewById(R.id.reportLostItemButton);
 
         allItemsList = database.getAllItems();
         filteredItemsList = new ArrayList<>(allItemsList);

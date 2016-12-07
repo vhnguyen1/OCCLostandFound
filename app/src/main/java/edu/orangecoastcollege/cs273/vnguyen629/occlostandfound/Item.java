@@ -26,7 +26,7 @@ public class Item implements Parcelable {
      * object
      * @param source The parcel object to obtain data from
      */
-    private Item(Parcel source) {
+    private Item(final Parcel source) {
         this.mID = source.readInt();
         this.mName = source.readString();
         this.mDescription = source.readString();
@@ -228,7 +228,7 @@ public class Item implements Parcelable {
      * Sets the username of the <code>Item</code>.
      * @param newUsername The user's new username
      */
-    public void setImageURI(String newUsername) {
+    public void setReportedUsername(String newUsername) {
         this.mReportingUserName = newUsername;
     }
 
@@ -250,11 +250,11 @@ public class Item implements Parcelable {
 
     /**
      * Writes an <code>Item</code> objects data into a parcel/cursor object
-     * @param parcel The parcelable/cursor object to write the data to
+     * @param parcel The parcelable object to write the data to
      * @param i Unused
      */
     @Override
-    public void writeToParcel(Parcel parcel, int i) {
+    public void writeToParcel(final Parcel parcel, final int i) {
         parcel.writeInt(this.mID);
         parcel.writeString(this.mName);
         parcel.writeString(this.mDescription);
@@ -280,11 +280,11 @@ public class Item implements Parcelable {
         /**
          * Uses the Parcelable constructor to create an <code>Item/code> object from a
          * parcel/cursor object
-         * @param source The parcel/cursor object to obtain data from
-         * @return A new <code>Item</code> object with data copied from the parcel/cursor object
+         * @param source The parcel object to obtain data from
+         * @return A new <code>Item</code> object with data copied from the parcel object
          */
         @Override
-        public Item createFromParcel(Parcel source) {
+        public Item createFromParcel(final Parcel source) {
             return new Item(source);
         }
 
@@ -294,7 +294,7 @@ public class Item implements Parcelable {
          * @return
          */
         @Override
-        public Item[] newArray(int size) {
+        public Item[] newArray(final int size) {
             return new Item[size];
         }
     };
