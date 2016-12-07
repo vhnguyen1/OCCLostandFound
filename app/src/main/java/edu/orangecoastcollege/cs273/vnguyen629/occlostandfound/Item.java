@@ -21,6 +21,8 @@ public class Item implements Parcelable {
     private Uri mItemImage;
     private String mReportingUserName;
 
+    //public static final String ITEMS_FILE_NAME = "reported_items.csv";
+
     /**
      * Parcelable constructor that creates an <code>Item</code> object from a parcel/cursor
      * object

@@ -61,7 +61,6 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
 
         final Uri IMAGE_URI = ITEM.getImageUri();
         final String NAME = ITEM.getName();
-        // go back and re-use the string in strings.xml
         final String STATUS = ((ITEM.getStatus())? mContext.getString(R.string.found_text)
                 : mContext.getString(R.string.not_found_text));
 

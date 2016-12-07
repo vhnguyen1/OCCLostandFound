@@ -35,8 +35,6 @@ public class ReportItemActivity extends AppCompatActivity {
     private EditText reportItemLastLocationEditText;
     private EditText reportItemDescriptionEditText;
 
-    private ImageView submitButtonImageView;
-
     private static final int REPORT_ITEM_REQUEST_CODE = 13;
 
     /**
@@ -57,8 +55,6 @@ public class ReportItemActivity extends AppCompatActivity {
 
         imageUri = getUriToResource(this, R.drawable.default_image);
         reportItemImageView.setImageURI(imageUri);
-
-        submitButtonImageView = (ImageView) findViewById(R.id.submitButtonImageView);
     }
 
     /**

@@ -12,19 +12,6 @@
     tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.LoginActivity"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="200sp"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/login_button"
-        android:id="@+id/loginButtonImageView"
-        android:cropToPadding="true"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true"
-        android:onClick="login"
-        android:clickable="true"
-        android:layout_below="@+id/passwordLoginEditText"
-        android:layout_centerHorizontal="true" />
-
     <TextView
         android:text="@string/need_account_text"
         android:layout_width="wrap_content"
@@ -68,16 +55,19 @@
         android:layout_alignEnd="@+id/passwordLoginEditText"
         android:gravity="center" />
 
-    <TextView
-        android:text="@string/app_name"
-        android:layout_width="wrap_content"
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView5"
-        android:textColor="@android:color/holo_orange_dark"
-        android:textStyle="normal|bold"
-        android:textSize="30sp"
-        android:layout_below="@+id/occLogoLoginImageView"
-        android:layout_centerHorizontal="true" />
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/passwordLoginEditText"
+        android:hint="@string/enter_password_text"
+        android:gravity="center_vertical|center"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:layout_below="@+id/usernameLoginEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="5dp" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -94,20 +84,6 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/passwordLoginEditText"
-        android:hint="@string/enter_password_text"
-        android:gravity="center_vertical|center"
-        android:maxLines="1"
-        android:singleLine="true"
-        android:layout_below="@+id/usernameLoginEditText"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="5dp" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/usernameLoginEditText"
@@ -119,5 +95,29 @@
         android:layout_below="@+id/textView5"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/login_button"
+        android:id="@+id/loginButtonImageView"
+        android:cropToPadding="true"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:onClick="login"
+        android:clickable="true"
+        android:layout_below="@+id/passwordLoginEditText"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="@string/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView5"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textStyle="normal|bold"
+        android:textSize="30sp"
+        android:layout_below="@+id/occLogoLoginImageView"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

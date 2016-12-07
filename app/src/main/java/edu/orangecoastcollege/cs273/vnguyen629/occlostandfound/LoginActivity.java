@@ -11,13 +11,12 @@ import java.util.List;
 
 /**
  *
+ * @author Vu Nguyen
  */
 public class LoginActivity extends AppCompatActivity {
 
     private EditText usernameLoginEditText;
     private EditText passwordLoginEditText;
-
-
 
     private DBHelper database;
     private List<UserAccount> accountList;
@@ -59,7 +58,6 @@ public class LoginActivity extends AppCompatActivity {
                 pos++;
         }
 
-
         if(found)
         {
             if(passwordLoginEditText.getText().toString().equals(accountList.get(pos).getStudentPassword())) {
@@ -73,7 +71,6 @@ public class LoginActivity extends AppCompatActivity {
         else
             Toast.makeText(this, R.string.invalid_username_password_text, Toast.LENGTH_SHORT).show();
     }
-
 
     /**
      * Loads up the UserAccountCreateActivity so the user may create a new account

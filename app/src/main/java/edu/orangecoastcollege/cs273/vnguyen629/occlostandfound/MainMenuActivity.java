@@ -39,12 +39,12 @@ public class MainMenuActivity extends AppCompatActivity {
         menuLoggedInTextView = (TextView) findViewById(R.id.menuLoggedInTextView);
 
         if (UserAccount.isLoggedIn) {
-            menuLoginTextView.setText(R.string.sign_out_text);
+            menuLoginTextView.setText(this.getString(R.string.sign_out_text));
             menuLoggedInTextView.setText("");
         }
         else {
-            menuLoginTextView.setText(R.string.sign_in_text);
-            menuLoggedInTextView.setText(R.string.full_features_text);
+            menuLoginTextView.setText(this.getString(R.string.sign_in_text));
+            menuLoggedInTextView.setText(this.getString(R.string.full_features_text));
         }
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -108,9 +108,11 @@ public class MainMenuActivity extends AppCompatActivity {
      */
     @Override
     protected void onResume() {
-        super.onResume();
-        sensorManager.registerListener(shakeDetector, accelerometer,
-                SensorManager.SENSOR_DELAY_UI);
+        if (UserAccount.isLoggedIn) {
+            super.onResume();
+            sensorManager.registerListener(shakeDetector, accelerometer,
+                    SensorManager.SENSOR_DELAY_UI);
+        }
     }
 
     /**

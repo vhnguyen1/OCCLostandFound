@@ -44,9 +44,11 @@ public class SettingsActivity extends AppCompatActivity {
      */
     @Override
     protected void onResume() {
-        super.onResume();
-        sensorManager.registerListener(shakeDetector, accelerometer,
-                SensorManager.SENSOR_DELAY_UI);
+        if (UserAccount.isLoggedIn) {
+            super.onResume();
+            sensorManager.registerListener(shakeDetector, accelerometer,
+                    SensorManager.SENSOR_DELAY_UI);
+        }
     }
 
     /**

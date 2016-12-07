@@ -17,6 +17,7 @@ import java.util.TimerTask;
 public class SplashScreenActivity extends AppCompatActivity {
     private Timer splashTimer;
     private TimerTask splashTimerTask;
+
     /**
      * Starts up the activity and prepares loads a 3 second TimerTask before automatically
      * opening up the MainMenuActivity.
