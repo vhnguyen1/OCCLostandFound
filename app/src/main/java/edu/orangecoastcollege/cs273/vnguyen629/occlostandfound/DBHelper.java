@@ -178,6 +178,8 @@ class DBHelper extends SQLiteOpenHelper {
         }
 
         db.close();
+        cursor.close();
+
         return itemArrayList;
     }
 
@@ -212,6 +214,8 @@ class DBHelper extends SQLiteOpenHelper {
                 status, imageUri);
 
         db.close();
+        cursor.close();
+
         return ITEM;
     }
 
@@ -353,6 +357,9 @@ class DBHelper extends SQLiteOpenHelper {
 
             }while (cursor.moveToNext());
         }
+
+        cursor.close();
+
         return accountList;
     }
 
@@ -422,6 +429,8 @@ class DBHelper extends SQLiteOpenHelper {
                         cursor.getString(4), Uri.parse(cursor.getString(5).toString()));
 
         db.close();
+        cursor.close();
+
         return account;
     }
 
@@ -474,6 +483,8 @@ class DBHelper extends SQLiteOpenHelper {
         }
 
         db.close();
+        cursor.close();
+
         return reportArrayList;
     }
 
@@ -503,6 +514,8 @@ class DBHelper extends SQLiteOpenHelper {
         final Report REPORT = new Report(itemID, account, name, dateLost);
 
         db.close();
+        cursor.close();
+
         return REPORT;
     }
 
@@ -524,6 +537,17 @@ class DBHelper extends SQLiteOpenHelper {
 
         db.update(REPORT_TABLE, values, REPORT_KEY_FIELD_ID + " = ?",
                 new String[]{String.valueOf(report.getID())});
+        db.close();
+    }
+
+    /**
+     * Deletes a specific <code>Report</code> object
+     * @param id The unique ID of the <code>Report</code> object
+     */
+    public void deleteReport(final int id)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(REPORT_TABLE, REPORT_KEY_FIELD_ID + " = ?", new String[] {String.valueOf(id)});
         db.close();
     }
 

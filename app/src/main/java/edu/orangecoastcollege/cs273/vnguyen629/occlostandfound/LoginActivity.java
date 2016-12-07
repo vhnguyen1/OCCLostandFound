@@ -62,8 +62,10 @@ public class LoginActivity extends AppCompatActivity {
 
         if(found)
         {
-            if(passwordLoginEditText.getText().toString() == accountList.get(pos).getStudentPassword())
+            if(passwordLoginEditText.getText().toString() == accountList.get(pos).getStudentPassword()) {
+                UserAccount.isLoggedIn = true;
                 startActivity(intent);
+            }
             else
                 Toast.makeText(this, "Username or password is invalid.", Toast.LENGTH_SHORT).show();
         }

@@ -54,7 +54,7 @@ public class ReportItemActivity extends AppCompatActivity {
         reportItemLastLocationEditText = (EditText) findViewById(R.id.reportItemLastLocationEditText);
         reportItemDescriptionEditText = (EditText) findViewById(R.id.reportItemDescriptionEditText);
 
-        imageUri = getUriToResource(this, R.drawable.defaultImage);
+        imageUri = getUriToResource(this, R.drawable.default_image);
         reportItemImageView.setImageURI(imageUri);
 
         submitButtonImageView = (ImageView) findViewById(R.id.submitButtonImageView);

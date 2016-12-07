@@ -43,4 +43,10 @@
     <string name="frist_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="save">SAVE</string>
+    <string name="view_items_list_text">View Items List</string>
+    <string name="login_text">Login</string>
+    <string name="full_features_text">NOTE: You must be signed in to use the full features of this app.</string>
+    <string name="occ_campus_map_text">Orange Coast College Campus Map</string>
+    <string name="sign_in_text">Sign In</string>
+    <string name="sign_out_text">Sign Out</string>
 </resources>

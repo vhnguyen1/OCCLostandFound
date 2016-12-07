@@ -7,6 +7,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
 /**
  * The main menu of the application. It allows the user to select and
@@ -15,18 +16,35 @@ import android.view.View;
  * @author Vincent Nguyen
  */
 public class MainMenuActivity extends AppCompatActivity {
+    private TextView menuLoginTextView;
+    private TextView menuLoggedInTextView;
+
     private Sensor accelerometer;
     private SensorManager sensorManager;
     private ShakeDetector shakeDetector;
 
     /**
-     *
+     * Starts up the activity and prepares the ShakeDetector to monitor any
+     * movements that constitute as shakes where the ListItemActivity may load
+     * up if found
      * @param savedInstanceState The state of the application saved into a bundle
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        menuLoginTextView = (TextView) findViewById(R.id.menuLoginTextView);
+        menuLoggedInTextView = (TextView) findViewById(R.id.menuLoggedInTextView);
+
+        if (UserAccount.isLoggedIn) {
+            menuLoginTextView.setText(R.string.sign_out_text);
+            menuLoggedInTextView.setText("");
+        }
+        else {
+            menuLoginTextView.setText(R.string.sign_in_text);
+            menuLoggedInTextView.setText(R.string.full_features_text);
+        }
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -61,14 +79,6 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     /**
-     *
-     * @param view
-     */
-    public void openFAQ(View view) {
-        startActivity(new Intent(MainMenuActivity.this, FAQActivity.class));
-    }
-
-    /**
      * Opens up the SettingsActivity where the user may change various settings in regards
      * to their account, or settings about the application itself
      * @param view The ImageView or TextViews that open up the SettingsActivity
@@ -78,30 +88,15 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     /**
-     * Opens up the ContactInfoActivity where the user may view contact information
-     * for either the ASOCC or the OCC Campus Safety office
-     * @param view The ImageView or TextViews that open up the ContactInfoActivity
-     */
-    public void openContactInfo(View view) {
-        startActivity(new Intent(MainMenuActivity.this, ContactInfoActivity.class));
-    }
-
-    /**
-     * Opens up the AboutActivity so that the user can view various information
-     * in regards to application purposes and functionality
-     * @param view The ImageView or TextViews that open up the LoginActivity
-     */
-    public void openAbout(View view) {
-        startActivity(new Intent(MainMenuActivity.this, AboutActivity.class));
-    }
-
-    /**
-     * Opens up the LoginActivity so the user can either login to their account
-     * or create a new one
-     * @param view The clickable TextView that opens up the LoginActivity
+     * Opens up the LoginActivity so the user can either sign in to their account,
+     * or create a new account, or sign off
+     * @param view The clickable ImageView or TextView that opens up the LoginActivity
      */
     public void openLogin(View view) {
-        startActivity(new Intent(MainMenuActivity.this, LoginActivity.class));
+        if (UserAccount.isLoggedIn)
+            UserAccount.isLoggedIn = false;
+        else
+            startActivity(new Intent(MainMenuActivity.this, LoginActivity.class));
     }
 
     /**
