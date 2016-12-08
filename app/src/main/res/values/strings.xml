@@ -57,4 +57,8 @@
     <string name="camera_and_external_permissions">OCC Lost and Found requires camera and external storage permissions.</string>
     <string name="camera_permissions">OCC Lost and Found requires camera permissions.</string>
     <string name="external_permissions">OCC Lost and Found requires external storage permissions.</string>
+    <string name="allow_sms">SMS Notification</string>
+    <string name="allow_shake">Turn On Shake</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone Number</string>
 </resources>
