@@ -384,7 +384,7 @@ class DBHelper extends SQLiteOpenHelper {
 
         // DELETE THE TABLE ROW
         db.delete(ACCOUNT_TABLE, FIELD_ACCOUNT_STUDENT_ID + " = ?",
-                new String[]{String.valueOf(account.getStudentID())});
+                new String[]{String.valueOf(account.getStudentUserName())});
         db.close();
     }
 
@@ -413,7 +413,7 @@ class DBHelper extends SQLiteOpenHelper {
         values.put(FIELD_ACCOUNT_PROFILE_PICTURE, account.getStudentProfilePic().toString());
 
         db.update(ACCOUNT_TABLE, values, FIELD_ACCOUNT_STUDENT_ID + " = ?",
-                new String[]{String.valueOf(account.getStudentID())});
+                new String[]{String.valueOf(account.getStudentUserName())});
         db.close();
     }
 
@@ -422,13 +422,13 @@ class DBHelper extends SQLiteOpenHelper {
      * @param id
      * @return
      */
-    public UserAccount getUserAccount(int id) {
+    public UserAccount getUserAccount(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 ACCOUNT_TABLE,
                 new String[]{KEY_FIELD_ACCOUNT_USERNAME,FIELD_ACCOUNT_PASSWORD, FIELD_ACCOUNT_PHONE_NUMBER,
                         FIELD_ACCOUNT_EMAIL, FIELD_ACCOUNT_STUDENT_ID, FIELD_ACCOUNT_PROFILE_PICTURE},
-                FIELD_ACCOUNT_STUDENT_ID + "=?",
+                KEY_FIELD_ACCOUNT_USERNAME + "=?",
                 new String[]{String.valueOf(id)},
                 null, null, null, null);
 

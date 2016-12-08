@@ -10,15 +10,18 @@ public class AccountInfo
 
     private String mName;
     private String mLastName;
+    private boolean mAllowShake;
+    private boolean mAllowSms;
 
-    public AccountInfo(String mName, String mLastName)
+    public AccountInfo(String mName, String mLastName, boolean allowShake, boolean allowSms)
     {
         this.mName = mName;
         this.mLastName = mLastName;
+        this.mAllowShake = allowSms;
     }
 
     public AccountInfo() {
-       this("","");
+       this("","", false, false);
     }
 
     public void setName(String mName) {
@@ -29,11 +32,27 @@ public class AccountInfo
         this.mLastName = mLastName;
     }
 
+    public void setAllowShake(boolean mAllowShake) {
+        this.mAllowShake = mAllowShake;
+    }
+
+    public void setAllowSms(boolean mAllowSms) {
+        this.mAllowSms = mAllowSms;
+    }
+
     public String getName() {
         return mName;
     }
 
     public String getLastName() {
         return mLastName;
+    }
+
+    public boolean isAllowSms() {
+        return mAllowSms;
+    }
+
+    public boolean isAllowShake() {
+        return mAllowShake;
     }
 }

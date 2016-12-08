@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import static edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.UserAccount.isLoggedIn;
+import static edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.UserAccount.singedInUserAccountName;
+
 /**
  *
  * @author Vu Nguyen
@@ -61,8 +64,8 @@ public class LoginActivity extends AppCompatActivity {
         if(found)
         {
             if(passwordLoginEditText.getText().toString().equals(accountList.get(pos).getStudentPassword())) {
-                UserAccount.isLoggedIn = true;
-                UserAccount.singedInUserAccountName = usernameLoginEditText.getText().toString();
+                isLoggedIn = true;
+                singedInUserAccountName = usernameLoginEditText.getText().toString();
                 startActivity(intent);
             }
             else
