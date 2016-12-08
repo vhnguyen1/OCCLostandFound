@@ -61,4 +61,5 @@
     <string name="allow_shake">Turn On Shake</string>
     <string name="email">Email</string>
     <string name="phone">Phone Number</string>
+    <string name="title_activity_google_maps">Map</string>
 </resources>
