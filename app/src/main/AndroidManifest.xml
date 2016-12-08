@@ -30,6 +30,9 @@
         <activity android:name=".MainMenuActivity" />
         <activity android:name=".ItemsListActivity" />
         <activity android:name=".ItemDetailsActivity" />
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".ReportItemActivity" />
+        <activity android:name=".CampusMapActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -42,15 +45,11 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".AboutActivity" />
-        <activity android:name=".ReportItemActivity" />
-        <activity android:name=".CampusMapActivity" />
         <activity
-            android:name=".MapActivity"
-            android:exported="true" />
-        <activity
-            android:name=".GoogleMapActivity"
-            android:label="@string/title_activity_google_map"></activity>
+            android:name=".GoogleMapsActivity"
+            android:exported="true"
+            android:label="@string/title_activity_google_maps" />
+        <activity android:name=".MapActivity"></activity>
     </application>
 
 </manifest>
