@@ -1,8 +1,7 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
-import android.accounts.Account;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -72,7 +71,14 @@ public class UserSettingsActivity extends AppCompatActivity {
         database.updateAccount(account);
 
         if(accountSettingShakeCheckBox.isChecked())
+             accountInfo.setAllowShake(true);
+        else
+            accountInfo.setAllowShake(false);
 
+        if(accountSettingSmsCheckBox.isChecked())
+            accountInfo.setAllowSms(true);
+        else
+            accountInfo.setAllowSms(false);
 
     }
 
