@@ -32,32 +32,32 @@ class DBHelper extends SQLiteOpenHelper {
 
     // Item Database Start
     private static final String ITEMS_TABLE = "LostItems";
-    private static final String ITEM_KEY_FIELD_ID = "id";
-    private static final String FIELD_ITEM_NAME = "name";
-    private static final String FIELD_ITEM_DESCRIPTION = "description";
-    private static final String FIELD_ITEM_DATE_LOST = "date_lost";
-    private static final String FIELD_ITEM_LAST_LOCATION = "last_location";
-    private static final String FIELD_ITEM_STATUS = "last_location";
-    private static final String FIELD_ITEM_IMAGE_URI = "image_uri";
+    private static final String ITEM_KEY_FIELD_ID = "item_id";
+    private static final String FIELD_ITEM_NAME = "item_name";
+    private static final String FIELD_ITEM_DESCRIPTION = "item_description";
+    private static final String FIELD_ITEM_DATE_LOST = "item_date_lost";
+    private static final String FIELD_ITEM_LAST_LOCATION = "item_last_location";
+    private static final String FIELD_ITEM_STATUS = "item_status";
+    private static final String FIELD_ITEM_IMAGE_URI = "item_image_uri";
     private static final String FIELD_REPORTING_USER = "user_account_name";
     // Item Database End
 
     // Account Table Start
     private static final String ACCOUNT_TABLE = "Accounts";
-    private static final String KEY_FIELD_ACCOUNT_USERNAME = "name";
-    private static final String FIELD_ACCOUNT_PASSWORD = "password";
-    private static final String FIELD_ACCOUNT_PHONE_NUMBER = "phone_number";
-    private static final String FIELD_ACCOUNT_EMAIL = "email";
-    private static final String FIELD_ACCOUNT_STUDENT_ID = "student_id";
-    private static final String FIELD_ACCOUNT_PROFILE_PICTURE = "profile_pic";
+    private static final String KEY_FIELD_ACCOUNT_USERNAME = "username";
+    private static final String FIELD_ACCOUNT_PASSWORD = "account_password";
+    private static final String FIELD_ACCOUNT_PHONE_NUMBER = "account_phone_number";
+    private static final String FIELD_ACCOUNT_EMAIL = "account_email";
+    private static final String FIELD_ACCOUNT_STUDENT_ID = "account_student_id";
+    private static final String FIELD_ACCOUNT_PROFILE_PICTURE = "account_profile_pic";
     // Account Table End
 
     // Report Table Start
     private static final String REPORT_TABLE  = "Reports";
-    private static final String REPORT_KEY_FIELD_ID = "id";
-    private static final String FIELD_REPORT_ACCOUNT = "account";
-    private static final String FIELD_REPORT_ITEM_ID = "item_id";
-    private static final String FIELD_REPORT_SMS_CHECK = "sms_notification";
+    private static final String REPORT_KEY_FIELD_ID = "report_id";
+    private static final String FIELD_REPORT_ACCOUNT = "report_account";
+    private static final String FIELD_REPORT_ITEM_ID = "report_item_id";
+    private static final String FIELD_REPORT_SMS_CHECK = "report_sms_notification";
     // Report Table End
 
     /**
@@ -82,7 +82,8 @@ class DBHelper extends SQLiteOpenHelper {
                 + FIELD_ITEM_DATE_LOST + " TEXT, "
                 + FIELD_ITEM_LAST_LOCATION + " TEXT, "
                 + FIELD_ITEM_STATUS + " INTEGER, "
-                + FIELD_ITEM_IMAGE_URI + " TEXT"
+                + FIELD_ITEM_IMAGE_URI + " TEXT, "
+                + FIELD_REPORTING_USER + " TEXT, "
                 + "FOREIGN KEY(" + FIELD_REPORTING_USER + ") REFERENCES "
                 + ACCOUNT_TABLE + "(" + KEY_FIELD_ACCOUNT_USERNAME + ")" +")";
         db.execSQL(table);
@@ -101,9 +102,9 @@ class DBHelper extends SQLiteOpenHelper {
                 + REPORT_KEY_FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + FIELD_REPORT_ACCOUNT + " TEXT, "
                 + FIELD_REPORT_ITEM_ID + " TEXT, "
-                + FIELD_REPORT_SMS_CHECK + " TEXT"
+                + FIELD_REPORT_SMS_CHECK + " TEXT, "
                 + "FOREIGN KEY(" + FIELD_REPORT_ACCOUNT + ") REFERENCES "
-                + ACCOUNT_TABLE + "(" + KEY_FIELD_ACCOUNT_USERNAME + "),"
+                + ACCOUNT_TABLE + "(" + KEY_FIELD_ACCOUNT_USERNAME + ")"
                 + "FOREIGN KEY(" + FIELD_REPORT_ITEM_ID + ") REFERENCES "
                 + ITEMS_TABLE + "(" + ITEM_KEY_FIELD_ID + "))";
         db.execSQL(table);
@@ -145,8 +146,8 @@ class DBHelper extends SQLiteOpenHelper {
 
         values.put(FIELD_ITEM_NAME, name);
         values.put(FIELD_ITEM_DESCRIPTION, description);
-        values.put(FIELD_ITEM_LAST_LOCATION, lastLocation);
         values.put(FIELD_ITEM_DATE_LOST, dateLost);
+        values.put(FIELD_ITEM_LAST_LOCATION, lastLocation);
         values.put(FIELD_ITEM_STATUS, status);
         values.put(FIELD_ITEM_IMAGE_URI, imageURI);
         values.put(FIELD_REPORTING_USER, username);
@@ -156,41 +157,32 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Returns a list of all the lost items inside the database.
-     * @return The list of all the lost items.
+     * Applies changes/updates to a <code>Item</code>.
+     * @param item <code>Item</code> to be updated in the database.
      */
-    public ArrayList<Item> getAllItems() {
-        ArrayList<Item> itemArrayList = new ArrayList<>();
+    public void updateItem(final Item item){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
 
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(
-                ITEMS_TABLE,
-                new String[]{ITEM_KEY_FIELD_ID, FIELD_ITEM_NAME, FIELD_ITEM_DESCRIPTION,
-                        FIELD_ITEM_DATE_LOST, FIELD_ITEM_LAST_LOCATION, FIELD_ITEM_STATUS,
-                        FIELD_ITEM_IMAGE_URI, FIELD_REPORTING_USER},
-                null, null, null, null, null, null );
+        String name = item.getName();
+        String description = item.getDescription();
+        String dateLost = item.getDateLost();
+        String lastLocation = item.getLastLocation();
+        int status = ((item.getStatus())? 1 : 0);
+        String imageURI = item.getImageUri().toString();
+        String username = item.getReportedUsername();
 
-        if (cursor.moveToFirst()){
-            do {
-                int itemID = cursor.getInt(0);
-                String name = cursor.getString(1);
-                String description = cursor.getString(2);
-                String dateLost = cursor.getString(3);
-                String lastLocation = cursor.getString(4);
-                boolean status = ((cursor.getInt(5) == 1)? true : false);
-                Uri imageUri = Uri.parse(cursor.getString(6));
-                String username = cursor.getString(7);
+        values.put(FIELD_ITEM_NAME, name);
+        values.put(FIELD_ITEM_DESCRIPTION, description);
+        values.put(FIELD_ITEM_DATE_LOST, dateLost);
+        values.put(FIELD_ITEM_LAST_LOCATION, lastLocation);
+        values.put(FIELD_ITEM_STATUS, status);
+        values.put(FIELD_ITEM_IMAGE_URI, imageURI);
+        values.put(FIELD_REPORTING_USER, username);
 
-                itemArrayList.add(new Item(itemID, name, description, dateLost, lastLocation,
-                        status, imageUri, username));
-
-            } while (cursor.moveToNext());
-        }
-
+        db.update(ITEMS_TABLE, values, ITEM_KEY_FIELD_ID + " = ?",
+                new String[]{String.valueOf(item.getID())});
         db.close();
-        cursor.close();
-
-        return itemArrayList;
     }
 
     /**
@@ -231,32 +223,41 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Applies changes/updates to a <code>Item</code>.
-     * @param item <code>Item</code> to be updated in the database.
+     * Returns a list of all the lost items inside the database.
+     * @return The list of all the lost items.
      */
-    public void updateItem(final Item item){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
+    public ArrayList<Item> getAllItems() {
+        ArrayList<Item> itemArrayList = new ArrayList<>();
 
-        String name = item.getName();
-        String description = item.getDescription();
-        String dateLost = item.getDateLost();
-        String lastLocation = item.getLastLocation();
-        int status = ((item.getStatus())? 1 : 0);
-        String imageURI = item.getImageUri().toString();
-        String username = item.getReportedUsername();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(
+                ITEMS_TABLE,
+                new String[]{ITEM_KEY_FIELD_ID, FIELD_ITEM_NAME, FIELD_ITEM_DESCRIPTION,
+                        FIELD_ITEM_DATE_LOST, FIELD_ITEM_LAST_LOCATION, FIELD_ITEM_STATUS,
+                        FIELD_ITEM_IMAGE_URI, FIELD_REPORTING_USER},
+                null, null, null, null, null, null );
 
-        values.put(FIELD_ITEM_NAME, name);
-        values.put(FIELD_ITEM_DESCRIPTION, description);
-        values.put(FIELD_ITEM_LAST_LOCATION, lastLocation);
-        values.put(FIELD_ITEM_DATE_LOST, dateLost);
-        values.put(FIELD_ITEM_STATUS, status);
-        values.put(FIELD_ITEM_IMAGE_URI, imageURI);
-        values.put(FIELD_REPORTING_USER, username);
+        if (cursor.moveToFirst()){
+            do {
+                int itemID = cursor.getInt(0);
+                String name = cursor.getString(1);
+                String description = cursor.getString(2);
+                String dateLost = cursor.getString(3);
+                String lastLocation = cursor.getString(4);
+                boolean status = ((cursor.getInt(5) == 1)? true : false);
+                Uri imageUri = Uri.parse(cursor.getString(6));
+                String username = cursor.getString(7);
 
-        db.update(ITEMS_TABLE, values, ITEM_KEY_FIELD_ID + " = ?",
-                new String[]{String.valueOf(item.getID())});
+                itemArrayList.add(new Item(itemID, name, description, dateLost, lastLocation,
+                        status, imageUri, username));
+
+            } while (cursor.moveToNext());
+        }
+
         db.close();
+        cursor.close();
+
+        return itemArrayList;
     }
 
     /**
