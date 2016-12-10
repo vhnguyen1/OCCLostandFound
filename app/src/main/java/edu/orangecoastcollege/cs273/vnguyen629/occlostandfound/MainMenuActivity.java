@@ -7,7 +7,6 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.TextView;
 
 /**
  * The main menu of the application. It allows the user to select and
@@ -16,9 +15,6 @@ import android.widget.TextView;
  * @author Vincent Nguyen
  */
 public class MainMenuActivity extends AppCompatActivity {
-    private TextView menuLoginTextView;
-    private TextView menuLoggedInTextView;
-
     private Sensor accelerometer;
     private SensorManager sensorManager;
     private ShakeDetector shakeDetector;
@@ -26,26 +22,13 @@ public class MainMenuActivity extends AppCompatActivity {
     /**
      * Starts up the activity and prepares the ShakeDetector to monitor any
      * movements that constitute as shakes where the ListItemActivity may load
-     * up if found. Also checks to see if the user is signed into an account. If the user
-     * is signed in, then the text for the sign out/in icon changes accordingly.
+     * up if found.
      * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-
-        menuLoginTextView = (TextView) findViewById(R.id.menuLoginTextView);
-        menuLoggedInTextView = (TextView) findViewById(R.id.menuLoggedInTextView);
-
-        if (UserAccount.isLoggedIn) {
-            menuLoginTextView.setText(getString(R.string.sign_out_text));
-            menuLoggedInTextView.setText("");
-        }
-        else {
-            menuLoginTextView.setText(getString(R.string.sign_in_text));
-            menuLoggedInTextView.setText(getString(R.string.full_features_text));
-        }
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -54,11 +37,11 @@ public class MainMenuActivity extends AppCompatActivity {
              * When a 3D motion that the sensors constitute as a shake has been detected,
              * the ItemListActivity is loaded.
              */
-            @Override
-            public void onShake() {
-                startActivity(new Intent(MainMenuActivity.this, ItemsListActivity.class));
-            }
-        });
+        @Override
+        public void onShake() {
+            startActivity(new Intent(MainMenuActivity.this, ItemsListActivity.class));
+        }
+    });
     }
 
     /**
@@ -94,12 +77,9 @@ public class MainMenuActivity extends AppCompatActivity {
      * @param view The clickable ImageView or TextView that opens up the LoginActivity.
      */
     public void openLogin(View view) {
-        if (UserAccount.isLoggedIn) {
-            UserAccount.isLoggedIn = false;
-            UserAccount.singedInUserAccountName = "";
-        }
-        else
-            startActivity(new Intent(MainMenuActivity.this, LoginActivity.class));
+        UserAccount.isLoggedIn = false;
+        UserAccount.singedInUserAccountName = "";
+        startActivity(new Intent(MainMenuActivity.this, LoginActivity.class));
     }
 
     /**
@@ -108,11 +88,9 @@ public class MainMenuActivity extends AppCompatActivity {
      */
     @Override
     protected void onResume() {
-        if (UserAccount.isLoggedIn) {
-            super.onResume();
-            sensorManager.registerListener(shakeDetector, accelerometer,
-                    SensorManager.SENSOR_DELAY_UI);
-        }
+        super.onResume();
+        sensorManager.registerListener(shakeDetector, accelerometer,
+                SensorManager.SENSOR_DELAY_UI);
     }
 
     /**

@@ -1,8 +1,8 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -41,6 +41,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         };
 
         splashTimer = new Timer();
-        splashTimer.schedule(splashTimerTask, 3000);
+        splashTimer.schedule(splashTimerTask, 100);
     }
 }

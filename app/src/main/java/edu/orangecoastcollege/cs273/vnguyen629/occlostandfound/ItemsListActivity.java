@@ -53,7 +53,6 @@ public class ItemsListActivity extends AppCompatActivity {
 
         this.deleteDatabase(DBHelper.DATABASE_NAME);
         database = new DBHelper(this);
-
         //database.importItemFromCSV(Item.ITEMS_FILE_NAME);
 
         searchNameFilterEditText = (EditText) findViewById(R.id.searchNameFilterEditText);

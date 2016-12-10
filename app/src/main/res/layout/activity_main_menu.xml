@@ -149,14 +149,4 @@
         android:cropToPadding="true"
         android:scaleType="fitCenter" />
 
-    <TextView
-        android:text="@string/full_features_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/menuLoggedInTextView"
-        android:textStyle="normal|italic"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="12dp" />
-
 </RelativeLayout>
