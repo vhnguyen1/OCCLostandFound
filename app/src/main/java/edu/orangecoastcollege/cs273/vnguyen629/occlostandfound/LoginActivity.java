@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
     public void login(View view)
     {
         boolean found = false;
-        Intent intent = new Intent(this, ItemsListActivity.class);
+        Intent intent = new Intent(this, MainMenuActivity.class);
         int pos = 0;
 
         // TODO: loop thought list to check if user exist
@@ -69,10 +69,12 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
             else
-                Toast.makeText(this, R.string.invalid_username_password_text, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.invalid_username_password_text),
+                        Toast.LENGTH_SHORT).show();
         }
         else
-            Toast.makeText(this, R.string.invalid_username_password_text, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.invalid_username_password_text),
+                    Toast.LENGTH_SHORT).show();
     }
 
     /**
