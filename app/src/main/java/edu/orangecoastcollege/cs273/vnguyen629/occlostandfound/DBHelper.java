@@ -209,7 +209,7 @@ class DBHelper extends SQLiteOpenHelper {
         String description = cursor.getString(2);
         String dateLost = cursor.getString(3);
         String lastLocation = cursor.getString(4);
-        boolean status = ((cursor.getInt(5) == 1)? true : false);
+        boolean status = (cursor.getInt(5) == 1);
         Uri imageUri = Uri.parse(cursor.getString(6));
         String username = cursor.getString(7);
 
@@ -244,7 +244,7 @@ class DBHelper extends SQLiteOpenHelper {
                 String description = cursor.getString(2);
                 String dateLost = cursor.getString(3);
                 String lastLocation = cursor.getString(4);
-                boolean status = ((cursor.getInt(5) == 1)? true : false);
+                boolean status = (cursor.getInt(5) == 1);
                 Uri imageUri = Uri.parse(cursor.getString(6));
                 String username = cursor.getString(7);
 
