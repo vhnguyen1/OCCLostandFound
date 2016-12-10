@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">OCC Lost and Found</string>
     <string name="title_activity_maps">Map</string>
-    <string name="office_title">Associated Students of Orange Coast College</string>
     <string name="not_signed_in_text">Not signed in? Click</string>
     <string name="here_text"><u>here.</u></string>
     <string name="reported_lost_items_text">Reported Lost Items</string>
@@ -61,5 +60,10 @@
     <string name="allow_shake">Turn On Shake</string>
     <string name="email">Email</string>
     <string name="phone">Phone Number</string>
+
+    <!-- Benjamin -->
     <string name="title_activity_google_maps">Map</string>
+    <string name="occ_address">2701 Fairview Road \n Costa Mesa, CA 92626</string>
+    <string name="office_title">Associated Students of Orange Coast College</string>
+    <string name="occ_map_button">Locate the ASOCC office on campus map</string>
 </resources>

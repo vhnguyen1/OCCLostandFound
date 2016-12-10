@@ -10,7 +10,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/occ_campus_map"
+        app:srcCompat="@drawable/occ_campus_map_2"
         android:id="@+id/occCampusMapImageView"
         android:adjustViewBounds="true"
         android:cropToPadding="true"

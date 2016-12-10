@@ -56,8 +56,8 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String REPORT_TABLE  = "Reports";
     private static final String REPORT_KEY_FIELD_ID = "id";
     private static final String FIELD_REPORT_ACCOUNT = "account";
-    private static final String FIELD_REPORT_ITEM_NAME = "name";
-    private static final String FIELD_REPORT_DATE_LOST = "date_lost";
+    private static final String FIELD_REPORT_ITEM_ID = "item_id";
+    private static final String FIELD_REPORT_SMS_CHECK = "sms_notification";
     // Report Table End
 
     /**
@@ -100,8 +100,12 @@ class DBHelper extends SQLiteOpenHelper {
         table =  "CREATE TABLE " + REPORT_TABLE + "("
                 + REPORT_KEY_FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + FIELD_REPORT_ACCOUNT + " TEXT, "
-                + FIELD_REPORT_ITEM_NAME + " TEXT, "
-                + FIELD_REPORT_DATE_LOST + " TEXT" + ")";
+                + FIELD_REPORT_ITEM_ID + " TEXT, "
+                + FIELD_REPORT_SMS_CHECK + " TEXT"
+                + "FOREIGN KEY(" + FIELD_REPORT_ACCOUNT + ") REFERENCES "
+                + ACCOUNT_TABLE + "(" + KEY_FIELD_ACCOUNT_USERNAME + "),"
+                + "FOREIGN KEY(" + FIELD_REPORT_ITEM_ID + ") REFERENCES "
+                + ITEMS_TABLE + "(" + ITEM_KEY_FIELD_ID + "))";
         db.execSQL(table);
     }
 
@@ -456,13 +460,13 @@ class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        String account = newReport.getAccount();
-        String name = newReport.getName();
-        String dateLost = newReport.getDateLost();
+        UserAccount account = newReport.getAccount();
+        Item item = newReport.getItem();
+        int smsCheck = newReport.getSmsCheck();
 
-        values.put(FIELD_REPORT_ACCOUNT, account);
-        values.put(FIELD_REPORT_ITEM_NAME, name);
-        values.put(FIELD_REPORT_DATE_LOST, dateLost);
+        values.put(FIELD_REPORT_ACCOUNT, account.getStudentUserName());
+        values.put(FIELD_REPORT_ITEM_ID, item.getID());
+        values.put(FIELD_REPORT_SMS_CHECK, smsCheck);
 
         db.insert(REPORT_TABLE, null, values);
         db.close();
@@ -478,18 +482,18 @@ class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 REPORT_TABLE,
-                new String[]{REPORT_KEY_FIELD_ID, FIELD_REPORT_ACCOUNT, FIELD_REPORT_ITEM_NAME,
-                        FIELD_REPORT_DATE_LOST},
+                new String[]{REPORT_KEY_FIELD_ID, FIELD_REPORT_ACCOUNT, FIELD_REPORT_ITEM_ID,
+                        FIELD_REPORT_SMS_CHECK},
                 null, null, null, null, null, null );
 
         if (cursor.moveToFirst()){
             do {
+                UserAccount account = getUserAccount(cursor.getString(1));
+                Item item  = getItem(Integer.parseInt(cursor.getString(2)));
                 int reportID = cursor.getInt(0);
-                String account = cursor.getString(1);
-                String name = cursor.getString(2);
-                String dateLost = cursor.getString(3);
+                int smsCheck = cursor.getInt(3);
 
-                reportArrayList.add(new Report(reportID, account, name, dateLost));
+                reportArrayList.add(new Report(reportID, account, item, smsCheck));
 
             } while (cursor.moveToNext());
         }
@@ -509,8 +513,8 @@ class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 REPORT_TABLE,
-                new String[]{REPORT_KEY_FIELD_ID, FIELD_REPORT_ACCOUNT, FIELD_REPORT_ITEM_NAME,
-                        FIELD_REPORT_DATE_LOST},
+                new String[]{REPORT_KEY_FIELD_ID, FIELD_REPORT_ACCOUNT, FIELD_REPORT_ITEM_ID,
+                        FIELD_REPORT_SMS_CHECK},
                 REPORT_KEY_FIELD_ID + "=?",
                 new String[]{String.valueOf(id)},
                 null, null, null, null );
@@ -518,12 +522,12 @@ class DBHelper extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        int itemID = cursor.getInt(0);
-        String account = cursor.getString(1);
-        String name = cursor.getString(2);
-        String dateLost = cursor.getString(3);
+        UserAccount account = getUserAccount(cursor.getString(1));
+        Item item  = getItem(Integer.parseInt(cursor.getString(2)));
+        int reportID = cursor.getInt(0);
+        int smsCheck = cursor.getInt(3);
 
-        final Report REPORT = new Report(itemID, account, name, dateLost);
+        final Report REPORT = new Report(reportID, account, item, smsCheck);
 
         db.close();
         cursor.close();
@@ -539,13 +543,13 @@ class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        String account = report.getAccount();
-        String name = report.getName();
-        String dateLost = report.getDateLost();
+        UserAccount account = report.getAccount();
+        Item item = report.getItem();
+        int smsCheck = report.getSmsCheck();
 
-        values.put(FIELD_REPORT_ACCOUNT, account);
-        values.put(FIELD_REPORT_ITEM_NAME, name);
-        values.put(FIELD_REPORT_DATE_LOST, dateLost);
+        values.put(FIELD_REPORT_ACCOUNT, account.getStudentUserName());
+        values.put(FIELD_REPORT_ITEM_ID, item.getID());
+        values.put(FIELD_REPORT_SMS_CHECK, smsCheck);
 
         db.update(REPORT_TABLE, values, REPORT_KEY_FIELD_ID + " = ?",
                 new String[]{String.valueOf(report.getID())});
@@ -599,11 +603,11 @@ class DBHelper extends SQLiteOpenHelper {
                 }
 
                 int id = Integer.parseInt(fields[0].replaceAll("\\s+",""));
-                String account = fields[1].trim();
-                String name = fields[2].trim();
-                String dateLost = fields[3].trim();
+                UserAccount account = getUserAccount(fields[1].trim());
+                Item item = getItem(Integer.parseInt(fields[2].replaceAll("\\s+","")));
+                int smsCheck = Integer.parseInt(fields[3].replaceAll("\\s+",""));
 
-                addReport(new Report(id, account, name, dateLost));
+                addReport(new Report(id, account, item, smsCheck));
             }
         } catch (IOException err) {
             err.printStackTrace();
