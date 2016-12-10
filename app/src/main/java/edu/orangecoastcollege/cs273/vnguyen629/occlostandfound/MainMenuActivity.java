@@ -39,12 +39,12 @@ public class MainMenuActivity extends AppCompatActivity {
         menuLoggedInTextView = (TextView) findViewById(R.id.menuLoggedInTextView);
 
         if (UserAccount.isLoggedIn) {
-            menuLoginTextView.setText(this.getString(R.string.sign_out_text));
+            menuLoginTextView.setText(getString(R.string.sign_out_text));
             menuLoggedInTextView.setText("");
         }
         else {
-            menuLoginTextView.setText(this.getString(R.string.sign_in_text));
-            menuLoggedInTextView.setText(this.getString(R.string.full_features_text));
+            menuLoginTextView.setText(getString(R.string.sign_in_text));
+            menuLoggedInTextView.setText(getString(R.string.full_features_text));
         }
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
