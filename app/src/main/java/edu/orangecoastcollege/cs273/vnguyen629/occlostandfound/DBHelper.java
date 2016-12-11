@@ -64,9 +64,9 @@ class DBHelper extends SQLiteOpenHelper {
      * Creates a new SQL database.
      * @param context
      */
-    public DBHelper (Context context){
+    public DBHelper(Context context){
         super (context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.mContext = context;
+        mContext = context;
     }
 
     /**
@@ -209,7 +209,7 @@ class DBHelper extends SQLiteOpenHelper {
         String description = cursor.getString(2);
         String dateLost = cursor.getString(3);
         String lastLocation = cursor.getString(4);
-        boolean status = ((cursor.getInt(5) == 1)? true : false);
+        boolean status = (cursor.getInt(5) == 1);
         Uri imageUri = Uri.parse(cursor.getString(6));
         String username = cursor.getString(7);
 
@@ -225,8 +225,8 @@ class DBHelper extends SQLiteOpenHelper {
      */
     public ArrayList<Item> getAllItems() {
         ArrayList<Item> itemArrayList = new ArrayList<>();
-
         SQLiteDatabase db = this.getReadableDatabase();
+
         Cursor cursor = db.query(
                 ITEMS_TABLE,
                 new String[]{ITEM_KEY_FIELD_ID, FIELD_ITEM_NAME, FIELD_ITEM_DESCRIPTION,
@@ -241,7 +241,7 @@ class DBHelper extends SQLiteOpenHelper {
                 String description = cursor.getString(2);
                 String dateLost = cursor.getString(3);
                 String lastLocation = cursor.getString(4);
-                boolean status = ((cursor.getInt(5) == 1)? true : false);
+                boolean status = (cursor.getInt(5) == 1);
                 Uri imageUri = Uri.parse(cursor.getString(6));
                 String username = cursor.getString(7);
 
@@ -308,7 +308,7 @@ class DBHelper extends SQLiteOpenHelper {
                 String description = fields[2].trim();
                 String dateLost = fields[3].trim();
                 String lastLocation = fields[4].trim();
-                boolean status = ((fields[5].replaceAll("\\s+","") == "Found")? true : false);
+                boolean status = (fields[5].replaceAll("\\s+","") == "Found");
                 Uri itemImageURI = Uri.parse(fields[5].trim());
                 String username = fields[6].trim();
 
