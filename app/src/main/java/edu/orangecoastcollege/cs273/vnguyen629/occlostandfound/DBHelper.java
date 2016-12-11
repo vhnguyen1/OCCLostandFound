@@ -50,6 +50,7 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String FIELD_ACCOUNT_EMAIL = "email";
     private static final String FIELD_ACCOUNT_STUDENT_ID = "student_id";
     private static final String FIELD_ACCOUNT_PROFILE_PICTURE = "profile_pic";
+    private static final String FIELD_ACCOUNT_IS_ADMIN = "is_admin";
     // Account Table End
 
     // Report Table Start
@@ -98,8 +99,9 @@ class DBHelper extends SQLiteOpenHelper {
                 + FIELD_ACCOUNT_PASSWORD + " TEXT, "
                 + FIELD_ACCOUNT_PHONE_NUMBER + " TEXT, "
                 + FIELD_ACCOUNT_EMAIL + " TEXT, "
-                + FIELD_ACCOUNT_STUDENT_ID + " INTEGER, "
-                + FIELD_ACCOUNT_PROFILE_PICTURE + " TEXT"
+                + FIELD_ACCOUNT_STUDENT_ID + " TEXT, "
+                + FIELD_ACCOUNT_PROFILE_PICTURE + " TEXT, "
+                + FIELD_ACCOUNT_IS_ADMIN + " INTEGER"
                 + ")";
         db.execSQL(table);
 
@@ -344,6 +346,7 @@ class DBHelper extends SQLiteOpenHelper {
         values.put(FIELD_ACCOUNT_EMAIL, account.getStudentEmail());
         values.put(FIELD_ACCOUNT_STUDENT_ID, account.getStudentID());
         values.put(FIELD_ACCOUNT_PROFILE_PICTURE, account.getStudentProfilePic().toString());
+        values.put(FIELD_ACCOUNT_IS_ADMIN, account.getIsAdim());
 
         db.insert(ACCOUNT_TABLE, null, values);
         db.close();
@@ -360,7 +363,7 @@ class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = database.query(
                 ACCOUNT_TABLE,
                 new String[]{KEY_FIELD_ACCOUNT_USERNAME,FIELD_ACCOUNT_PASSWORD, FIELD_ACCOUNT_PHONE_NUMBER,
-                        FIELD_ACCOUNT_EMAIL, FIELD_ACCOUNT_STUDENT_ID, FIELD_ACCOUNT_PROFILE_PICTURE},
+                        FIELD_ACCOUNT_EMAIL, FIELD_ACCOUNT_STUDENT_ID, FIELD_ACCOUNT_PROFILE_PICTURE, FIELD_ACCOUNT_IS_ADMIN},
                 null,null,null,null,null,null
         );
 
@@ -370,7 +373,7 @@ class DBHelper extends SQLiteOpenHelper {
                 UserAccount account =
                         new UserAccount(cursor.getString(0), cursor.getString(1),
                                 cursor.getString(2), cursor.getString(3),
-                                cursor.getString(4), Uri.parse(cursor.getString(5).toString()));
+                                cursor.getString(4), Uri.parse(cursor.getString(5).toString()), ((cursor.getInt(6) == 0) ? false : true));
                 accountList.add(account);
 
             }while (cursor.moveToNext());
@@ -413,6 +416,7 @@ class DBHelper extends SQLiteOpenHelper {
         values.put(FIELD_ACCOUNT_EMAIL, account.getStudentEmail());
         values.put(FIELD_ACCOUNT_STUDENT_ID, account.getStudentID());
         values.put(FIELD_ACCOUNT_PROFILE_PICTURE, account.getStudentProfilePic().toString());
+        values.put(FIELD_ACCOUNT_IS_ADMIN, account.getIsAdim());
 
         db.update(ACCOUNT_TABLE, values, FIELD_ACCOUNT_STUDENT_ID + " = ?",
                 new String[]{String.valueOf(account.getStudentUserName())});
@@ -428,7 +432,7 @@ class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.query(
                 ACCOUNT_TABLE,
                 new String[]{KEY_FIELD_ACCOUNT_USERNAME,FIELD_ACCOUNT_PASSWORD, FIELD_ACCOUNT_PHONE_NUMBER,
-                        FIELD_ACCOUNT_EMAIL, FIELD_ACCOUNT_STUDENT_ID, FIELD_ACCOUNT_PROFILE_PICTURE},
+                        FIELD_ACCOUNT_EMAIL, FIELD_ACCOUNT_STUDENT_ID, FIELD_ACCOUNT_PROFILE_PICTURE, FIELD_ACCOUNT_IS_ADMIN},
                 KEY_FIELD_ACCOUNT_USERNAME + "=?",
                 new String[]{String.valueOf(id)},
                 null, null, null, null);
@@ -439,7 +443,7 @@ class DBHelper extends SQLiteOpenHelper {
         UserAccount account =
                 new UserAccount(cursor.getString(0), cursor.getString(1),
                         cursor.getString(2), cursor.getString(3),
-                        cursor.getString(4), Uri.parse(cursor.getString(5).toString()));
+                        cursor.getString(4), Uri.parse(cursor.getString(5).toString()), ((cursor.getInt(6) == 0) ? false : true));
 
         return account;
     }
