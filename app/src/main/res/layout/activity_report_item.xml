@@ -64,16 +64,6 @@
         android:layout_above="@+id/submitButtonImageView"
         android:layout_marginBottom="10dp" />
 
-    <TextView
-        android:text="2016"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/yearTextView"
-        android:textSize="18sp"
-        android:layout_below="@+id/reportItemLastLocationEditText"
-        android:layout_alignRight="@+id/reportItemImageTextView"
-        android:layout_alignEnd="@+id/reportItemImageTextView" />
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -87,42 +77,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="5dp" />
-
-    <Spinner
-        android:layout_height="wrap_content"
-        android:id="@+id/dayNumberSpinner"
-        android:layout_alignBottom="@+id/yearTextView"
-        android:layout_alignRight="@+id/reportItemImageView"
-        android:layout_alignEnd="@+id/reportItemImageView"
-        android:layout_width="100dp"
-        android:layout_marginLeft="5dp" />
-
-    <ImageView
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/submit_icon"
-        android:id="@+id/submitButtonImageView"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
-        android:scaleType="fitCenter"
-        android:clickable="true"
-        android:onClick="submitReport"
-        android:layout_width="200dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:text="@string/cancel_text"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/cancelButton"
-        android:onClick="cancelReport"
-        android:layout_below="@+id/reportItemDescriptionEditText"
-        android:layout_toRightOf="@+id/submitButtonImageView"
-        android:layout_toEndOf="@+id/submitButtonImageView"
-        android:layout_alignParentBottom="true" />
 
     <CheckBox
         android:text="@string/enable_sms_this_item"
@@ -146,5 +100,53 @@
         android:layout_height="150dp"
         android:layout_below="@+id/smsCheckBox"
         android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/submit_icon"
+        android:id="@+id/submitButtonImageView"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:scaleType="fitCenter"
+        android:clickable="true"
+        android:onClick="submitReport"
+        android:layout_width="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="11dp" />
+
+    <Button
+        android:text="@string/cancel_text"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/cancelButton"
+        android:onClick="cancelReport"
+        android:layout_below="@+id/reportItemDescriptionEditText"
+        android:layout_toRightOf="@+id/submitButtonImageView"
+        android:layout_toEndOf="@+id/submitButtonImageView"
+        android:layout_alignBottom="@+id/submitButtonImageView" />
+
+    <Spinner
+        android:layout_height="wrap_content"
+        android:id="@+id/dayNumberSpinner"
+        android:layout_width="100dp"
+        android:layout_marginLeft="12dp"
+        android:layout_below="@+id/reportItemLastLocationEditText"
+        android:layout_toRightOf="@+id/submitButtonImageView"
+        android:layout_toEndOf="@+id/submitButtonImageView"
+        android:layout_marginStart="12dp" />
+
+    <TextView
+        android:text="2016"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/yearTextView"
+        android:textSize="18sp"
+        android:layout_below="@+id/reportItemLastLocationEditText"
+        android:layout_alignRight="@+id/cancelButton"
+        android:layout_alignEnd="@+id/cancelButton"
+        android:layout_marginRight="14dp"
+        android:layout_marginEnd="14dp" />
 
 </RelativeLayout>

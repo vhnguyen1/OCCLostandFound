@@ -93,5 +93,6 @@
     <string name="december_text">December</string>
     <string name="february_29_days">Error: February has only 29 days!</string>
     <string name="enable_sms_this_item">Enable SMS notifications for this item</string>
+    <string name="day_text">Day</string>
     <!-- Benjamin -->
 </resources>

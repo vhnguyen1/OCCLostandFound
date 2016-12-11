@@ -111,7 +111,7 @@ public class ReportItemActivity extends AppCompatActivity {
 
         dayNumbers[0] = getString(R.string.select_day_text);
         for (int i = 1; i < dayNumbers.length; i++)
-            dayNumbers[0] = String.valueOf(i);
+            dayNumbers[i] = String.valueOf(i);
 
         return dayNumbers;
     }
@@ -145,7 +145,6 @@ public class ReportItemActivity extends AppCompatActivity {
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
                     parent.setSelection(0);
-                    month = "N/A";
                 }
             };
 
@@ -165,7 +164,7 @@ public class ReportItemActivity extends AppCompatActivity {
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
                     String selectedDay = String.valueOf(parent.getItemAtPosition(position));
 
-                    if (selectedDay.equals(getString(R.string.select_day_text)))
+                    if (selectedDay.equals(getString(R.string.day_text)))
                         day = "N/A";
                     else {
                         if (month.equals(getString(R.string.february_text))
@@ -184,7 +183,6 @@ public class ReportItemActivity extends AppCompatActivity {
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
                     parent.setSelection(0);
-                    day = "N/A";
                 }
             };
 
