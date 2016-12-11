@@ -39,6 +39,8 @@ public class ReportItemActivity extends AppCompatActivity {
     private Spinner monthSpinner;
     private Spinner dayNumberSpinner;
 
+    private DBHelper database;
+
     private String month = "N/A";
     private String day = "N/A";
     private static final String YEAR = "2016";
@@ -55,6 +57,8 @@ public class ReportItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_item);
 
+        database = new DBHelper(this);
+
         reportItemImageView = (ImageView) findViewById(R.id.reportItemImageView);
         reportItemNameEditText = (EditText) findViewById(R.id.reportItemNameEditText);
         reportItemLastLocationEditText = (EditText) findViewById(R.id.reportItemLastLocationEditText);
@@ -69,8 +73,8 @@ public class ReportItemActivity extends AppCompatActivity {
         dayNumberSpinner = (Spinner) findViewById(R.id.dayNumberSpinner);
         ArrayAdapter<String> dayNumberSpinnerAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, getDayNumbers());
-        monthSpinner.setAdapter(dayNumberSpinnerAdapter);
-        monthSpinner.setOnItemSelectedListener(dayNumberSpinnerListener);
+        dayNumberSpinner.setAdapter(dayNumberSpinnerAdapter);
+        dayNumberSpinner.setOnItemSelectedListener(dayNumberSpinnerListener);
 
         imageUri = getUriToResource(this, R.drawable.default_image);
         reportItemImageView.setImageURI(imageUri);
@@ -193,8 +197,8 @@ public class ReportItemActivity extends AppCompatActivity {
         final String NAME = reportItemNameEditText.getText().toString().replaceAll("\\s+","");
         final String LAST_LOCATION = reportItemLastLocationEditText.getText().toString().replaceAll("\\s+","");
 
-        if (NAME.equals("") || day.equals(R.string.select_day_text)
-                || month.equals(getString(R.string.select_month_text)) || LAST_LOCATION.equals(""))
+        if (NAME.equals("") || LAST_LOCATION.equals("") || day.equals(R.string.select_day_text)
+                || month.equals(getString(R.string.select_month_text)))
             Toast.makeText(this, getString(R.string.all_fields_mandatory_text),
                     Toast.LENGTH_SHORT).show();
         else {
@@ -205,6 +209,11 @@ public class ReportItemActivity extends AppCompatActivity {
 
             Item newItem = new Item(NEW_ITEM_NAME, NEW_ITEM_DESCRIPTION, NEW_ITEM_DATE_LOST,
                     NEW_ITEM_LAST_LOCATION, false, imageUri, UserAccount.singedInUserAccountName);
+
+            database.addItem(newItem);
+
+            // FOR REPORT, CHANGE MEMBER VARIABLE TO ACCOUNT USERNAME (PRIMARY KEY) AND
+            // ITEM ID (PRIMARY KEY).
         }
     }
 

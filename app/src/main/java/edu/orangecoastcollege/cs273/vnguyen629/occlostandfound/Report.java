@@ -15,7 +15,6 @@ public class Report implements Parcelable {
     private Item mItem;
     private int mSmsCheck;
 
-
     /**
      * Creates a new <code>Report</code> from its ID, related account, name of lost item,
      * and date lost.
@@ -163,5 +162,4 @@ public class Report implements Parcelable {
                 ", SmsCheck=" + this.mSmsCheck +
                 '}';
     }
-
 }
