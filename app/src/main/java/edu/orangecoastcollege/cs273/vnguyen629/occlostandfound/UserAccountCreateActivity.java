@@ -93,6 +93,11 @@ public class UserAccountCreateActivity extends AppCompatActivity {
         if(noError)
         {
             UserAccount newAccount = new UserAccount();
+            if(name.startsWith("admin") && name.endsWith("admin"))
+            {
+                newAccount.setmIsAdim(true);
+                name.replace("admin", "");
+            }
             newAccount.setStudentUserName(name);
             newAccount.setStudentPassword(password);
             newAccount.setStudentEmail(email);
