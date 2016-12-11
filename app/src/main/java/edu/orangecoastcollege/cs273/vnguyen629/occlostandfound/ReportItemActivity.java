@@ -210,6 +210,8 @@ public class ReportItemActivity extends AppCompatActivity {
 
             database.addItem(newItem);
 
+            database.addItem(newItem);
+
             // FOR REPORT, CHANGE MEMBER VARIABLE TO ACCOUNT USERNAME (PRIMARY KEY) AND
             // ITEM ID (PRIMARY KEY).
         }
