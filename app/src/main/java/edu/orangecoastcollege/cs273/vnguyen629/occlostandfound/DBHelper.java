@@ -37,7 +37,7 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String FIELD_ITEM_DESCRIPTION = "description";
     private static final String FIELD_ITEM_DATE_LOST = "date_lost";
     private static final String FIELD_ITEM_LAST_LOCATION = "last_location";
-    private static final String FIELD_ITEM_STATUS = "last_location";
+    private static final String FIELD_ITEM_STATUS = "item_status";
     private static final String FIELD_ITEM_IMAGE_URI = "image_uri";
     private static final String FIELD_REPORTING_USER = "user_account_name";
     // Item Database End
@@ -75,33 +75,36 @@ class DBHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate (SQLiteDatabase db){
-        String table = "CREATE TABLE " + ITEMS_TABLE + "("
+        String table =  "CREATE TABLE " + ACCOUNT_TABLE + "("
+                + KEY_FIELD_ACCOUNT_USERNAME + " TEXT PRIMARY KEY, "
+                + FIELD_ACCOUNT_PASSWORD + " TEXT, "
+                + FIELD_ACCOUNT_PHONE_NUMBER + " TEXT, "
+                + FIELD_ACCOUNT_EMAIL + " TEXT, "
+                + FIELD_ACCOUNT_STUDENT_ID + " INTEGER, "
+                + FIELD_ACCOUNT_PROFILE_PICTURE + " TEXT"
+                + ")";
+        db.execSQL(table);
+
+        table = "CREATE TABLE " + ITEMS_TABLE + "("
                 + ITEM_KEY_FIELD_ID + "  INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + FIELD_ITEM_NAME + " TEXT, "
                 + FIELD_ITEM_DESCRIPTION + " TEXT, "
                 + FIELD_ITEM_DATE_LOST + " TEXT, "
                 + FIELD_ITEM_LAST_LOCATION + " TEXT, "
                 + FIELD_ITEM_STATUS + " INTEGER, "
-                + FIELD_ITEM_IMAGE_URI + " TEXT"
+                + FIELD_ITEM_IMAGE_URI + " TEXT, "
+                + FIELD_REPORTING_USER + " TEXT, "
                 + "FOREIGN KEY(" + FIELD_REPORTING_USER + ") REFERENCES "
                 + ACCOUNT_TABLE + "(" + KEY_FIELD_ACCOUNT_USERNAME + ")" +")";
         db.execSQL(table);
 
-        table =  "CREATE TABLE " + ACCOUNT_TABLE + "("
-                + KEY_FIELD_ACCOUNT_USERNAME + " TEXT PRIMARY KEY, "
-                + FIELD_ACCOUNT_PASSWORD + " TEXT, "
-                + FIELD_ACCOUNT_PHONE_NUMBER + " TEXT, "
-                + FIELD_ACCOUNT_EMAIL + " TEXT, "
-                + FIELD_ACCOUNT_STUDENT_ID + " INTEGER, "
-                + FIELD_ACCOUNT_PROFILE_PICTURE + " TEXT, "
-                + ")";
-        db.execSQL(table);
+
 
         table =  "CREATE TABLE " + REPORT_TABLE + "("
                 + REPORT_KEY_FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + FIELD_REPORT_ACCOUNT + " TEXT, "
                 + FIELD_REPORT_ITEM_ID + " TEXT, "
-                + FIELD_REPORT_SMS_CHECK + " TEXT"
+                + FIELD_REPORT_SMS_CHECK + " TEXT, "
                 + "FOREIGN KEY(" + FIELD_REPORT_ACCOUNT + ") REFERENCES "
                 + ACCOUNT_TABLE + "(" + KEY_FIELD_ACCOUNT_USERNAME + "),"
                 + "FOREIGN KEY(" + FIELD_REPORT_ITEM_ID + ") REFERENCES "
