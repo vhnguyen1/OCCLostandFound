@@ -27,13 +27,10 @@
     <string name="enter_username_text">Enter Username...</string>
     <string name="enter_password_text">Enter Password...</string>
     <string name="status_text">Status</string>
-    <string name="item_lost_text">Enter item lost...</string>
     <string name="date_lost_text">Enter date lost...</string>
     <string name="enter_last_known_location_text">Enter last known location...</string>
     <string name="description_guide_text">Please describe the item in the best way you can.
         The more specific, the better. You may also leave any additional comments below.</string>
-    <string name="enter_item_description_text">Enter item description and any additional comments...</string>
-    <string name="click_to_change_image_text">Click above to select the image of your item (if possible)</string>
     <string name="reenter_password">Re-Enter Your Password</string>
     <string name="enter_email">Enter Your Student Email</string>
     <string name="enter_student_id">Enter Your Student ID</string>
@@ -62,8 +59,15 @@
     <string name="phone">Phone Number</string>
 
     <!-- Benjamin -->
+    <string name="enter_item_description_text">Additional details and comments(optional)...</string>
+    <string name="item_lost_text">Enter item name...</string>
+    <string name="click_to_change_image_text">Click above to select the image of your item (optional)</string>
     <string name="title_activity_google_maps">Map</string>
-    <string name="occ_address">2701 Fairview Road \n Costa Mesa, CA 92626</string>
+    <string name="occ_address">2701 Fairview Road \nCosta Mesa, CA 92626</string>
     <string name="office_title">Associated Students of Orange Coast College</string>
     <string name="occ_map_button">Locate the ASOCC office on campus map</string>
+    <string name="contact_info">CONTACT INFO</string>
+    <string name="asocc_email">asocc@occ.cccd.edu</string>
+    <string name="asocc_phone">(714) 432-5730</string>
+    <string name="not_found">Not Found</string>
 </resources>

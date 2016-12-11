@@ -43,7 +43,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         //Move the default camera position to the marker
         CameraPosition cameraPosition =
-                new CameraPosition.Builder().target(coordinate).zoom(14.0f).build();
+                new CameraPosition.Builder().target(coordinate).zoom(15.0f).build();
         CameraUpdate cameraUpdate = CameraUpdateFactory.newCameraPosition(cameraPosition);
         mMap.moveCamera(cameraUpdate);
     }

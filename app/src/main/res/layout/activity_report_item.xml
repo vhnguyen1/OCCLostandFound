@@ -8,8 +8,6 @@
     tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.ReportItemActivity">
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
         app:srcCompat="@drawable/default_image"
         android:layout_marginTop="12dp"
         android:id="@+id/reportItemImageView"
@@ -19,7 +17,9 @@
         android:clickable="true"
         android:onClick="selectItemImage"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_width="150dp"
+        android:layout_height="150dp" />
 
     <TextView
         android:text="@string/click_to_change_image_text"
@@ -37,7 +37,6 @@
         android:ems="10"
         android:id="@+id/reportItemDateLostEditText"
         android:gravity="center"
-        android:singleLine="true"
         android:hint="@string/date_lost_text"
         android:layout_below="@+id/reportItemNameEditText"
         android:layout_alignLeft="@+id/reportItemNameEditText"
@@ -51,14 +50,13 @@
         android:ems="10"
         android:id="@+id/reportItemLastLocationEditText"
         android:gravity="center"
-        android:singleLine="true"
         android:hint="@string/enter_last_known_location_text"
         android:layout_below="@+id/reportItemDateLostEditText"
         android:layout_alignLeft="@+id/reportItemDateLostEditText"
         android:layout_alignStart="@+id/reportItemDateLostEditText"
         android:layout_margin="5dp" />
 
-    <TextView
+    <!--<TextView
         android:text="@string/description_guide_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,22 +64,7 @@
         android:id="@+id/reportItemDescriptionTextView"
         android:layout_below="@+id/reportItemLastLocationEditText"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/red" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_below="@+id/reportItemDescriptionTextView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/reportItemDescriptionEditText"
-        android:gravity="top|left"
-        android:hint="@string/enter_item_description_text"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true" />
+        android:textColor="@color/red" />-->
 
     <EditText
         android:layout_width="match_parent"
@@ -90,19 +73,31 @@
         android:ems="10"
         android:id="@+id/reportItemNameEditText"
         android:gravity="center"
-        android:singleLine="true"
         android:hint="@string/item_lost_text"
         android:layout_marginTop="16dp"
         android:layout_below="@+id/reportItemImageTextView"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:maxLines="4"
+        android:ems="10"
+        android:id="@+id/reportItemDescriptionEditText"
+        android:gravity="top|left"
+        android:hint="@string/enter_item_description_text"
+        android:layout_below="@+id/reportItemLastLocationEditText"
+        android:layout_alignLeft="@+id/reportItemLastLocationEditText"
+        android:layout_alignStart="@+id/reportItemLastLocationEditText"
+        android:layout_marginTop="13dp" />
 
     <ImageView
         android:layout_width="200dp"
         android:layout_height="100dp"
         app:srcCompat="@drawable/submit_icon"
         android:id="@+id/submitButtonImageView"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/reportItemImageView"
-        android:layout_alignStart="@+id/reportItemImageView" />
+        android:layout_below="@+id/reportItemDescriptionEditText"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

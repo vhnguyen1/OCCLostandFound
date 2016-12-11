@@ -1,5 +1,6 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -12,6 +13,7 @@ import android.os.Parcelable;
  * @author Vincent Nguyen
  */
 public class Item implements Parcelable {
+    private Context context;
     private int mID;
     private String mName;
     private String mDescription;

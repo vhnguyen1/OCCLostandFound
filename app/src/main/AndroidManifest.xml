@@ -28,11 +28,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainMenuActivity" />
-        <activity android:name=".ItemsListActivity" />
+        <activity
+            android:name=".ItemsListActivity"
+            android:exported="true" />
         <activity android:name=".ItemDetailsActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".ReportItemActivity" />
         <activity android:name=".CampusMapActivity" />
+        <activity android:name=".ContactInfoActivity" />
+        <activity android:name=".LoginActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -49,7 +53,10 @@
             android:name=".GoogleMapsActivity"
             android:exported="true"
             android:label="@string/title_activity_google_maps" />
-        <activity android:name=".MapActivity"></activity>
+        <activity android:name=".MapActivity" />
+        <activity android:name=".AdminMainMenuActivity" />
+        <activity android:name=".UserReportListActivity" />
+        <activity android:name=".UserItemDetailsActivity"></activity>
     </application>
 
 </manifest>

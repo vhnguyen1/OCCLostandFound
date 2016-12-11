@@ -29,13 +29,30 @@
             android:id="@+id/itemListNameTextView"
             android:layout_margin="5dp" />
 
-        <TextView
-            android:text="Status"
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/itemListStatusTextView"
-            android:layout_margin="5dp"
-            android:textSize="18sp" />
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="Status: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView15"
+                android:layout_margin="5dp"
+                android:textSize="18sp"
+                android:layout_weight="0" />
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/itemListStatusTextView"
+                android:layout_weight="1"
+                android:textSize="18sp"
+                android:layout_margin="5dp" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>
