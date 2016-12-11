@@ -69,9 +69,9 @@ class DBHelper extends SQLiteOpenHelper {
      * Creates a new SQL database.
      * @param context
      */
-    public DBHelper (Context context){
+    public DBHelper(Context context){
         super (context, DATABASE_NAME, null, DATABASE_VERSION);
-        this.mContext = context;
+        mContext = context;
     }
 
     /**
@@ -80,18 +80,8 @@ class DBHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate (SQLiteDatabase db){
-        String table =  "CREATE TABLE " + ACCOUNT_TABLE + "("
-                + KEY_FIELD_ACCOUNT_USERNAME + " TEXT PRIMARY KEY, "
-                + FIELD_ACCOUNT_PASSWORD + " TEXT, "
-                + FIELD_ACCOUNT_PHONE_NUMBER + " TEXT, "
-                + FIELD_ACCOUNT_EMAIL + " TEXT, "
-                + FIELD_ACCOUNT_STUDENT_ID + " INTEGER, "
-                + FIELD_ACCOUNT_PROFILE_PICTURE + " TEXT"
-                + ")";
-        db.execSQL(table);
-
-        table = "CREATE TABLE " + ITEMS_TABLE + "("
-                + ITEM_KEY_FIELD_ID + "  INTEGER PRIMARY KEY AUTOINCREMENT, "
+        String table = "CREATE TABLE " + ITEMS_TABLE + "("
+                + ITEM_KEY_FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + FIELD_ITEM_NAME + " TEXT, "
                 + FIELD_ITEM_DESCRIPTION + " TEXT, "
                 + FIELD_ITEM_DATE_LOST + " TEXT, "
@@ -103,7 +93,15 @@ class DBHelper extends SQLiteOpenHelper {
                 + ACCOUNT_TABLE + "(" + KEY_FIELD_ACCOUNT_USERNAME + ")" +")";
         db.execSQL(table);
 
-
+        table =  "CREATE TABLE " + ACCOUNT_TABLE + "("
+                + KEY_FIELD_ACCOUNT_USERNAME + " TEXT PRIMARY KEY, "
+                + FIELD_ACCOUNT_PASSWORD + " TEXT, "
+                + FIELD_ACCOUNT_PHONE_NUMBER + " TEXT, "
+                + FIELD_ACCOUNT_EMAIL + " TEXT, "
+                + FIELD_ACCOUNT_STUDENT_ID + " INTEGER, "
+                + FIELD_ACCOUNT_PROFILE_PICTURE + " TEXT"
+                + ")";
+        db.execSQL(table);
 
         table =  "CREATE TABLE " + REPORT_TABLE + "("
                 + REPORT_KEY_FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -111,7 +109,7 @@ class DBHelper extends SQLiteOpenHelper {
                 + FIELD_REPORT_ITEM_ID + " TEXT, "
                 + FIELD_REPORT_SMS_CHECK + " TEXT, "
                 + "FOREIGN KEY(" + FIELD_REPORT_ACCOUNT + ") REFERENCES "
-                + ACCOUNT_TABLE + "(" + KEY_FIELD_ACCOUNT_USERNAME + "),"
+                + ACCOUNT_TABLE + "(" + KEY_FIELD_ACCOUNT_USERNAME + ")"
                 + "FOREIGN KEY(" + FIELD_REPORT_ITEM_ID + ") REFERENCES "
                 + ITEMS_TABLE + "(" + ITEM_KEY_FIELD_ID + "))";
         db.execSQL(table);
@@ -161,8 +159,8 @@ class DBHelper extends SQLiteOpenHelper {
 
         values.put(FIELD_ITEM_NAME, name);
         values.put(FIELD_ITEM_DESCRIPTION, description);
-        values.put(FIELD_ITEM_LAST_LOCATION, lastLocation);
         values.put(FIELD_ITEM_DATE_LOST, dateLost);
+        values.put(FIELD_ITEM_LAST_LOCATION, lastLocation);
         values.put(FIELD_ITEM_STATUS, status);
         values.put(FIELD_ITEM_IMAGE_URI, imageURI);
         values.put(FIELD_REPORTING_USER, username);
@@ -172,41 +170,32 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Returns a list of all the lost items inside the database.
-     * @return The list of all the lost items.
+     * Applies changes/updates to a <code>Item</code>.
+     * @param item <code>Item</code> to be updated in the database.
      */
-    public ArrayList<Item> getAllItems() {
-        ArrayList<Item> itemArrayList = new ArrayList<>();
+    public void updateItem(final Item item){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
 
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(
-                ITEMS_TABLE,
-                new String[]{ITEM_KEY_FIELD_ID, FIELD_ITEM_NAME, FIELD_ITEM_DESCRIPTION,
-                        FIELD_ITEM_DATE_LOST, FIELD_ITEM_LAST_LOCATION, FIELD_ITEM_STATUS,
-                        FIELD_ITEM_IMAGE_URI, FIELD_REPORTING_USER},
-                null, null, null, null, null, null );
+        String name = item.getName();
+        String description = item.getDescription();
+        String dateLost = item.getDateLost();
+        String lastLocation = item.getLastLocation();
+        int status = ((item.getStatus())? 1 : 0);
+        String imageURI = item.getImageUri().toString();
+        String username = item.getReportedUsername();
 
-        if (cursor.moveToFirst()){
-            do {
-                int itemID = cursor.getInt(0);
-                String name = cursor.getString(1);
-                String description = cursor.getString(2);
-                String dateLost = cursor.getString(3);
-                String lastLocation = cursor.getString(4);
-                boolean status = ((cursor.getInt(5) == 1)? true : false);
-                Uri imageUri = Uri.parse(cursor.getString(6));
-                String username = cursor.getString(7);
+        values.put(FIELD_ITEM_NAME, name);
+        values.put(FIELD_ITEM_DESCRIPTION, description);
+        values.put(FIELD_ITEM_DATE_LOST, dateLost);
+        values.put(FIELD_ITEM_LAST_LOCATION, lastLocation);
+        values.put(FIELD_ITEM_STATUS, status);
+        values.put(FIELD_ITEM_IMAGE_URI, imageURI);
+        values.put(FIELD_REPORTING_USER, username);
 
-                itemArrayList.add(new Item(itemID, name, description, dateLost, lastLocation,
-                        status, imageUri, username));
-
-            } while (cursor.moveToNext());
-        }
-
+        db.update(ITEMS_TABLE, values, ITEM_KEY_FIELD_ID + " = ?",
+                new String[]{String.valueOf(item.getID())});
         db.close();
-        cursor.close();
-
-        return itemArrayList;
     }
 
     /**
@@ -233,46 +222,52 @@ class DBHelper extends SQLiteOpenHelper {
         String description = cursor.getString(2);
         String dateLost = cursor.getString(3);
         String lastLocation = cursor.getString(4);
-        boolean status = ((cursor.getInt(5) == 1)? true : false);
+        boolean status = (cursor.getInt(5) == 1);
         Uri imageUri = Uri.parse(cursor.getString(6));
         String username = cursor.getString(7);
 
         final Item ITEM = new Item(itemID, name, description, dateLost, lastLocation,
                 status, imageUri, username);
 
-        db.close();
-        cursor.close();
-
         return ITEM;
     }
 
     /**
-     * Applies changes/updates to a <code>Item</code>.
-     * @param item <code>Item</code> to be updated in the database.
+     * Returns a list of all the lost items inside the database.
+     * @return The list of all the lost items.
      */
-    public void updateItem(final Item item){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
+    public ArrayList<Item> getAllItems() {
+        ArrayList<Item> itemArrayList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
 
-        String name = item.getName();
-        String description = item.getDescription();
-        String dateLost = item.getDateLost();
-        String lastLocation = item.getLastLocation();
-        int status = ((item.getStatus())? 1 : 0);
-        String imageURI = item.getImageUri().toString();
-        String username = item.getReportedUsername();
+        Cursor cursor = db.query(
+                ITEMS_TABLE,
+                new String[]{ITEM_KEY_FIELD_ID, FIELD_ITEM_NAME, FIELD_ITEM_DESCRIPTION,
+                        FIELD_ITEM_DATE_LOST, FIELD_ITEM_LAST_LOCATION, FIELD_ITEM_STATUS,
+                        FIELD_ITEM_IMAGE_URI, FIELD_REPORTING_USER},
+                null, null, null, null, null, null );
 
-        values.put(FIELD_ITEM_NAME, name);
-        values.put(FIELD_ITEM_DESCRIPTION, description);
-        values.put(FIELD_ITEM_LAST_LOCATION, lastLocation);
-        values.put(FIELD_ITEM_DATE_LOST, dateLost);
-        values.put(FIELD_ITEM_STATUS, status);
-        values.put(FIELD_ITEM_IMAGE_URI, imageURI);
-        values.put(FIELD_REPORTING_USER, username);
+        if (cursor.moveToFirst()){
+            do {
+                int itemID = cursor.getInt(0);
+                String name = cursor.getString(1);
+                String description = cursor.getString(2);
+                String dateLost = cursor.getString(3);
+                String lastLocation = cursor.getString(4);
+                boolean status = (cursor.getInt(5) == 1);
+                Uri imageUri = Uri.parse(cursor.getString(6));
+                String username = cursor.getString(7);
 
-        db.update(ITEMS_TABLE, values, ITEM_KEY_FIELD_ID + " = ?",
-                new String[]{String.valueOf(item.getID())});
+                itemArrayList.add(new Item(itemID, name, description, dateLost, lastLocation,
+                        status, imageUri, username));
+
+            } while (cursor.moveToNext());
+        }
+
         db.close();
+        cursor.close();
+
+        return itemArrayList;
     }
 
     /**
@@ -326,7 +321,7 @@ class DBHelper extends SQLiteOpenHelper {
                 String description = fields[2].trim();
                 String dateLost = fields[3].trim();
                 String lastLocation = fields[4].trim();
-                boolean status = ((fields[5].replaceAll("\\s+","") == "Found")? true : false);
+                boolean status = (fields[5].replaceAll("\\s+","") == "Found");
                 Uri itemImageURI = Uri.parse(fields[5].trim());
                 String username = fields[6].trim();
 
@@ -389,9 +384,6 @@ class DBHelper extends SQLiteOpenHelper {
             }while (cursor.moveToNext());
         }
 
-        cursor.close();
-        database.close();
-
         return accountList;
     }
 
@@ -405,7 +397,6 @@ class DBHelper extends SQLiteOpenHelper {
         // DELETE THE TABLE ROW
         db.delete(ACCOUNT_TABLE, FIELD_ACCOUNT_STUDENT_ID + " = ?",
                 new String[]{String.valueOf(account.getStudentUserName())});
-        db.close();
     }
 
     /**
@@ -414,7 +405,6 @@ class DBHelper extends SQLiteOpenHelper {
     public void deleteAllUserAccounts() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(ACCOUNT_TABLE, null, null);
-        db.close();
     }
 
     /**
@@ -434,7 +424,6 @@ class DBHelper extends SQLiteOpenHelper {
 
         db.update(ACCOUNT_TABLE, values, FIELD_ACCOUNT_STUDENT_ID + " = ?",
                 new String[]{String.valueOf(account.getStudentUserName())});
-        db.close();
     }
 
     /**
@@ -460,9 +449,6 @@ class DBHelper extends SQLiteOpenHelper {
                         cursor.getString(2), cursor.getString(3),
                         cursor.getString(4), Uri.parse(cursor.getString(5).toString()));
 
-        db.close();
-        cursor.close();
-
         return account;
     }
 
@@ -485,7 +471,6 @@ class DBHelper extends SQLiteOpenHelper {
         values.put(FIELD_REPORT_SMS_CHECK, smsCheck);
 
         db.insert(REPORT_TABLE, null, values);
-        db.close();
     }
 
     /**
@@ -513,9 +498,6 @@ class DBHelper extends SQLiteOpenHelper {
 
             } while (cursor.moveToNext());
         }
-
-        db.close();
-        cursor.close();
 
         return reportArrayList;
     }
@@ -545,9 +527,6 @@ class DBHelper extends SQLiteOpenHelper {
 
         final Report REPORT = new Report(reportID, account, item, smsCheck);
 
-        db.close();
-        cursor.close();
-
         return REPORT;
     }
 
@@ -569,7 +548,6 @@ class DBHelper extends SQLiteOpenHelper {
 
         db.update(REPORT_TABLE, values, REPORT_KEY_FIELD_ID + " = ?",
                 new String[]{String.valueOf(report.getID())});
-        db.close();
     }
 
     /**
@@ -580,7 +558,6 @@ class DBHelper extends SQLiteOpenHelper {
     {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(REPORT_TABLE, REPORT_KEY_FIELD_ID + " = ?", new String[] {String.valueOf(id)});
-        db.close();
     }
 
     /**
@@ -589,7 +566,6 @@ class DBHelper extends SQLiteOpenHelper {
     public void deleteAllReports() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(REPORT_TABLE, null, null);
-        db.close();
     }
 
     /**

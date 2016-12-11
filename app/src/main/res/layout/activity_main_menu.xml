@@ -45,49 +45,6 @@
         android:clickable="true"
         android:onClick="openReportedItemsList" />
 
-    <ImageView
-        android:layout_height="80dp"
-        app:srcCompat="@drawable/map_icon"
-        android:id="@+id/menuMapImageView"
-        android:layout_width="80dp"
-        android:layout_marginTop="44dp"
-        android:layout_below="@+id/menuItemListTextView"
-        android:layout_alignLeft="@+id/menuItemListImageView"
-        android:layout_alignStart="@+id/menuItemListImageView"
-        android:clickable="true"
-        android:onClick="openMap"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
-        android:scaleType="fitCenter" />
-
-    <TextView
-        android:text="@string/map_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/menuMapTextView"
-        android:textSize="18sp"
-        android:layout_below="@+id/menuMapImageView"
-        android:layout_alignLeft="@+id/menuMapImageView"
-        android:layout_alignStart="@+id/menuMapImageView"
-        android:layout_marginLeft="19dp"
-        android:layout_marginStart="19dp"
-        android:textStyle="normal|bold"
-        android:onClick="openMap"
-        android:clickable="true" />
-
-    <TextView
-        android:text="@string/settings_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/menuSettingsTextView"
-        android:textSize="18sp"
-        android:textStyle="normal|bold"
-        android:layout_below="@+id/menuSettingsImageView"
-        android:layout_alignRight="@+id/menuSettingsImageView"
-        android:layout_alignEnd="@+id/menuSettingsImageView"
-        android:clickable="true"
-        android:onClick="openSettings" />
-
     <TextView
         android:text="@string/view_items_list_text"
         android:layout_width="wrap_content"
@@ -104,20 +61,63 @@
         android:onClick="openReportedItemsList" />
 
     <ImageView
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/map_icon"
+        android:id="@+id/menuResourcesImageView"
+        android:layout_width="80dp"
+        android:clickable="true"
+        android:onClick="openMap"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:scaleType="fitCenter"
+        android:layout_alignTop="@+id/menuItemListImageView"
+        android:layout_alignLeft="@+id/menuLoginImageView"
+        android:layout_alignStart="@+id/menuLoginImageView"
+        android:layout_marginTop="8dp" />
+
+    <ImageView
         android:layout_width="80dp"
         app:srcCompat="@drawable/settings_icon"
         android:id="@+id/menuSettingsImageView"
         android:layout_height="80dp"
-        android:layout_marginLeft="78dp"
-        android:layout_marginStart="78dp"
-        android:layout_alignTop="@+id/menuMapImageView"
-        android:layout_toRightOf="@+id/menuItemListTextView"
-        android:layout_toEndOf="@+id/menuItemListTextView"
         android:clickable="true"
         android:onClick="openSettings"
         android:scaleType="fitCenter"
         android:cropToPadding="true"
-        android:adjustViewBounds="true" />
+        android:adjustViewBounds="true"
+        android:layout_below="@+id/menuResourcesTextView"
+        android:layout_alignLeft="@+id/menuItemListImageView"
+        android:layout_alignStart="@+id/menuItemListImageView"
+        android:layout_marginTop="43dp" />
+
+    <TextView
+        android:text="@string/settings_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuSettingsTextView"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:layout_below="@+id/menuSettingsImageView"
+        android:layout_alignRight="@+id/menuSettingsImageView"
+        android:layout_alignEnd="@+id/menuSettingsImageView"
+        android:clickable="true"
+        android:onClick="openSettings" />
+
+    <ImageView
+        app:srcCompat="@drawable/login_button_icon"
+        android:id="@+id/menuLoginImageView"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:onClick="signOut"
+        android:clickable="true"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:scaleType="fitCenter"
+        android:layout_alignTop="@+id/menuSettingsImageView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="80dp"
+        android:layout_marginEnd="80dp" />
 
     <TextView
         android:text="@string/sign_out_text"
@@ -126,27 +126,24 @@
         android:id="@+id/menuLoginTextView"
         android:textStyle="normal|bold"
         android:textSize="18sp"
-        android:layout_alignBaseline="@+id/menuItemListTextView"
-        android:layout_alignBottom="@+id/menuItemListTextView"
-        android:layout_alignLeft="@+id/menuSettingsTextView"
-        android:layout_alignStart="@+id/menuSettingsTextView"
         android:onClick="openReportedItemsList"
-        android:clickable="true" />
-
-    <ImageView
-        app:srcCompat="@drawable/login_button_icon"
-        android:id="@+id/menuLoginImageView"
-        android:layout_alignTop="@+id/menuItemListImageView"
-        android:layout_alignRight="@+id/menuSettingsImageView"
-        android:layout_alignEnd="@+id/menuSettingsImageView"
-        android:layout_marginRight="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:onClick="signOut"
         android:clickable="true"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
-        android:scaleType="fitCenter" />
+        android:layout_alignBaseline="@+id/menuSettingsTextView"
+        android:layout_alignBottom="@+id/menuSettingsTextView"
+        android:layout_alignRight="@+id/menuLoginImageView"
+        android:layout_alignEnd="@+id/menuLoginImageView" />
+
+    <TextView
+        android:text="@string/resources_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuResourcesTextView"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:onClick="openMap"
+        android:clickable="true"
+        android:layout_below="@+id/menuResourcesImageView"
+        android:layout_alignRight="@+id/menuResourcesImageView"
+        android:layout_alignEnd="@+id/menuResourcesImageView" />
 
 </RelativeLayout>

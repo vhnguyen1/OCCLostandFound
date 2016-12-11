@@ -53,7 +53,6 @@ public class UserSettingsActivity extends AppCompatActivity {
         accountInfoLastNameEditText.setText(accountInfo.getLastName());
         accountInfoEmailEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentEmail());
         accountInfoPhoneNumberEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentPhoneNum());
-
     }
 
     /**

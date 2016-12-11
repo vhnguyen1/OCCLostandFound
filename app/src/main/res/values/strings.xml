@@ -26,7 +26,7 @@
     <string name="need_account_text">Need an account? Click</string>
     <string name="enter_username_text">Enter Username...</string>
     <string name="enter_password_text">Enter Password...</string>
-    <string name="status_text">Status: </string>
+    <string name="status_text">Status</string>
     <string name="date_lost_text">Enter date lost...</string>
     <string name="enter_last_known_location_text">Enter last known location...</string>
     <string name="description_guide_text">Please describe the item in the best way you can.
@@ -70,6 +70,13 @@
     <string name="asocc_email">asocc@occ.cccd.edu</string>
     <string name="asocc_phone">(714) 432-5730</string>
     <string name="not_found">Not Found</string>
+    <string name="must_be_email_text">Must be an OCC student e-mail</string>
+    <string name="student_cccd_edu">\@student.cccd.edu</string>
+    <string name="admin_text">admin</string>
+    <string name="password_same_text">Password must be the same</string>
+    <string name="must_be_signed_in_text">You must be signed in to report a lost item.</string>
+    <string name="resources_text">Resources</string>
+    <!-- Benjamin -->
     <string name="allow_sms_notification">Allow SMS notification for this item</string>
     <string name="date_time_lost">Date/Time Lost: </string>
     <string name="last_know_location">Last Known Location: </string>

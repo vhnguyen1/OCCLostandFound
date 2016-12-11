@@ -1,16 +1,22 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.AnyRes;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -52,19 +58,21 @@ public class ItemsListActivity extends AppCompatActivity {
 
         this.deleteDatabase(DBHelper.DATABASE_NAME);
         database = new DBHelper(this);
+        //database.addItem(new Item("LV Wallet", "N/A", "N/A", "N/A", false,
+                //getUriToResource(this, R.drawable.default_image), "vnguyen629"));
 
         searchNameFilterEditText = (EditText) findViewById(R.id.searchNameFilterEditText);
-        //searchNameFilterEditText.addTextChangedListener(itemNameSearchTextWatcher);
+        searchNameFilterEditText.addTextChangedListener(itemNameSearchTextWatcher);
 
         allItemsList = database.getAllItems();
         filteredItemsList = new ArrayList<>(allItemsList);
-/*
+
         categoryFilterSpinner = (Spinner) findViewById(R.id.categoryFilterSpinner);
         ArrayAdapter<String> categoryFilterSpinnerAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, getItemNames());
         categoryFilterSpinner.setAdapter(categoryFilterSpinnerAdapter);
         categoryFilterSpinner.setOnItemSelectedListener(categoryFilterSpinnerListener);
-*/
+
         itemsListView = (ListView) findViewById(R.id.itemsListView);
         itemsListAdapter = new ItemListAdapter(this, R.layout.list_item, filteredItemsList);
         itemsListView.setAdapter(itemsListAdapter);
@@ -228,7 +236,8 @@ public class ItemsListActivity extends AppCompatActivity {
         if (UserAccount.isLoggedIn)
             startActivity(new Intent(ItemsListActivity.this, ReportItemActivity.class));
         else
-            Toast.makeText(this, getString(R.string.list_empty_text), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.must_be_signed_in_text),
+                    Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -250,7 +259,6 @@ public class ItemsListActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         if (UserAccount.isLoggedIn) {
-
             sensorManager.registerListener(shakeDetector, accelerometer,
                     SensorManager.SENSOR_DELAY_UI);
         }
@@ -265,5 +273,24 @@ public class ItemsListActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         sensorManager.unregisterListener(shakeDetector);
+    }
+
+    /**
+     * Get uri to any resource type within an Android Studio project. Method is public static to
+     * allow other classes to use it as a helper function.
+     * @param context The current context.
+     * @param resID The resource identifier for drawable.
+     * @return Uri to resource by given id.
+     * @throws Resources.NotFoundException If the given resource id does not exist.
+     */
+    public static Uri getUriToResource(@NonNull Context context, @AnyRes int resID)
+            throws Resources.NotFoundException {
+        /** Return a Resources instance for your application's package. */
+        Resources res = context.getResources();
+        /** return URI. */
+        return Uri.parse(ContentResolver.SCHEME_ANDROID_RESOURCE +
+                "://" + res.getResourcePackageName(resID)
+                + '/' + res.getResourceTypeName(resID)
+                + '/' + res.getResourceEntryName(resID));
     }
 }

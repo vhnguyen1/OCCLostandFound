@@ -48,12 +48,9 @@ public class CampusMapActivity extends AppCompatActivity {
      */
     @Override
     protected void onResume() {
-        //super.onResume() had to be moved outside of if statement
         super.onResume();
-        if (UserAccount.isLoggedIn) {
-            sensorManager.registerListener(shakeDetector, accelerometer,
-                    SensorManager.SENSOR_DELAY_UI);
-        }
+        sensorManager.registerListener(shakeDetector, accelerometer,
+                SensorManager.SENSOR_DELAY_UI);
     }
 
     /**
