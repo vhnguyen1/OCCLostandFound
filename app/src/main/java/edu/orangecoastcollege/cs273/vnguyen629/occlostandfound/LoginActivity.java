@@ -48,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
     {
         boolean found = false;
         Intent intent = new Intent(this, MainMenuActivity.class);
+        Intent adminIntent = new Intent(this, AdminMainMenuActivity.class);
         int pos = 0;
 
         // TODO: loop thought list to check if user exist
@@ -66,7 +67,10 @@ public class LoginActivity extends AppCompatActivity {
             if(passwordLoginEditText.getText().toString().equals(accountList.get(pos).getStudentPassword())) {
                 isLoggedIn = true;
                 singedInUserAccountName = usernameLoginEditText.getText().toString();
-                startActivity(intent);
+                if(accountList.get(pos).getIsAdim())
+                    startActivity(adminIntent);
+                else
+                    startActivity(intent);
             }
             else
                 Toast.makeText(this, getString(R.string.invalid_username_password_text),

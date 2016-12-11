@@ -22,6 +22,7 @@ public class UserAccount implements Parcelable {
     String mStudentEmail;
     String mStudentID;
     Uri    mStudentProfilePic;
+    boolean mIsAdim;
     AccountInfo mAccountInfo;
 
     /**
@@ -35,6 +36,7 @@ public class UserAccount implements Parcelable {
         this.mStudentEmail      = source.readString();
         this.mStudentID         = source.readString();
         this.mStudentProfilePic = Uri.parse(source.readString());
+        this.mIsAdim            = source.readByte() != 0;
     }
 
     /**
@@ -117,6 +119,14 @@ public class UserAccount implements Parcelable {
     }
 
     /**
+     *
+     * @return
+     */
+    public boolean getIsAdim() {
+        return mIsAdim;
+    }
+
+    /**
      * setStudentPassword function
      * @param mStudentPassword
      */
@@ -154,6 +164,15 @@ public class UserAccount implements Parcelable {
      */
     public void setStudentProfilePic(Uri mStudentProfilePic) {
         this.mStudentProfilePic = mStudentProfilePic;
+    }
+
+
+    /**
+     *
+     * @param mIsAdim
+     */
+    public void setmIsAdim(boolean mIsAdim) {
+        this.mIsAdim = mIsAdim;
     }
 
     /**
