@@ -23,7 +23,8 @@ public class UserAccount implements Parcelable {
     String mStudentID;
     Uri    mStudentProfilePic;
     boolean mIsAdim;
-    AccountInfo mAccountInfo;
+    private boolean mAllowShake;
+    private boolean mAllowSms;
 
     /**
      *
@@ -37,6 +38,8 @@ public class UserAccount implements Parcelable {
         this.mStudentID         = source.readString();
         this.mStudentProfilePic = Uri.parse(source.readString());
         this.mIsAdim            = source.readByte() != 0;
+        this.mAllowShake        = source.readByte() != 0;
+        this.mAllowSms          = source.readByte() != 0;
     }
 
     /**
@@ -49,7 +52,7 @@ public class UserAccount implements Parcelable {
      * @param mStudentProfilePic
      */
     public UserAccount(String mStudentUserName, String mStudentPassword, String mStudentPhoneNum,
-                       String mStudentEmail, String mStudentID, Uri mStudentProfilePic, boolean isAdim) {
+                       String mStudentEmail, String mStudentID, Uri mStudentProfilePic, boolean isAdim, boolean allowShake, boolean allowSms) {
         this.mStudentUserName = mStudentUserName;
         this.mStudentPassword = mStudentPassword;
         this.mStudentPhoneNum = mStudentPhoneNum;
@@ -57,10 +60,12 @@ public class UserAccount implements Parcelable {
         this.mStudentID = mStudentID;
         this.mStudentProfilePic = mStudentProfilePic;
         this.mIsAdim = isAdim;
+        this.mAllowShake = allowShake;
+        this.mAllowSms = allowSms;
     }
 
     public UserAccount() {
-        this("", "", "", "", "",null, false);
+        this("", "", "", "", "",null, false, false, false);
     }
 
     /**
@@ -128,6 +133,22 @@ public class UserAccount implements Parcelable {
     }
 
     /**
+     *
+     * @return
+     */
+    public boolean getAllowShake() {
+        return mAllowShake;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public boolean getAllowSms() {
+        return mAllowSms;
+    }
+
+    /**
      * setStudentPassword function
      * @param mStudentPassword
      */
@@ -174,6 +195,22 @@ public class UserAccount implements Parcelable {
      */
     public void setmIsAdim(boolean mIsAdim) {
         this.mIsAdim = mIsAdim;
+    }
+
+    /**
+     *
+     * @param mAllowShake
+     */
+    public void setmAllowShake(boolean mAllowShake) {
+        this.mAllowShake = mAllowShake;
+    }
+
+    /**
+     *
+     * @param mAllowSms
+     */
+    public void setmAllowSms(boolean mAllowSms) {
+        this.mAllowSms = mAllowSms;
     }
 
     /**
