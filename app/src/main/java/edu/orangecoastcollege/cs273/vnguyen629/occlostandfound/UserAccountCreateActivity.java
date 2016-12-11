@@ -74,16 +74,16 @@ public class UserAccountCreateActivity extends AppCompatActivity {
             if(password != reenterPasswordEditText.getText().toString())
             {
                 noError = false;
-                renterPasswordTextView.setText("Password must be the same");
+                renterPasswordTextView.setText(getString(R.string.password_same_text));
                 renterPasswordTextView.setTextColor(getResources().getColor(R.color.red));
 
             }
-            if(emailEditText.getText().toString().contains("@student.cccd.edu"))
+            if(emailEditText.getText().toString().contains(getString(R.string.student_cccd_edu)))
                 email = emailEditText.getText().toString();
             else
             {
                 noError = false;
-                emailTextView.setText("Must be a student e-mail");
+                emailTextView.setText(getString(R.string.must_be_email_text));
                 emailTextView.setTextColor(getResources().getColor(R.color.red));
             }
             id = idEditText.getText().toString();

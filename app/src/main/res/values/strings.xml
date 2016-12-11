@@ -70,4 +70,8 @@
     <string name="asocc_email">asocc@occ.cccd.edu</string>
     <string name="asocc_phone">(714) 432-5730</string>
     <string name="not_found">Not Found</string>
+    <string name="must_be_email_text">Must be an OCC student e-mail</string>
+    <string name="student_cccd_edu">\@student.cccd.edu</string>
+    <string name="admin_text">admin</string>
+    <string name="password_same_text">Password must be the same</string>
 </resources>
