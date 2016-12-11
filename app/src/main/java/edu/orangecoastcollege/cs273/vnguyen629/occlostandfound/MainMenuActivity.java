@@ -54,11 +54,11 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     /**
-     * Opens up the the MapActivity where the user may view the location of
-     * the Lost and Found, reported areas, or OCC the campus map.
+     * Opens up the the page where the user may view the location of
+     * the Lost and Found, reported areas, or OCC the campus map, faq, etc.
      * @param view The ImageView or TextViews that open up the MapActivity.
      */
-    public void openMap(View view) {
+    public void OpenResources(View view) {
         startActivity(new Intent(MainMenuActivity.this, UserReportListActivity.class));
     }
 
