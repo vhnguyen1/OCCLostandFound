@@ -86,7 +86,7 @@ class DBHelper extends SQLiteOpenHelper {
         db.execSQL(table);
 
         table = "CREATE TABLE " + ITEMS_TABLE + "("
-                + ITEM_KEY_FIELD_ID + "  INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + ITEM_KEY_FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + FIELD_ITEM_NAME + " TEXT, "
                 + FIELD_ITEM_DESCRIPTION + " TEXT, "
                 + FIELD_ITEM_DATE_LOST + " TEXT, "
@@ -98,15 +98,13 @@ class DBHelper extends SQLiteOpenHelper {
                 + ACCOUNT_TABLE + "(" + KEY_FIELD_ACCOUNT_USERNAME + ")" +")";
         db.execSQL(table);
 
-
-
         table =  "CREATE TABLE " + REPORT_TABLE + "("
                 + REPORT_KEY_FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + FIELD_REPORT_ACCOUNT + " TEXT, "
                 + FIELD_REPORT_ITEM_ID + " TEXT, "
                 + FIELD_REPORT_SMS_CHECK + " TEXT, "
                 + "FOREIGN KEY(" + FIELD_REPORT_ACCOUNT + ") REFERENCES "
-                + ACCOUNT_TABLE + "(" + KEY_FIELD_ACCOUNT_USERNAME + "),"
+                + ACCOUNT_TABLE + "(" + KEY_FIELD_ACCOUNT_USERNAME + ")"
                 + "FOREIGN KEY(" + FIELD_REPORT_ITEM_ID + ") REFERENCES "
                 + ITEMS_TABLE + "(" + ITEM_KEY_FIELD_ID + "))";
         db.execSQL(table);
