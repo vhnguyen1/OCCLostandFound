@@ -34,9 +34,10 @@
 
         <Spinner
             android:id="@+id/categoryFilterSpinner"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp" />
 
     </LinearLayout>
@@ -51,18 +52,18 @@
             android:text="@string/filter_by_name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/searchNameFilterTextView"
-            />
+            android:id="@+id/searchNameFilterTextView" />
 
         <EditText
             android:id="@+id/searchNameFilterEditText"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
             android:hint="@string/enter_item_name_text"
+            android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
-            android:singleLine="true"
+            android:maxLines="1"
             android:layout_weight="1.38" />
 
     </LinearLayout>
@@ -96,5 +97,5 @@
         android:layout_height="wrap_content">
 
     </ListView>
-</LinearLayout>
 
+</LinearLayout>

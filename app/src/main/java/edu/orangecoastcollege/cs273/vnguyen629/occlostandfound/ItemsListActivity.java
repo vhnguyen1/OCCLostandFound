@@ -11,7 +11,6 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -55,17 +54,17 @@ public class ItemsListActivity extends AppCompatActivity {
         database = new DBHelper(this);
 
         searchNameFilterEditText = (EditText) findViewById(R.id.searchNameFilterEditText);
-        searchNameFilterEditText.addTextChangedListener(itemNameSearchTextWatcher);
+        //searchNameFilterEditText.addTextChangedListener(itemNameSearchTextWatcher);
 
         allItemsList = database.getAllItems();
         filteredItemsList = new ArrayList<>(allItemsList);
-
+/*
         categoryFilterSpinner = (Spinner) findViewById(R.id.categoryFilterSpinner);
         ArrayAdapter<String> categoryFilterSpinnerAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, getItemNames());
         categoryFilterSpinner.setAdapter(categoryFilterSpinnerAdapter);
         categoryFilterSpinner.setOnItemSelectedListener(categoryFilterSpinnerListener);
-
+*/
         itemsListView = (ListView) findViewById(R.id.itemsListView);
         itemsListAdapter = new ItemListAdapter(this, R.layout.list_item, filteredItemsList);
         itemsListView.setAdapter(itemsListAdapter);
@@ -90,7 +89,7 @@ public class ItemsListActivity extends AppCompatActivity {
      */
     private String[] getItemNames() {
         String itemNames[] = new String[allItemsList.size() + 1];
-        itemNames[0] = this.getString(R.string.all_reported_items_text);
+        itemNames[0] = getString(R.string.all_reported_items_text);
 
         for (int i = 1; i < itemNames.length; i++)
             itemNames[i] = allItemsList.get(i-1).getName();
@@ -242,7 +241,7 @@ public class ItemsListActivity extends AppCompatActivity {
         categoryFilterSpinner.setSelection(0);
     }
 
-    /**
+   /**
      * When the user re-enters the app, the sensors start back up and begin
      * monitoring device movements/g-forces in a 3D (x-y-z) span. Only loads up the
      * ReportActivity if the user is logged in.

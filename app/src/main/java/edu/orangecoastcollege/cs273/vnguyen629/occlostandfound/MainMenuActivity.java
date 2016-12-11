@@ -76,7 +76,7 @@ public class MainMenuActivity extends AppCompatActivity {
      * or create a new account, or sign off.
      * @param view The clickable ImageView or TextView that opens up the LoginActivity.
      */
-    public void openLogin(View view) {
+    public void signOut(View view) {
         UserAccount.isLoggedIn = false;
         UserAccount.singedInUserAccountName = "";
         startActivity(new Intent(MainMenuActivity.this, LoginActivity.class));
