@@ -1,26 +1,13 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
-import android.content.Context;
-import android.content.Intent;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 
 public class UserItemDetailsActivity extends AppCompatActivity {
 
-    private ImageView itemDetailsImageView;
-    private TextView itemDetailsNameTextView;
-    private TextView itemDetailsDateLostTextView;
-    private TextView itemDetailsLocationTextView;
-    private TextView itemDetailsDescriptionTextView;
-    private TextView itemDetailsStatusTextView;
-
-    private Sensor accelerometer;
-    private SensorManager sensorManager;
-    private ShakeDetector shakeDetector;
+    private Spinner userItemStatusSpinner;
 
     /**
      * Starts up the activity and loads up the intent data from the ItemListActivity
@@ -32,36 +19,17 @@ public class UserItemDetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_item_details);
+        setContentView(R.layout.activity_user_item_details);
 
-        final Item ITEM = getIntent().getExtras().getParcelable("Selected");
+        userItemStatusSpinner = (Spinner) findViewById(R.id.userItemStatusSpinner);
 
-        itemDetailsImageView = (ImageView) findViewById(R.id.itemDetailsImageView);
-        itemDetailsNameTextView = (TextView) findViewById(R.id.itemDetailsNameTextView);
-        itemDetailsDateLostTextView = (TextView) findViewById(R.id.itemDetailsDateLostTextView);
-        itemDetailsLocationTextView = (TextView) findViewById(R.id.itemDetailsLocationTextView);
-        itemDetailsDescriptionTextView = (TextView) findViewById(R.id.itemDetailsDescriptionTextView);
-        itemDetailsStatusTextView = (TextView) findViewById(R.id.itemDetailsStatusTextView);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.status_choices, android.R.layout.simple_spinner_item);
 
-        itemDetailsImageView.setImageURI(ITEM.getImageUri());
-        itemDetailsNameTextView.setText(ITEM.getName());
-        itemDetailsDescriptionTextView.setText(ITEM.getDescription());
-        itemDetailsDateLostTextView.setText(ITEM.getDateLost());
-        itemDetailsLocationTextView.setText(ITEM.getLastLocation());
-        itemDetailsStatusTextView.setText((ITEM.getStatus())? getString(R.string.found_text)
-                : getString(R.string.not_found_text));
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        shakeDetector = new ShakeDetector(new ShakeDetector.OnShakeListener() {
-            /**
-             * When a 3D motion that the sensors constitute as a shake has been detected,
-             * the ItemListActivity is loaded
-             */
-            @Override
-            public void onShake() {
-                startActivity(new Intent(UserItemDetailsActivity.this, ItemsListActivity.class));
-            }
-        });
+        userItemStatusSpinner.setAdapter(adapter);
+
     }
+
+
 }

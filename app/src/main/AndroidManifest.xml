@@ -49,14 +49,12 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".GoogleMapsActivity"
-            android:exported="true"
-            android:label="@string/title_activity_google_maps" />
         <activity android:name=".MapActivity" />
         <activity android:name=".AdminMainMenuActivity" />
-        <activity android:name=".UserReportListActivity" />
-        <activity android:name=".UserItemDetailsActivity"></activity>
+        <activity android:name=".UserItemsListActivity" />
+        <activity android:name=".UserItemDetailsActivity" />
+        <activity android:name=".UserMenuActivity" />
+        <activity android:name=".FeedbackActivity"></activity>
     </application>
 
 </manifest>

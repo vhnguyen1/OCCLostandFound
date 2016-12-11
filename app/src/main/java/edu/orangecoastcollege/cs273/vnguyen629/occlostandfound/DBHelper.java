@@ -60,6 +60,11 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String FIELD_REPORT_SMS_CHECK = "sms_notification";
     // Report Table End
 
+    //Feedback Table Start
+    private static final String FEEDBACK_TABLE = "Feedbacks";
+    private static final String FIELD_FEEDBACK_CONTENT = "deedback";
+    private static final String FIELD_FEEDBACK_USERNAME = "username";
+
     /**
      * Creates a new SQL database.
      * @param context
@@ -109,6 +114,14 @@ class DBHelper extends SQLiteOpenHelper {
                 + ACCOUNT_TABLE + "(" + KEY_FIELD_ACCOUNT_USERNAME + "),"
                 + "FOREIGN KEY(" + FIELD_REPORT_ITEM_ID + ") REFERENCES "
                 + ITEMS_TABLE + "(" + ITEM_KEY_FIELD_ID + "))";
+        db.execSQL(table);
+
+        table = "CREATE TABLE" + FEEDBACK_TABLE + "("
+                + REPORT_KEY_FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + FIELD_FEEDBACK_CONTENT + " TEXT, "
+                + FIELD_FEEDBACK_USERNAME + " TEXT, "
+                + "FOREIGN KEY(" + FIELD_FEEDBACK_USERNAME + ") REFERENCES "
+                + ACCOUNT_TABLE + "(" + KEY_FIELD_ACCOUNT_USERNAME + "))";
         db.execSQL(table);
     }
 
@@ -618,4 +631,5 @@ class DBHelper extends SQLiteOpenHelper {
         }
         return true;
     }
+
 }

@@ -25,25 +25,33 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView16"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:textSize="30sp"
+        android:textStyle="normal|bold"
+        android:textColor="@color/cast_expanded_controller_background_color"
+        android:layout_margin="5dp" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:elevation="0dp">
 
         <TextView
-            android:text="TextView"
+            android:text="@string/status_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView17"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:gravity="right"
+            android:textColor="@color/cast_intro_overlay_background_color"
+            android:textSize="18sp" />
 
-        <TextView
-            android:text="TextView"
+        <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView18"
+            android:id="@+id/userItemStatusSpinner"
             android:layout_weight="1" />
 
     </LinearLayout>
@@ -51,22 +59,89 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:elevation="0dp">
 
         <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
+            android:text="@string/date_time_lost"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView19"
-            android:layout_weight="1" />
+            android:id="@+id/textView18"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:textColor="@color/cast_intro_overlay_background_color"
+            android:textSize="18sp" />
 
         <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView20"
-            android:layout_weight="1" />
+            android:id="@+id/userItemDetailsDateTextView"
+            android:layout_weight="1"
+            android:textColor="@color/cast_intro_overlay_background_color"
+            android:textSize="18sp" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:elevation="0dp">
+
+        <TextView
+            android:text="@string/last_know_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView19"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:textColor="@color/cast_intro_overlay_background_color"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/userItemDetailsLocationTextView"
+            android:layout_weight="1"
+            android:textColor="@color/cast_intro_overlay_background_color"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:elevation="0dp">
+
+        <TextView
+            android:text="@string/item_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView20"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:textColor="@color/cast_intro_overlay_background_color"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/userItemDetailsDescriptionTextView"
+            android:layout_weight="1"
+            android:textColor="@color/cast_intro_overlay_background_color"
+            android:textSize="18sp"
+            android:gravity="center_horizontal" />
+
+    </LinearLayout>
+
+    <CheckBox
+        android:text="@string/allow_sms_notification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/userItemSMSCheckBox" />
 
 </LinearLayout>
