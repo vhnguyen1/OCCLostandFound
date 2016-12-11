@@ -113,14 +113,6 @@ class DBHelper extends SQLiteOpenHelper {
                 + "FOREIGN KEY(" + FIELD_REPORT_ITEM_ID + ") REFERENCES "
                 + ITEMS_TABLE + "(" + ITEM_KEY_FIELD_ID + "))";
         db.execSQL(table);
-
-        table = "CREATE TABLE" + FEEDBACK_TABLE + "("
-                + REPORT_KEY_FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + FIELD_FEEDBACK_CONTENT + " TEXT, "
-                + FIELD_FEEDBACK_USERNAME + " TEXT, "
-                + "FOREIGN KEY(" + FIELD_FEEDBACK_USERNAME + ") REFERENCES "
-                + ACCOUNT_TABLE + "(" + KEY_FIELD_ACCOUNT_USERNAME + "))";
-        db.execSQL(table);
     }
 
     /**

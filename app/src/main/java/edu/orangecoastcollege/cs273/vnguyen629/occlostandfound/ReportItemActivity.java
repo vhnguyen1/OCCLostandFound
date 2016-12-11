@@ -15,11 +15,14 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import static edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.UserAccount.singedInUserAccountName;
+
 
 /**
  * The activity where the user submits a report of any lost
@@ -34,6 +37,8 @@ public class ReportItemActivity extends AppCompatActivity {
     private EditText reportItemDateLostEditText;
     private EditText reportItemLastLocationEditText;
     private EditText reportItemDescriptionEditText;
+
+    private CheckBox allowSMSCheckBox;
 
     private static final int REPORT_ITEM_REQUEST_CODE = 13;
 
@@ -53,8 +58,11 @@ public class ReportItemActivity extends AppCompatActivity {
         reportItemLastLocationEditText = (EditText) findViewById(R.id.reportItemLastLocationEditText);
         reportItemDescriptionEditText = (EditText) findViewById(R.id.reportItemDescriptionEditText);
 
+        allowSMSCheckBox = (CheckBox) findViewById(R.id.allowSMSCheckBox);
+
         imageUri = getUriToResource(this, R.drawable.default_image);
         reportItemImageView.setImageURI(imageUri);
+
     }
 
     /**
@@ -68,6 +76,7 @@ public class ReportItemActivity extends AppCompatActivity {
         final String LAST_LOCATION = reportItemLastLocationEditText.getText().toString().replaceAll("\\s+","");
         //final String DESCRIPTION = reportItemDescriptionEditText.getText().toString().replaceAll("\\s+","");
 
+
         if (NAME.equals("") || DATE_LOST.equals("") || LAST_LOCATION.equals(""))
             Toast.makeText(this, getString(R.string.all_fields_mandatory_text),
                     Toast.LENGTH_SHORT).show();
@@ -76,6 +85,11 @@ public class ReportItemActivity extends AppCompatActivity {
             final String NEW_ITEM_DATE_LOST = reportItemDateLostEditText.getText().toString().trim();
             final String NEW_ITEM_LAST_LOCATION = reportItemLastLocationEditText.getText().toString().trim();
             final String NEW_ITEM_DESCRIPTION = reportItemDescriptionEditText.getText().toString().trim();
+
+            //Ben
+            final int SMS_CHECK = (allowSMSCheckBox.isChecked()) ? 1 : 0;
+            DBHelper db = new DBHelper(this);
+            db.addItem(new Item(NEW_ITEM_NAME, NEW_ITEM_DESCRIPTION, NEW_ITEM_DATE_LOST, NEW_ITEM_LAST_LOCATION, false, singedInUserAccountName));
         }
     }
 

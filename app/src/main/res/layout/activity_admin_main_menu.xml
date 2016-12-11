@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_admin_main_menu"
     android:layout_width="match_parent"
@@ -8,6 +9,135 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.AdminMainMenuActivity">
+    tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.AdminMainMenuActivity"
+    android:orientation="vertical"
+    android:background="@drawable/occ_blur">
 
-</RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/gradient_background"
+            app:srcCompat="@drawable/lost_and_found_display" />
+
+        <Button
+            android:text="@string/view_all_reports"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/userMenuViewItemsButton"
+            android:layout_weight="5"
+            android:onClick="userViewItems"
+            android:background="@drawable/gradient_background"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/light_bulb"
+            android:background="@drawable/gradient_background" />
+
+        <Button
+            android:text="@string/view_user_feedback"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/userMenuReportItemButton"
+            android:layout_weight="5"
+            android:onClick="userReportItem"
+            android:background="@drawable/gradient_background"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/gradient_background" />
+
+        <Button
+            android:text="@string/send_sms"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/userMenuViewSettingsButton"
+            android:layout_weight="5"
+            android:onClick="userViewSettings"
+            android:background="@drawable/gradient_background"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/gradient_background" />
+
+        <Button
+            android:text="@string/feeback"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/userMenuFeedbackButton"
+            android:layout_weight="5"
+            android:onClick="userViewFeedback"
+            android:background="@drawable/gradient_background"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/gradient_background" />
+
+        <Button
+            android:text="@string/sign_out_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/userMenuLogoutButton"
+            android:layout_weight="5"
+            android:onClick="userViewFeedback"
+            android:background="@drawable/gradient_background"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+</LinearLayout>
