@@ -30,32 +30,6 @@
         android:layout_centerHorizontal="true"
         tools:textColor="@color/red" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/reportItemDateLostEditText"
-        android:gravity="center"
-        android:hint="@string/date_lost_text"
-        android:layout_below="@+id/reportItemNameEditText"
-        android:layout_alignLeft="@+id/reportItemNameEditText"
-        android:layout_alignStart="@+id/reportItemNameEditText"
-        android:layout_margin="5dp" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/reportItemLastLocationEditText"
-        android:gravity="center"
-        android:hint="@string/enter_last_known_location_text"
-        android:layout_below="@+id/reportItemDateLostEditText"
-        android:layout_alignLeft="@+id/reportItemDateLostEditText"
-        android:layout_alignStart="@+id/reportItemDateLostEditText"
-        android:layout_margin="5dp" />
-
     <!--<TextView
         android:text="@string/description_guide_text"
         android:layout_width="match_parent"
@@ -78,6 +52,59 @@
         android:layout_below="@+id/reportItemImageTextView"
         android:layout_centerHorizontal="true" />
 
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/submit_icon"
+        android:id="@+id/submitButtonImageView"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/reportItemDescriptionEditText"
+        android:layout_alignStart="@+id/reportItemDescriptionEditText" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/reportItemLastLocationEditText"
+        android:gravity="center"
+        android:hint="@string/enter_last_known_location_text"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/reportItemNameEditText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reportItemLastLocationEditText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/monthSpinner"
+        android:layout_toLeftOf="@+id/reportItemImageView"
+        android:layout_toStartOf="@+id/reportItemImageView" />
+
+    <Spinner
+        android:layout_height="wrap_content"
+        android:id="@+id/dayNumberSpinner"
+        android:layout_width="80dp"
+        android:layout_below="@+id/reportItemLastLocationEditText"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="2016"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/yearTextView"
+        android:textSize="18sp"
+        android:layout_below="@+id/reportItemLastLocationEditText"
+        android:layout_toRightOf="@+id/reportItemImageView"
+        android:layout_alignRight="@+id/reportItemImageTextView"
+        android:layout_alignEnd="@+id/reportItemImageTextView" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -87,17 +114,10 @@
         android:id="@+id/reportItemDescriptionEditText"
         android:gravity="top|left"
         android:hint="@string/enter_item_description_text"
-        android:layout_below="@+id/reportItemLastLocationEditText"
-        android:layout_alignLeft="@+id/reportItemLastLocationEditText"
-        android:layout_alignStart="@+id/reportItemLastLocationEditText"
-        android:layout_marginTop="13dp" />
-
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        app:srcCompat="@drawable/submit_icon"
-        android:id="@+id/submitButtonImageView"
-        android:layout_below="@+id/reportItemDescriptionEditText"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/monthSpinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="11dp"
+        android:layout_above="@+id/submitButtonImageView" />
 
 </RelativeLayout>

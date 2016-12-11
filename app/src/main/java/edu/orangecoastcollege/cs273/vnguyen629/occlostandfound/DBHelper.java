@@ -75,17 +75,7 @@ class DBHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate (SQLiteDatabase db){
-        String table =  "CREATE TABLE " + ACCOUNT_TABLE + "("
-                + KEY_FIELD_ACCOUNT_USERNAME + " TEXT PRIMARY KEY, "
-                + FIELD_ACCOUNT_PASSWORD + " TEXT, "
-                + FIELD_ACCOUNT_PHONE_NUMBER + " TEXT, "
-                + FIELD_ACCOUNT_EMAIL + " TEXT, "
-                + FIELD_ACCOUNT_STUDENT_ID + " INTEGER, "
-                + FIELD_ACCOUNT_PROFILE_PICTURE + " TEXT"
-                + ")";
-        db.execSQL(table);
-
-        table = "CREATE TABLE " + ITEMS_TABLE + "("
+        String table = "CREATE TABLE " + ITEMS_TABLE + "("
                 + ITEM_KEY_FIELD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + FIELD_ITEM_NAME + " TEXT, "
                 + FIELD_ITEM_DESCRIPTION + " TEXT, "
@@ -96,6 +86,16 @@ class DBHelper extends SQLiteOpenHelper {
                 + FIELD_REPORTING_USER + " TEXT, "
                 + "FOREIGN KEY(" + FIELD_REPORTING_USER + ") REFERENCES "
                 + ACCOUNT_TABLE + "(" + KEY_FIELD_ACCOUNT_USERNAME + ")" +")";
+        db.execSQL(table);
+
+        table =  "CREATE TABLE " + ACCOUNT_TABLE + "("
+                + KEY_FIELD_ACCOUNT_USERNAME + " TEXT PRIMARY KEY, "
+                + FIELD_ACCOUNT_PASSWORD + " TEXT, "
+                + FIELD_ACCOUNT_PHONE_NUMBER + " TEXT, "
+                + FIELD_ACCOUNT_EMAIL + " TEXT, "
+                + FIELD_ACCOUNT_STUDENT_ID + " INTEGER, "
+                + FIELD_ACCOUNT_PROFILE_PICTURE + " TEXT"
+                + ")";
         db.execSQL(table);
 
         table =  "CREATE TABLE " + REPORT_TABLE + "("
@@ -153,6 +153,7 @@ class DBHelper extends SQLiteOpenHelper {
         values.put(FIELD_REPORTING_USER, username);
 
         db.insert(ITEMS_TABLE, null, values);
+        db.close();
     }
 
     /**
@@ -181,6 +182,7 @@ class DBHelper extends SQLiteOpenHelper {
 
         db.update(ITEMS_TABLE, values, ITEM_KEY_FIELD_ID + " = ?",
                 new String[]{String.valueOf(item.getID())});
+        db.close();
     }
 
     /**

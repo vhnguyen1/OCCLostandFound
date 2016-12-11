@@ -48,7 +48,7 @@
     <string name="invalid_username_password_text">Username or password is invalid.</string>
     <string name="skipping_bad_csv_row_text">Skipping Bad CSV Row: </string>
     <string name="all_reported_items_text">[All Reported Items]</string>
-    <string name="list_empty_text">List is already empty.</string>
+    <string name="list_empty_text">Item list is empty.</string>
     <string name="all_fields_mandatory_text">All fields except item image and description are mandatory.</string>
     <string name="camera_and_external_permissions">OCC Lost and Found requires camera and external storage permissions.</string>
     <string name="camera_permissions">OCC Lost and Found requires camera permissions.</string>
@@ -59,7 +59,7 @@
     <string name="phone">Phone Number</string>
 
     <!-- Benjamin -->
-    <string name="enter_item_description_text">Additional details and comments(optional)...</string>
+    <string name="enter_item_description_text">Additional details and comments (optional)...</string>
     <string name="item_lost_text">Enter item name...</string>
     <string name="click_to_change_image_text">Click above to select the image of your item (optional)</string>
     <string name="title_activity_google_maps">Map</string>
@@ -74,4 +74,7 @@
     <string name="student_cccd_edu">\@student.cccd.edu</string>
     <string name="admin_text">admin</string>
     <string name="password_same_text">Password must be the same</string>
+    <string name="must_be_signed_in_text">You must be signed in to report a lost item.</string>
+    <string name="resources_text">Resources</string>
+    <!-- Benjamin -->
 </resources>
