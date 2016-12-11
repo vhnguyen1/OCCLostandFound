@@ -49,17 +49,18 @@ public class UserAccount implements Parcelable {
      * @param mStudentProfilePic
      */
     public UserAccount(String mStudentUserName, String mStudentPassword, String mStudentPhoneNum,
-                       String mStudentEmail, String mStudentID, Uri mStudentProfilePic) {
+                       String mStudentEmail, String mStudentID, Uri mStudentProfilePic, boolean isAdim) {
         this.mStudentUserName = mStudentUserName;
         this.mStudentPassword = mStudentPassword;
         this.mStudentPhoneNum = mStudentPhoneNum;
         this.mStudentEmail = mStudentEmail;
         this.mStudentID = mStudentID;
         this.mStudentProfilePic = mStudentProfilePic;
+        this.mIsAdim = isAdim;
     }
 
     public UserAccount() {
-        this("", "", "", "", "",null);
+        this("", "", "", "", "",null, false);
     }
 
     /**
