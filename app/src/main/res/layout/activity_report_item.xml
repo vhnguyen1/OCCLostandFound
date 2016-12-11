@@ -19,7 +19,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_width="150dp"
-        android:layout_height="150dp" />
+        android:layout_height="150dp"
+        android:layout_marginBottom="5dp" />
 
     <TextView
         android:text="@string/click_to_change_image_text"
@@ -52,58 +53,15 @@
         android:layout_below="@+id/reportItemImageTextView"
         android:layout_centerHorizontal="true" />
 
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="100dp"
-        app:srcCompat="@drawable/submit_icon"
-        android:id="@+id/submitButtonImageView"
-        android:layout_marginLeft="11dp"
-        android:layout_marginStart="11dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/reportItemDescriptionEditText"
-        android:layout_alignStart="@+id/reportItemDescriptionEditText" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/reportItemLastLocationEditText"
-        android:gravity="center"
-        android:hint="@string/enter_last_known_location_text"
-        android:layout_marginTop="12dp"
-        android:layout_below="@+id/reportItemNameEditText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="10dp" />
-
     <Spinner
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/reportItemLastLocationEditText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/monthSpinner"
-        android:layout_toLeftOf="@+id/reportItemImageView"
-        android:layout_toStartOf="@+id/reportItemImageView" />
-
-    <Spinner
-        android:layout_height="wrap_content"
-        android:id="@+id/dayNumberSpinner"
-        android:layout_width="80dp"
-        android:layout_below="@+id/reportItemLastLocationEditText"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
-        android:text="2016"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/yearTextView"
-        android:textSize="18sp"
-        android:layout_below="@+id/reportItemLastLocationEditText"
-        android:layout_toRightOf="@+id/reportItemImageView"
-        android:layout_alignRight="@+id/reportItemImageTextView"
-        android:layout_alignEnd="@+id/reportItemImageTextView" />
+        android:layout_toStartOf="@+id/dayNumberSpinner"
+        android:layout_width="200dp"
+        android:layout_toLeftOf="@+id/dayNumberSpinner" />
 
     <EditText
         android:layout_width="match_parent"
@@ -119,5 +77,65 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="11dp"
         android:layout_above="@+id/submitButtonImageView" />
+
+    <TextView
+        android:text="2016"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/yearTextView"
+        android:textSize="18sp"
+        android:layout_below="@+id/reportItemLastLocationEditText"
+        android:layout_alignRight="@+id/reportItemImageTextView"
+        android:layout_alignEnd="@+id/reportItemImageTextView" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/reportItemLastLocationEditText"
+        android:gravity="center"
+        android:hint="@string/enter_last_known_location_text"
+        android:layout_marginTop="9dp"
+        android:layout_below="@+id/reportItemNameEditText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="5dp" />
+
+    <Spinner
+        android:layout_height="wrap_content"
+        android:id="@+id/dayNumberSpinner"
+        android:layout_alignBottom="@+id/yearTextView"
+        android:layout_alignRight="@+id/reportItemImageView"
+        android:layout_alignEnd="@+id/reportItemImageView"
+        android:layout_width="100dp"
+        android:layout_marginLeft="5dp" />
+
+    <ImageView
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/submit_icon"
+        android:id="@+id/submitButtonImageView"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:scaleType="fitCenter"
+        android:clickable="true"
+        android:onClick="submitReport"
+        android:layout_width="200dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="@string/cancel_text"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/cancelButton"
+        android:onClick="cancelReport"
+        android:layout_below="@+id/reportItemDescriptionEditText"
+        android:layout_toRightOf="@+id/submitButtonImageView"
+        android:layout_toEndOf="@+id/submitButtonImageView"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

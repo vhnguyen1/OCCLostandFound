@@ -57,6 +57,8 @@
     <string name="allow_shake">Turn On Shake</string>
     <string name="email">Email</string>
     <string name="phone">Phone Number</string>
+    <string name="resources_text">Resources</string>
+    <string name="cancel_text">Cancel</string>
 
     <!-- Benjamin -->
     <string name="enter_item_description_text">Additional details and comments (optional)...</string>
@@ -75,6 +77,20 @@
     <string name="admin_text">admin</string>
     <string name="password_same_text">Password must be the same</string>
     <string name="must_be_signed_in_text">You must be signed in to report a lost item.</string>
-    <string name="resources_text">Resources</string>
+    <string name="select_month_text">Select a Month</string>
+    <string name="select_day_text">Select a Day</string>
+    <string name="january_text">January</string>
+    <string name="february_text">February</string>
+    <string name="march_text">March</string>
+    <string name="april_text">April</string>
+    <string name="may_text">May</string>
+    <string name="june_text">June</string>
+    <string name="july_text">July</string>
+    <string name="august_text">August</string>
+    <string name="september_text">September</string>
+    <string name="october_text">October</string>
+    <string name="november_text">November</string>
+    <string name="december_text">December</string>
+    <string name="february_29_days">Error: February has only 29 days!</string>
     <!-- Benjamin -->
 </resources>
