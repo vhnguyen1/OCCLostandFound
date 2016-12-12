@@ -105,7 +105,7 @@
     <string name="feeback">Feedback</string>
     <string name="view_all_reports">View All Reports</string>
     <string name="view_user_feedback">View User Feedbacks</string>
-    <string name="send_sms">Send SMS Message</string>
+    <string name="send_sms">Send SMS Message</string> sdf
 
     <string-array name="status_choices">
         <item>Not Found</item>
