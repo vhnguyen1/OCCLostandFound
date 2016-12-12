@@ -59,7 +59,7 @@ public class MainMenuActivity extends AppCompatActivity {
      * @param view The ImageView or TextViews that open up the MapActivity.
      */
     public void OpenResources(View view) {
-        startActivity(new Intent(MainMenuActivity.this, AdminMainMenuActivity.class));
+        startActivity(new Intent(MainMenuActivity.this, SendSMSActivity.class));
     }
 
     /**

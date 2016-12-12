@@ -17,7 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SmsUserListActivity extends AppCompatActivity {
+public class UserListActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_SEND_SMS = 101;
 
@@ -25,6 +25,30 @@ public class SmsUserListActivity extends AppCompatActivity {
     private List<UserAccount> allUserList;
     private List<UserAccount> filteredUserList;
     private UserListAdapter userListAdapter;
+
+    private ListView userListView;
+    private EditText searchUsernameEditText;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sms_user_list);
+
+        db = new DBHelper(this);
+
+        searchUsernameEditText = (EditText) findViewById(R.id.searchUsernameEditText);
+
+        allUserList = db.getAllUserAccount();
+        filteredUserList = new ArrayList<>(allUserList);
+
+        userListView = (ListView) findViewById(R.id.userListView);
+        userListAdapter = new UserListAdapter(this, R.layout.list_user, filteredUserList);
+        userListView.setAdapter(userListAdapter);
+
+        searchUsernameEditText.addTextChangedListener(usernameSearchTextWatcher);
+
+    }
+
     public TextWatcher usernameSearchTextWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -54,28 +78,7 @@ public class SmsUserListActivity extends AppCompatActivity {
             //Do nothing
         }
     };
-    private ListView userListView;
-    private EditText searchUsernameEditText;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sms_user_list);
-
-        db = new DBHelper(this);
-
-        searchUsernameEditText = (EditText) findViewById(R.id.searchUsernameEditText);
-
-        allUserList = db.getAllUserAccount();
-        filteredUserList = new ArrayList<>(allUserList);
-
-        userListView = (ListView) findViewById(R.id.userListView);
-        userListAdapter = new UserListAdapter(this, R.layout.list_user, filteredUserList);
-        userListView.setAdapter(userListAdapter);
-
-        searchUsernameEditText.addTextChangedListener(usernameSearchTextWatcher);
-
-    }
 
     public void selectUserSMS(View view) {
         String message = getIntent().getExtras().getString("MESSAGE");

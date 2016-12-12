@@ -57,9 +57,11 @@
         <activity android:name=".FeedbackActivity" />
         <activity android:name=".AdminItemListActivity" />
         <activity android:name=".SendSMSActivity" />
-        <activity android:name=".SmsUserListActivity"></activity>
+        <activity android:name=".UserListActivity" />
         <activity android:name=".AdminItemListActivity" />
-        <activity android:name=".PasswordChangeActivity"></activity>
+        <activity android:name=".PasswordChangeActivity" />
+        <activity android:name=".AccountInfoActivity" />
+        <activity android:name=".AdminViewAccountActivity"></activity>
     </application>
 
 </manifest>

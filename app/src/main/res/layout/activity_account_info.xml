@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_account_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.AccountInfoActivity">
+
+    <TextView
+        android:id="@+id/accountUsernameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textStyle="normal|bold"
+        android:textSize="30sp"
+        android:gravity="center_horizontal"
+        android:layout_margin="5dp"
+        android:textColor="@color/cast_expanded_controller_background_color" />
+
+    <TextView
+        android:id="@+id/accountStudentIDTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView"
+        android:textSize="24sp"
+        android:layout_above="@+id/accountEmailTextView"
+        android:layout_toRightOf="@+id/textView25"
+        android:layout_toEndOf="@+id/textView25"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:textColor="@color/cast_expanded_controller_background_color" />
+
+    <TextView
+        android:id="@+id/accountEmailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView"
+        android:layout_marginTop="23dp"
+        android:textSize="24sp"
+        android:layout_below="@+id/textView25"
+        android:layout_alignLeft="@+id/accountStudentIDTextView"
+        android:layout_alignStart="@+id/accountStudentIDTextView"
+        android:textColor="@color/cast_expanded_controller_background_color" />
+
+    <TextView
+        android:id="@+id/accountPhoneTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView"
+        android:layout_marginTop="18dp"
+        android:textSize="24sp"
+        android:layout_below="@+id/accountEmailTextView"
+        android:layout_alignLeft="@+id/accountEmailTextView"
+        android:layout_alignStart="@+id/accountEmailTextView"
+        android:textColor="@color/cast_expanded_controller_background_color" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="right"
+        android:text="@string/studentID"
+        android:layout_marginTop="22dp"
+        android:textSize="18sp"
+        android:layout_below="@+id/accountUsernameTextView"
+        android:layout_alignRight="@+id/textView28"
+        android:layout_alignEnd="@+id/textView28" />
+
+    <TextView
+        android:text="@string/email_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView26"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/accountEmailTextView"
+        android:layout_alignBottom="@+id/accountEmailTextView"
+        android:layout_alignRight="@+id/textView25"
+        android:layout_alignEnd="@+id/textView25" />
+
+    <TextView
+        android:text="@string/phone_number_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView28"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/accountPhoneTextView"
+        android:layout_alignBottom="@+id/accountPhoneTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="@string/change_info_button_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="93dp"
+        android:id="@+id/accountChangeInfoButton"
+        android:layout_below="@+id/accountPhoneTextView"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp" />
+
+</RelativeLayout>

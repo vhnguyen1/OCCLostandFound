@@ -25,8 +25,8 @@ public class SendSMSActivity extends AppCompatActivity {
         if (message.isEmpty())
             Toast.makeText(this, "Message cannot be empty.", Toast.LENGTH_SHORT).show();
         else {
-            Intent smsIntent = new Intent(SendSMSActivity.this, SmsUserListActivity.class);
-            smsIntent.putExtra("MESSAGE", smsIntent);
+            Intent smsIntent = new Intent(SendSMSActivity.this, UserListActivity.class);
+            smsIntent.putExtra("MESSAGE", message);
             startActivity(smsIntent);
         }
     }

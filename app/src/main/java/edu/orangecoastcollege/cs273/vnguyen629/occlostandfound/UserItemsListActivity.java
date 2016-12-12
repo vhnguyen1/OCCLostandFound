@@ -15,7 +15,7 @@ public class UserItemsListActivity extends AppCompatActivity {
 
     private DBHelper db;
     private List<Item> itemList;
-    private UserListAdapter itemListAdapter;
+    private ItemListAdapter itemListAdapter;
     private ListView itemListView;
 
     @Override
@@ -30,7 +30,7 @@ public class UserItemsListActivity extends AppCompatActivity {
         itemList = db.getAllItems();
 
         itemListView = (ListView) findViewById(R.id.userItemsListView);
-        itemListAdapter = new UserListAdapter(this, R.layout.list_item_2, itemList);
+        itemListAdapter = new ItemListAdapter(this, R.layout.list_item_2, itemList);
         itemListView.setAdapter(itemListAdapter);
     }
 

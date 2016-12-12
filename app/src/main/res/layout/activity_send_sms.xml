@@ -26,7 +26,8 @@
         android:layout_below="@+id/smsSenderEditText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
-        android:id="@+id/smsSenderButton" />
+        android:id="@+id/smsSenderButton"
+        android:onClick="sendSMS" />
 
     <EditText
         android:layout_width="match_parent"

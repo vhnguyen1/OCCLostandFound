@@ -109,8 +109,6 @@
     <string name="enter_sms_message">Enter text message here...</string>
     <string name="sms_choose_users">Choose Receivers</string>
     <string name="search_username">Search using username...</string>
-    sdf
-    <string name="send_sms">Send SMS Message</string>
 
     <string-array name="status_choices">
         <item>Not Found</item>
@@ -124,4 +122,10 @@
     <string name="enter_old_passoword">Enter Old Password</string>
     <string name="enter_new_password">Enter Your New Password</string>
     <string name="reenter_new_password">ReEnter Your New Password</string>
+    <string name="view_all_users">View All Users</string>
+    <string name="username">Username:</string>
+    <string name="studentID">Student ID:</string>
+    <string name="email_address">Email Address:</string>
+    <string name="phone_number_view">Phone Number:</string>
+    <string name="change_info_button_text">Change Account Infomation</string>
 </resources>
