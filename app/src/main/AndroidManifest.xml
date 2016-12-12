@@ -63,7 +63,8 @@
         <activity android:name=".AccountInfoActivity" />
         <activity android:name=".AdminViewUserActivity" />
         <activity android:name=".ViewUserFeedbackActivity" />
-        <activity android:name=".ViewAllFeedbacksActivity"></activity>
+        <activity android:name=".ViewAllFeedbacksActivity" />
+        <activity android:name=".ResourceSelectionActivity"></activity>
     </application>
 
 </manifest>
