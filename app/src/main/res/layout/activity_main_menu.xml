@@ -28,7 +28,8 @@
         android:layout_width="match_parent"
         android:clickable="true"
         android:onClick="stopAnimation"
-        android:layout_height="235dp" />
+        android:layout_height="235dp"
+        android:layout_above="@+id/menuItemListImageView" />
 
     <TextView
         android:text="@string/resources_text"

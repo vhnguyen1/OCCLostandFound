@@ -133,4 +133,9 @@
     <string name="user_name_text">User Name</string>
     <string name="student_id_text">Student ID</string>
     <string name="admin_name_taken_text">Sorry Admin your user name has already been taken...</string>
+    <string name="my_reported_items">[My Reported Items]</string>
+    <string name="found_items_text">[Found Items]</string>
+    <string name="missing_items_text">[Missing Items]</string>
+    <string name="item_text">Item</string>
+    <string name="successfully_text">Successfully!</string>
 </resources>

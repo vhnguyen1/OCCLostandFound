@@ -30,9 +30,9 @@ import java.util.List;
  */
 public class ItemsListActivity extends AppCompatActivity {
     private DBHelper database;
-    private List<Item> allItemsList;
-    private List<Item> filteredItemsList;
-    private ItemListAdapter itemsListAdapter;
+    public static List<Item> allItemsList;
+    public static List<Item> filteredItemsList;
+    public static ItemListAdapter itemsListAdapter;
     private ListView itemsListView;
 
     private Spinner categoryFilterSpinner;
@@ -51,7 +51,7 @@ public class ItemsListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items_list);
 
-        //this.deleteDatabase(DBHelper.DATABASE_NAME);
+        this.deleteDatabase(DBHelper.DATABASE_NAME);
         database = new DBHelper(this);
         //database.addItem(new Item("LV Wallet", "N/A", "N/A", "N/A", false,
                 //getUriToResource(this, R.drawable.default_image), "vnguyen629"));
@@ -91,12 +91,14 @@ public class ItemsListActivity extends AppCompatActivity {
      * @return A string array of all the <code>Item</code> names.
      */
     private String[] getItemNames() {
-        String itemNames[] = new String[allItemsList.size() + 1];
-        itemNames[0] = getString(R.string.all_reported_items_text);
+        String categoryNames[] = new String[4];
 
-        for (int i = 1; i < itemNames.length; i++)
-            itemNames[i] = allItemsList.get(i-1).getName();
-        return itemNames;
+        categoryNames[0] = getString(R.string.all_reported_items_text);
+        categoryNames[1] = getString(R.string.my_reported_items);
+        categoryNames[2] = getString(R.string.found_items_text);
+        categoryNames[3] = getString(R.string.missing_items_text);
+
+        return categoryNames;
     }
 
     /**
@@ -170,6 +172,16 @@ public class ItemsListActivity extends AppCompatActivity {
                     if (selectedCategory.equals(getString(R.string.all_reported_items_text)))
                         for (Item item : allItemsList)
                             itemsListAdapter.add(item);
+                    else if (selectedCategory.equals(getString(R.string.found_items_text))) {
+                        for (Item item : allItemsList)
+                            if (item.getStatus())
+                                itemsListAdapter.add(item);
+                    }
+                    else if (selectedCategory.equals(getString(R.string.missing_items_text))) {
+                        for (Item item : allItemsList)
+                            if (!item.getStatus())
+                                itemsListAdapter.add(item);
+                    }
                     else {
                         if (UserAccount.isLoggedIn) {
                             for (Item item : allItemsList) {

@@ -120,10 +120,10 @@ public class ReportItemActivity extends AppCompatActivity {
 
         dayNumbers[0] = getString(R.string.day_text);
         for (int day = 1; day < dayNumbers.length; day++) {
-            dayNumbers[day] = String.valueOf(day);
-
             if (day < 10)
-                dayNumbers[day] += "0";
+                dayNumbers[day] = "0" + String.valueOf(day);
+            else
+                dayNumbers[day] = String.valueOf(day);
         }
 
         return dayNumbers;
@@ -230,7 +230,12 @@ public class ReportItemActivity extends AppCompatActivity {
                         NEW_ITEM_LAST_LOCATION, false, imageUri, singedInUserAccountName);
                 //Report newReport = new Report(account, newItem, SMS_NOTIFICATIONS);
 
+                //Toast.makeText(this, newItem.getName(), Toast.LENGTH_SHORT).show();
+
                 database.addItem(newItem);
+                ItemsListActivity.allItemsList.add(newItem);
+                //ItemsListActivity.itemsListAdapter.add(newItem);
+                ItemsListActivity.itemsListAdapter.notifyDataSetChanged();
                 //database.addReport(newReport);
                 this.finish();
             }
