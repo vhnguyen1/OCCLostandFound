@@ -15,8 +15,8 @@ public class UserAccountTest {
     private UserAccount account;
 
     /**
-     *
-     * @throws Exception
+     * Sets up the account before testing everything else
+     * @throws Exception If the UserAccount doesn't exist
      */
     @Before
     public void setUp() throws Exception {
