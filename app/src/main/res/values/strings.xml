@@ -141,4 +141,5 @@
     <string name="occ_text" translatable="false">OCC</string>
     <string name="orange_coast_college_text" translatable="false">Orange Coast College</string>
     <string name="feedback_text">Feedback</string>
+    <string name="app_purpose_text">The purpose of the app</string>
 </resources>
