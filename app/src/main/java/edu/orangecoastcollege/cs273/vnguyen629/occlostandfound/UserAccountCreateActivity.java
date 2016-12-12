@@ -39,7 +39,7 @@ public class UserAccountCreateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_account_create);
 
-        dataBase = new DBHelper(this);
+        database = new DBHelper(this);
 
         userEditText = (EditText) findViewById(R.id.userEditText);
         userEditText.addTextChangedListener(userNameTextWatcher);
