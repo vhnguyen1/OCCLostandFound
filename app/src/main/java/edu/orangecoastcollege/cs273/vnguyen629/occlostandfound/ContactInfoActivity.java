@@ -11,7 +11,7 @@ import android.os.Bundle;
  * An activity displaying the various contact information for OCC, the ASOCC offices, and also
  * the OCC Campus Safety office.
  *
- * @author Vincent Nguyen
+ * @author Benjamin Nguyen
  */
 public class ContactInfoActivity extends AppCompatActivity {
     private Sensor accelerometer;

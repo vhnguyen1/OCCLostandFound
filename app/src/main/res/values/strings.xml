@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">OCC Lost and Found</string>
+    <string name="app_name" translatable="false">OCC Lost and Found</string>
     <string name="title_activity_maps">Map</string>
     <string name="not_signed_in_text">Not signed in? Click</string>
     <string name="here_text"><u>here.</u></string>
@@ -69,11 +69,11 @@
     <string name="office_title">Associated Students of Orange Coast College</string>
     <string name="occ_map_button">Locate the ASOCC office on campus map</string>
     <string name="contact_info">CONTACT INFO</string>
-    <string name="asocc_email">asocc@occ.cccd.edu</string>
-    <string name="asocc_phone">(714) 432-5730</string>
+    <string name="asocc_email" translatable="false">asocc@occ.cccd.edu</string>
+    <string name="asocc_phone" translatable="false">(714) 432-5730</string>
     <string name="not_found">Not Found</string>
     <string name="must_be_email_text">Must be an OCC student e-mail</string>
-    <string name="student_cccd_edu">\@student.cccd.edu</string>
+    <string name="student_cccd_edu" translatable="false">\@student.cccd.edu</string>
     <string name="admin_text">admin</string>
     <string name="password_same_text">Password must be the same</string>
     <string name="must_be_signed_in_text">You must be signed in to report a lost item.</string>
@@ -132,7 +132,7 @@
     <string name="password_text">Password</string>
     <string name="user_name_text">User Name</string>
     <string name="student_id_text">Student ID</string>
-    <string name="admin_name_taken_text">Sorry Admin your user name has already been taken...</string>
+    <string name="admin_name_taken_text">Sorry Admin, your user name has already been taken.</string>
     <string name="my_reported_items">[My Reported Items]</string>
     <string name="found_items_text">[Found Items]</string>
     <string name="missing_items_text">[Missing Items]</string>

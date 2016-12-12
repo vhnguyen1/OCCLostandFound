@@ -13,7 +13,6 @@ public class AdminViewUserActivity extends AppCompatActivity {
     private TextView adminViewEmailTextView;
     private TextView adminViewPhoneTextView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

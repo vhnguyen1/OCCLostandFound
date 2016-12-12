@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_description_text">アプリケーションに関する情報を表示します。</string>
+    <string name="about_text">約</string>
+    <string name="admin_name_taken_text">あなたのユーザー名は既に使用されています。</string>
+    <string name="admin_text">管理者</string>
+    <string name="all_fields_mandatory_text">アイテムイメージと説明を除くすべてのフィールドは必須です。</string>
+    <string name="all_reported_items_text">[報告されたすべてのアイテム]</string>
+    <string name="allow_shake">シェイクをオンにする</string>
+    <string name="allow_sms">SMS通知</string>
+    <string name="allow_sms_notification">このアイテムのSMS通知を許可する</string>
+    <string name="april_text">4月</string>
+    <string name="august_text">8月</string>
+    <string name="back_button">バック</string>
+    <string name="camera_and_external_permissions">OCC Lost and Foundには、カメラと外部ストレージのアクセス許可が必要です。</string>
+    <string name="camera_permissions">OCC Lost and Foundにはカメラ権限が必要です。</string>
+    <string name="cancel_text">キャンセル</string>
+    <string name="change_info_button_text">アカウント情報の変更</string>
+    <string name="change_user_settings_text">ユーザー設定を変更する</string>
+    <string name="click_to_change_image_text">アイテムの画像を選択するには上記をクリックしてください（オプション）</string>
+    <string name="contact_info">連絡先情報</string>
+    <string name="create_account_button">新しいアカウントを作成する</string>
+    <string name="contact_information_description_text">重要な連絡先情報を表示します。</string>
+    <string name="contact_information_text">連絡先情報</string>
+    <string name="date_lost_text">日付を入力してください...</string>
+    <string name="date_time_lost">日付/時間の喪失：</string>
+</resources>

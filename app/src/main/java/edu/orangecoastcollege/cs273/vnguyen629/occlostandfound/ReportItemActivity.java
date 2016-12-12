@@ -181,12 +181,7 @@ public class ReportItemActivity extends AppCompatActivity {
                     if (selectedDay.equals(getString(R.string.day_text)))
                         day = "N/A";
                     else {
-                        if (month.equals(getString(R.string.february_text)) && Integer.parseInt(month) > 29) {
-                            day = getString(R.string.day_text);
-                            parent.setSelection(0);
-                        }
-                        else
-                            day = selectedDay;
+                        day = selectedDay;
                     }
                 }
 
