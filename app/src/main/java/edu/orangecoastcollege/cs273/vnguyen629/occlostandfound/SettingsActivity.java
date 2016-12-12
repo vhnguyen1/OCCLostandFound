@@ -4,8 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 /**
  *
@@ -36,6 +37,14 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(new Intent(SettingsActivity.this, ItemsListActivity.class));
             }
         });
+    }
+
+    /**
+     *
+     * @param view
+     */
+    public void changeUserSettings (View view) {
+
     }
 
     /**

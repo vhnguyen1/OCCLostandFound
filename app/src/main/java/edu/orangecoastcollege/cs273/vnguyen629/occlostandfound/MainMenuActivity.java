@@ -84,20 +84,11 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     /**
-     * Opens up the SettingsActivity where the user may change various settings in regards
-     * to their account, or settings about the application itself.
-     * @param view The ImageView or TextViews that open up the SettingsActivity.
-     */
-    public void openSettings(View view) {
-        startActivity(new Intent(MainMenuActivity.this, SettingsActivity.class));
-    }
-
-    /**
      * Opens up the LoginActivity so the user can either sign in to their account,
      * or create a new account, or sign off.
      * @param view The clickable ImageView or TextView that opens up the LoginActivity.
      */
-    public void signOut(View view) {
+    public void signIn(View view) {
         UserAccount.isLoggedIn = false;
         UserAccount.singedInUserAccountName = "";
         startActivity(new Intent(MainMenuActivity.this, LoginActivity.class));

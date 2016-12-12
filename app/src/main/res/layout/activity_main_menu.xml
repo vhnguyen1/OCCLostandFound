@@ -59,7 +59,7 @@
     <ImageView
         app:srcCompat="@drawable/login_button_icon"
         android:id="@+id/menuLoginImageView"
-        android:onClick="signOut"
+        android:onClick="signIn"
         android:clickable="true"
         android:adjustViewBounds="true"
         android:cropToPadding="true"
@@ -77,7 +77,7 @@
         android:id="@+id/menuLoginTextView"
         android:textStyle="normal|bold"
         android:textSize="18sp"
-        android:onClick="openReportedItemsList"
+        android:onClick="signIn"
         android:clickable="true"
         android:layout_alignBaseline="@+id/menuResourcesTextView"
         android:layout_alignBottom="@+id/menuResourcesTextView"
