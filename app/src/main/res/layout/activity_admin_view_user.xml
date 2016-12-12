@@ -106,6 +106,5 @@
         android:id="@+id/adminViewFeedbackButton"
         android:textSize="24sp"
         android:layout_below="@+id/adminViewSendSMSButton"
-        android:layout_alignLeft="@+id/textView24"
-        android:layout_alignStart="@+id/textView24" />
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
