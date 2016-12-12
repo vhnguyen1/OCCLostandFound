@@ -43,10 +43,11 @@ public class Report implements Parcelable {
 
     /**
      * Creates a default <code>Report</code> with an id of -1, empty account,
-     * empty item, unckecked sms notification
+     * empty item, unchecked sms notification
+     */
     public Report() {
-        this(-1, "", "", 0);
-    }*/
+        this(-1, new UserAccount(), new Item(), 0);
+    }
 
     /**
      * Creates a new <code>Report</code> object, copying the information from
@@ -157,9 +158,9 @@ public class Report implements Parcelable {
     public String toString() {
         return "Item{" +
                 "Id=" + this.mID +
-                ", Account='" + this.mAccount + '\'' +
-                ", Item='" + this.mItem + '\'' +
-                ", SmsCheck=" + this.mSmsCheck +
+                ", Account='" + this.mAccount.getStudentUserName() + '\'' +
+                ", Item='" + this.mItem.getName() + '\'' +
+                ", SmsCheck=" + ((this.mSmsCheck == 1)? "Allowed" : "Not Allowed") +
                 '}';
     }
 }

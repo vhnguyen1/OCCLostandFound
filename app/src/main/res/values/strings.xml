@@ -143,4 +143,6 @@
     <string name="feedback_text">Feedback</string>
     <string name="app_purpose_text">The purpose of the app</string>
     <string name="reported_successfully_text">reported successfully.</string>
+    <string name="passwords_do_not_match">Your new password does not match...</string>
+    <string name="old_password_incorrect">Your old password is incorrect.</string>
 </resources>

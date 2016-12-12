@@ -53,9 +53,11 @@ public class PasswordChangeActivity extends AppCompatActivity {
                 database.updateAccount(account);
             }
             else
-                Toast.makeText(this, "Your new password does not macth...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.passwords_do_not_match),
+                        Toast.LENGTH_SHORT).show();
         }
         else
-            Toast.makeText(this, "Your old password is incorrect...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.old_password_incorrect),
+                    Toast.LENGTH_SHORT).show();
     }
 }
