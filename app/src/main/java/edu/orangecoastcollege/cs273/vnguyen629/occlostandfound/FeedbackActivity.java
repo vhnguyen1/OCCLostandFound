@@ -7,6 +7,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.util.Date;
+
 /**
  *
  */
@@ -31,7 +34,13 @@ public class FeedbackActivity extends AppCompatActivity {
     public void submitFeedback(View view) {
         if (feedbackEditText.getText().toString().isEmpty())
             Toast.makeText(this, "Feedback cannot be empty!", Toast.LENGTH_SHORT).show();
-        else
-            feedbackEditText.setText("asdkfjasd");
+        else {
+            UserAccount account = getIntent().getExtras().getParcelable("LoggedInAccount");
+            String feedback = account.getFeedBack() + "\n\n" + account.getStudentUserName()
+                    + " - " + DateFormat.getDateTimeInstance().format(new Date()) + ": "
+                    + feedbackEditText.getText().toString();
+            account.setFeedBack(feedback);
+            this.finish();
+        }
     }
 }
