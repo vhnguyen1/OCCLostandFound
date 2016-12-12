@@ -381,8 +381,8 @@ class DBHelper extends SQLiteOpenHelper {
                         new UserAccount(cursor.getString(0), cursor.getString(1),
                                 cursor.getString(2), cursor.getString(3),
                                 cursor.getString(4), Uri.parse(cursor.getString(5)),
-                                (cursor.getInt(6) == 0),(cursor.getInt(7) == 0),
-                                (cursor.getInt(8) == 0));
+                                (cursor.getInt(6) == 0) ? false:true,(cursor.getInt(7) == 0) ? false:true,
+                                (cursor.getInt(8) == 0) ? false:true);
                 accountList.add(account);
 
             }while (cursor.moveToNext());
@@ -457,7 +457,7 @@ class DBHelper extends SQLiteOpenHelper {
                 new UserAccount(cursor.getString(0), cursor.getString(1),
                         cursor.getString(2), cursor.getString(3),
                         cursor.getString(4), Uri.parse(cursor.getString(5).toString()),
-                        (cursor.getInt(6) == 0), (cursor.getInt(7) == 0), (cursor.getInt(8) == 0));
+                        (cursor.getInt(6) == 0) ? false:true, (cursor.getInt(7) == 0) ? false:true, (cursor.getInt(8) == 0) ? false:true);
 
         return account;
     }
