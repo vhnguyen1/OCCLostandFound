@@ -64,8 +64,8 @@ class DBHelper extends SQLiteOpenHelper {
     // Report Table End
 
     //Feedback Table Start
-    private static final String FEEDBACK_TABLE = "Feedbacks";
-    private static final String FIELD_FEEDBACK_CONTENT = "deedback";
+    private static final String FEEDBACK_TABLE = "Feedback";
+    private static final String FIELD_FEEDBACK_CONTENT = "feedback";
     private static final String FIELD_FEEDBACK_USERNAME = "username";
 
     /**

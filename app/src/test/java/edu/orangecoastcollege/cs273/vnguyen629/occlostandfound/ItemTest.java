@@ -31,15 +31,43 @@ public class ItemTest {
         mItem.setReportedUsername("6");
     }
 
+    /**
+     *
+     * @throws Exception
+     */
+    @Test
+    public void getName() throws Exception {
+        mItem.setName("1");
+        assertEquals("Error Found!", "1", mItem.getDateLost());
+    }
 
     /**
      *
      * @throws Exception
      */
     @Test
-    public void setDateLost() throws Exception {
-        mItem.setDateLost("3");
-        assertEquals("Error Found!", "3", mItem.getDateLost());
+    public void setName() throws Exception {
+        mItem.setName("1");
+        assertEquals("Error Found!", "1", mItem.getDateLost());
+    }
+
+    /**
+     *
+     * @throws Exception
+     */
+    @Test
+    public void getDescription() throws Exception {
+        assertEquals("Error Found!", "2", mItem.getDescription());
+    }
+
+    /**
+     *
+     * @throws Exception
+     */
+    @Test
+    public void setDescription() throws Exception {
+        mItem.setDescription("2");
+        assertEquals("Error Found!", "2", mItem.getDescription());
     }
 
     /**
@@ -48,6 +76,16 @@ public class ItemTest {
      */
     @Test
     public void getDateLost() throws Exception {
+        assertEquals("Error Found!", "3", mItem.getDateLost());
+    }
+
+    /**
+     *
+     * @throws Exception
+     */
+    @Test
+    public void setDateLost() throws Exception {
+        mItem.setDateLost("3");
         assertEquals("Error Found!", "3", mItem.getDateLost());
     }
 }

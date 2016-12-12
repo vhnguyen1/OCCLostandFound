@@ -21,7 +21,9 @@ public class UserReportListActivity extends AppCompatActivity {
 
         db = new DBHelper(this);
 
-        db.addItem(new Item("name", "des", "date", "loc", false, Uri.parse("android.resource://edu.orangecoastcollege.cs273.vnguyen629.occlostandfound/" + R.drawable.default_image), "user"));
+        db.addItem(new Item("name", "des", "date", "loc", false,
+                Uri.parse("android.resource://edu.orangecoastcollege.cs273.vnguyen629.occlostandfound/"
+                        + R.drawable.default_image), "user"));
 
         itemList = db.getAllItems();
 
