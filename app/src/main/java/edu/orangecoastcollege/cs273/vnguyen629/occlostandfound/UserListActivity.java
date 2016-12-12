@@ -32,7 +32,7 @@ public class UserListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sms_user_list);
+        setContentView(R.layout.activity_user_list);
 
         db = new DBHelper(this);
 
@@ -98,6 +98,5 @@ public class UserListActivity extends AppCompatActivity {
                 Toast.makeText(this, "Message sent to: " + user.getStudentUserName(), Toast.LENGTH_SHORT).show();
             }
         }
-
     }
 }
