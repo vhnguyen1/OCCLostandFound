@@ -34,7 +34,6 @@
             android:layout_height="match_parent"
             android:id="@+id/userMenuViewItemsButton"
             android:layout_weight="5"
-            android:onClick="userViewItems"
             android:background="@drawable/gradient_background"
             android:textSize="18sp" />
 
@@ -60,7 +59,6 @@
             android:layout_height="match_parent"
             android:id="@+id/userMenuReportItemButton"
             android:layout_weight="5"
-            android:onClick="userReportItem"
             android:background="@drawable/gradient_background"
             android:textSize="18sp" />
 
@@ -85,7 +83,6 @@
             android:layout_height="match_parent"
             android:id="@+id/userMenuViewSettingsButton"
             android:layout_weight="5"
-            android:onClick="userViewSettings"
             android:background="@drawable/gradient_background"
             android:textSize="18sp" />
 
@@ -105,12 +102,11 @@
             android:background="@drawable/gradient_background" />
 
         <Button
-            android:text="@string/feeback"
+            android:text="@string/settings_text"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:id="@+id/userMenuFeedbackButton"
             android:layout_weight="5"
-            android:onClick="userViewFeedback"
             android:background="@drawable/gradient_background"
             android:textSize="18sp" />
 
