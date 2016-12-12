@@ -34,9 +34,7 @@ public class ReportTest {
      * @throws Exception
      */
     @After
-    public void tearDown() throws Exception {
-
-    }
+    public void tearDown() throws Exception {}
 
     /**
      *
@@ -47,27 +45,6 @@ public class ReportTest {
         //mReport.setAccount("Test Report Account");
         //assertEquals("Error Found!", "Test Report Account", mReport.getAccount());
     }
-
-    /**
-     *
-     * @throws Exception
-     */
-    @Test
-    public void getName() throws Exception {
-        //mReport.setName("Test Report Name");
-        //assertEquals("Error Found!", "Test Report Name", mReport.getName());
-    }
-
-    /**
-     *
-     * @throws Exception
-     */
-    @Test
-    public void getDateLost() throws Exception {
-        //mReport.setDateLost("Test Report Date Lost");
-        //assertEquals("Error Found!", "Test Report Date Lost", mReport.getDateLost());
-    }
-
 
     /**
      *Test set and get mAccount
@@ -94,7 +71,7 @@ public class ReportTest {
      * @throws Exception
      */
     @Test
-    public void SMSCheck() throws Exception {
+    public void setSMSCheck() throws Exception {
         mReport.setSmsCheck(1);
         assertEquals("Error Found!", 1, mReport.getSmsCheck());
     }
