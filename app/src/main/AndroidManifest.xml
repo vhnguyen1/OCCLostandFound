@@ -55,7 +55,8 @@
         <activity android:name=".UserItemDetailsActivity" />
         <activity android:name=".UserMenuActivity" />
         <activity android:name=".FeedbackActivity" />
-        <activity android:name=".AdminItemListActivity"></activity>
+        <activity android:name=".AdminItemListActivity" />
+        <activity android:name=".PasswordChangeActivity"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -48,6 +49,8 @@ public class UserSettingsActivity extends AppCompatActivity {
 
         accountInfoEmailEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentEmail());
         accountInfoPhoneNumberEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentPhoneNum());
+        accountSettingShakeCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowShake());
+        accountSettingSmsCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowSms());
     }
 
     /**
@@ -75,5 +78,12 @@ public class UserSettingsActivity extends AppCompatActivity {
 
 
     }
+
+    public void changePassword(View view)
+    {
+        Intent intent = new Intent(this, PasswordChangeActivity.class);
+        startActivity(intent);
+    }
+
 
 }
