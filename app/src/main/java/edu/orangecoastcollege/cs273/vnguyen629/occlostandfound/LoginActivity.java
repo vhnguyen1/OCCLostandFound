@@ -25,7 +25,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText passwordLoginEditText;
     private ImageView loginButtonImageView;
 
-
     private DBHelper database;
     private List<UserAccount> accountList;
 
@@ -93,8 +92,6 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
     }
-
-
 
     /**
      * Loads up the UserAccountCreateActivity so the user may create a new account

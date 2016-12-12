@@ -25,6 +25,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.UserAccount.singedInUserAccountName;
+
 /**
  * The activity where the user submits a report of any lost
  * item(s).
@@ -43,8 +45,8 @@ public class ReportItemActivity extends AppCompatActivity {
 
     private DBHelper database;
 
-    private String month;
-    private String day;
+    private static String month;
+    private static String day;
     private static final String YEAR = "2016";
 
     private static final int REPORT_ITEM_REQUEST_CODE = 13;
@@ -161,7 +163,8 @@ public class ReportItemActivity extends AppCompatActivity {
     public AdapterView.OnItemSelectedListener dayNumberSpinnerListener =
             new AdapterView.OnItemSelectedListener() {
                 /**
-                 *
+                 * Moniters the day spinner and changes the values accordingly to what day
+                 * is chosen
                  * @param parent The adapter
                  * @param view The spinner
                  * @param position Specific item from the spinner's position
@@ -174,10 +177,10 @@ public class ReportItemActivity extends AppCompatActivity {
                     if (selectedDay.equals(getString(R.string.day_text)))
                         day = "N/A";
                     else {
-                        if (month.equals(getString(R.string.february_text))
-                                && Integer.parseInt(month) > 29)
-                            day = "N/A";
-                            //Toast.makeText(this, getString(R.string.february_29_days), Toast.LENGTH_SHORT).show();
+                        if (month.equals(getString(R.string.february_text)) && Integer.parseInt(month) > 29) {
+                            day = getString(R.string.day_text);
+                            parent.setSelection(0);
+                        }
                         else
                             day = selectedDay;
                     }
@@ -202,31 +205,31 @@ public class ReportItemActivity extends AppCompatActivity {
         final String NAME = reportItemNameEditText.getText().toString().replaceAll("\\s+","");
         final String LAST_LOCATION = reportItemLastLocationEditText.getText().toString().replaceAll("\\s+","");
 
-        Toast.makeText(this, "HI", Toast.LENGTH_SHORT).show();
-
         if (NAME.equals("") || LAST_LOCATION.equals("") || day.equals(R.string.day_text)
                 || month.equals(getString(R.string.month_text)))
             Toast.makeText(this, getString(R.string.all_fields_mandatory_text),
                     Toast.LENGTH_SHORT).show();
         else {
-            final String NEW_ITEM_NAME = reportItemNameEditText.getText().toString().trim();
-            final String NEW_ITEM_DATE_LOST = month + " " + day + ", " + YEAR;
-            final String NEW_ITEM_LAST_LOCATION = reportItemLastLocationEditText.getText().toString().trim();
-            final String NEW_ITEM_DESCRIPTION = reportItemDescriptionEditText.getText().toString().trim();
+            if ((singedInUserAccountName.equals(""))) {
+                final String NEW_ITEM_NAME = reportItemNameEditText.getText().toString().trim();
+                final String NEW_ITEM_DATE_LOST = month + " " + day + ", " + YEAR;
+                final String NEW_ITEM_LAST_LOCATION = reportItemLastLocationEditText.getText().toString().trim();
+                final String NEW_ITEM_DESCRIPTION = reportItemDescriptionEditText.getText().toString().trim();
 
-            final int SMS_NOTIFICATIONS = ((smsCheckBox.isChecked())? 1 : 0);
+                final int SMS_NOTIFICATIONS = ((smsCheckBox.isChecked())? 1 : 0);
 
-            if (imageUri == null)
-                imageUri = getUriToResource(this, R.drawable.default_image);
+                if (imageUri == null)
+                    imageUri = getUriToResource(this, R.drawable.default_image);
 
-            UserAccount account = database.getUserAccount(UserAccount.singedInUserAccountName);
-            Toast.makeText(this, account.getStudentUserName(), Toast.LENGTH_SHORT).show();
-            Item newItem = new Item(NEW_ITEM_NAME, NEW_ITEM_DESCRIPTION, NEW_ITEM_DATE_LOST,
-                    NEW_ITEM_LAST_LOCATION, false, imageUri, UserAccount.singedInUserAccountName);
-            Report newReport = new Report(account, newItem, SMS_NOTIFICATIONS);
+                //UserAccount account = database.getUserAccount(singedInUserAccountName);
+                Item newItem = new Item(NEW_ITEM_NAME, NEW_ITEM_DESCRIPTION, NEW_ITEM_DATE_LOST,
+                        NEW_ITEM_LAST_LOCATION, false, imageUri, singedInUserAccountName);
+                //Report newReport = new Report(account, newItem, SMS_NOTIFICATIONS);
 
-            database.addItem(newItem);
-            database.addReport(newReport);
+                database.addItem(newItem);
+                //database.addReport(newReport);
+                this.finish();
+            }
         }
     }
 

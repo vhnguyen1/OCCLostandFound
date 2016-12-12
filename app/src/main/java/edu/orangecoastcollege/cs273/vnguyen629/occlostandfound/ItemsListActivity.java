@@ -56,7 +56,7 @@ public class ItemsListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items_list);
 
-        this.deleteDatabase(DBHelper.DATABASE_NAME);
+        //this.deleteDatabase(DBHelper.DATABASE_NAME);
         database = new DBHelper(this);
         //database.addItem(new Item("LV Wallet", "N/A", "N/A", "N/A", false,
                 //getUriToResource(this, R.drawable.default_image), "vnguyen629"));

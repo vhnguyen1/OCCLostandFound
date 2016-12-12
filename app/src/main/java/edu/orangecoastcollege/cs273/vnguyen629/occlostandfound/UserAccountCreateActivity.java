@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -58,12 +59,25 @@ public class UserAccountCreateActivity extends AppCompatActivity {
      */
     public void createAccount(View view)
     {
+        UserAccount newAccount = new UserAccount();
         boolean noError = true;
         String name = "";
         String password = "";
         String email = "";
         String id = "";
-        while(!noError)
+        String tempName = userEditText.getText().toString().replace("admin", "");
+
+
+        for(UserAccount account : accounts)
+        {
+            if(account.getStudentUserName().toLowerCase().startsWith(tempName))
+            {
+                Toast.makeText(this, "Sorry Admin your user name has already been taken...", Toast.LENGTH_SHORT).show();
+                nameIsNotSame = true;
+            }
+        }
+
+        if(!noError)
         {
             if(nameIsNotSame) {
                 name = userEditText.getText().toString();
@@ -78,7 +92,7 @@ public class UserAccountCreateActivity extends AppCompatActivity {
                 renterPasswordTextView.setTextColor(getResources().getColor(R.color.red));
 
             }
-            if(emailEditText.getText().toString().contains(getString(R.string.student_cccd_edu)))
+            if(emailEditText.getText().toString().endsWith(getString(R.string.student_cccd_edu)))
                 email = emailEditText.getText().toString();
             else
             {
@@ -92,7 +106,6 @@ public class UserAccountCreateActivity extends AppCompatActivity {
 
         if(noError)
         {
-            UserAccount newAccount = new UserAccount();
             if(name.startsWith("admin") && name.endsWith("admin"))
             {
                 newAccount.setmIsAdim(true);
@@ -102,6 +115,8 @@ public class UserAccountCreateActivity extends AppCompatActivity {
             newAccount.setStudentPassword(password);
             newAccount.setStudentEmail(email);
             newAccount.setStudentID(id);
+
+            dataBase.addAccount(newAccount);
         }
 
     }
