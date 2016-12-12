@@ -86,20 +86,6 @@
         android:layout_toStartOf="@+id/menuItemListImageView" />
 
     <TextView
-        android:text="@string/resources_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/menuResourcesTextView"
-        android:textSize="18sp"
-        android:textStyle="normal|bold"
-        android:onClick="openResources"
-        android:clickable="true"
-        android:layout_below="@+id/menuResourcesImageView"
-        android:layout_toStartOf="@+id/menuItemListTextView"
-        android:layout_alignRight="@+id/menuResourcesImageView"
-        android:layout_alignEnd="@+id/menuResourcesImageView" />
-
-    <TextView
         android:text="@string/sign_in_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -114,5 +100,18 @@
         android:layout_alignEnd="@+id/menuLoginImageView"
         android:layout_marginRight="8dp"
         android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:text="@string/resources_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuResourcesTextView"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:onClick="openResources"
+        android:clickable="true"
+        android:layout_below="@+id/menuResourcesImageView"
+        android:layout_toLeftOf="@+id/menuItemListTextView"
+        android:layout_toStartOf="@+id/menuItemListTextView" />
 
 </RelativeLayout>

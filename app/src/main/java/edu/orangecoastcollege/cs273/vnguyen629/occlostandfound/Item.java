@@ -1,6 +1,5 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -13,7 +12,6 @@ import android.os.Parcelable;
  * @author Vincent Nguyen
  */
 public class Item implements Parcelable {
-    private Context context;
     private int mID;
     private String mName;
     private String mDescription;
@@ -36,6 +34,7 @@ public class Item implements Parcelable {
         this.mDescription = source.readString();
         this.mDateLost = source.readString();
         this.mLastLocation = source.readString();
+        this.mFound = (source.readInt() == 1);
         this.mItemImage = Uri.parse(source.readString());
         this.mReportingUserName = source.readString();
     }
@@ -264,6 +263,7 @@ public class Item implements Parcelable {
         parcel.writeString(this.mDescription);
         parcel.writeString(this.mDateLost);
         parcel.writeString(this.mLastLocation);
+        parcel.writeInt((this.mFound)? 1 : 0);
         parcel.writeString(this.mItemImage.toString());
         parcel.writeString(this.mReportingUserName);
     }

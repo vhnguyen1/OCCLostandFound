@@ -231,11 +231,11 @@ public class ReportItemActivity extends AppCompatActivity {
 
                 Report newReport = new Report(ACCOUNT, newItem, SMS_NOTIFICATIONS);
 
-                database.addItem(newItem);
-                ItemsListActivity.allItemsList.add(newItem);
+                //database.addItem(newItem);
+                //ItemsListActivity.allItemsList.add(newItem);
                 //ItemsListActivity.itemsListAdapter.add(newItem);
-                ItemsListActivity.itemsListAdapter.notifyDataSetChanged();
-                database.addReport(newReport);
+                //ItemsListActivity.itemsListAdapter.notifyDataSetChanged();
+                //database.addReport(newReport);
 
                 Toast.makeText(this, newItem.getName() + " "
                         + getString(R.string.reported_successfully_text), Toast.LENGTH_SHORT).show();

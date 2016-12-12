@@ -64,6 +64,9 @@ public class LoginActivity extends AppCompatActivity {
 
         for (UserAccount account : accountList) {
             if (account.getStudentUserName().equals(username) && account.getStudentPassword().equals(password)) {
+                UserAccount.isLoggedIn = true;
+                UserAccount.singedInUserAccountName = account.getStudentUserName();
+
                 if (account.getIsAdmin())
                     startActivity(new Intent(this, AdminMainMenuActivity.class).putExtra("Account", account));
                 else
