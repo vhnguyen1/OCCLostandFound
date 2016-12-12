@@ -9,7 +9,10 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.SplashScreenActivity">
+    tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.SplashScreenActivity"
+    android:onClick="skipSplashScreen"
+    android:clickable="true"
+    android:background="@drawable/occ_blur">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -21,7 +24,9 @@
         android:layout_centerHorizontal="true"
         android:adjustViewBounds="true"
         android:cropToPadding="true"
-        android:scaleType="fitCenter" />
+        android:scaleType="fitCenter"
+        android:onClick="skipSplashScreen"
+        android:clickable="true" />
 
     <TextView
         android:text="@string/app_name"
@@ -35,5 +40,7 @@
         android:textSize="36sp"
         android:textColor="@android:color/holo_orange_dark"
         android:textStyle="normal|bold|italic"
-        android:gravity="center" />
+        android:gravity="center"
+        android:onClick="skipSplashScreen"
+        android:clickable="true" />
 </RelativeLayout>

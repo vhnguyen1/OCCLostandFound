@@ -3,6 +3,7 @@ package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -41,6 +42,14 @@ public class SplashScreenActivity extends AppCompatActivity {
         };
 
         splashTimer = new Timer();
-        splashTimer.schedule(splashTimerTask, 100);
+        splashTimer.schedule(splashTimerTask, 3000);
+    }
+
+    /**
+     * Skips the 3 second timer for the SplashScreen if the screen is clicked on
+     * @param view The entire layout
+     */
+    public void skipSplashScreen(View view) {
+        this.finish();
     }
 }
