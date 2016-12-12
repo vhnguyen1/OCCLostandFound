@@ -59,6 +59,21 @@ public class LoginActivity extends AppCompatActivity {
         shakeAnim = AnimationUtils.loadAnimation(this, R.anim.shake_anim);
         int pos = 0;
 
+        String username = usernameLoginEditText.getText().toString().trim();
+        String password = passwordLoginEditText.getText().toString().trim();
+
+        for (UserAccount account : accountList) {
+            if (account.getStudentUserName().equals(username) && account.getStudentPassword().equals(password)) {
+                if (account.getIsAdmin())
+                    startActivity(new Intent(this, AdminMainMenuActivity.class).putExtra("Account", account));
+                else
+                    startActivity(new Intent(this, UserMenuActivity.class).putExtra("Account", account));
+            }
+        }
+
+        Toast.makeText(this, getString(R.string.invalid_username_password_text),
+                Toast.LENGTH_SHORT).show();
+
         /*for(UserAccount userAccount : accountList)
         {
             if(userAccount.getStudentUserName().equals(usernameLoginEditText.getText()
@@ -91,21 +106,6 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, getString(R.string.invalid_username_password_text),
                     Toast.LENGTH_SHORT).show();
         }*/
-
-        String username = usernameLoginEditText.getText().toString().trim();
-        String password = passwordLoginEditText.getText().toString().trim();
-
-        for (UserAccount account : accountList) {
-            if (account.getStudentUserName().equals(username) && account.getStudentPassword().equals(password)) {
-                if (account.getIsAdmin())
-                    startActivity(new Intent(this, AdminMainMenuActivity.class).putExtra("Account", account));
-                else
-                    startActivity(new Intent(this, UserMenuActivity.class).putExtra("Account", account));
-            }
-        }
-
-        Toast.makeText(this, getString(R.string.invalid_username_password_text),
-                Toast.LENGTH_SHORT).show();
     }
 
     /**

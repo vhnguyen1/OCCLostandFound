@@ -64,8 +64,8 @@ public class AdminViewUserActivity extends AppCompatActivity {
     }
 
     /**
-     *
-     * @param view
+     * Allows the admin to send an SMS message to the user
+     * @param view The send SMS button
      */
     public void sendSMS(View view) {
         Intent smsIntent = new Intent(AdminViewUserActivity.this, SendSMSActivity.class);
@@ -74,10 +74,10 @@ public class AdminViewUserActivity extends AppCompatActivity {
     }
 
     /**
-     *
-     * @param view
+     * Allows the admin to view the feedback the specific user made
+     * @param view The view feedback button
      */
-    public void viewFeedbacks(View view) {
+    public void viewFeedback(View view) {
         final UserAccount user = getIntent().getExtras().getParcelable("SelectedUser");
         Intent viewFeedbackIntent = new Intent(this, ViewUserFeedbackActivity.class);
         viewFeedbackIntent.putExtra("UserFeedback", user);
