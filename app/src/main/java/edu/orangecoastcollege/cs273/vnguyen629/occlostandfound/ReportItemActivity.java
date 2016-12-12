@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -38,6 +39,7 @@ public class ReportItemActivity extends AppCompatActivity {
     private EditText reportItemDescriptionEditText;
     private Spinner monthSpinner;
     private Spinner dayNumberSpinner;
+    private CheckBox smsCheckBox;
 
     private DBHelper database;
 
@@ -63,6 +65,8 @@ public class ReportItemActivity extends AppCompatActivity {
         reportItemNameEditText = (EditText) findViewById(R.id.reportItemNameEditText);
         reportItemLastLocationEditText = (EditText) findViewById(R.id.reportItemLastLocationEditText);
         reportItemDescriptionEditText = (EditText) findViewById(R.id.reportItemDescriptionEditText);
+
+        smsCheckBox = (CheckBox) findViewById(R.id.smsCheckBox);
 
         monthSpinner = (Spinner) findViewById(R.id.monthSpinner);
         ArrayAdapter<String> monthSpinnerAdapter = new ArrayAdapter<String>(this,
@@ -205,10 +209,15 @@ public class ReportItemActivity extends AppCompatActivity {
             final String NEW_ITEM_LAST_LOCATION = reportItemLastLocationEditText.getText().toString().trim();
             final String NEW_ITEM_DESCRIPTION = reportItemDescriptionEditText.getText().toString().trim();
 
+            final int SMS_NOTIFICATIONS = ((smsCheckBox.isChecked())? 1 : 0);
+
+            UserAccount account = database.getUserAccount(UserAccount.singedInUserAccountName);
             Item newItem = new Item(NEW_ITEM_NAME, NEW_ITEM_DESCRIPTION, NEW_ITEM_DATE_LOST,
                     NEW_ITEM_LAST_LOCATION, false, imageUri, UserAccount.singedInUserAccountName);
+            Report newReport = new Report(account, newItem, SMS_NOTIFICATIONS);
 
             database.addItem(newItem);
+            database.addReport(newReport);
         }
     }
 
