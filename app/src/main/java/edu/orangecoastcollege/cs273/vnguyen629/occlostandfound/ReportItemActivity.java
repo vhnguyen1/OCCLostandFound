@@ -220,16 +220,19 @@ public class ReportItemActivity extends AppCompatActivity {
                 if (imageUri == null)
                     imageUri = getUriToResource(this, R.drawable.default_image);
 
+                final UserAccount ACCOUNT = getIntent().getExtras().getParcelable("Account");
                 //UserAccount account = database.getUserAccount(singedInUserAccountName);
+
                 Item newItem = new Item(NEW_ITEM_NAME, NEW_ITEM_DESCRIPTION, NEW_ITEM_DATE_LOST,
                         NEW_ITEM_LAST_LOCATION, false, imageUri, singedInUserAccountName);
-                //Report newReport = new Report(account, newItem, SMS_NOTIFICATIONS);
+
+                Report newReport = new Report(ACCOUNT, newItem, SMS_NOTIFICATIONS);
 
                 database.addItem(newItem);
                 //ItemsListActivity.allItemsList.add(newItem);
                 //ItemsListActivity.itemsListAdapter.add(newItem);
                 //ItemsListActivity.itemsListAdapter.notifyDataSetChanged();
-                //database.addReport(newReport);
+                database.addReport(newReport);
                 this.finish();
             }
         }

@@ -4,7 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 /**
+ * Allows administrators to view all the feedback provided by the users
  *
+ * @author Benjamin Nguyen
  */
 public class ViewAllFeedbacksActivity extends AppCompatActivity {
 

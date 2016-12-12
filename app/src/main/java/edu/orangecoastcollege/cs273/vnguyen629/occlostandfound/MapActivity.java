@@ -15,7 +15,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 /**
+ * Shows the map of the campus alongside the addresses.
  *
+ * @author Benjamin Nguyen
  */
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -40,8 +42,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
     /**
-     *
-     * @param googleMap
+     * Provides the default marker(s) and sets up the coordinates and positions
+     * for them
+     * @param googleMap The map
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -60,8 +63,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
     /**
-     *
-     * @param view
+     * Loads up the campus map page
+     * @param view The campus map button
      */
     public void showCampusMap(View view) {
         startActivity(new Intent(MapActivity.this, CampusMapActivity.class));

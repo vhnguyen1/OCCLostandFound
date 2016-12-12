@@ -9,7 +9,9 @@ import android.widget.Toast;
 import static edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.UserAccount.singedInUserAccountName;
 
 /**
+ * Allows the user to change their account password if needed
  *
+ * @author Vu Nguyen
  */
 public class PasswordChangeActivity extends AppCompatActivity {
 
@@ -20,8 +22,8 @@ public class PasswordChangeActivity extends AppCompatActivity {
     private DBHelper database;
 
     /**
-     *
-     * @param savedInstanceState
+     * Links the EditTexts together
+     * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +36,8 @@ public class PasswordChangeActivity extends AppCompatActivity {
     }
 
     /**
-     *
-     * @param view
+     * Saves the new password, overwriting the previous account password
+     * @param view The save new password button
      */
     public void saveNewPassword(View view)
     {
@@ -54,5 +56,4 @@ public class PasswordChangeActivity extends AppCompatActivity {
         else
             Toast.makeText(this, "Your old password is incorrect...", Toast.LENGTH_SHORT).show();
     }
-
 }

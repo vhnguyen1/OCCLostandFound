@@ -42,6 +42,8 @@ public class ItemsListActivity extends AppCompatActivity {
     private SensorManager sensorManager;
     private ShakeDetector shakeDetector;
 
+    private UserAccount account;
+
     /**
      * Loads up the database and ListView of all the reported items.
      * @param savedInstanceState The state of the application saved into a bundle.
@@ -50,6 +52,8 @@ public class ItemsListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items_list);
+
+        account = getIntent().getExtras().getParcelable("Account");
 
         //this.deleteDatabase(DBHelper.DATABASE_NAME);
         database = new DBHelper(this);
@@ -241,8 +245,10 @@ public class ItemsListActivity extends AppCompatActivity {
      */
     public void reportLostItem(View view) {
         startActivity(new Intent(ItemsListActivity.this, ReportItemActivity.class));
-        //if (UserAccount.isLoggedIn)
+        //if (UserAccount.isLoggedIn) {
+            //account = getIntent().getExtras().getParcelable("Account");
             //startActivity(new Intent(ItemsListActivity.this, ReportItemActivity.class));
+        //}
         //else
             //Toast.makeText(this, getString(R.string.must_be_signed_in_text),
                     //Toast.LENGTH_SHORT).show();

@@ -27,7 +27,6 @@ public class UserAccount implements Parcelable {
     private boolean mAllowSms;
     String mFeedBack;
 
-
     /**
      *
      * @param source
@@ -45,7 +44,6 @@ public class UserAccount implements Parcelable {
         this.mFeedBack = source.readString();
     }
 
-
     public UserAccount(String mStudentUserName, String mStudentPassword, String mStudentPhoneNum,
                        String mStudentEmail, String mStudentID) {
         this.mStudentUserName = mStudentUserName;
@@ -58,8 +56,8 @@ public class UserAccount implements Parcelable {
         this.mAllowShake = false;
         this.mAllowSms = false;
         this.mFeedBack = "";
-
     }
+
     /**
      *
      * @param mStudentUserName
