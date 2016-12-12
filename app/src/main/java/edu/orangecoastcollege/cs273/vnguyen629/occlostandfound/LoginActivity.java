@@ -59,7 +59,6 @@ public class LoginActivity extends AppCompatActivity {
         shakeAnim = AnimationUtils.loadAnimation(this, R.anim.shake_anim);
         int pos = 0;
 
-        // TODO: loop thought list to check if user exist
         for(UserAccount userAccount : accountList)
         {
             if(userAccount.getStudentUserName() == usernameLoginEditText.getText().toString().trim()) {

@@ -79,7 +79,7 @@ public class MainMenuActivity extends AppCompatActivity {
      * the Lost and Found, reported areas, or OCC the campus map, faq, etc.
      * @param view The ImageView or TextViews that open up the MapActivity.
      */
-    public void OpenResources(View view) {
+    public void openResources(View view) {
         startActivity(new Intent(MainMenuActivity.this, SendSMSActivity.class));
     }
 
