@@ -225,8 +225,6 @@ public class ReportItemActivity extends AppCompatActivity {
                         NEW_ITEM_LAST_LOCATION, false, imageUri, singedInUserAccountName);
                 //Report newReport = new Report(account, newItem, SMS_NOTIFICATIONS);
 
-                //Toast.makeText(this, newItem.getName(), Toast.LENGTH_SHORT).show();
-
                 database.addItem(newItem);
                 //ItemsListActivity.allItemsList.add(newItem);
                 //ItemsListActivity.itemsListAdapter.add(newItem);

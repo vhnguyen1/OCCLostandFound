@@ -53,7 +53,7 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String FIELD_ACCOUNT_IS_ADMIN = "is_admin";
     private static final String FIELD_ACCOUNT_ALLOW_SHAKE = "allow_shake";
     private static final String FIELD_ACCOUNT_ALLOW_SMS = "allow_sms";
-    private static final String FIELD_ACCOUNT_FEEDBACK = "feedbacks";
+    private static final String FIELD_ACCOUNT_FEEDBACK = "feedback";
     // Account Table End
 
     // Report Table Start
@@ -361,8 +361,7 @@ class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    /**
-     *asdfasdfasdfasdf
+    /*
      * @return
      */
     public ArrayList<UserAccount> getAllUserAccount()
@@ -402,8 +401,8 @@ class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         // DELETE THE TABLE ROW
-        db.delete(ACCOUNT_TABLE, FIELD_ACCOUNT_STUDENT_ID + " = ?",
-                new String[]{String.valueOf(account.getStudentUserName())});
+        db.delete(ACCOUNT_TABLE, KEY_FIELD_ACCOUNT_USERNAME + " = ?",
+                new String[]{account.getStudentUserName()});
     }
 
     /**
@@ -428,13 +427,13 @@ class DBHelper extends SQLiteOpenHelper {
         values.put(FIELD_ACCOUNT_EMAIL, account.getStudentEmail());
         values.put(FIELD_ACCOUNT_STUDENT_ID, account.getStudentID());
         values.put(FIELD_ACCOUNT_PROFILE_PICTURE, account.getStudentProfilePic().toString());
-        values.put(FIELD_ACCOUNT_IS_ADMIN, account.getIsAdmin());
-        values.put(FIELD_ACCOUNT_ALLOW_SHAKE, account.getAllowShake());
-        values.put(FIELD_ACCOUNT_ALLOW_SHAKE, account.getAllowSms());
+        values.put(FIELD_ACCOUNT_IS_ADMIN, (account.getIsAdmin()) ? 1 : 0);
+        values.put(FIELD_ACCOUNT_ALLOW_SHAKE, (account.getAllowShake()) ? 1 : 0);
+        values.put(FIELD_ACCOUNT_ALLOW_SMS, (account.getAllowSms()) ? 1 : 0);
         values.put(FIELD_ACCOUNT_FEEDBACK, account.getFeedBack());
 
-        db.update(ACCOUNT_TABLE, values, FIELD_ACCOUNT_STUDENT_ID + " = ?",
-                new String[]{String.valueOf(account.getStudentUserName())});
+        db.update(ACCOUNT_TABLE, values, KEY_FIELD_ACCOUNT_USERNAME + " = ?",
+                new String[]{account.getStudentUserName()});
     }
 
     /**
@@ -443,10 +442,11 @@ class DBHelper extends SQLiteOpenHelper {
      * @return
      */
     public UserAccount getUserAccount(String username) {
+
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 ACCOUNT_TABLE,
-                new String[]{KEY_FIELD_ACCOUNT_USERNAME,FIELD_ACCOUNT_PASSWORD, FIELD_ACCOUNT_PHONE_NUMBER,
+                new String[]{KEY_FIELD_ACCOUNT_USERNAME, FIELD_ACCOUNT_PASSWORD, FIELD_ACCOUNT_PHONE_NUMBER,
                         FIELD_ACCOUNT_EMAIL, FIELD_ACCOUNT_STUDENT_ID,
                         FIELD_ACCOUNT_PROFILE_PICTURE, FIELD_ACCOUNT_IS_ADMIN,
                         FIELD_ACCOUNT_ALLOW_SHAKE, FIELD_ACCOUNT_ALLOW_SMS, FIELD_ACCOUNT_FEEDBACK},
@@ -460,10 +460,9 @@ class DBHelper extends SQLiteOpenHelper {
         UserAccount account =
                 new UserAccount(cursor.getString(0), cursor.getString(1),
                         cursor.getString(2), cursor.getString(3),
-                        cursor.getString(4), Uri.parse(cursor.getString(5).toString()),
+                        cursor.getString(4), Uri.parse(cursor.getString(5)),
                         (cursor.getInt(6) == 0) ? false:true, (cursor.getInt(7) == 0) ? false:true,
-                        (cursor.getInt(8) == 0) ? false:true,
-                        cursor.getString(9));
+                        (cursor.getInt(8) == 0) ? false:true, cursor.getString(9));
 
         return account;
     }

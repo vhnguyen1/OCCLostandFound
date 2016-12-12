@@ -50,6 +50,7 @@ public class SplashScreenActivity extends AppCompatActivity {
      * @param view The entire layout
      */
     public void skipSplashScreen(View view) {
-        this.finish();
+        finish();
+        startActivity(new Intent(SplashScreenActivity.this, MainMenuActivity.class));
     }
 }

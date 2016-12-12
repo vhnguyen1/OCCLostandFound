@@ -25,8 +25,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private GoogleMap mMap;
 
     /**
-     *
-     * @param savedInstanceState
+     * Loads the map fragment
+     * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

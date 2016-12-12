@@ -71,7 +71,6 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
         itemListImageView.setImageURI(IMAGE_URI);
         itemListNameTextView.setText(NAME);
         itemListStatusTextView.setText(STATUS);
-
         itemListLinearLayout.setTag(ITEM);
 
         return view;

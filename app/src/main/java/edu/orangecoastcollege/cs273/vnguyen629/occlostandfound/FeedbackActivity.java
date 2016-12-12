@@ -8,7 +8,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 /**
+ * Allows users to provide feedback for the application.
  *
+ * @author Benjamin Nguyen
  */
 public class FeedbackActivity extends AppCompatActivity {
 
@@ -16,8 +18,8 @@ public class FeedbackActivity extends AppCompatActivity {
     private ImageView feedbackSubmitImageView;
 
     /**
-     *
-     * @param savedInstanceState
+     * Links up the view widgets
+     * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

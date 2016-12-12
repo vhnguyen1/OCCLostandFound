@@ -43,8 +43,8 @@ public class UserSettingsActivity extends AppCompatActivity {
 
         accountInfoEmailEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentEmail());
         accountInfoPhoneNumberEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentPhoneNum());
-        //accountSettingShakeCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowShake());
-        //accountSettingSmsCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowSms());
+        accountSettingShakeCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowShake());
+        accountSettingSmsCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowSms());
     }
 
     /**
