@@ -56,20 +56,6 @@
         android:layout_centerHorizontal="true" />
 
     <ImageView
-        app:srcCompat="@drawable/item_list_icon"
-        android:id="@+id/menuItemListImageView"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
-        android:scaleType="fitCenter"
-        android:clickable="true"
-        android:onClick="openReportedItemsList"
-        android:layout_below="@+id/menuMainImageView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:layout_width="100dp"
-        android:layout_height="100dp" />
-
-    <ImageView
         app:srcCompat="@drawable/login_button_icon"
         android:id="@+id/menuLoginImageView"
         android:onClick="signOut"
@@ -82,21 +68,6 @@
         android:layout_alignTop="@+id/menuResourcesImageView"
         android:layout_toRightOf="@+id/menuItemListImageView"
         android:layout_toEndOf="@+id/menuItemListImageView" />
-
-    <ImageView
-        app:srcCompat="@drawable/map_icon"
-        android:id="@+id/menuResourcesImageView"
-        android:layout_width="100dp"
-        android:clickable="true"
-        android:onClick="OpenResources"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
-        android:scaleType="fitCenter"
-        android:layout_marginTop="46dp"
-        android:layout_height="100dp"
-        android:layout_below="@+id/menuItemListTextView"
-        android:layout_toLeftOf="@+id/menuItemListImageView"
-        android:layout_toStartOf="@+id/menuItemListImageView" />
 
     <TextView
         android:text="@string/sign_in_text"
@@ -113,5 +84,33 @@
         android:layout_toEndOf="@+id/menuItemListTextView"
         android:layout_marginLeft="9dp"
         android:layout_marginStart="9dp" />
+
+    <ImageView
+        app:srcCompat="@drawable/item_list_icon"
+        android:id="@+id/menuItemListImageView"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:scaleType="fitCenter"
+        android:clickable="true"
+        android:onClick="openReportedItemsList"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        app:srcCompat="@drawable/map_icon"
+        android:id="@+id/menuResourcesImageView"
+        android:layout_width="100dp"
+        android:clickable="true"
+        android:onClick="OpenResources"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="19dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/menuItemListTextView"
+        android:layout_toLeftOf="@+id/menuItemListImageView"
+        android:layout_toStartOf="@+id/menuItemListImageView" />
 
 </RelativeLayout>

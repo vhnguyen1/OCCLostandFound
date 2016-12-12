@@ -1,7 +1,7 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -9,10 +9,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
+ * @author Vu Nguyen
  */
 public class UserAccountCreateActivity extends AppCompatActivity {
 
@@ -24,14 +25,14 @@ public class UserAccountCreateActivity extends AppCompatActivity {
 
     private TextView renterPasswordTextView;
     private TextView emailTextView;
-    private DBHelper dataBase;
-    private ArrayList<UserAccount> accounts;
+    private DBHelper database;
+    private List<UserAccount> accounts;
 
     private boolean nameIsNotSame = false;
 
     /**
-     *
-     * @param savedInstanceState The state of the application saved into a bundle
+     * Loads up the databases and links up the view widgets.
+     * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,15 +48,13 @@ public class UserAccountCreateActivity extends AppCompatActivity {
         renterPasswordTextView = (TextView) findViewById(R.id.renterPassEditText);
         emailTextView = (TextView) findViewById(R.id.emailTextView);
 
-        accounts = dataBase.getAllUserAccount();
-
-
-
+        database = new DBHelper(this);
+        accounts = database.getAllUserAccount();
     }
 
     /**
-     *
-     * @param view
+     * Creates an account with the user input/data
+     * @param view The create account button
      */
     public void createAccount(View view)
     {
@@ -66,7 +65,6 @@ public class UserAccountCreateActivity extends AppCompatActivity {
         String email = "";
         String id = "";
         String tempName = userEditText.getText().toString().replace("admin", "");
-
 
         for(UserAccount account : accounts)
         {
@@ -111,23 +109,27 @@ public class UserAccountCreateActivity extends AppCompatActivity {
                 newAccount.setmIsAdim(true);
                 name.replace("admin", "");
             }
+
             newAccount.setStudentUserName(name);
             newAccount.setStudentPassword(password);
             newAccount.setStudentEmail(email);
             newAccount.setStudentID(id);
 
-            dataBase.addAccount(newAccount);
+            database.addAccount(newAccount);
         }
-
     }
-
 
     /**
      *
      */
     public TextWatcher userNameTextWatcher = new TextWatcher() {
+
         /**
          * Unused
+         * @param s Unused
+         * @param start Unused
+         * @param count Unused
+         * @param after Unused
          */
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -156,14 +158,12 @@ public class UserAccountCreateActivity extends AppCompatActivity {
                     userEditText.setTextColor(getResources().getColorStateList(R.color.green));
                 }
             }
-
-
         }
 
         /**
          * Unused
+         * @param s Unused
          */
         @Override
-        public void afterTextChanged(Editable s) {}
-    };
+        public void afterTextChanged(Editable s) {}};
 }

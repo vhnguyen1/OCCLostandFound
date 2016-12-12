@@ -7,11 +7,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+/**
+ *
+ */
 public class FeedbackActivity extends AppCompatActivity {
 
     private EditText feedbackEditText;
     private ImageView feedbackSubmitImageView;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

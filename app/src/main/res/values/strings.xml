@@ -104,11 +104,11 @@
     <string name="view_reports">View Your Reports</string>
     <string name="feeback">Feedback</string>
     <string name="view_all_reports">View All Reports</string>
-    <string name="view_user_feedback">View User Feedbacks</string>
+    <string name="view_user_feedback">View User Feedback</string>
     <string name="send_sms">Send SMS Message</string>
     <string name="enter_sms_message">Enter text message here...</string>
     <string name="sms_choose_users">Choose Receivers</string>
-    <string name="search_username">Search using username...</string>sdafasdf
+    <string name="search_username">Search using username...</string>
 
     <string-array name="status_choices">
         <item>Not Found</item>
@@ -121,11 +121,15 @@
     <string name="title_activity_change_password">ChangePasswordActivity</string>
     <string name="enter_old_passoword">Enter Old Password</string>
     <string name="enter_new_password">Enter Your New Password</string>
-    <string name="reenter_new_password">ReEnter Your New Password</string>
+    <string name="reenter_new_password">Re-Enter Your New Password</string>
     <string name="view_all_users">View All Users</string>
     <string name="username">Username:</string>
     <string name="studentID">Student ID:</string>
     <string name="email_address">Email Address:</string>
     <string name="phone_number_view">Phone Number:</string>
-    <string name="change_info_button_text">Change Account Infomation</string>
+    <string name="change_info_button_text">Change Account Information</string>
+    <string name="student_email_text">Student Email</string>
+    <string name="password_text">Password</string>
+    <string name="user_name_text">User Name</string>
+    <string name="student_id_text">Student ID</string>
 </resources>
