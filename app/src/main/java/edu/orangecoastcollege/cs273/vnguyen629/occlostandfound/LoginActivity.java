@@ -100,6 +100,8 @@ public class LoginActivity extends AppCompatActivity {
      * @param view The clickable TextView that loads up the UserAccountCreateActivity
      */
     public void createAccount(View view) {
-        startActivity(new Intent(LoginActivity.this, UserAccountCreateActivity.class));
+        Intent intent = new Intent(this, UserAccountCreateActivity.class);
+        startActivity(intent);
+        ////
     }
 }

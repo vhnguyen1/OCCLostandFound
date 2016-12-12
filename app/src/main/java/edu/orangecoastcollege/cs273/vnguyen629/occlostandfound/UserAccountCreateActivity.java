@@ -12,6 +12,8 @@ import android.widget.Toast;
 import java.util.List;
 
 /**
+ * Allows the user to create an account. If the user enters specific admin codes,
+ * then the user's account becomes an admin account.
  *
  * @author Vu Nguyen
  */
@@ -70,7 +72,8 @@ public class UserAccountCreateActivity extends AppCompatActivity {
         {
             if(account.getStudentUserName().toLowerCase().startsWith(tempName))
             {
-                Toast.makeText(this, "Sorry Admin your user name has already been taken...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.admin_name_taken_text),
+                        Toast.LENGTH_SHORT).show();
                 nameIsNotSame = true;
             }
         }
