@@ -252,14 +252,12 @@ public class ItemsListActivity extends AppCompatActivity {
      * @param view The Button that loads up the ReportItemActivity.
      */
     public void reportLostItem(View view) {
-        startActivity(new Intent(ItemsListActivity.this, ReportItemActivity.class));
-        //if (UserAccount.isLoggedIn) {
-            //account = getIntent().getExtras().getParcelable("Account");
-            //startActivity(new Intent(ItemsListActivity.this, ReportItemActivity.class));
-        //}
-        //else
-            //Toast.makeText(this, getString(R.string.must_be_signed_in_text),
-                    //Toast.LENGTH_SHORT).show();
+        if (UserAccount.isLoggedIn) {
+            startActivity(new Intent(ItemsListActivity.this, ReportItemActivity.class));
+        }
+        else
+            Toast.makeText(this, getString(R.string.must_be_signed_in_text),
+                    Toast.LENGTH_SHORT).show();
     }
 
     /**
