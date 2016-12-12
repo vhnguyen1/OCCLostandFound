@@ -2,11 +2,13 @@ package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ImageView;
 
 /**
  * The main menu of the application. It allows the user to select and
@@ -19,6 +21,9 @@ public class MainMenuActivity extends AppCompatActivity {
     private SensorManager sensorManager;
     private ShakeDetector shakeDetector;
 
+    private AnimationDrawable frameAnim;
+    private ImageView mainMenuImageView;
+
     /**
      * Starts up the activity and prepares the ShakeDetector to monitor any
      * movements that constitute as shakes where the ListItemActivity may load
@@ -29,6 +34,11 @@ public class MainMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        mainMenuImageView = (ImageView) findViewById(R.id.menuMainImageView);
+        mainMenuImageView.setBackgroundResource(R.drawable.frame_anim);
+        frameAnim = (AnimationDrawable) mainMenuImageView.getBackground();
+        frameAnim.start();
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -45,6 +55,17 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     /**
+     * Stops the pre-login menu's frame animation if clicked on
+     * @param view The main menu's ImageView
+     */
+    public void stopAnimation(View view) {
+        if (frameAnim.isRunning())
+            frameAnim.stop();
+        else
+            frameAnim.start();
+    }
+
+    /**
      * Opens up ItemListActivity where the user may report a lost item or view
      * the list of all the reported items saved in the database.
      * @param view The ImageView or TextViews that open up the ItemListActivity.
@@ -58,7 +79,7 @@ public class MainMenuActivity extends AppCompatActivity {
      * the Lost and Found, reported areas, or OCC the campus map, faq, etc.
      * @param view The ImageView or TextViews that open up the MapActivity.
      */
-    public void OpenResources(View view) {
+    public void openResources(View view) {
         startActivity(new Intent(MainMenuActivity.this, UserReportListActivity.class));
     }
 

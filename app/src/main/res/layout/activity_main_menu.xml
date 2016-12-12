@@ -9,25 +9,26 @@
     tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.MainMenuActivity">
 
     <ImageView
-        app:srcCompat="@drawable/occ_image"
         android:id="@+id/menuMainImageView"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
         android:layout_column="0"
         android:layout_row="0"
         android:layout_rowSpan="5"
         android:layout_columnSpan="5"
         android:elevation="1dp"
-        android:cropToPadding="true"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
+        android:cropToPadding="false"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin"/>
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:background="@drawable/occ_image"
+        android:layout_width="match_parent"
+        android:clickable="true"
+        android:onClick="stopAnimation"
+        android:layout_height="235dp" />
 
     <TextView
         android:text="@string/view_items_list_text"
@@ -58,20 +59,6 @@
         android:layout_alignLeft="@+id/menuLoginImageView"
         android:layout_alignStart="@+id/menuLoginImageView"
         android:layout_marginTop="8dp" />
-
-    <TextView
-        android:text="@string/sign_out_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/menuLoginTextView"
-        android:textStyle="normal|bold"
-        android:textSize="18sp"
-        android:onClick="openReportedItemsList"
-        android:clickable="true"
-        android:layout_alignBaseline="@+id/menuSettingsTextView"
-        android:layout_alignBottom="@+id/menuSettingsTextView"
-        android:layout_alignRight="@+id/menuLoginImageView"
-        android:layout_alignEnd="@+id/menuLoginImageView" />
 
     <TextView
         android:text="@string/resources_text"
@@ -145,5 +132,20 @@
         android:layout_below="@+id/menuSettingsImageView"
         android:layout_alignLeft="@+id/menuSettingsImageView"
         android:layout_alignStart="@+id/menuSettingsImageView" />
+
+    <TextView
+        android:text="@string/sign_in_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/menuLoginTextView"
+        android:textStyle="normal|bold"
+        android:textSize="18sp"
+        android:onClick="openReportedItemsList"
+        android:clickable="true"
+        android:layout_below="@+id/menuSettingsImageView"
+        android:layout_alignRight="@+id/menuLoginImageView"
+        android:layout_alignEnd="@+id/menuLoginImageView"
+        android:layout_marginRight="9dp"
+        android:layout_marginEnd="9dp" />
 
 </RelativeLayout>
