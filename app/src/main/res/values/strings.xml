@@ -65,8 +65,8 @@
     <string name="item_lost_text">Enter item name...</string>
     <string name="click_to_change_image_text">Click above to select the image of your item (optional)</string>
     <string name="title_activity_google_maps">Map</string>
-    <string name="occ_address">2701 Fairview Road \nCosta Mesa, CA 92626</string>
-    <string name="office_title">Associated Students of Orange Coast College</string>
+    <string name="occ_address" translatable="false">2701 Fairview Road \nCosta Mesa, CA 92626</string>
+    <string name="office_title" translatable="false">Associated Students of Orange Coast College</string>
     <string name="occ_map_button">Locate the ASOCC office on campus map</string>
     <string name="contact_info">CONTACT INFO</string>
     <string name="asocc_email" translatable="false">asocc@occ.cccd.edu</string>
@@ -77,8 +77,8 @@
     <string name="admin_text">admin</string>
     <string name="password_same_text">Password must be the same</string>
     <string name="must_be_signed_in_text">You must be signed in to report a lost item.</string>
-    <string name="select_month_text">Select a Month</string>
-    <string name="select_day_text">Select a Day</string>
+    <string name="select_month_text">[Select a Month]</string>
+    <string name="select_day_text">[Select a Day]</string>
     <string name="january_text">January</string>
     <string name="february_text">February</string>
     <string name="march_text">March</string>
@@ -93,7 +93,7 @@
     <string name="december_text">December</string>
     <string name="february_29_days">Error: February has only 29 days!</string>
     <string name="enable_sms_this_item">Enable SMS notifications for this item</string>
-    <string name="day_text">Day</string>
+    <string name="day_text">[Day]</string>
     <!-- Benjamin -->
     <string name="allow_sms_notification">Allow SMS notification for this item</string>
     <string name="date_time_lost">Date/Time Lost: </string>
@@ -114,7 +114,7 @@
         <item>Not Found</item>
         <item>Found</item>
     </string-array>
-    <string name="month_text">Month</string>
+    <string name="month_text">[Month]</string>
     <string name="change_user_settings_text">Change User Settings</string>
     <string name="enable_shake_features_text">Enable Shake Features</string>
     <string name="next_text">Next</string>
