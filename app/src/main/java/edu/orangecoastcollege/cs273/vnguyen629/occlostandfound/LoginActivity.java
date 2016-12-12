@@ -71,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         }
 
+        loginButtonImageView.startAnimation(shakeAnim);
         Toast.makeText(this, getString(R.string.invalid_username_password_text),
                 Toast.LENGTH_SHORT).show();
 

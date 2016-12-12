@@ -56,10 +56,115 @@ public class UserAccountCreateActivity extends AppCompatActivity {
     }
 
     /**
+     * Cancels the creation of an account and exits the activity
+     * @param view The cancel button
+     */
+    public void cancel(View view) {
+        this.finish();
+    }
+
+    /**
      * Creates an account with the user input/data
      * @param view The create account button
      */
-    /*public void createAccount(View view)
+    public void createAccount(View view) {
+        String username = userEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
+        String rePassword = reenterPasswordEditText.getText().toString().trim();
+        String email = emailEditText.getText().toString().trim();
+        String studentID = idEditText.getText().toString().trim();
+        if (username.isEmpty() || password.isEmpty() || rePassword.isEmpty() || email.isEmpty()
+                || studentID.isEmpty())
+            Toast.makeText(this, "All fields must not be filled out!", Toast.LENGTH_SHORT).show();
+        else
+        {
+            for (UserAccount account : accounts)
+                if (account.getStudentUserName().equals(username)) {
+                    nameIsNotSame = false;
+                    break;
+                }
+            if (nameIsNotSame == true) {
+                if (password.equals(rePassword))
+                    if (email.endsWith(getString(R.string.student_cccd_edu))) {
+                        UserAccount account = new UserAccount(username, password, email, email, studentID);
+                        database.addAccount(account);
+                        Toast.makeText(this, "Account created", Toast.LENGTH_SHORT).show();
+                        this.finish();
+                    } else {
+                        Toast.makeText(this, "Must be a .cccd email", Toast.LENGTH_SHORT).show();
+                    }
+                else {
+                    Toast.makeText(UserAccountCreateActivity.this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
+    }
+
+    /**
+     * Monitors the username input EditText field
+     */
+    public TextWatcher userNameTextWatcher = new TextWatcher() {
+
+        /**
+         * Unused
+         * @param s Unused
+         * @param start Unused
+         * @param count Unused
+         * @param after Unused
+         */
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+        /**
+         * Unused
+         * @param s Unused
+         * @param start Unused
+         * @param before Unused
+         * @param count Unused
+         */
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count)
+        {
+            /*String input = s.toString().toLowerCase();
+            for(UserAccount account : accounts)
+            {
+                if(account.getStudentUserName().toLowerCase().startsWith(input))
+                {
+                    nameIsNotSame = false;
+                    userEditText.setTextColor(getResources().getColorStateList(R.color.red));
+                }
+                else
+                {
+                    nameIsNotSame = true;
+                    userEditText.setTextColor(getResources().getColorStateList(R.color.green));
+                }
+            }*/
+        }
+
+        /**
+         * Monitors and waits for the user to finish typing. After they finish typing,
+         * it checks to see if the username they typed in has already been taking.
+         * @param s Unused
+         */
+        @Override
+        public void afterTextChanged(Editable s) {
+            for (UserAccount account : accounts) {
+                if (account.getStudentUserName().toLowerCase().equals(s.toString())) {
+                    nameIsNotSame = false;
+                    Toast.makeText(UserAccountCreateActivity.this, "Username already taken!", Toast.LENGTH_SHORT).show();
+                    userEditText.setTextColor(getResources().getColorStateList(R.color.red));
+                } else {
+                    nameIsNotSame = true;
+                    userEditText.setTextColor(getResources().getColorStateList(R.color.green));
+                }
+            }
+        }};
+
+    /*/**
+     * Creates an account with the user input/data
+     * @param view The create account button
+     *//*
+    public void createAccount(View view)
     {
         UserAccount newAccount = new UserAccount();
         boolean noError = true;
@@ -123,99 +228,4 @@ public class UserAccountCreateActivity extends AppCompatActivity {
             Toast.makeText(this, "Account created!", Toast.LENGTH_SHORT).show();
         }
     }*/
-
-    /**
-     *
-     * @param view
-     */
-    public void createAccount(View view) {
-        String username = userEditText.getText().toString().trim();
-        String password = passwordEditText.getText().toString().trim();
-        String rePassword = reenterPasswordEditText.getText().toString().trim();
-        String email = emailEditText.getText().toString().trim();
-        String studentID = idEditText.getText().toString().trim();
-        if (username.isEmpty() || password.isEmpty() || rePassword.isEmpty() || email.isEmpty()
-                || studentID.isEmpty())
-            Toast.makeText(this, "All fields must not be filled out!", Toast.LENGTH_SHORT).show();
-        else
-        {
-            for (UserAccount account : accounts)
-                if (account.getStudentUserName().equals(username)) {
-                    nameIsNotSame = false;
-                    break;
-                }
-            if (nameIsNotSame == true) {
-                if (password.equals(rePassword))
-                    if (email.endsWith(getString(R.string.student_cccd_edu))) {
-                        UserAccount account = new UserAccount(username, password, email, email, studentID);
-                        database.addAccount(account);
-                        Toast.makeText(this, "Account created", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(this, "Must be a cccd email", Toast.LENGTH_SHORT).show();
-                    }
-                else {
-                    Toast.makeText(UserAccountCreateActivity.this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        }
-    }
-
-    /**
-     *
-     */
-    public TextWatcher userNameTextWatcher = new TextWatcher() {
-
-        /**
-         * Unused
-         * @param s Unused
-         * @param start Unused
-         * @param count Unused
-         * @param after Unused
-         */
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-        /**
-         *
-         * @param s
-         * @param start
-         * @param before
-         * @param count
-         */
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count)
-        {
-            /*String input = s.toString().toLowerCase();
-            for(UserAccount account : accounts)
-            {
-                if(account.getStudentUserName().toLowerCase().startsWith(input))
-                {
-                    nameIsNotSame = false;
-                    userEditText.setTextColor(getResources().getColorStateList(R.color.red));
-                }
-                else
-                {
-                    nameIsNotSame = true;
-                    userEditText.setTextColor(getResources().getColorStateList(R.color.green));
-                }
-            }*/
-        }
-
-        /**
-         * Unused
-         * @param s Unused
-         */
-        @Override
-        public void afterTextChanged(Editable s) {
-            for (UserAccount account : accounts) {
-                if (account.getStudentUserName().toLowerCase().equals(s.toString())) {
-                    nameIsNotSame = false;
-                    Toast.makeText(UserAccountCreateActivity.this, "Username already taken!", Toast.LENGTH_SHORT).show();
-                    userEditText.setTextColor(getResources().getColorStateList(R.color.red));
-                } else {
-                    nameIsNotSame = true;
-                    userEditText.setTextColor(getResources().getColorStateList(R.color.green));
-                }
-            }
-        }};
 }

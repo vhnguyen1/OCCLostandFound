@@ -89,8 +89,6 @@ public class MainMenuActivity extends AppCompatActivity {
      * @param view The clickable ImageView or TextView that opens up the LoginActivity.
      */
     public void signIn(View view) {
-        UserAccount.isLoggedIn = false;
-        UserAccount.singedInUserAccountName = "";
         startActivity(new Intent(MainMenuActivity.this, LoginActivity.class));
     }
 

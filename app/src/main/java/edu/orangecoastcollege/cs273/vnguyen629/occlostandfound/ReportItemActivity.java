@@ -220,7 +220,7 @@ public class ReportItemActivity extends AppCompatActivity {
 
                 final int SMS_NOTIFICATIONS = ((smsCheckBox.isChecked())? 1 : 0);
 
-                if (imageUri == null)
+                if (imageUri == null || imageUri.toString() == "")
                     imageUri = getUriToResource(this, R.drawable.default_image);
 
                 final UserAccount ACCOUNT = getIntent().getExtras().getParcelable("Account");
@@ -232,10 +232,11 @@ public class ReportItemActivity extends AppCompatActivity {
                 Report newReport = new Report(ACCOUNT, newItem, SMS_NOTIFICATIONS);
 
                 database.addItem(newItem);
-                //ItemsListActivity.allItemsList.add(newItem);
+                ItemsListActivity.allItemsList.add(newItem);
                 //ItemsListActivity.itemsListAdapter.add(newItem);
-                //ItemsListActivity.itemsListAdapter.notifyDataSetChanged();
+                ItemsListActivity.itemsListAdapter.notifyDataSetChanged();
                 database.addReport(newReport);
+
                 this.finish();
             }
         }

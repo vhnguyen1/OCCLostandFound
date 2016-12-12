@@ -55,16 +55,11 @@ public class ItemsListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items_list);
 
-        account = getIntent().getExtras().getParcelable("Account");
+        if (UserAccount.isLoggedIn)
+            account = getIntent().getExtras().getParcelable("Account");
 
-        this.deleteDatabase(DBHelper.DATABASE_NAME);
+        //this.deleteDatabase(DBHelper.DATABASE_NAME);
         database = new DBHelper(this);
-
-        database.deleteAllItems();
-        database.deleteAllUserAccounts();
-        database.deleteAllReports();
-        allItemsList.clear();
-        itemsListAdapter.notifyDataSetChanged();
 
         //database.addItem(new Item("LV Wallet", "Brown Wallet", "October", "Tech Center", false,
                 //getUriToResource(this, R.drawable.default_image), "vnguyen629"));
@@ -97,6 +92,12 @@ public class ItemsListActivity extends AppCompatActivity {
                 startActivity(new Intent(ItemsListActivity.this, ReportItemActivity.class));
             }
         });
+
+        //database.deleteAllItems();
+        //database.deleteAllReports();
+        //database.deleteAllUserAccounts();
+        //allItemsList.clear();
+        //itemsListAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -185,6 +186,14 @@ public class ItemsListActivity extends AppCompatActivity {
                     if (selectedCategory.equals(getString(R.string.all_reported_items_text)))
                         for (Item item : allItemsList)
                             itemsListAdapter.add(item);
+                    else if (UserAccount.isLoggedIn) {
+                        for (Item item : allItemsList) {
+                            if (item.getReportedUsername().equals(
+                                    UserAccount.singedInUserAccountName)) {
+                                itemsListAdapter.add(item);
+                            }
+                        }
+                    }
                     else if (selectedCategory.equals(getString(R.string.found_items_text))) {
                         for (Item item : allItemsList)
                             if (item.getStatus())
@@ -194,16 +203,6 @@ public class ItemsListActivity extends AppCompatActivity {
                         for (Item item : allItemsList)
                             if (!item.getStatus())
                                 itemsListAdapter.add(item);
-                    }
-                    else {
-                        if (UserAccount.isLoggedIn) {
-                            for (Item item : allItemsList) {
-                                if (item.getReportedUsername().equals(
-                                        UserAccount.singedInUserAccountName)) {
-                                    itemsListAdapter.add(item);
-                                }
-                            }
-                        }
                     }
                 }
                 /**

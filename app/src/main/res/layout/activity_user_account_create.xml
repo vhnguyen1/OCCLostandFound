@@ -114,10 +114,11 @@
             android:onClick="createAccount" />
 
         <Button
-            android:text="@string/back_button"
+            android:text="@string/cancel_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/backButton"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:onClick="cancel" />
     </LinearLayout>
 </LinearLayout>
