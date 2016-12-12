@@ -7,6 +7,9 @@ import android.widget.ListView;
 
 import java.util.List;
 
+/**
+ *
+ */
 public class UserReportListActivity extends AppCompatActivity {
 
     private DBHelper db;
@@ -14,6 +17,10 @@ public class UserReportListActivity extends AppCompatActivity {
     private ItemListAdapter itemListAdapter;
     private ListView itemListView;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -14,6 +14,9 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+/**
+ *
+ */
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private static final double LATITUDE = 33.669663;
@@ -21,6 +24,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +39,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         googleMapFragment.getMapAsync(this);
     }
 
+    /**
+     *
+     * @param googleMap
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -48,6 +59,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.moveCamera(cameraUpdate);
     }
 
+    /**
+     *
+     * @param view
+     */
     public void showCampusMap(View view) {
         startActivity(new Intent(MapActivity.this, CampusMapActivity.class));
     }

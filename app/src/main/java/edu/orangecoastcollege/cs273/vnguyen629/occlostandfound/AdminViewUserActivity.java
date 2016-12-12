@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ *
+ */
 public class AdminViewUserActivity extends AppCompatActivity {
 
     private TextView adminViewUsernameTextView;
@@ -13,6 +16,10 @@ public class AdminViewUserActivity extends AppCompatActivity {
     private TextView adminViewEmailTextView;
     private TextView adminViewPhoneTextView;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,12 +38,20 @@ public class AdminViewUserActivity extends AppCompatActivity {
         adminViewPhoneTextView.setText(user.getStudentPhoneNum());
     }
 
+    /**
+     *
+     * @param view
+     */
     public void sendSMS(View view) {
         Intent smsIntent = new Intent(AdminViewUserActivity.this, SendSMSActivity.class);
         smsIntent.putExtra("UserPhoneNumber", adminViewPhoneTextView.getText().toString());
         startActivity(smsIntent);
     }
 
+    /**
+     *
+     * @param view
+     */
     public void viewFeedbacks(View view) {
         final UserAccount user = getIntent().getExtras().getParcelable("SelectedUser");
         Intent viewFeedbackIntent = new Intent(this, ViewUserFeedbackActivity.class);

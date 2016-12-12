@@ -17,6 +17,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 public class UserListActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_SEND_SMS = 101;
@@ -29,6 +32,10 @@ public class UserListActivity extends AppCompatActivity {
     private ListView userListView;
     private EditText searchUsernameEditText;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,12 +56,29 @@ public class UserListActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     */
     public TextWatcher usernameSearchTextWatcher = new TextWatcher() {
+        /**
+         * Unused
+         * @param s Unused
+         * @param start Unused
+         * @param count Unused
+         * @param after Unused
+         */
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             //Do nothing
         }
 
+        /**
+         *
+         * @param s
+         * @param start
+         * @param before
+         * @param count
+         */
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             String input = s.toString().toLowerCase();
@@ -73,13 +97,20 @@ public class UserListActivity extends AppCompatActivity {
             }
         }
 
+        /**
+         * Unused
+         * @param s Unused
+         */
         @Override
         public void afterTextChanged(Editable s) {
             //Do nothing
         }
     };
 
-
+    /**
+     *
+     * @param view
+     */
     public void selectUserSMS(View view) {
         String message = getIntent().getExtras().getString("MESSAGE");
 

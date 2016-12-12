@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 import java.util.List;
 
+/**
+ *
+ */
 public class UserItemsListActivity extends AppCompatActivity {
 
     private DBHelper db;
@@ -18,6 +21,10 @@ public class UserItemsListActivity extends AppCompatActivity {
     private ItemListAdapter itemListAdapter;
     private ListView itemListView;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +41,10 @@ public class UserItemsListActivity extends AppCompatActivity {
         itemListView.setAdapter(itemListAdapter);
     }
 
+    /**
+     *
+     * @param view
+     */
     public void viewUserItemDetails(View view) {
         if (view instanceof LinearLayout) {
             final Item SELECTED_ITEM = (Item) view.getTag();

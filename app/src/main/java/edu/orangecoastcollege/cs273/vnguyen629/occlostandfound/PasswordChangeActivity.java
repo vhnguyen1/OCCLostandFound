@@ -8,6 +8,9 @@ import android.widget.Toast;
 
 import static edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.UserAccount.singedInUserAccountName;
 
+/**
+ *
+ */
 public class PasswordChangeActivity extends AppCompatActivity {
 
     private EditText oldPasswordEditText;
@@ -16,7 +19,10 @@ public class PasswordChangeActivity extends AppCompatActivity {
 
     private DBHelper database;
 
-
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +33,10 @@ public class PasswordChangeActivity extends AppCompatActivity {
         reNewPasswordEditText = (EditText) findViewById(R.id.reNewPasswordEditText);
     }
 
+    /**
+     *
+     * @param view
+     */
     public void saveNewPassword(View view)
     {
         UserAccount account = database.getUserAccount(singedInUserAccountName);
