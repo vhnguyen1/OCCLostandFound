@@ -51,7 +51,6 @@ public class ContactInfoActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         if (UserAccount.isLoggedIn) {
-
             sensorManager.registerListener(shakeDetector, accelerometer,
                     SensorManager.SENSOR_DELAY_UI);
         }

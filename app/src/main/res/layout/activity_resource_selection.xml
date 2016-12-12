@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_resource_selection"
     android:layout_width="match_parent"
@@ -10,4 +11,116 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.ResourceSelectionActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/library_interior"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/imageView5"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:text="@string/contact_info_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView27"
+        android:textSize="18sp"
+        android:layout_marginRight="51dp"
+        android:layout_marginEnd="51dp"
+        android:layout_alignBottom="@+id/textView23"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="openContactInfo" />
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/faq_icon"
+        android:layout_marginTop="36dp"
+        android:id="@+id/imageView7"
+        android:layout_below="@+id/textView23"
+        android:layout_alignLeft="@+id/imageView4"
+        android:layout_alignStart="@+id/imageView4"
+        android:clickable="true"
+        android:onClick="openFAQ" />
+
+    <ImageView
+        app:srcCompat="@drawable/about_icon"
+        android:id="@+id/imageView8"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_alignBottom="@+id/imageView7"
+        android:layout_alignLeft="@+id/imageView6"
+        android:layout_alignStart="@+id/imageView6"
+        android:onClick="openAbout" />
+
+    <ImageView
+        app:srcCompat="@drawable/contact_info_icon"
+        android:id="@+id/imageView6"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_above="@+id/textView27"
+        android:layout_alignLeft="@+id/textView27"
+        android:layout_alignStart="@+id/textView27"
+        android:onClick="openContactInfo" />
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/map_icon"
+        android:id="@+id/imageView4"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="35dp"
+        android:clickable="true"
+        android:onClick="openMap"
+        android:layout_marginLeft="57dp"
+        android:layout_marginStart="57dp"
+        android:layout_below="@+id/imageView5"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="@string/map_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView23"
+        android:onClick="openMap"
+        android:clickable="true"
+        android:textSize="18sp"
+        android:layout_below="@+id/imageView4"
+        android:layout_alignRight="@+id/imageView4"
+        android:layout_alignEnd="@+id/imageView4"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp" />
+
+    <TextView
+        android:text="@string/faq_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView29"
+        android:textSize="18sp"
+        android:clickable="true"
+        android:onClick="openFAQ"
+        android:layout_below="@+id/imageView7"
+        android:layout_alignRight="@+id/textView23"
+        android:layout_alignEnd="@+id/textView23" />
+
+    <TextView
+        android:text="@string/about_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView30"
+        android:textSize="18sp"
+        android:layout_below="@+id/imageView8"
+        android:layout_alignLeft="@+id/imageView8"
+        android:layout_alignStart="@+id/imageView8"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
+        android:onClick="openAbout" />
 </RelativeLayout>

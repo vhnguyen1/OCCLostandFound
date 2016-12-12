@@ -222,7 +222,7 @@ public class ReportItemActivity extends AppCompatActivity {
 
                 final int SMS_NOTIFICATIONS = ((smsCheckBox.isChecked())? 1 : 0);
 
-                if (imageUri == null || imageUri.toString() == "")
+                if (imageUri == null || imageUri.toString().equals(""))
                     imageUri = getUriToResource(this, R.drawable.default_image);
 
                 final UserAccount ACCOUNT = getIntent().getExtras().getParcelable("Account");
