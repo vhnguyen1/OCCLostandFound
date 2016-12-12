@@ -127,4 +127,7 @@
     <string name="occ_text" translatable="false"></string>
     <string name="feedback_text">フィードバック</string>
     <string name="app_purpose_text">" アプリの目的"</string>
+    <string name="old_password_incorrect">古いパスワードが間違っています。</string>
+    <string name="passwords_do_not_match">" 新しいパスワードが一致しません。"</string>
+    <string name="reported_successfully_text">正常に報告されました。</string>
 </resources>
