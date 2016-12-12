@@ -7,10 +7,17 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ *
+ */
 public class SendSMSActivity extends AppCompatActivity {
 
     private EditText smsSenderEditText;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +26,10 @@ public class SendSMSActivity extends AppCompatActivity {
         smsSenderEditText = (EditText) findViewById(R.id.smsSenderEditText);
     }
 
+    /**
+     *
+     * @param view
+     */
     public void sendSMS(View view) {
         String message = smsSenderEditText.getText().toString();
         if (message.isEmpty())
