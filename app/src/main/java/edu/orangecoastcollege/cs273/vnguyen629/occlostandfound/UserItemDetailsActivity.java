@@ -6,10 +6,14 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 public class UserItemDetailsActivity extends AppCompatActivity {
+
+    private UserAccount loggedInAccount;
 
     private Spinner userItemStatusSpinner;
 
@@ -29,6 +33,10 @@ public class UserItemDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_item_details);
 
+        loggedInAccount = getIntent().getExtras().getParcelable("LoggedInAccount");
+
+        Item selectedItem = getIntent().getExtras().getParcelable("SelectedItem");
+
         userItemStatusSpinner = (Spinner) findViewById(R.id.userItemStatusSpinner);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.status_choices, android.R.layout.simple_spinner_item);
@@ -47,6 +55,18 @@ public class UserItemDetailsActivity extends AppCompatActivity {
             @Override
             public void onShake() {
                 startActivity(new Intent(UserItemDetailsActivity.this, UserItemsListActivity.class));
+            }
+        });
+
+        userItemStatusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
     }

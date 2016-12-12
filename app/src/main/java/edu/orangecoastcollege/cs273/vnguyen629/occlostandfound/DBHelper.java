@@ -514,19 +514,21 @@ class DBHelper extends SQLiteOpenHelper {
         ArrayList<Report> reportArrayList = new ArrayList<>();
         ArrayList<Item> itemArrayList = new ArrayList<>();
 
+        Log.i("getAllReportsfromuser", account.toString());
+
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(
                 REPORT_TABLE,
                 new String[]{REPORT_KEY_FIELD_ID, FIELD_REPORT_ACCOUNT, FIELD_REPORT_ITEM_ID,
                         FIELD_REPORT_SMS_CHECK},
                     FIELD_REPORT_ACCOUNT + "=?",
-                    new String[]{String.valueOf(account.getStudentUserName())},
+                    new String[]{account.getStudentUserName()},
                     null, null, null, null);
-
-        Log.i("DBHelper", cursor.toString());
 
         if (cursor.moveToFirst()) {
             do {
+                Log.i("useraccount", account.getStudentUserName());
+                Log.i("itemid", cursor.getString(2));
                 Item item = getItem(Integer.parseInt(cursor.getString(2)));
                 int reportID = cursor.getInt(0);
                 int smsCheck = cursor.getInt(3);
