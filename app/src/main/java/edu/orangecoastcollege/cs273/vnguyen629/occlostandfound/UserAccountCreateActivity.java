@@ -12,6 +12,8 @@ import android.widget.Toast;
 import java.util.List;
 
 /**
+ * Allows the user to create an account. If the user enters specific admin codes,
+ * then the user's account becomes an admin account.
  *
  * @author Vu Nguyen
  */
@@ -31,15 +33,13 @@ public class UserAccountCreateActivity extends AppCompatActivity {
     private boolean nameIsNotSame = false;
 
     /**
-     *
-     * @param savedInstanceState The state of the application saved into a bundle
+     * Loads up the databases and links up the view widgets.
+     * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_account_create);
-
-        database = new DBHelper(this);
 
         userEditText = (EditText) findViewById(R.id.userEditText);
         userEditText.addTextChangedListener(userNameTextWatcher);
@@ -50,8 +50,8 @@ public class UserAccountCreateActivity extends AppCompatActivity {
         renterPasswordTextView = (TextView) findViewById(R.id.renterPassEditText);
         emailTextView = (TextView) findViewById(R.id.emailTextView);
 
-        //database = new DBHelper(this);
-        //accounts = database.getAllUserAccount();
+        database = new DBHelper(this);
+        accounts = database.getAllUserAccount();
     }
 
     /**
@@ -72,7 +72,8 @@ public class UserAccountCreateActivity extends AppCompatActivity {
         {
             if(account.getStudentUserName().toLowerCase().startsWith(tempName))
             {
-                Toast.makeText(this, "Sorry Admin your user name has already been taken...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.admin_name_taken_text),
+                        Toast.LENGTH_SHORT).show();
                 nameIsNotSame = true;
             }
         }
