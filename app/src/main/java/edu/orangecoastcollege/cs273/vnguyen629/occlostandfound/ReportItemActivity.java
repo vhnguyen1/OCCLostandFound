@@ -212,7 +212,7 @@ public class ReportItemActivity extends AppCompatActivity {
             Toast.makeText(this, getString(R.string.all_fields_mandatory_text),
                     Toast.LENGTH_SHORT).show();
         else {
-            if ((singedInUserAccountName.equals(""))) {
+            if (UserAccount.isLoggedIn) {
                 final String NEW_ITEM_NAME = reportItemNameEditText.getText().toString().trim();
                 final String NEW_ITEM_DATE_LOST = month + " " + day + ", " + YEAR;
                 final String NEW_ITEM_LAST_LOCATION = reportItemLastLocationEditText.getText().toString().trim();
@@ -231,17 +231,20 @@ public class ReportItemActivity extends AppCompatActivity {
 
                 Report newReport = new Report(ACCOUNT, newItem, SMS_NOTIFICATIONS);
 
-                //database.addItem(newItem);
-                //ItemsListActivity.allItemsList.add(newItem);
+                database.addItem(newItem);
+                ItemsListActivity.allItemsList.add(newItem);
                 //ItemsListActivity.itemsListAdapter.add(newItem);
-                //ItemsListActivity.itemsListAdapter.notifyDataSetChanged();
-                //database.addReport(newReport);
+                ItemsListActivity.itemsListAdapter.notifyDataSetChanged();
+                database.addReport(newReport);
 
                 Toast.makeText(this, newItem.getName() + " "
                         + getString(R.string.reported_successfully_text), Toast.LENGTH_SHORT).show();
-
-                this.finish();
             }
+            else
+                Toast.makeText(this, getString(R.string.must_be_signed_in_text),
+                        Toast.LENGTH_SHORT).show();
+
+            this.finish();
         }
     }
 
