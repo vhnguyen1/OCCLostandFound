@@ -228,9 +228,9 @@ public class ReportItemActivity extends AppCompatActivity {
                 //Toast.makeText(this, newItem.getName(), Toast.LENGTH_SHORT).show();
 
                 database.addItem(newItem);
-                ItemsListActivity.allItemsList.add(newItem);
+                //ItemsListActivity.allItemsList.add(newItem);
                 //ItemsListActivity.itemsListAdapter.add(newItem);
-                ItemsListActivity.itemsListAdapter.notifyDataSetChanged();
+                //ItemsListActivity.itemsListAdapter.notifyDataSetChanged();
                 //database.addReport(newReport);
                 this.finish();
             }

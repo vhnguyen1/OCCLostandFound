@@ -104,7 +104,7 @@
         android:id="@+id/menuResourcesImageView"
         android:layout_width="100dp"
         android:clickable="true"
-        android:onClick="OpenResources"
+        android:onClick="openResources"
         android:adjustViewBounds="true"
         android:cropToPadding="true"
         android:scaleType="fitCenter"

@@ -30,7 +30,7 @@ public class UserAccountCreateActivity extends AppCompatActivity {
     private DBHelper database;
     private List<UserAccount> accounts;
 
-    private boolean nameIsNotSame = false;
+    private boolean nameIsNotSame = true;
 
     /**
      * Loads up the databases and links up the view widgets.
@@ -43,22 +43,23 @@ public class UserAccountCreateActivity extends AppCompatActivity {
 
         userEditText = (EditText) findViewById(R.id.userEditText);
         userEditText.addTextChangedListener(userNameTextWatcher);
-        passwordEditText = (EditText) findViewById(R.id.passwordEditText) ;
+        passwordEditText = (EditText) findViewById(R.id.passwordEditText);
         reenterPasswordEditText = (EditText) findViewById(R.id.reenterPasswordEditText);
         emailEditText = (EditText) findViewById(R.id.emailEditText);
         idEditText = (EditText) findViewById(R.id.idEditText);
-        renterPasswordTextView = (TextView) findViewById(R.id.renterPassEditText);
+        renterPasswordTextView = (TextView) findViewById(R.id.reenterPassTextView);
         emailTextView = (TextView) findViewById(R.id.emailTextView);
 
         database = new DBHelper(this);
         accounts = database.getAllUserAccount();
+
     }
 
     /**
      * Creates an account with the user input/data
      * @param view The create account button
      */
-    public void createAccount(View view)
+    /*public void createAccount(View view)
     {
         UserAccount newAccount = new UserAccount();
         boolean noError = true;
@@ -109,7 +110,7 @@ public class UserAccountCreateActivity extends AppCompatActivity {
         {
             if(name.startsWith("admin") && name.endsWith("admin"))
             {
-                newAccount.setmIsAdim(true);
+                newAccount.setmIsAdmin(true);
                 name.replace("admin", "");
             }
 
@@ -119,6 +120,39 @@ public class UserAccountCreateActivity extends AppCompatActivity {
             newAccount.setStudentID(id);
 
             database.addAccount(newAccount);
+            Toast.makeText(this, "Account created!", Toast.LENGTH_SHORT).show();
+        }
+    }*/
+
+    public void createAccount(View view) {
+        String username = userEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
+        String rePassword = reenterPasswordEditText.getText().toString().trim();
+        String email = emailEditText.getText().toString().trim();
+        String studentID = idEditText.getText().toString().trim();
+        if (username.isEmpty() || password.isEmpty() || rePassword.isEmpty() || email.isEmpty()
+                || studentID.isEmpty())
+            Toast.makeText(this, "All fields must not be filled out!", Toast.LENGTH_SHORT).show();
+        else
+        {
+            for (UserAccount account : accounts)
+                if (account.getStudentUserName().equals(username)) {
+                    nameIsNotSame = false;
+                    break;
+                }
+            if (nameIsNotSame == true) {
+                if (password.equals(rePassword))
+                    if (email.endsWith(getString(R.string.student_cccd_edu))) {
+                        UserAccount account = new UserAccount(username, password, email, email, studentID);
+                        database.addAccount(account);
+                        Toast.makeText(this, "Account created", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(this, "Must be a cccd email", Toast.LENGTH_SHORT).show();
+                    }
+                else {
+                    Toast.makeText(UserAccountCreateActivity.this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
+                }
+            }
         }
     }
 
@@ -147,7 +181,7 @@ public class UserAccountCreateActivity extends AppCompatActivity {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count)
         {
-            String input = s.toString().toLowerCase();
+            /*String input = s.toString().toLowerCase();
             for(UserAccount account : accounts)
             {
                 if(account.getStudentUserName().toLowerCase().startsWith(input))
@@ -160,7 +194,7 @@ public class UserAccountCreateActivity extends AppCompatActivity {
                     nameIsNotSame = true;
                     userEditText.setTextColor(getResources().getColorStateList(R.color.green));
                 }
-            }
+            }*/
         }
 
         /**
@@ -168,5 +202,16 @@ public class UserAccountCreateActivity extends AppCompatActivity {
          * @param s Unused
          */
         @Override
-        public void afterTextChanged(Editable s) {}};
+        public void afterTextChanged(Editable s) {
+            for (UserAccount account : accounts) {
+                if (account.getStudentUserName().toLowerCase().equals(s.toString())) {
+                    nameIsNotSame = false;
+                    Toast.makeText(UserAccountCreateActivity.this, "Username already taken!", Toast.LENGTH_SHORT).show();
+                    userEditText.setTextColor(getResources().getColorStateList(R.color.red));
+                } else {
+                    nameIsNotSame = true;
+                    userEditText.setTextColor(getResources().getColorStateList(R.color.green));
+                }
+            }
+        }};
 }

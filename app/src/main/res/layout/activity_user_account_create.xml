@@ -51,7 +51,7 @@
         android:text="@string/reenter_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/renterPassEditText"
+        android:id="@+id/reenterPassTextView"
         android:layout_weight="0" />
 
     <EditText
@@ -102,7 +102,8 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="createAccount">
 
         <Button
             android:text="@string/create_account_button"
@@ -110,7 +111,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/CreateButton"
             android:layout_weight="1"
-            android:onClick="createAccount (UserAccountCreateActivity)" />
+            android:onClick="createAccount" />
 
         <Button
             android:text="@string/back_button"

@@ -22,9 +22,11 @@ public class UserAccount implements Parcelable {
     String mStudentEmail;
     String mStudentID;
     Uri    mStudentProfilePic;
-    boolean mIsAdim;
+    boolean mIsAdmin;
     private boolean mAllowShake;
     private boolean mAllowSms;
+    String mFeedBack;
+
 
     /**
      *
@@ -37,11 +39,27 @@ public class UserAccount implements Parcelable {
         this.mStudentEmail      = source.readString();
         this.mStudentID         = source.readString();
         this.mStudentProfilePic = Uri.parse(source.readString());
-        this.mIsAdim            = source.readByte() != 0;
+        this.mIsAdmin            = source.readByte() != 0;
         this.mAllowShake        = source.readByte() != 0;
         this.mAllowSms          = source.readByte() != 0;
+        this.mFeedBack = source.readString();
     }
 
+
+    public UserAccount(String mStudentUserName, String mStudentPassword, String mStudentPhoneNum,
+                       String mStudentEmail, String mStudentID) {
+        this.mStudentUserName = mStudentUserName;
+        this.mStudentPassword = mStudentPassword;
+        this.mStudentPhoneNum = mStudentPhoneNum;
+        this.mStudentEmail = mStudentEmail;
+        this.mStudentID = mStudentID;
+        this.mStudentProfilePic = Uri.parse("android.resource://edu.orangecoastcollege.cs273.vnguyen629.occlostandfound/drawable/image_name");;
+        this.mIsAdmin = false;
+        this.mAllowShake = false;
+        this.mAllowSms = false;
+        this.mFeedBack = "";
+
+    }
     /**
      *
      * @param mStudentUserName
@@ -52,20 +70,21 @@ public class UserAccount implements Parcelable {
      * @param mStudentProfilePic
      */
     public UserAccount(String mStudentUserName, String mStudentPassword, String mStudentPhoneNum,
-                       String mStudentEmail, String mStudentID, Uri mStudentProfilePic, boolean isAdim, boolean allowShake, boolean allowSms) {
+                       String mStudentEmail, String mStudentID, Uri mStudentProfilePic, boolean isAdmin, boolean allowShake, boolean allowSms, String feedback) {
         this.mStudentUserName = mStudentUserName;
         this.mStudentPassword = mStudentPassword;
         this.mStudentPhoneNum = mStudentPhoneNum;
         this.mStudentEmail = mStudentEmail;
         this.mStudentID = mStudentID;
         this.mStudentProfilePic = mStudentProfilePic;
-        this.mIsAdim = isAdim;
+        this.mIsAdmin = isAdmin;
         this.mAllowShake = allowShake;
         this.mAllowSms = allowSms;
+        this.mFeedBack = feedback;
     }
 
     public UserAccount() {
-        this("", "", "", "", "",null, false, false, false);
+        this("", "", "", "", "",null, false, false, false, "");
     }
 
     /**
@@ -128,8 +147,8 @@ public class UserAccount implements Parcelable {
      *
      * @return
      */
-    public boolean getIsAdim() {
-        return mIsAdim;
+    public boolean getIsAdmin() {
+        return mIsAdmin;
     }
 
     /**
@@ -146,6 +165,10 @@ public class UserAccount implements Parcelable {
      */
     public boolean getAllowSms() {
         return mAllowSms;
+    }
+
+    public String getFeedBack() {
+        return mFeedBack;
     }
 
     /**
@@ -191,10 +214,10 @@ public class UserAccount implements Parcelable {
 
     /**
      *
-     * @param mIsAdim
+     * @param mIsAdmin
      */
-    public void setmIsAdim(boolean mIsAdim) {
-        this.mIsAdim = mIsAdim;
+    public void setmIsAdmin(boolean mIsAdmin) {
+        this.mIsAdmin = mIsAdmin;
     }
 
     /**
@@ -211,6 +234,10 @@ public class UserAccount implements Parcelable {
      */
     public void setmAllowSms(boolean mAllowSms) {
         this.mAllowSms = mAllowSms;
+    }
+
+    public void setFeedBack(String feedBack) {
+        this.mFeedBack = feedBack;
     }
 
     /**

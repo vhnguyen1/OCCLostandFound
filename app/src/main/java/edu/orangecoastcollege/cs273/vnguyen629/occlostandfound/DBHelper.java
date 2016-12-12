@@ -53,6 +53,7 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String FIELD_ACCOUNT_IS_ADMIN = "is_admin";
     private static final String FIELD_ACCOUNT_ALLOW_SHAKE = "allow_shake";
     private static final String FIELD_ACCOUNT_ALLOW_SMS = "allow_sms";
+    private static final String FIELD_ACCOUNT_FEEDBACK = "feedbacks";
     // Account Table End
 
     // Report Table Start
@@ -105,7 +106,8 @@ class DBHelper extends SQLiteOpenHelper {
                 + FIELD_ACCOUNT_PROFILE_PICTURE + " TEXT, "
                 + FIELD_ACCOUNT_IS_ADMIN + " INTEGER, "
                 + FIELD_ACCOUNT_ALLOW_SHAKE + " INTEGER, "
-                + FIELD_ACCOUNT_ALLOW_SMS + " INTEGER"
+                + FIELD_ACCOUNT_ALLOW_SMS + " INTEGER, "
+                + FIELD_ACCOUNT_FEEDBACK + " TEXT"
                 + ")";
         db.execSQL(table);
 
@@ -350,16 +352,17 @@ class DBHelper extends SQLiteOpenHelper {
         values.put(FIELD_ACCOUNT_EMAIL, account.getStudentEmail());
         values.put(FIELD_ACCOUNT_STUDENT_ID, account.getStudentID());
         values.put(FIELD_ACCOUNT_PROFILE_PICTURE, account.getStudentProfilePic().toString());
-        values.put(FIELD_ACCOUNT_IS_ADMIN, (account.getIsAdim())? 1 : 0);
-        values.put(FIELD_ACCOUNT_ALLOW_SHAKE, (account.getAllowShake())? 1 : 0);
-        values.put(FIELD_ACCOUNT_ALLOW_SMS, (account.getAllowSms())? 1 : 0);
+        values.put(FIELD_ACCOUNT_IS_ADMIN, (account.getIsAdmin()) ? 1 : 0);
+        values.put(FIELD_ACCOUNT_ALLOW_SHAKE, (account.getAllowShake()) ? 1 : 0);
+        values.put(FIELD_ACCOUNT_ALLOW_SMS, (account.getAllowSms()) ? 1 : 0);
+        values.put(FIELD_ACCOUNT_FEEDBACK, account.getFeedBack());
 
         db.insert(ACCOUNT_TABLE, null, values);
         db.close();
     }
 
     /**
-     *
+     *asdfasdfasdfasdf
      * @return
      */
     public ArrayList<UserAccount> getAllUserAccount()
@@ -368,11 +371,9 @@ class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getReadableDatabase();
         Cursor cursor = database.query(
                 ACCOUNT_TABLE,
-                new String[]{KEY_FIELD_ACCOUNT_USERNAME,FIELD_ACCOUNT_PASSWORD, FIELD_ACCOUNT_PHONE_NUMBER,
+                new String[]{KEY_FIELD_ACCOUNT_USERNAME, FIELD_ACCOUNT_PASSWORD, FIELD_ACCOUNT_PHONE_NUMBER,
                         FIELD_ACCOUNT_EMAIL, FIELD_ACCOUNT_STUDENT_ID, FIELD_ACCOUNT_PROFILE_PICTURE,
-                        FIELD_ACCOUNT_IS_ADMIN, FIELD_ACCOUNT_ALLOW_SHAKE,FIELD_ACCOUNT_ALLOW_SMS},
-                null,null,null,null,null,null
-        );
+                        FIELD_ACCOUNT_IS_ADMIN, FIELD_ACCOUNT_ALLOW_SHAKE, FIELD_ACCOUNT_ALLOW_SMS, FIELD_ACCOUNT_FEEDBACK}, null, null, null, null, null, null);
 
         if (cursor.moveToFirst())
         {
@@ -381,8 +382,10 @@ class DBHelper extends SQLiteOpenHelper {
                         new UserAccount(cursor.getString(0), cursor.getString(1),
                                 cursor.getString(2), cursor.getString(3),
                                 cursor.getString(4), Uri.parse(cursor.getString(5)),
-                                (cursor.getInt(6) == 0) ? false:true,(cursor.getInt(7) == 0) ? false:true,
-                                (cursor.getInt(8) == 0) ? false:true);
+                                (cursor.getInt(6) == 0) ? false:true,
+                                (cursor.getInt(7) == 0) ? false:true,
+                                (cursor.getInt(8) == 0) ? false:true,
+                                cursor.getString(9));
                 accountList.add(account);
 
             }while (cursor.moveToNext());
@@ -425,9 +428,10 @@ class DBHelper extends SQLiteOpenHelper {
         values.put(FIELD_ACCOUNT_EMAIL, account.getStudentEmail());
         values.put(FIELD_ACCOUNT_STUDENT_ID, account.getStudentID());
         values.put(FIELD_ACCOUNT_PROFILE_PICTURE, account.getStudentProfilePic().toString());
-        values.put(FIELD_ACCOUNT_IS_ADMIN, account.getIsAdim());
+        values.put(FIELD_ACCOUNT_IS_ADMIN, account.getIsAdmin());
         values.put(FIELD_ACCOUNT_ALLOW_SHAKE, account.getAllowShake());
         values.put(FIELD_ACCOUNT_ALLOW_SHAKE, account.getAllowSms());
+        values.put(FIELD_ACCOUNT_FEEDBACK, account.getFeedBack());
 
         db.update(ACCOUNT_TABLE, values, FIELD_ACCOUNT_STUDENT_ID + " = ?",
                 new String[]{String.valueOf(account.getStudentUserName())});
@@ -445,7 +449,7 @@ class DBHelper extends SQLiteOpenHelper {
                 new String[]{KEY_FIELD_ACCOUNT_USERNAME,FIELD_ACCOUNT_PASSWORD, FIELD_ACCOUNT_PHONE_NUMBER,
                         FIELD_ACCOUNT_EMAIL, FIELD_ACCOUNT_STUDENT_ID,
                         FIELD_ACCOUNT_PROFILE_PICTURE, FIELD_ACCOUNT_IS_ADMIN,
-                        FIELD_ACCOUNT_ALLOW_SHAKE, FIELD_ACCOUNT_ALLOW_SMS},
+                        FIELD_ACCOUNT_ALLOW_SHAKE, FIELD_ACCOUNT_ALLOW_SMS, FIELD_ACCOUNT_FEEDBACK},
                 KEY_FIELD_ACCOUNT_USERNAME + "=?",
                 new String[]{username},
                 null, null, null, null);
@@ -457,7 +461,9 @@ class DBHelper extends SQLiteOpenHelper {
                 new UserAccount(cursor.getString(0), cursor.getString(1),
                         cursor.getString(2), cursor.getString(3),
                         cursor.getString(4), Uri.parse(cursor.getString(5).toString()),
-                        (cursor.getInt(6) == 0) ? false:true, (cursor.getInt(7) == 0) ? false:true, (cursor.getInt(8) == 0) ? false:true);
+                        (cursor.getInt(6) == 0) ? false:true, (cursor.getInt(7) == 0) ? false:true,
+                        (cursor.getInt(8) == 0) ? false:true,
+                        cursor.getString(9));
 
         return account;
     }

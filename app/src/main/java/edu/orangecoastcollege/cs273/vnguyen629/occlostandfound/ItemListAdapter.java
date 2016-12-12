@@ -57,7 +57,6 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
         View view = inflater.inflate(this.mResourceId, null);
 
         final Item ITEM = this.mLostItemsList.get(pos);
-        itemListLinearLayout.setTag(ITEM);
 
         final Uri IMAGE_URI = ITEM.getImageUri();
         final String NAME = ITEM.getName();
@@ -72,6 +71,8 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
         itemListImageView.setImageURI(IMAGE_URI);
         itemListNameTextView.setText(NAME);
         itemListStatusTextView.setText(STATUS);
+
+        itemListLinearLayout.setTag(ITEM);
 
         return view;
     }

@@ -12,9 +12,6 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import static edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.UserAccount.isLoggedIn;
-import static edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.UserAccount.singedInUserAccountName;
-
 /**
  * Allows the user to sign into their account (whether it be an administrator or
  * a regular account). If they have no current account, they may click on the TextView
@@ -57,12 +54,12 @@ public class LoginActivity extends AppCompatActivity {
     public void login(View view)
     {
         boolean found = false;
-        Intent intent = new Intent(this, MainMenuActivity.class);
-        Intent adminIntent = new Intent(this, AdminMainMenuActivity.class);
+        //Intent intent = new Intent(this, MainMenuActivity.class);
+        //Intent adminIntent = new Intent(this, AdminMainMenuActivity.class);
         shakeAnim = AnimationUtils.loadAnimation(this, R.anim.shake_anim);
         int pos = 0;
 
-        for(UserAccount userAccount : accountList)
+        /*for(UserAccount userAccount : accountList)
         {
             if(userAccount.getStudentUserName().equals(usernameLoginEditText.getText()
                     .toString().trim())) {
@@ -78,8 +75,7 @@ public class LoginActivity extends AppCompatActivity {
             if(passwordLoginEditText.getText().toString().equals(accountList.get(pos).getStudentPassword())) {
                 isLoggedIn = true;
                 singedInUserAccountName = usernameLoginEditText.getText().toString();
-
-                if(accountList.get(pos).getIsAdim())
+                if(accountList.get(pos).getIsAdmin())
                     startActivity(adminIntent);
                 else
                     startActivity(intent);
@@ -94,7 +90,20 @@ public class LoginActivity extends AppCompatActivity {
             loginButtonImageView.startAnimation(shakeAnim);
             Toast.makeText(this, getString(R.string.invalid_username_password_text),
                     Toast.LENGTH_SHORT).show();
+        }*/
+
+        String username = usernameLoginEditText.getText().toString().trim();
+        String password = passwordLoginEditText.getText().toString().trim();
+
+        for (UserAccount account : accountList) {
+            if (account.getStudentUserName().equals(username) && account.getStudentPassword().equals(password)) {
+                if (account.getIsAdmin())
+                    startActivity(new Intent(this, AdminMainMenuActivity.class).putExtra("Account", account));
+                else
+                    startActivity(new Intent(this, UserMenuActivity.class).putExtra("Account", account));
+            }
         }
+        Toast.makeText(this, "Invalid username or password.", Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -104,5 +113,6 @@ public class LoginActivity extends AppCompatActivity {
     public void createAccount(View view) {
         Intent intent = new Intent(this, UserAccountCreateActivity.class);
         startActivity(intent);
+        ////
     }
 }

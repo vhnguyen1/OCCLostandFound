@@ -1,6 +1,5 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
@@ -27,10 +26,6 @@ public class UserReportListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_report_list);
 
         db = new DBHelper(this);
-
-        db.addItem(new Item("name", "des", "date", "loc", false,
-                Uri.parse("android.resource://edu.orangecoastcollege.cs273.vnguyen629.occlostandfound/"
-                        + R.drawable.default_image), "user"));
 
         itemList = db.getAllItems();
 
