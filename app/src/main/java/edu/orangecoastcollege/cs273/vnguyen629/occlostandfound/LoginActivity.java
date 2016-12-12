@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -20,9 +23,13 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText usernameLoginEditText;
     private EditText passwordLoginEditText;
+    private ImageView loginButtonImageView;
+
 
     private DBHelper database;
     private List<UserAccount> accountList;
+
+    private Animation shakeAnim;
 
     /**
      *
@@ -35,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
 
         usernameLoginEditText = (EditText) findViewById(R.id.usernameLoginEditText);
         passwordLoginEditText = (EditText) findViewById(R.id.passwordLoginEditText);
+        loginButtonImageView = (ImageView) findViewById(R.id.loginButtonImageView);
 
         accountList = database.getAllUserAccount();
     }
@@ -49,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         boolean found = false;
         Intent intent = new Intent(this, MainMenuActivity.class);
         Intent adminIntent = new Intent(this, AdminMainMenuActivity.class);
+        shakeAnim = AnimationUtils.loadAnimation(this, R.anim.shake_anim);
         int pos = 0;
 
         // TODO: loop thought list to check if user exist
@@ -72,14 +81,20 @@ public class LoginActivity extends AppCompatActivity {
                 else
                     startActivity(intent);
             }
-            else
+            else {
+                loginButtonImageView.startAnimation(shakeAnim);
                 Toast.makeText(this, getString(R.string.invalid_username_password_text),
                         Toast.LENGTH_SHORT).show();
+            }
         }
-        else
+        else {
+            loginButtonImageView.startAnimation(shakeAnim);
             Toast.makeText(this, getString(R.string.invalid_username_password_text),
                     Toast.LENGTH_SHORT).show();
+        }
     }
+
+
 
     /**
      * Loads up the UserAccountCreateActivity so the user may create a new account
