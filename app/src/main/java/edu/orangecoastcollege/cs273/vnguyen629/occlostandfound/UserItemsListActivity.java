@@ -28,7 +28,7 @@ public class UserItemsListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_report_list);
+        setContentView(R.layout.activity_user_items_list);
 
         db = new DBHelper(this);
 
@@ -37,7 +37,7 @@ public class UserItemsListActivity extends AppCompatActivity {
         itemList = db.getAllItems();
 
         itemListView = (ListView) findViewById(R.id.userItemsListView);
-        itemListAdapter = new ItemListAdapter(this, R.layout.list_item_2, itemList);
+        itemListAdapter = new ItemListAdapter(this, R.layout.list_item, itemList);
         itemListView.setAdapter(itemListAdapter);
     }
 
