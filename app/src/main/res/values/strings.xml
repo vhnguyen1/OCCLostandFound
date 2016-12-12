@@ -139,4 +139,6 @@
     <string name="item_text">Item</string>
     <string name="successfully_text">Successfully!</string>
     <string name="occ_text" translatable="false">OCC</string>
+    <string name="orange_coast_college_text" translatable="false">Orange Coast College</string>
+    <string name="feedback_text">Feedback</string>
 </resources>

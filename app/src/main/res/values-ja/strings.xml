@@ -125,4 +125,5 @@
     <string name="view_reports">あなたのレポートを見る</string>
     <string name="view_user_feedback">ユーザーのフィードバックを表示</string>
     <string name="occ_text" translatable="false"></string>
+    <string name="feedback_text">フィードバック</string>
 </resources>

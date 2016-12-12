@@ -68,6 +68,7 @@ class DBHelper extends SQLiteOpenHelper {
     private static final String FEEDBACK_TABLE = "Feedback";
     private static final String FIELD_FEEDBACK_CONTENT = "feedback";
     private static final String FIELD_FEEDBACK_USERNAME = "username";
+    //Feedback Table End
 
     /**
      * Creates a new SQL database.
