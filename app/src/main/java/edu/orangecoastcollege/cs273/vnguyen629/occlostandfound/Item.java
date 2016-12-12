@@ -19,7 +19,6 @@ public class Item implements Parcelable {
     private String mLastLocation;
     private boolean mFound;
     private Uri mItemImage;
-    private String mReportingUserName;
 
     //public static final String ITEMS_FILE_NAME = "reported_items.csv";
 
@@ -36,7 +35,6 @@ public class Item implements Parcelable {
         this.mLastLocation = source.readString();
         this.mFound = (source.readInt() == 1);
         this.mItemImage = Uri.parse(source.readString());
-        //this.mReportingUserName = source.readString();
     }
 
     /**
@@ -49,7 +47,6 @@ public class Item implements Parcelable {
      * @param newLastLocation The new items last known location
      * @param status The new items current status
      * @param newImage The new items image
-     * @param newReportingUser The user who reported the lost item
      */
     public Item(int newID, String newName, String newDescription, String newDateLost,
                 String newLastLocation, boolean status, Uri newImage) {
@@ -60,7 +57,6 @@ public class Item implements Parcelable {
         this.mLastLocation = newLastLocation;
         this.mFound = status;
         this.mItemImage = newImage;
-        //this.mReportingUserName = newReportingUser;
     }
 
     /**
@@ -72,7 +68,6 @@ public class Item implements Parcelable {
      * @param newLastLocation The new items last known location
      * @param status The new items current status
      * @param newImage The new items image
-     * @param newReportingUser The user who reported the lost item
      */
     public Item(String newName, String newDescription, String newDateLost,
                 String newLastLocation, boolean status, Uri newImage) {
@@ -88,7 +83,6 @@ public class Item implements Parcelable {
      * @param newDateLost The new items date in which it was lost
      * @param newLastLocation The new items last known location
      * @param status The new items current status
-     * @param newReportingUser The user who reported the lost item
      */
     public Item(String newName, String newDescription, String newDateLost,
                 String newLastLocation, boolean status) {
@@ -172,14 +166,6 @@ public class Item implements Parcelable {
     }
 
     /**
-     * Gets the username of the user who reported the lost <code>Item</code>
-     * @return The user's username
-     */
-    public String getReportedUsername() {
-        return this.mReportingUserName;
-    }
-
-    /**
      * Sets the name of the <code>Item</code>.
      * @param newName The items new name
      */
@@ -228,14 +214,6 @@ public class Item implements Parcelable {
     }
 
     /**
-     * Sets the username of the <code>Item</code>.
-     * @param newUsername The user's new username
-     */
-    public void setReportedUsername(String newUsername) {
-        this.mReportingUserName = newUsername;
-    }
-
-    /**
      * Creates a String representation of a given <code>Item</code>,
      * with all member variables displayed.
      * @return The string representation of the <code>Item</code> object
@@ -265,7 +243,6 @@ public class Item implements Parcelable {
         parcel.writeString(this.mLastLocation);
         parcel.writeInt((this.mFound)? 1 : 0);
         parcel.writeString(this.mItemImage.toString());
-        parcel.writeString(this.mReportingUserName);
     }
 
     /**

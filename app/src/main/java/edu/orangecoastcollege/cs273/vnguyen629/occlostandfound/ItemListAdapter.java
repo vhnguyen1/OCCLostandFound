@@ -71,6 +71,11 @@ public class ItemListAdapter extends ArrayAdapter<Item> {
         itemListImageView.setImageURI(IMAGE_URI);
         itemListNameTextView.setText(NAME);
         itemListStatusTextView.setText(STATUS);
+        if (ITEM.getStatus())
+            itemListStatusTextView.setTextColor(mContext.getResources().getColorStateList(R.color.green));
+        else
+            itemListStatusTextView.setTextColor(mContext.getResources().getColorStateList(R.color.red));
+        
         itemListLinearLayout.setTag(ITEM);
 
         return view;
