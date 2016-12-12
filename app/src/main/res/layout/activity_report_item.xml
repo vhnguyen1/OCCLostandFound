@@ -61,21 +61,6 @@
         android:layout_below="@+id/reportItemImageTextView"
         android:layout_centerHorizontal="true" />
 
-    <ImageView
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/submit_icon"
-        android:id="@+id/submitButtonImageView"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
-        android:scaleType="fitCenter"
-        android:clickable="true"
-        android:onClick="submitReport"
-        android:layout_width="200dp"
-        android:layout_marginBottom="13dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/reportItemImageView"
-        android:layout_alignStart="@+id/reportItemImageView" />
-
     <Spinner
         android:layout_height="wrap_content"
         android:id="@+id/dayNumberSpinner"
@@ -128,5 +113,19 @@
         android:layout_below="@+id/reportItemNameEditText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/submit_icon"
+        android:id="@+id/submitButtonImageView"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:scaleType="fitCenter"
+        android:clickable="true"
+        android:onClick="submitReport"
+        android:layout_width="200dp"
+        android:layout_marginBottom="23dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

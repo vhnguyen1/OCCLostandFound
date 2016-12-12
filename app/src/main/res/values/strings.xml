@@ -61,7 +61,7 @@
     <string name="cancel_text">Cancel</string>
 
     <!-- Benjamin -->
-    <string name="enter_item_description_text">Additional details and comments(optional)...</string>
+    <string name="enter_item_description_text">Additional details and comments (optional)...</string>
     <string name="item_lost_text">Enter item name...</string>
     <string name="click_to_change_image_text">Click above to select the image of your item (optional)</string>
     <string name="title_activity_google_maps">Map</string>
@@ -112,4 +112,7 @@
         <item>Found</item>
     </string-array>
     <string name="month_text">Month</string>
+    <string name="change_user_settings_text">Change User Settings</string>
+    <string name="enable_shake_features_text">Enable Shake Features</string>
+    <string name="next_text">Next</string>
 </resources>
