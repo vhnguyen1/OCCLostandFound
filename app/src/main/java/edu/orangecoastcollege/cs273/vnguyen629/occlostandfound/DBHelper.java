@@ -350,16 +350,16 @@ class DBHelper extends SQLiteOpenHelper {
         values.put(FIELD_ACCOUNT_EMAIL, account.getStudentEmail());
         values.put(FIELD_ACCOUNT_STUDENT_ID, account.getStudentID());
         values.put(FIELD_ACCOUNT_PROFILE_PICTURE, account.getStudentProfilePic().toString());
-        values.put(FIELD_ACCOUNT_IS_ADMIN, account.getIsAdim());
-        values.put(FIELD_ACCOUNT_ALLOW_SHAKE, account.getAllowShake());
-        values.put(FIELD_ACCOUNT_ALLOW_SMS, account.getAllowSms());
+        values.put(FIELD_ACCOUNT_IS_ADMIN, (account.getIsAdim())? 1 : 0);
+        values.put(FIELD_ACCOUNT_ALLOW_SHAKE, (account.getAllowShake())? 1 : 0);
+        values.put(FIELD_ACCOUNT_ALLOW_SMS, (account.getAllowSms())? 1 : 0);
 
         db.insert(ACCOUNT_TABLE, null, values);
         db.close();
     }
 
     /**
-     *asdfasdfasdfasdf
+     *
      * @return
      */
     public ArrayList<UserAccount> getAllUserAccount()
