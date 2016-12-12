@@ -123,4 +123,5 @@
     <string name="view_all_users">すべてのユーザーを表示</string>
     <string name="view_items_list_text">商品リストを見る</string>
     <string name="view_reports">あなたのレポートを見る</string>
+    <string name="view_user_feedback">ユーザーのフィードバックを表示</string>
 </resources>
