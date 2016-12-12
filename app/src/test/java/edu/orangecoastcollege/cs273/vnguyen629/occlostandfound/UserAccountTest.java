@@ -112,8 +112,8 @@ public class UserAccountTest {
      */
     public void feedBack() throws Exception
     {
-        account.setFeedBack("Hello my name is Something");
-        assertEquals("Error Found!","Hello my name is Something", account.getFeedBack());
+        account.setFeedBack("Hello my name is Somethings");
+        assertEquals("Error Found!","Hello my name is Somethings", account.getFeedBack());
     }
 
 
