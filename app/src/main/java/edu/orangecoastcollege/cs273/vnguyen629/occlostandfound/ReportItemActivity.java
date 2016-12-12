@@ -167,7 +167,7 @@ public class ReportItemActivity extends AppCompatActivity {
     public AdapterView.OnItemSelectedListener dayNumberSpinnerListener =
             new AdapterView.OnItemSelectedListener() {
                 /**
-                 * Moniters the day spinner and changes the values accordingly to what day
+                 * Monitors the day spinner and changes the values accordingly to what day
                  * is chosen
                  * @param parent The adapter
                  * @param view The spinner
@@ -186,8 +186,8 @@ public class ReportItemActivity extends AppCompatActivity {
                 }
 
                 /**
-                 *
-                 * @param parent
+                 * Resets the spinner selection to the original/default value
+                 * @param parent The adapter
                  */
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {

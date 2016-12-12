@@ -138,4 +138,5 @@
     <string name="missing_items_text">[Missing Items]</string>
     <string name="item_text">Item</string>
     <string name="successfully_text">Successfully!</string>
+    <string name="occ_text" translatable="false">OCC</string>
 </resources>
