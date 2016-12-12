@@ -63,12 +63,10 @@ public class LoginActivity extends AppCompatActivity {
         String password = passwordLoginEditText.getText().toString().trim();
 
         for (UserAccount account : accountList) {
-
             if (account.getStudentUserName().equals(username) && account.getStudentPassword().equals(password)) {
-                Toast.makeText(this, "Accoutn found",
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Account found", Toast.LENGTH_SHORT).show();
                 UserAccount.isLoggedIn = true;
-                UserAccount.singedInUserAccountName = account.getStudentUserName();
+                UserAccount.singedInUserAccountName = username;
 
                 if (account.getIsAdmin())
                     startActivity(new Intent(this, AdminMainMenuActivity.class).putExtra("Account", account));
