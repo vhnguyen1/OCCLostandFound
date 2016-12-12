@@ -36,7 +36,7 @@ public class Item implements Parcelable {
         this.mLastLocation = source.readString();
         this.mFound = (source.readInt() == 1);
         this.mItemImage = Uri.parse(source.readString());
-        this.mReportingUserName = source.readString();
+        //this.mReportingUserName = source.readString();
     }
 
     /**
@@ -52,7 +52,7 @@ public class Item implements Parcelable {
      * @param newReportingUser The user who reported the lost item
      */
     public Item(int newID, String newName, String newDescription, String newDateLost,
-                String newLastLocation, boolean status, Uri newImage, String newReportingUser) {
+                String newLastLocation, boolean status, Uri newImage) {
         this.mID = newID;
         this.mName = newName;
         this.mDescription = newDescription;
@@ -60,7 +60,7 @@ public class Item implements Parcelable {
         this.mLastLocation = newLastLocation;
         this.mFound = status;
         this.mItemImage = newImage;
-        this.mReportingUserName = newReportingUser;
+        //this.mReportingUserName = newReportingUser;
     }
 
     /**
@@ -75,9 +75,9 @@ public class Item implements Parcelable {
      * @param newReportingUser The user who reported the lost item
      */
     public Item(String newName, String newDescription, String newDateLost,
-                String newLastLocation, boolean status, Uri newImage, String newReportingUser) {
+                String newLastLocation, boolean status, Uri newImage) {
         this(-1, newName, newDescription, newDateLost, newLastLocation,
-                status, newImage, newReportingUser);
+                status, newImage);
     }
 
     /**
@@ -91,9 +91,9 @@ public class Item implements Parcelable {
      * @param newReportingUser The user who reported the lost item
      */
     public Item(String newName, String newDescription, String newDateLost,
-                String newLastLocation, boolean status, String newReportingUser) {
+                String newLastLocation, boolean status) {
         this(-1, newName, newDescription, newDateLost, newLastLocation,
-                status, null, newReportingUser);
+                status, null);
     }
 
     /**
@@ -102,7 +102,7 @@ public class Item implements Parcelable {
      * status, reported user, and image set to a default value
      */
     public Item() {
-        this(-1, "N/A", "N/A", "N/A", "N/A", false, null, "N/A");
+        this(-1, "N/A", "N/A", "N/A", "N/A", false, null);
     }
 
     /**
@@ -112,7 +112,7 @@ public class Item implements Parcelable {
      */
     public Item(Item other) {
         this(-1, other.mName, other.mDescription, other.mDateLost,
-                other.mLastLocation, other.mFound, other.mItemImage, other.mReportingUserName);
+                other.mLastLocation, other.mFound, other.mItemImage);
     }
 
     /**

@@ -1,10 +1,15 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 /**
@@ -13,6 +18,8 @@ import android.widget.Toast;
  * @author Benjamin Nguyen
  */
 public class SendSMSActivity extends AppCompatActivity {
+
+    private static final int REQUEST_CODE_SEND_SMS = 101;
 
     private EditText smsSenderEditText;
 
@@ -40,6 +47,26 @@ public class SendSMSActivity extends AppCompatActivity {
             Intent smsIntent = new Intent(SendSMSActivity.this, UserListActivity.class);
             smsIntent.putExtra("MESSAGE", message);
             startActivity(smsIntent);
+        }
+    }
+
+    public void selectUserSMS(View view) {
+        String message = getIntent().getExtras().getString("MESSAGE");
+
+        if (view instanceof LinearLayout) {
+            final UserAccount user = (UserAccount) view.getTag();
+            Log.i("OCC Lost and Found", user.toString());
+            //Ask for permission to send text message
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.SEND_SMS}, REQUEST_CODE_SEND_SMS);
+            } else {
+                //Define a reference to SmsManager (manages text messages)
+                SmsManager smsManager = SmsManager.getDefault();
+
+                smsManager.sendTextMessage(user.getStudentPhoneNum(), "ASOCC ", message, null, null);
+
+                Toast.makeText(this, "Message sent to: " + user.getStudentUserName(), Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

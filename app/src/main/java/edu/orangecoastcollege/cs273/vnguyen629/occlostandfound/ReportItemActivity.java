@@ -25,8 +25,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import static edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.UserAccount.singedInUserAccountName;
-
 /**
  * The activity where the user submits a report of any lost
  * item(s).
@@ -49,6 +47,8 @@ public class ReportItemActivity extends AppCompatActivity {
     private static String day;
     private static final String YEAR = "2016";
 
+    private UserAccount loggedInAccount;
+
     private static final int REPORT_ITEM_REQUEST_CODE = 13;
 
     /**
@@ -65,6 +65,8 @@ public class ReportItemActivity extends AppCompatActivity {
         day = getString(R.string.day_text);
 
         database = new DBHelper(this);
+
+        loggedInAccount = getIntent().getExtras().getParcelable("UserAccount");
 
         reportItemImageView = (ImageView) findViewById(R.id.reportItemImageView);
         reportItemNameEditText = (EditText) findViewById(R.id.reportItemNameEditText);
@@ -204,8 +206,8 @@ public class ReportItemActivity extends AppCompatActivity {
      * @param view The submit button ImageView that submits and adds the item to the database.
      */
     public void submitReport(View view) {
-        final String NAME = reportItemNameEditText.getText().toString().replaceAll("\\s+","");
-        final String LAST_LOCATION = reportItemLastLocationEditText.getText().toString().replaceAll("\\s+","");
+        final String NAME = reportItemNameEditText.getText().toString().replaceAll("\\s+", "");
+        final String LAST_LOCATION = reportItemLastLocationEditText.getText().toString().replaceAll("\\s+", "");
 
         if (NAME.equals("") || LAST_LOCATION.equals("") || day.equals(R.string.day_text)
                 || month.equals(getString(R.string.month_text)))
@@ -227,7 +229,7 @@ public class ReportItemActivity extends AppCompatActivity {
                 //UserAccount account = database.getUserAccount(singedInUserAccountName);
 
                 Item newItem = new Item(NEW_ITEM_NAME, NEW_ITEM_DESCRIPTION, NEW_ITEM_DATE_LOST,
-                        NEW_ITEM_LAST_LOCATION, false, imageUri, singedInUserAccountName);
+                        NEW_ITEM_LAST_LOCATION, false, imageUri);
 
                 Report newReport = new Report(ACCOUNT, newItem, SMS_NOTIFICATIONS);
 

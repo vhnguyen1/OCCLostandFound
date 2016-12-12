@@ -21,8 +21,11 @@ public class UserItemsListActivity extends AppCompatActivity {
 
     private DBHelper db;
     private List<Item> itemList;
+    private List<Report> reportList;
     private ItemListAdapter itemListAdapter;
     private ListView itemListView;
+
+    private UserAccount loggedInAccount;
 
     private Sensor accelerometer;
     private SensorManager sensorManager;
@@ -39,11 +42,17 @@ public class UserItemsListActivity extends AppCompatActivity {
 
         db = new DBHelper(this);
 
+        loggedInAccount = getIntent().getExtras().getParcelable("Account");
+
+        //db.addItem(new Item("name", "des", "date", "loc", false, Uri.parse("android.resource://edu.orangecoastcollege.cs273.vnguyen629.occlostandfound/" + R.drawable.default_image), "user"));
         //db.addItem(new Item("name", "des", "date", "loc", false,
         // Uri.parse("android.resource://edu.orangecoastcollege.cs273.vnguyen629.occlostandfound/"
         // + R.drawable.default_image), "user"));
 
-        itemList = db.getAllItems();
+        reportList = db.getAllReportsFromUser(loggedInAccount);
+
+        for (Report report : reportList)
+            itemList.add(report.getItem());
 
         itemListView = (ListView) findViewById(R.id.userItemsListView);
         itemListAdapter = new ItemListAdapter(this, R.layout.list_item, itemList);

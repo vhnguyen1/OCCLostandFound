@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-import static edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.UserAccount.singedInUserAccountName;
-
 /**
  * Allows the user to change his/her settings and preferences.
  *
@@ -41,10 +39,14 @@ public class UserSettingsActivity extends AppCompatActivity {
         accountSettingShakeCheckBox = (CheckBox) findViewById(R.id.shakeCheckBox);
         accountSettingSmsCheckBox = (CheckBox) findViewById(R.id.smsCheckBox);
 
-        accountInfoEmailEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentEmail());
+        //accountInfoEmailEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentEmail());
+       // accountInfoPhoneNumberEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentPhoneNum());
+        //accountSettingShakeCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowShake());
+        //accountSettingSmsCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowSms());
+        /*accountInfoEmailEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentEmail());
         accountInfoPhoneNumberEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentPhoneNum());
         accountSettingShakeCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowShake());
-        accountSettingSmsCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowSms());
+        accountSettingSmsCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowSms());*/
     }
 
     /**
@@ -53,7 +55,7 @@ public class UserSettingsActivity extends AppCompatActivity {
      */
     public void saveInfo(View view)
     {
-        UserAccount account;
+        /*UserAccount account;
 
         account = database.getUserAccount(singedInUserAccountName);
         account.setStudentPhoneNum(accountInfoPhoneNumberEditText.getText().toString());
@@ -68,7 +70,7 @@ public class UserSettingsActivity extends AppCompatActivity {
         else
             account.setmAllowSms(false);
 
-        database.updateAccount(account);
+        database.updateAccount(account);*/
     }
 
     /**
