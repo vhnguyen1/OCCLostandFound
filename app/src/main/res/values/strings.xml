@@ -128,4 +128,8 @@
     <string name="email_address">Email Address:</string>
     <string name="phone_number_view">Phone Number:</string>
     <string name="change_info_button_text">Change Account Information</string>
+    <string name="student_email_text">Student Email</string>
+    <string name="password_text">Password</string>
+    <string name="user_name_text">User Name</string>
+    <string name="student_id_text">Student ID</string>
 </resources>

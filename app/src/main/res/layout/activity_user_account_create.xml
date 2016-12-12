@@ -25,7 +25,9 @@
         android:ems="10"
         android:id="@+id/userEditText"
         android:layout_weight="0"
-        android:hint="User Name" />
+        android:hint="@string/user_name_text"
+        android:maxLines="1"
+        android:singleLine="true" />
 
     <TextView
         android:text="@string/enter_password_text"
@@ -41,7 +43,9 @@
         android:ems="10"
         android:id="@+id/passwordEditText"
         android:layout_weight="0"
-        android:hint="Password" />
+        android:hint="@string/password_text"
+        android:maxLines="1"
+        android:singleLine="true" />
 
     <TextView
         android:text="@string/reenter_password"
@@ -57,7 +61,7 @@
         android:ems="10"
         android:id="@+id/reenterPasswordEditText"
         android:layout_weight="0"
-        android:hint="Re-Enter Password" />
+        android:hint="@string/reenter_password" />
 
     <TextView
         android:text="@string/enter_email"
@@ -69,11 +73,13 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/emailEditText"
         android:layout_weight="0"
-        android:hint="Student Email" />
+        android:hint="@string/student_email_text"
+        android:maxLines="1"
+        android:singleLine="true" />
 
     <TextView
         android:text="@string/enter_student_id"
@@ -89,7 +95,9 @@
         android:ems="10"
         android:id="@+id/idEditText"
         android:layout_weight="0"
-        android:hint="Student ID" />
+        android:hint="@string/student_id_text"
+        android:maxLines="1"
+        android:singleLine="true" />
 
     <LinearLayout
         android:orientation="horizontal"

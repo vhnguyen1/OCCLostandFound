@@ -16,6 +16,9 @@ import static edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.UserAccoun
 import static edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.UserAccount.singedInUserAccountName;
 
 /**
+ * Allows the user to sign into their account (whether it be an administrator or
+ * a regular account). If they have no current account, they may click on the TextView
+ * to go to the page that allows them to.
  *
  * @author Vu Nguyen
  */
@@ -30,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private Animation shakeAnim;
 
     /**
-     *
+     * Loads up the databases and links up the view widgets.
      * @param savedInstanceState The state of the application saved into a bundle
      */
     @Override
@@ -97,7 +100,6 @@ public class LoginActivity extends AppCompatActivity {
      * @param view The clickable TextView that loads up the UserAccountCreateActivity
      */
     public void createAccount(View view) {
-        Intent intent = new Intent(this, UserAccountCreateActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(LoginActivity.this, UserAccountCreateActivity.class));
     }
 }
