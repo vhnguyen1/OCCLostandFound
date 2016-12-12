@@ -3,11 +3,12 @@ package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
 
 /**
- * JUnit Testing for the <code>Report</code> class
+ * JUnit Testing for the <code>UserAccount</code> class
  *
  * @author Vu Nguyen
  */
