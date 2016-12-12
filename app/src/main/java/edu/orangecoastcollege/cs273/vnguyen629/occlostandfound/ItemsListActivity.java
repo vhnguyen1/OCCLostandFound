@@ -45,7 +45,9 @@ public class ItemsListActivity extends AppCompatActivity {
     private UserAccount account;
 
     /**
-     * Loads up the database and ListView of all the reported items.
+     * Loads up the database and ListView of all the reported items. Also sets up the
+     * shake detector so if there's an appropriate shake, the ReportItemActivity
+     * will be loaded.
      * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
