@@ -64,7 +64,8 @@ public class LoginActivity extends AppCompatActivity {
 
         for(UserAccount userAccount : accountList)
         {
-            if(userAccount.getStudentUserName() == usernameLoginEditText.getText().toString().trim()) {
+            if(userAccount.getStudentUserName().equals(usernameLoginEditText.getText()
+                    .toString().trim())) {
                 found = true;
                 break;
             }
@@ -77,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
             if(passwordLoginEditText.getText().toString().equals(accountList.get(pos).getStudentPassword())) {
                 isLoggedIn = true;
                 singedInUserAccountName = usernameLoginEditText.getText().toString();
+
                 if(accountList.get(pos).getIsAdim())
                     startActivity(adminIntent);
                 else
@@ -102,6 +104,5 @@ public class LoginActivity extends AppCompatActivity {
     public void createAccount(View view) {
         Intent intent = new Intent(this, UserAccountCreateActivity.class);
         startActivity(intent);
-        ////
     }
 }
