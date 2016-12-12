@@ -71,7 +71,7 @@ class DBHelper extends SQLiteOpenHelper {
 
     /**
      * Creates a new SQL database.
-     * @param context
+     * @param context The context
      */
     public DBHelper(Context context){
         super (context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -338,8 +338,8 @@ class DBHelper extends SQLiteOpenHelper {
     /************* User Account database functions *************/
 
     /**
-     *
-     * @param account
+     * Adds a new account to the database
+     * @param account The new account to be added
      */
     public void addAccount(UserAccount account)
     {
@@ -394,8 +394,8 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     *
-     * @param account
+     * Deletes a desired account from the database
+     * @param account The desired account to delete
      */
     public void deleteUserAccount(UserAccount account) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -406,7 +406,7 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     *
+     * Deletes all the user accounts from the database
      */
     public void deleteAllUserAccounts() {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -414,8 +414,8 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     *
-     * @param account
+     * Updates an account in the database, overwriting previous data
+     * @param account The new account to take information from
      */
     public void updateAccount(UserAccount account) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -437,9 +437,9 @@ class DBHelper extends SQLiteOpenHelper {
     }
 
     /**
-     *
-     * @param username
-     * @return
+     * Retrieves a desired account from the database
+     * @param username The username for the account to get
+     * @return The account with the desired username
      */
     public UserAccount getUserAccount(String username) {
 
@@ -622,5 +622,4 @@ class DBHelper extends SQLiteOpenHelper {
         }
         return true;
     }
-
 }

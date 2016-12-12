@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.TextView;
 
 /**
+ * Allows an administrator to view any the details of a user account
  *
+ * @author Benjamin Nguyen
  */
 public class AdminViewUserActivity extends AppCompatActivity {
 
@@ -18,7 +20,7 @@ public class AdminViewUserActivity extends AppCompatActivity {
 
     /**
      *
-     * @param savedInstanceState
+     * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {

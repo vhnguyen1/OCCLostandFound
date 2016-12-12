@@ -8,15 +8,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /**
+ * Allows the user to send SMS messages
  *
+ * @author Benjamin Nguyen
  */
 public class SendSMSActivity extends AppCompatActivity {
 
     private EditText smsSenderEditText;
 
     /**
-     *
-     * @param savedInstanceState
+     * Links up the EditText for the message
+     * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +29,8 @@ public class SendSMSActivity extends AppCompatActivity {
     }
 
     /**
-     *
-     * @param view
+     * Opens up the UserList page for sending the intended message
+     * @param view The send SMS button
      */
     public void sendSMS(View view) {
         String message = smsSenderEditText.getText().toString();

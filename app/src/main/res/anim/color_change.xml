@@ -4,4 +4,5 @@
     android:fromAlpha="0.0"
     android:duration="10000"
     android:toAlpha="1.0">
-    </alpha>
+
+</alpha>
