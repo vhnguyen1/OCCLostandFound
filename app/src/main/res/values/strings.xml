@@ -111,4 +111,5 @@
         <item>Not Found</item>
         <item>Found</item>
     </string-array>
+    <string name="month_text">Month</string>
 </resources>

@@ -90,7 +90,7 @@ public class ReportItemActivity extends AppCompatActivity {
     private String[] getMonthNames() {
         String monthNames[] = new String[13];
 
-        monthNames[0] = getString(R.string.select_month_text);
+        monthNames[0] = getString(R.string.month_text);
         monthNames[1] = getString(R.string.january_text);
         monthNames[2] = getString(R.string.february_text);
         monthNames[3] = getString(R.string.march_text);
@@ -113,9 +113,9 @@ public class ReportItemActivity extends AppCompatActivity {
     private String[] getDayNumbers() {
         String dayNumbers[] = new String[32];
 
-        dayNumbers[0] = getString(R.string.select_day_text);
-        for (int i = 1; i < dayNumbers.length; i++)
-            dayNumbers[i] = String.valueOf(i);
+        dayNumbers[0] = getString(R.string.day_text);
+        for (int day = 1; day < dayNumbers.length; day++)
+            dayNumbers[day] = String.valueOf(day);
 
         return dayNumbers;
     }
@@ -136,7 +136,7 @@ public class ReportItemActivity extends AppCompatActivity {
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
                     String selectedMonth = String.valueOf(parent.getItemAtPosition(position));
 
-                    if (selectedMonth.equals(getString(R.string.select_month_text)))
+                    if (selectedMonth.equals(getString(R.string.month_text)))
                         month = "N/A";
                     else
                         month = selectedMonth;
@@ -199,8 +199,8 @@ public class ReportItemActivity extends AppCompatActivity {
         final String NAME = reportItemNameEditText.getText().toString().replaceAll("\\s+","");
         final String LAST_LOCATION = reportItemLastLocationEditText.getText().toString().replaceAll("\\s+","");
 
-        if (NAME.equals("") || LAST_LOCATION.equals("") || day.equals(R.string.select_day_text)
-                || month.equals(getString(R.string.select_month_text)))
+        if (NAME.equals("") || LAST_LOCATION.equals("") || day.equals(R.string.day_text)
+                || month.equals(getString(R.string.month_text)))
             Toast.makeText(this, getString(R.string.all_fields_mandatory_text),
                     Toast.LENGTH_SHORT).show();
         else {
@@ -210,6 +210,9 @@ public class ReportItemActivity extends AppCompatActivity {
             final String NEW_ITEM_DESCRIPTION = reportItemDescriptionEditText.getText().toString().trim();
 
             final int SMS_NOTIFICATIONS = ((smsCheckBox.isChecked())? 1 : 0);
+
+            if (imageUri == null)
+                imageUri = getUriToResource(this, R.drawable.default_image);
 
             UserAccount account = database.getUserAccount(UserAccount.singedInUserAccountName);
             Item newItem = new Item(NEW_ITEM_NAME, NEW_ITEM_DESCRIPTION, NEW_ITEM_DATE_LOST,
