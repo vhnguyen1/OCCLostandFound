@@ -13,7 +13,7 @@ import static junit.framework.Assert.assertEquals;
  * @author Benjamin Nguyen
  */
 public class UserAccountTest {
-    private Report mReport;
+    private UserAccount account;
 
     /**
      *
@@ -21,79 +21,100 @@ public class UserAccountTest {
      */
     @Before
     public void setUp() throws Exception {
-        //mReport = new Report();
-        //mReport.setAccount("Test Report Account");
-        //mReport.setName("Test Report Name");
-        //mReport.setDateLost("Test Report Date Lost");
     }
 
     /**
-     *
+     * Test set and get mStudentUserName
      * @throws Exception
      */
-    @After
-    public void tearDown() throws Exception {
+    public void UserName() throws Exception
+    {
+        account.setStudentUserName("John");
+        assertEquals("Error Found!", "John", account.getStudentUserName());
+    }
+
+    /**
+     *Test set and get mStudentPassword
+     * @throws Exception
+     */
+    public void password() throws Exception
+    {
+        account.setStudentPassword("Hello");
+        assertEquals("Error Found!", "John", account.getStudentPassword());
 
     }
 
     /**
-     *
+     *Test set and get mStudentPhoneNum
      * @throws Exception
      */
-    @Test
-    public void getAccount() throws Exception {
-        //mReport.setAccount("Test Report Account");
-        //assertEquals("Error Found!", "Test Report Account", mReport.getAccount());
+    public void phoneNumber() throws Exception
+    {
+        account.setStudentPhoneNum("(714) 200 0000");
+        assertEquals("Error Found!", "(714) 200 0000", account.getStudentPhoneNum());
+
     }
 
     /**
-     *
+     *Test set and get mStudentEmail
      * @throws Exception
      */
-    @Test
-    public void getName() throws Exception {
-        //mReport.setName("Test Report Name");
-        //assertEquals("Error Found!", "Test Report Name", mReport.getName());
+    public void email() throws Exception
+    {
+        account.setStudentEmail("stuff@stuff.com");
+        assertEquals("Error Found!", "stuff@stuff.com", account.getStudentEmail());
     }
 
     /**
-     *
+     *Test set and get mStudentID
      * @throws Exception
      */
-    @Test
-    public void getDateLost() throws Exception {
-        //mReport.setDateLost("Test Report Date Lost");
-        //assertEquals("Error Found!", "Test Report Date Lost", mReport.getDateLost());
+    public void ID() throws Exception
+    {
+        account.setStudentID("C787423456");
+        assertEquals("Error Found!", "stuff@C787423456.com", account.getStudentID());
+    }
+
+    /**
+     *Test set and get mIsAdmin
+     * @throws Exception
+     */
+    public void isAdmin() throws Exception
+    {
+        account.setmIsAdmin(true);
+        assertEquals("Error Found!", true, account.getIsAdmin());
     }
 
 
     /**
-     *
+     *Test set and get mAllowShake
      * @throws Exception
      */
-    @Test
-    public void setAccount() throws Exception {
-        //mReport.setName("Test Report Account");
-        assertEquals("Error Found!", "Test Report Account", mReport.getAccount());
+    public void allowShake() throws Exception
+    {
+        account.setmAllowShake(true);
+        assertEquals("Error Found!",true, account.getAllowShake());
     }
 
     /**
-     *
+     *Test set and get mAllowSMS
      * @throws Exception
      */
-    @Test
-    public void setName() throws Exception {
-        //mReport.setName("Test Report Name");
-        //assertEquals("Error Found!", "Test Report Name", mReport.getName());
+    public void allowSMS() throws Exception
+    {
+        account.setmAllowSms(true);
+        assertEquals("Error Found!",true, account.getAllowSms());
     }
 
     /**
-     *
+     *Test set and get mFeedBack
      * @throws Exception
      */
-    @Test
-    public void setDateLost() throws Exception {
-        //mReport.setDateLost("Test Report Date Lost");
-        //assertEquals("Error Found!", "Test Report Date Lost", mReport.getDateLost());
+    public void feedBack() throws Exception
+    {
+        account.setFeedBack("Hello my name is Something");
+        assertEquals("Error Found!","Hello my name is Something", account.getFeedBack());
     }
+
+
 }
