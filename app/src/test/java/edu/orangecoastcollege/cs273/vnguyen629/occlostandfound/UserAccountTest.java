@@ -10,7 +10,7 @@ import static junit.framework.Assert.assertEquals;
 /**
  * JUnit Testing for the <code>Report</code> class
  *
- * @author Benjamin Nguyen
+ * @author Vu Nguyen
  */
 public class UserAccountTest {
     private UserAccount account;
@@ -27,6 +27,7 @@ public class UserAccountTest {
      * Test set and get mStudentUserName
      * @throws Exception
      */
+    @Test
     public void UserName() throws Exception
     {
         account.setStudentUserName("John");
@@ -37,6 +38,7 @@ public class UserAccountTest {
      *Test set and get mStudentPassword
      * @throws Exception
      */
+    @Test
     public void password() throws Exception
     {
         account.setStudentPassword("Hello");
@@ -48,6 +50,7 @@ public class UserAccountTest {
      *Test set and get mStudentPhoneNum
      * @throws Exception
      */
+    @Test
     public void phoneNumber() throws Exception
     {
         account.setStudentPhoneNum("(714) 200 0000");
@@ -59,6 +62,7 @@ public class UserAccountTest {
      *Test set and get mStudentEmail
      * @throws Exception
      */
+    @Test
     public void email() throws Exception
     {
         account.setStudentEmail("stuff@stuff.com");
@@ -69,6 +73,7 @@ public class UserAccountTest {
      *Test set and get mStudentID
      * @throws Exception
      */
+    @Test
     public void ID() throws Exception
     {
         account.setStudentID("C787423456");
@@ -79,6 +84,7 @@ public class UserAccountTest {
      *Test set and get mIsAdmin
      * @throws Exception
      */
+    @Test
     public void isAdmin() throws Exception
     {
         account.setmIsAdmin(true);
@@ -90,6 +96,7 @@ public class UserAccountTest {
      *Test set and get mAllowShake
      * @throws Exception
      */
+    @Test
     public void allowShake() throws Exception
     {
         account.setmAllowShake(true);
@@ -100,6 +107,7 @@ public class UserAccountTest {
      *Test set and get mAllowSMS
      * @throws Exception
      */
+    @Test
     public void allowSMS() throws Exception
     {
         account.setmAllowSms(true);
@@ -110,6 +118,7 @@ public class UserAccountTest {
      *Test set and get mFeedBack
      * @throws Exception
      */
+    @Test
     public void feedBack() throws Exception
     {
         account.setFeedBack("Hello my name is Somethings");

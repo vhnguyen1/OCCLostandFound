@@ -14,6 +14,8 @@ import static junit.framework.Assert.assertEquals;
  */
 public class ReportTest {
     private Report mReport;
+    UserAccount account = new UserAccount();
+    Item newItem = new Item();
 
     /**
      *
@@ -68,32 +70,32 @@ public class ReportTest {
 
 
     /**
-     *
+     *Test set and get mAccount
      * @throws Exception
      */
     @Test
     public void setAccount() throws Exception {
-        //mReport.setName("Test Report Account");
-        assertEquals("Error Found!", "Test Report Account", mReport.getAccount());
+        mReport.setAccount(account);
+        assertEquals("Error Found!", "", mReport.getAccount().getStudentUserName());
     }
 
     /**
-     *
+     *Test set and get mItem
      * @throws Exception
      */
     @Test
-    public void setName() throws Exception {
-        //mReport.setName("Test Report Name");
-        //assertEquals("Error Found!", "Test Report Name", mReport.getName());
+    public void setItem() throws Exception {
+        mReport.setItem(newItem);
+        assertEquals("Error Found!", "", mReport.getItem().getName());
     }
 
     /**
-     *
+     *Test set and get smsCheck
      * @throws Exception
      */
     @Test
-    public void setDateLost() throws Exception {
-        //mReport.setDateLost("Test Report Date Lost");
-        //assertEquals("Error Found!", "Test Report Date Lost", mReport.getDateLost());
+    public void SMSCheck() throws Exception {
+        mReport.setSmsCheck(1);
+        assertEquals("Error Found!", 1, mReport.getSmsCheck());
     }
 }
