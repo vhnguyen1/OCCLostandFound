@@ -119,8 +119,12 @@ public class ReportItemActivity extends AppCompatActivity {
         String dayNumbers[] = new String[32];
 
         dayNumbers[0] = getString(R.string.day_text);
-        for (int day = 1; day < dayNumbers.length; day++)
+        for (int day = 1; day < dayNumbers.length; day++) {
             dayNumbers[day] = String.valueOf(day);
+
+            if (day < 10)
+                dayNumbers[day] += "0";
+        }
 
         return dayNumbers;
     }
