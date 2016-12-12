@@ -124,6 +124,10 @@ public class UserAccountCreateActivity extends AppCompatActivity {
         }
     }*/
 
+    /**
+     *
+     * @param view
+     */
     public void createAccount(View view) {
         String username = userEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();

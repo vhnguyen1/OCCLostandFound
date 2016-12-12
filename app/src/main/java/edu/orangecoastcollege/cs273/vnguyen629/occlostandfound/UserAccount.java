@@ -28,8 +28,9 @@ public class UserAccount implements Parcelable {
     String mFeedBack;
 
     /**
-     *
-     * @param source
+     * Parcelable constructor that creates an <code>UserAccount</code> object from a parcel
+     * object
+     * @param source The parcel object to obtain data from
      */
     public UserAccount(Parcel source) {
         this.mStudentUserName   = source.readString();
@@ -44,6 +45,14 @@ public class UserAccount implements Parcelable {
         this.mFeedBack = source.readString();
     }
 
+    /**
+     *
+     * @param mStudentUserName
+     * @param mStudentPassword
+     * @param mStudentPhoneNum
+     * @param mStudentEmail
+     * @param mStudentID
+     */
     public UserAccount(String mStudentUserName, String mStudentPassword, String mStudentPhoneNum,
                        String mStudentEmail, String mStudentID) {
         this.mStudentUserName = mStudentUserName;
@@ -81,6 +90,9 @@ public class UserAccount implements Parcelable {
         this.mFeedBack = feedback;
     }
 
+    /**
+     *
+     */
     public UserAccount() {
         this("", "", "", "", "",null, false, false, false, "");
     }

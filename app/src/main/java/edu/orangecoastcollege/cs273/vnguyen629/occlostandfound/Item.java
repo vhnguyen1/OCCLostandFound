@@ -26,7 +26,7 @@ public class Item implements Parcelable {
     //public static final String ITEMS_FILE_NAME = "reported_items.csv";
 
     /**
-     * Parcelable constructor that creates an <code>Item</code> object from a parcel/cursor
+     * Parcelable constructor that creates an <code>Item</code> object from a parcel
      * object
      * @param source The parcel object to obtain data from
      */

@@ -81,7 +81,7 @@ public class ItemTest {
     }
 
     /**
-     * Tests the mutator method for setting the the date the <code>Item</code> was lost
+     * Tests the mutator method for setting the date the <code>Item</code> was lost
      * @throws Exception If setDescription doesn't exist setDateLost
      */
     @Test
@@ -91,8 +91,8 @@ public class ItemTest {
     }
 
     /**
-     *
-     * @throws Exception
+     * Tests the return method for retrieving the last known the <code>Item</code> was at
+     * @throws Exception If getLastLocation doesn't exist
      */
     @Test
     public void getLastLocation() throws Exception {
@@ -100,8 +100,8 @@ public class ItemTest {
     }
 
     /**
-     *
-     * @throws Exception
+     * Tests the mutator method for setting the last known the <code>Item</code> was at
+     * @throws Exception If setLastLocation doesn't exist setDateLost
      */
     @Test
     public void setLastLocation() throws Exception {
@@ -110,8 +110,8 @@ public class ItemTest {
     }
 
     /**
-     *
-     * @throws Exception
+     * Tests the return method for retrieving the <code>Item</code> object's status
+     * @throws Exception If getStatus doesn't exist
      */
     @Test
     public void getStatus() throws Exception {
@@ -119,8 +119,8 @@ public class ItemTest {
     }
 
     /**
-     *
-     * @throws Exception
+     * Tests the mutator method for setting the the <code>Item</code> object's status
+     * @throws Exception If setStatus doesn't exist setDateLost
      */
     @Test
     public void setStatus() throws Exception {
@@ -129,8 +129,8 @@ public class ItemTest {
     }
 
     /**
-     *
-     * @throws Exception
+     * Tests the return method for retrieving the <code>Item</code> object's image uri
+     * @throws Exception If getImageURI doesn't exist
      */
     @Test
     public void getImageURI() throws Exception {
@@ -138,8 +138,8 @@ public class ItemTest {
     }
 
     /**
-     *
-     * @throws Exception
+     * Tests the mutator method for setting the <code>Item</code> object's image uri
+     * @throws Exception If setImageURI doesn't exist
      */
     @Test
     public void setImageURI() throws Exception {
@@ -148,8 +148,8 @@ public class ItemTest {
     }
 
     /**
-     *
-     * @throws Exception
+     * Tests the return method for retrieving the <code>Item</code> object's reporting user
+     * @throws Exception If getReportingUser doesn't exist
      */
     @Test
     public void getReportingUser() throws Exception {
@@ -157,8 +157,8 @@ public class ItemTest {
     }
 
     /**
-     *
-     * @throws Exception
+     * Tests the mutator method for setting the <code>Item</code> object's reporting user
+     * @throws Exception If setReportingUser doesn't exist
      */
     @Test
     public void setReportingUser() throws Exception {
