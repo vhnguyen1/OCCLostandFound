@@ -3,7 +3,6 @@ package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
 
@@ -16,12 +15,29 @@ public class UserAccountTest {
     private UserAccount account;
 
     /**
-     *
-     * @throws Exception
+     * Sets up the account before testing everything else
+     * @throws Exception If the UserAccount doesn't exist
      */
     @Before
     public void setUp() throws Exception {
+        account = new UserAccount();
+        account.setStudentUserName("John");
+        account.setStudentPassword("Hello");
+        account.setStudentPhoneNum("(714) 200 0000");
+        account.setStudentEmail("stuff@stuff.com");
+        account.setStudentID("C787423456");
+        account.setmIsAdmin(true);
+        account.setmAllowShake(true);
+        account.setmAllowSms(true);
+        account.setFeedBack("Hello my name is Somethings");
     }
+
+    /**
+     * Unused
+     * @throws Exception Unused
+     */
+    @After
+    public void tearDown() throws Exception {}
 
     /**
      * Test set and get mStudentUserName
