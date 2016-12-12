@@ -17,7 +17,6 @@ public class SendSMSActivity extends AppCompatActivity {
         setContentView(R.layout.activity_send_sms);
 
         smsSenderEditText = (EditText) findViewById(R.id.smsSenderEditText);
-
     }
 
     public void sendSMS(View view) {
