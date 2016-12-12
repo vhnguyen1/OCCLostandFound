@@ -33,6 +33,10 @@ public class FeedbackActivity extends AppCompatActivity {
         feedbackSubmitImageView = (ImageView) findViewById(R.id.feedbackSubmitImageView);
     }
 
+    /**
+     * Submits the user's feedback once all fields are finished
+     * @param view The submit feedback button
+     */
     public void submitFeedback(View view) {
         if (feedbackEditText.getText().toString().isEmpty())
             Toast.makeText(this, "Feedback cannot be empty!", Toast.LENGTH_SHORT).show();

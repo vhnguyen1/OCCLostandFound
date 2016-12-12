@@ -63,7 +63,7 @@ public class ItemTest {
 
     /**
      * Tests the mutator method for setting the description
-     * @throws Exception If getDescription doesn't exist
+     * @throws Exception If setDescription doesn't exist
      */
     @Test
     public void setDescription() throws Exception {
@@ -72,8 +72,8 @@ public class ItemTest {
     }
 
     /**
-     *
-     * @throws Exception
+     * Tests the return method for retrieving the date the <code>Item</code> was lost
+     * @throws Exception If getDateLost doesn't exist
      */
     @Test
     public void getDateLost() throws Exception {
@@ -81,8 +81,8 @@ public class ItemTest {
     }
 
     /**
-     *
-     * @throws Exception
+     * Tests the mutator method for setting the the date the <code>Item</code> was lost
+     * @throws Exception If setDescription doesn't exist setDateLost
      */
     @Test
     public void setDateLost() throws Exception {

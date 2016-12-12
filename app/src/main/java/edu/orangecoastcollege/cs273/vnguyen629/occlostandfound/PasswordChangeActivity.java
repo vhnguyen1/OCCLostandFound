@@ -22,7 +22,7 @@ public class PasswordChangeActivity extends AppCompatActivity {
     private DBHelper database;
 
     /**
-     * Links the EditTexts together
+     * Links the EditTexts together and also starts up the database.
      * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
@@ -33,6 +33,8 @@ public class PasswordChangeActivity extends AppCompatActivity {
         oldPasswordEditText = (EditText) findViewById(R.id.oldPasswordEditText);
         newPasswordEditText = (EditText) findViewById(R.id.newPasswordEditText);
         reNewPasswordEditText = (EditText) findViewById(R.id.reNewPasswordEditText);
+
+        database = new DBHelper(this);
     }
 
     /**

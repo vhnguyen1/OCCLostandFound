@@ -130,16 +130,18 @@ public class ReportItemActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Monitors the month spinner to see if there are any changes and
+     * applies them accordingly.
      */
     public AdapterView.OnItemSelectedListener monthSpinnerListener =
             new AdapterView.OnItemSelectedListener() {
                 /**
-                 *
-                 * @param parent
-                 * @param view
-                 * @param position
-                 * @param l
+                 * When a user selects an appropriate month, the month static
+                 * string is changed directly.
+                 * @param parent The adapter
+                 * @param view The spinner
+                 * @param position The specific chosen month's position
+                 * @param l Unused
                  */
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
@@ -152,8 +154,8 @@ public class ReportItemActivity extends AppCompatActivity {
                 }
 
                 /**
-                 *
-                 * @param parent
+                 * Resets the spinner selection to the original/default value
+                 * @param parent The adapter
                  */
                 @Override
                 public void onNothingSelected(AdapterView<?> parent) {
@@ -162,7 +164,8 @@ public class ReportItemActivity extends AppCompatActivity {
             };
 
     /**
-     *
+     * Monitors the day spinner to see if there are any changes and
+     * applies them accordingly.
      */
     public AdapterView.OnItemSelectedListener dayNumberSpinnerListener =
             new AdapterView.OnItemSelectedListener() {

@@ -35,5 +35,4 @@ public class AdminMainMenuActivity extends AppCompatActivity {
     public void viewAllUsers(View view) {
         startActivity(new Intent(AdminMainMenuActivity.this, AdminViewUserActivity.class));
     }
-
 }
