@@ -88,4 +88,80 @@ public class ItemTest {
         mItem.setDateLost("3");
         assertEquals("Error Found!", "3", mItem.getDateLost());
     }
+
+    /**
+     *
+     * @throws Exception
+     */
+    @Test
+    public void getLastLocation() throws Exception {
+        assertEquals("Error Found!", "4", mItem.getLastLocation());
+    }
+
+    /**
+     *
+     * @throws Exception
+     */
+    @Test
+    public void setLastLocation() throws Exception {
+        mItem.setLastLocation("4");
+        assertEquals("Error Found!", "4", mItem.getLastLocation());
+    }
+
+    /**
+     *
+     * @throws Exception
+     */
+    @Test
+    public void getStatus() throws Exception {
+        assertFalse("Error Found!", mItem.getStatus());
+    }
+
+    /**
+     *
+     * @throws Exception
+     */
+    @Test
+    public void setStatus() throws Exception {
+        mItem.setStatus(false);
+        assertFalse("Error Found!", mItem.getStatus());
+    }
+
+    /**
+     *
+     * @throws Exception
+     */
+    @Test
+    public void getImageURI() throws Exception {
+        assertEquals("Error Found!", "5", mItem.getImageUri().toString());
+    }
+
+    /**
+     *
+     * @throws Exception
+     */
+    @Test
+    public void setImageURI() throws Exception {
+        mItem.setImageURI(Uri.parse("5"));
+        assertEquals("Error Found!", "5", mItem.getImageUri().toString());
+    }
+
+    /**
+     *
+     * @throws Exception
+     */
+    @Test
+    public void getReportingUser() throws Exception {
+        assertEquals("Error Found!", "6", mItem.getReportedUsername());
+    }
+
+    /**
+     *
+     * @throws Exception
+     */
+    @Test
+    public void setReportingUser() throws Exception {
+        mItem.setReportedUsername("6");
+        assertEquals("Error Found!", "6", mItem.getReportedUsername());
+    }
 }
