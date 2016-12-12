@@ -27,7 +27,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private DBHelper database;
     private List<UserAccount> accountList;
-
     private Animation shakeAnim;
 
     /**
@@ -43,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordLoginEditText = (EditText) findViewById(R.id.passwordLoginEditText);
         loginButtonImageView = (ImageView) findViewById(R.id.loginButtonImageView);
 
+        database = new DBHelper(this);
         accountList = database.getAllUserAccount();
     }
 
