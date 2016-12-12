@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -38,11 +39,12 @@ public class ReportItemActivity extends AppCompatActivity {
     private EditText reportItemDescriptionEditText;
     private Spinner monthSpinner;
     private Spinner dayNumberSpinner;
+    private CheckBox smsCheckBox;
 
     private DBHelper database;
 
-    private String month = "N/A";
-    private String day = "N/A";
+    private String month;
+    private String day;
     private static final String YEAR = "2016";
 
     private static final int REPORT_ITEM_REQUEST_CODE = 13;
@@ -57,12 +59,17 @@ public class ReportItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_item);
 
+        month = getString(R.string.month_text);
+        day = getString(R.string.day_text);
+
         database = new DBHelper(this);
 
         reportItemImageView = (ImageView) findViewById(R.id.reportItemImageView);
         reportItemNameEditText = (EditText) findViewById(R.id.reportItemNameEditText);
         reportItemLastLocationEditText = (EditText) findViewById(R.id.reportItemLastLocationEditText);
         reportItemDescriptionEditText = (EditText) findViewById(R.id.reportItemDescriptionEditText);
+
+        smsCheckBox = (CheckBox) findViewById(R.id.smsCheckBox);
 
         monthSpinner = (Spinner) findViewById(R.id.monthSpinner);
         ArrayAdapter<String> monthSpinnerAdapter = new ArrayAdapter<String>(this,
@@ -86,7 +93,7 @@ public class ReportItemActivity extends AppCompatActivity {
     private String[] getMonthNames() {
         String monthNames[] = new String[13];
 
-        monthNames[0] = getString(R.string.select_month_text);
+        monthNames[0] = getString(R.string.month_text);
         monthNames[1] = getString(R.string.january_text);
         monthNames[2] = getString(R.string.february_text);
         monthNames[3] = getString(R.string.march_text);
@@ -109,9 +116,9 @@ public class ReportItemActivity extends AppCompatActivity {
     private String[] getDayNumbers() {
         String dayNumbers[] = new String[32];
 
-        dayNumbers[0] = getString(R.string.select_day_text);
-        for (int i = 1; i < dayNumbers.length; i++)
-            dayNumbers[i] = String.valueOf(i);
+        dayNumbers[0] = getString(R.string.day_text);
+        for (int day = 1; day < dayNumbers.length; day++)
+            dayNumbers[day] = String.valueOf(day);
 
         return dayNumbers;
     }
@@ -132,7 +139,7 @@ public class ReportItemActivity extends AppCompatActivity {
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
                     String selectedMonth = String.valueOf(parent.getItemAtPosition(position));
 
-                    if (selectedMonth.equals(getString(R.string.select_month_text)))
+                    if (selectedMonth.equals(getString(R.string.month_text)))
                         month = "N/A";
                     else
                         month = selectedMonth;
@@ -155,10 +162,10 @@ public class ReportItemActivity extends AppCompatActivity {
             new AdapterView.OnItemSelectedListener() {
                 /**
                  *
-                 * @param parent
-                 * @param view
-                 * @param position
-                 * @param l
+                 * @param parent The adapter
+                 * @param view The spinner
+                 * @param position Specific item from the spinner's position
+                 * @param l Unused
                  */
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
@@ -195,8 +202,10 @@ public class ReportItemActivity extends AppCompatActivity {
         final String NAME = reportItemNameEditText.getText().toString().replaceAll("\\s+","");
         final String LAST_LOCATION = reportItemLastLocationEditText.getText().toString().replaceAll("\\s+","");
 
-        if (NAME.equals("") || LAST_LOCATION.equals("") || day.equals(R.string.select_day_text)
-                || month.equals(getString(R.string.select_month_text)))
+        Toast.makeText(this, "HI", Toast.LENGTH_SHORT).show();
+
+        if (NAME.equals("") || LAST_LOCATION.equals("") || day.equals(R.string.day_text)
+                || month.equals(getString(R.string.month_text)))
             Toast.makeText(this, getString(R.string.all_fields_mandatory_text),
                     Toast.LENGTH_SHORT).show();
         else {
@@ -205,10 +214,19 @@ public class ReportItemActivity extends AppCompatActivity {
             final String NEW_ITEM_LAST_LOCATION = reportItemLastLocationEditText.getText().toString().trim();
             final String NEW_ITEM_DESCRIPTION = reportItemDescriptionEditText.getText().toString().trim();
 
+            final int SMS_NOTIFICATIONS = ((smsCheckBox.isChecked())? 1 : 0);
+
+            if (imageUri == null)
+                imageUri = getUriToResource(this, R.drawable.default_image);
+
+            UserAccount account = database.getUserAccount(UserAccount.singedInUserAccountName);
+            Toast.makeText(this, account.getStudentUserName(), Toast.LENGTH_SHORT).show();
             Item newItem = new Item(NEW_ITEM_NAME, NEW_ITEM_DESCRIPTION, NEW_ITEM_DATE_LOST,
                     NEW_ITEM_LAST_LOCATION, false, imageUri, UserAccount.singedInUserAccountName);
+            Report newReport = new Report(account, newItem, SMS_NOTIFICATIONS);
 
             database.addItem(newItem);
+            database.addReport(newReport);
         }
     }
 
