@@ -55,9 +55,16 @@ public class ItemsListActivity extends AppCompatActivity {
 
         account = getIntent().getExtras().getParcelable("Account");
 
-        //this.deleteDatabase(DBHelper.DATABASE_NAME);
+        this.deleteDatabase(DBHelper.DATABASE_NAME);
         database = new DBHelper(this);
-        //database.addItem(new Item("LV Wallet", "N/A", "N/A", "N/A", false,
+
+        database.deleteAllItems();
+        database.deleteAllUserAccounts();
+        database.deleteAllReports();
+        allItemsList.clear();
+        itemsListAdapter.notifyDataSetChanged();
+
+        //database.addItem(new Item("LV Wallet", "Brown Wallet", "October", "Tech Center", false,
                 //getUriToResource(this, R.drawable.default_image), "vnguyen629"));
 
         searchNameFilterEditText = (EditText) findViewById(R.id.searchNameFilterEditText);
