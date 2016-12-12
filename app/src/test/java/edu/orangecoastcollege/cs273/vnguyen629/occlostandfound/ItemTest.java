@@ -16,8 +16,9 @@ public class ItemTest {
     private Item mItem;
 
     /**
-     *
-     * @throws Exception
+     * Starts up before testing all the other functions, initializing a testing
+     * <code>Item</code> object to default testing values
+     * @throws Exception If mItem or member functions/variables don't exist
      */
     @Before
     public void setUp() throws Exception {
@@ -32,8 +33,8 @@ public class ItemTest {
     }
 
     /**
-     *
-     * @throws Exception
+     * Tests the return method for retrieving the name
+     * @throws Exception If getName doesn't exist
      */
     @Test
     public void getName() throws Exception {
@@ -42,8 +43,8 @@ public class ItemTest {
     }
 
     /**
-     *
-     * @throws Exception
+     * Tests the mutator method for setting the name
+     * @throws Exception If setName doesn't exist
      */
     @Test
     public void setName() throws Exception {
@@ -52,8 +53,8 @@ public class ItemTest {
     }
 
     /**
-     *
-     * @throws Exception
+     * Tests the return method for retrieving the description
+     * @throws Exception If getDescription doesn't exist
      */
     @Test
     public void getDescription() throws Exception {
@@ -61,8 +62,8 @@ public class ItemTest {
     }
 
     /**
-     *
-     * @throws Exception
+     * Tests the mutator method for setting the description
+     * @throws Exception If getDescription doesn't exist
      */
     @Test
     public void setDescription() throws Exception {
