@@ -19,8 +19,6 @@ import static edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.UserAccoun
 public class UserSettingsActivity extends AppCompatActivity {
 
     private DBHelper database;
-    private ArrayList<UserAccount> accountList;
-    private UserAccount account;
 
 
     private EditText accountInfoEmailEditText;
@@ -46,6 +44,8 @@ public class UserSettingsActivity extends AppCompatActivity {
         accountSettingShakeCheckBox = (CheckBox) findViewById(R.id.shakeCheckBox);
         accountSettingSmsCheckBox = (CheckBox) findViewById(R.id.smsCheckBox);
 
+
+        database = new DBHelper(this);
 
         accountInfoEmailEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentEmail());
         accountInfoPhoneNumberEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentPhoneNum());
