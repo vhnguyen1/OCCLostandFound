@@ -1,6 +1,8 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
 import android.view.View;
@@ -43,8 +45,13 @@ public class SendSMSActivity extends AppCompatActivity {
         if (message.isEmpty())
             Toast.makeText(this, "Message cannot be empty.", Toast.LENGTH_SHORT).show();
         else {
-            SmsManager manager = SmsManager.getDefault();
-            manager.sendTextMessage(selectedAccount.getStudentPhoneNum(), null, message, null, null);
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[] {android.Manifest.permission.SEND_SMS}, REQUEST_CODE_SEND_SMS);
+            } else {
+                SmsManager manager = SmsManager.getDefault();
+                manager.sendTextMessage(selectedAccount.getStudentPhoneNum(), null, message, null, null);
+                Toast.makeText(this, "SMS Sent.", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

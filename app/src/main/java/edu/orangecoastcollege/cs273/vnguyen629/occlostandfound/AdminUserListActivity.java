@@ -46,7 +46,11 @@ public class AdminUserListActivity extends AppCompatActivity {
         searchUsernameEditText = (EditText) findViewById(R.id.searchUsernameEditText);
 
         allUserList = db.getAllUserAccount();
-        filteredUserList = new ArrayList<>(allUserList);
+        filteredUserList = new ArrayList<>();
+        for (UserAccount user : allUserList)
+            if (user.getIsAdmin() == false)
+                filteredUserList.add(user);
+        //filteredUserList = new ArrayList<>(allUserList);
 
         userListView = (ListView) findViewById(R.id.userListView);
         userListAdapter = new UserListAdapter(this, R.layout.list_user, filteredUserList);

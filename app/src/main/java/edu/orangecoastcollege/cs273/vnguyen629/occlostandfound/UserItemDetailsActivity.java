@@ -2,9 +2,11 @@ package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
 import android.util.Log;
@@ -13,10 +15,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class UserItemDetailsActivity extends AppCompatActivity {
+
+    private final static int REQUEST_CODE_SEND_SMS = 101;
 
     private UserAccount selectedAccount;
 
@@ -89,10 +94,14 @@ public class UserItemDetailsActivity extends AppCompatActivity {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     String selectedStatus = String.valueOf(parent.getItemAtPosition(position));
-
                     if (selectedStatus.equals(strings[1])) {
-                        SmsManager manager = SmsManager.getDefault();
-                        manager.sendTextMessage(selectedAccount.getStudentPhoneNum(), null, MESSAGE, null, null);
+                        if (ActivityCompat.checkSelfPermission(UserItemDetailsActivity.this, android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+                            ActivityCompat.requestPermissions(UserItemDetailsActivity.this, new String[] {android.Manifest.permission.SEND_SMS}, REQUEST_CODE_SEND_SMS);
+                        } else {
+                            SmsManager manager = SmsManager.getDefault();
+                            manager.sendTextMessage(selectedAccount.getStudentPhoneNum(), null, MESSAGE, null, null);
+                            Toast.makeText(UserItemDetailsActivity.this, "Item Status Updated", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
 

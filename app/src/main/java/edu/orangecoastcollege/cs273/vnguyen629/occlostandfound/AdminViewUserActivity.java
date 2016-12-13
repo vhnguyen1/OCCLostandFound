@@ -48,10 +48,10 @@ public class AdminViewUserActivity extends AppCompatActivity {
         adminViewEmailTextView = (TextView) findViewById(R.id.adminViewEmailTextView);
         adminViewPhoneTextView = (TextView) findViewById(R.id.adminViewPhoneTextView);
 
-        adminViewPhoneTextView.setText(account.getStudentUserName());
-        adminViewStudentIDTextView.setText(account.getStudentID());
-        adminViewEmailTextView.setText(account.getStudentEmail());
-        adminViewPhoneTextView.setText(account.getStudentPhoneNum());
+        adminViewUsernameTextView.setText(selectedUser.getStudentUserName());
+        adminViewPhoneTextView.setText(selectedUser.getStudentPhoneNum());
+        adminViewStudentIDTextView.setText(selectedUser.getStudentID());
+        adminViewEmailTextView.setText(selectedUser.getStudentEmail());
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
