@@ -17,8 +17,7 @@ import java.util.ArrayList;
 
 public class UserItemDetailsActivity extends AppCompatActivity {
 
-
-    private UserAccount loggedInAccount;
+    private UserAccount selectedAccount;
 
     private Spinner userItemStatusSpinner;
 
@@ -29,7 +28,7 @@ public class UserItemDetailsActivity extends AppCompatActivity {
     private CheckBox userItemSMSCheckBox;
 
     private ArrayList<Report> reportedItemList;
-    private DBHelper database = new DBHelper(this);
+    private DBHelper database;
 
     /**
      * Starts up the activity and loads up the intent data from the ItemListActivity
@@ -44,9 +43,11 @@ public class UserItemDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_item_details);
 
+        database  = new DBHelper(this);
+
         final String MESSAGE = getString(R.string.your_item_has_been_found_text);
 
-        loggedInAccount = getIntent().getExtras().getParcelable("Account");
+        selectedAccount = getIntent().getExtras().getParcelable("Account");
 
         Item selectedItem = getIntent().getExtras().getParcelable("Item");
 
@@ -74,35 +75,35 @@ public class UserItemDetailsActivity extends AppCompatActivity {
             }
         });
 
-        userItemStatusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            /**
-             *
-             * @param parent
-             * @param view
-             * @param position
-             * @param id
-             */
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedStatus = String.valueOf(parent.getItemAtPosition(position));
+        if (selectedAccount.getAllowSms()) {
+            userItemStatusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                /**
+                 * @param parent
+                 * @param view
+                 * @param position
+                 * @param id
+                 */
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    String selectedStatus = String.valueOf(parent.getItemAtPosition(position));
 
-                if (selectedStatus.equals(strings[1])) {
-                    SmsManager manager = SmsManager.getDefault();
-                    manager.sendTextMessage(loggedInAccount.getStudentPhoneNum(), null, MESSAGE, null, null);
+                    if (selectedStatus.equals(strings[1])) {
+                        SmsManager manager = SmsManager.getDefault();
+                        manager.sendTextMessage(selectedAccount.getStudentPhoneNum(), null, MESSAGE, null, null);
+                    }
                 }
-            }
 
-            /**
-             *
-             * @param parent
-             */
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                parent.setSelection(0);
-            }
-        });
+                /**
+                 * @param parent
+                 */
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+                    parent.setSelection(0);
+                }
+            });
+        }
 
-        reportedItemList = database.getAllReports();
+        /*reportedItemList = database.getAllReports();
 
         for (Report report : reportedItemList)
         {
@@ -114,7 +115,7 @@ public class UserItemDetailsActivity extends AppCompatActivity {
                     manager.sendTextMessage(loggedInAccount.getStudentPhoneNum(), null, MESSAGE, null, null);
                 }
             }
-        }
+        }*/
     }
 
     /**

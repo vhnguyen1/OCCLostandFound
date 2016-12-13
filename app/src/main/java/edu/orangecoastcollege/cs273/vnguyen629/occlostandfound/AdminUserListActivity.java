@@ -1,10 +1,13 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -13,7 +16,7 @@ import java.util.List;
 /**
  *
  */
-public class UserListActivity extends AppCompatActivity {
+public class AdminUserListActivity extends AppCompatActivity {
 
     private DBHelper db;
     private List<UserAccount> allUserList;
@@ -99,4 +102,16 @@ public class UserListActivity extends AppCompatActivity {
             //Do nothing
         }
     };
+
+    public void adminViewUser(View view) {
+        if (view instanceof LinearLayout) {
+            UserAccount selectedUser = (UserAccount) view.getTag();
+            UserAccount account = getIntent().getExtras().getParcelable("Account");
+
+            Intent intent = new Intent(this, AdminViewUserActivity.class);
+            intent.putExtra("SelectedUser", selectedUser);
+            intent.putExtra("Account", account);
+            startActivity(intent);
+        }
+    }
 }
