@@ -77,16 +77,6 @@
         android:layout_alignLeft="@+id/adminViewStudentIDTextView"
         android:layout_alignStart="@+id/adminViewStudentIDTextView" />
 
-    <Button
-        android:text="@string/send_sms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="79dp"
-        android:id="@+id/adminViewSendSMSButton"
-        android:layout_below="@+id/textView26"
-        android:layout_centerHorizontal="true"
-        android:textSize="24sp" />
-
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
@@ -99,12 +89,25 @@
         android:layout_marginTop="16dp" />
 
     <Button
-        android:text="@string/view_user_feedback"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="19dp"
         android:id="@+id/adminViewFeedbackButton"
         android:textSize="24sp"
         android:layout_below="@+id/adminViewSendSMSButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/feedback_icon" />
+
+    <Button
+        android:layout_marginTop="83dp"
+        android:id="@+id/adminViewSendSMSButton"
+        android:textSize="24sp"
+        android:background="@drawable/sms_icon"
+        android:layout_below="@+id/textView26"
+        android:layout_alignLeft="@+id/adminViewFeedbackButton"
+        android:layout_alignStart="@+id/adminViewFeedbackButton"
+        android:layout_alignRight="@+id/adminViewFeedbackButton"
+        android:layout_alignEnd="@+id/adminViewFeedbackButton"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content" />
 </RelativeLayout>
