@@ -162,4 +162,5 @@
     <string name="question_how_to_pick_up_item">How do I retrieve my items?</string>
     <string name="answer_pick_up_item_text">To retrieve your lost items, head to the lost and found centers         (starting with the ASOCC). Be sure to bring some sort of identification with you         (whether it be a driver\'s license, student ID, etc). Depending on the item, the ASOCC staff         may need to perform extra steps to verify that the item is yours. NOTE: If you retrieved your item         at the ASOCC office, there is no need to visit hte OCC Campus safety office.</string>
     <string name="app_about_description_text">The OCC Lost and Found app emphasizes the importance of simplicity, convenience, and most of all—efficiency. Whether it be something as simple as losing an ID to something as large as losing a wallet, our goal is to help any student at OCC find and recover their belongings. With our account based login system, users can easily track any and all reported items with ease.</string>
+    <string name="saved_successfully_text">Saved Successfully!</string>
 </resources>

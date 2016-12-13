@@ -15,7 +15,7 @@ public class ViewUserFeedbackActivity extends AppCompatActivity {
     private TextView userFeedbackTextView;
 
     /**
-     * create and init varible
+     * Create and initialize variables
      * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
@@ -23,10 +23,10 @@ public class ViewUserFeedbackActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_user_feedback);
 
-        userFeedbackTextView = (TextView) findViewById(R.id.userFeedbackTextView);
+        //userFeedbackTextView = (TextView) findViewById(R.id.userFeedbackTextView);
 
         final UserAccount user = getIntent().getExtras().getParcelable("UserFeedback");
 
-        userFeedbackTextView.setText(user.getFeedBack());
+        //userFeedbackTextView.setText(user.getFeedBack());
     }
 }
