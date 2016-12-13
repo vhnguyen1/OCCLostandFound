@@ -247,6 +247,7 @@ public class ReportItemActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
 
             startActivity(new Intent(ReportItemActivity.this, ItemsListActivity.class));
+            this.finish();
         }
     }
 
