@@ -6,12 +6,18 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
+
 public class UserItemDetailsActivity extends AppCompatActivity {
+
+    private static final String MESSAGE = "Your item have been found. Visit ASSOCC to verify.";
 
     private UserAccount loggedInAccount;
 
@@ -20,6 +26,11 @@ public class UserItemDetailsActivity extends AppCompatActivity {
     private Sensor accelerometer;
     private SensorManager sensorManager;
     private ShakeDetector shakeDetector;
+
+    private CheckBox userItemSMSCheckBox;
+
+    private ArrayList<Report> reportedItemList;
+    private DBHelper database = new DBHelper(this);
 
     /**
      * Starts up the activity and loads up the intent data from the ItemListActivity
@@ -37,8 +48,10 @@ public class UserItemDetailsActivity extends AppCompatActivity {
 
         Item selectedItem = getIntent().getExtras().getParcelable("SelectedItem");
 
-        userItemStatusSpinner = (Spinner) findViewById(R.id.userItemStatusSpinner);
+        userItemSMSCheckBox = (CheckBox)findViewById(R.id.userItemSMSCheckBox);
 
+        userItemStatusSpinner = (Spinner) findViewById(R.id.userItemStatusSpinner);
+        String[] strings = {"Not Found", "Found"};
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.status_choices, android.R.layout.simple_spinner_item);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -69,6 +82,20 @@ public class UserItemDetailsActivity extends AppCompatActivity {
 
             }
         });
+
+        reportedItemList = database.getAllReports();
+
+        for (Report report : reportedItemList)
+        {
+            if(report.getItem().getName().equals(selectedItem.getName()))
+            {
+                if(userItemSMSCheckBox.isChecked())
+                {
+                    SmsManager manager = SmsManager.getDefault();
+                    manager.sendTextMessage(loggedInAccount.getStudentPhoneNum(), null, MESSAGE, null, null);
+                }
+            }
+        }
     }
 
     /**
