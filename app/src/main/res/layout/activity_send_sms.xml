@@ -20,14 +20,14 @@
         android:textSize="30sp" />
 
     <Button
-        android:text="@string/send_sms"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_below="@+id/smsSenderEditText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
         android:id="@+id/smsSenderButton"
-        android:onClick="sendSMS" />
+        android:onClick="sendSMS"
+        android:background="@drawable/sms_icon"
+        android:layout_width="200dp"
+        android:layout_height="75dp" />
 
     <EditText
         android:layout_width="match_parent"
