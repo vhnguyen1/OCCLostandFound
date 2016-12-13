@@ -27,11 +27,11 @@
         android:text="@string/contact_info_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView27"
+        android:id="@+id/titleTextView"
         android:textSize="18sp"
         android:layout_marginRight="51dp"
         android:layout_marginEnd="51dp"
-        android:layout_alignBottom="@+id/textView23"
+        android:layout_alignBottom="@+id/feedbackTextView"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:onClick="openContactInfo" />
@@ -42,7 +42,7 @@
         app:srcCompat="@drawable/faq_icon"
         android:layout_marginTop="36dp"
         android:id="@+id/imageView7"
-        android:layout_below="@+id/textView23"
+        android:layout_below="@+id/feedbackTextView"
         android:layout_alignLeft="@+id/imageView4"
         android:layout_alignStart="@+id/imageView4"
         android:clickable="true"
@@ -85,7 +85,7 @@
         android:text="@string/map_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView23"
+        android:id="@+id/feedbackTextView"
         android:onClick="openMap"
         android:clickable="true"
         android:textSize="18sp"
@@ -104,8 +104,8 @@
         android:clickable="true"
         android:onClick="openFAQ"
         android:layout_below="@+id/imageView7"
-        android:layout_alignRight="@+id/textView23"
-        android:layout_alignEnd="@+id/textView23" />
+        android:layout_alignRight="@+id/feedbackTextView"
+        android:layout_alignEnd="@+id/feedbackTextView" />
 
     <TextView
         android:text="@string/about_text"
@@ -127,8 +127,8 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignTop="@+id/imageView4"
-        android:layout_alignLeft="@+id/textView27"
-        android:layout_alignStart="@+id/textView27"
+        android:layout_alignLeft="@+id/titleTextView"
+        android:layout_alignStart="@+id/titleTextView"
         android:paddingBottom="15dp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"

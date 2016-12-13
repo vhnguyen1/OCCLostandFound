@@ -14,7 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ *  UserListActicity
+ *  Get UserAccount and put it into a list
  */
 public class AdminUserListActivity extends AppCompatActivity {
 
@@ -29,7 +30,7 @@ public class AdminUserListActivity extends AppCompatActivity {
     private UserAccount loggedInAccount;
 
     /**
-     *
+     * Create and init varible
      * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
@@ -69,7 +70,7 @@ public class AdminUserListActivity extends AppCompatActivity {
         }
 
         /**
-         *
+         *  Check on Text Change for search function
          * @param s
          * @param start
          * @param before

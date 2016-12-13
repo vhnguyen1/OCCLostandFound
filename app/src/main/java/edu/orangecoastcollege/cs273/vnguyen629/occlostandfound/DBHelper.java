@@ -359,6 +359,7 @@ class DBHelper extends SQLiteOpenHelper {
     /************* User Account database functions *************/
 
     /**
+     * Create new Account
      * Adds a new account to the database
      * @param account The new account to be added
      */
@@ -382,8 +383,9 @@ class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    /*
-     * @return
+    /**
+     *  Get UserAccount and place into a list
+     * @return ArrayList<UserAccount></UserAccount>
      */
     public ArrayList<UserAccount> getAllUserAccount()
     {
@@ -538,6 +540,11 @@ class DBHelper extends SQLiteOpenHelper {
         return reportArrayList;
     }
 
+    /**
+     * Get report from database and added into the an arrayList
+     * @param account
+     * @return ArrayList<Report></Report>
+     */
     public ArrayList<Report> getAllReportsFromUser(UserAccount account) {
         ArrayList<Report> reportArrayList = new ArrayList<>();
         ArrayList<Item> itemArrayList = new ArrayList<>();

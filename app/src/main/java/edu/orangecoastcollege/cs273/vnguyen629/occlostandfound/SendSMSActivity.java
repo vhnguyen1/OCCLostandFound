@@ -1,10 +1,15 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 /**
@@ -48,6 +53,11 @@ public class SendSMSActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Select User and send a SMS if item have been found
+     * @param view
+     */
+    public void selectUserSMS(View view) {
     /*public void selectUserSMS(View view) {
         String message = getIntent().getExtras().getString("MESSAGE");
 
