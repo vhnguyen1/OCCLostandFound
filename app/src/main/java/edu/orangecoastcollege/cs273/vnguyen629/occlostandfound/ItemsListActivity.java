@@ -35,9 +35,9 @@ import java.util.List;
  */
 public class ItemsListActivity extends AppCompatActivity {
     private DBHelper database;
-    public static List<Item> allItemsList;
-    public static List<Item> filteredItemsList;
-    public static ItemListAdapter itemsListAdapter;
+    private static List<Item> allItemsList;
+    private static List<Item> filteredItemsList;
+    private static ItemListAdapter itemsListAdapter;
     private ListView itemsListView;
 
     private Spinner categoryFilterSpinner;
