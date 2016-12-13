@@ -6,6 +6,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 /**
  * An activity that shows the users potential and frequently asked questions with a series
@@ -41,6 +42,14 @@ public class FAQActivity extends AppCompatActivity {
                 startActivity(new Intent(FAQActivity.this, ItemsListActivity.class));
             }
         });
+    }
+
+    /**
+     * Loads up the campus map page
+     * @param view The campus map button
+     */
+    public void showCampusMap(View view) {
+        startActivity(new Intent(FAQActivity.this, CampusMapActivity.class));
     }
 
     /**
