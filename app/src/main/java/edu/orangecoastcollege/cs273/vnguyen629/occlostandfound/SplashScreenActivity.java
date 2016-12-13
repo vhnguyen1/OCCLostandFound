@@ -31,7 +31,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         splashTimerTask = new TimerTask() {
             /**
-             * After the TimerTasks finishes loading up, the main menu
+             * After the TimerTasks finishes loading up, the pre-main menu
              * is loaded up automatically.
              */
             @Override

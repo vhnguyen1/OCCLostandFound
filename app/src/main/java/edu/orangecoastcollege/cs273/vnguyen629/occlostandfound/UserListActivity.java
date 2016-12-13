@@ -15,7 +15,6 @@ import java.util.List;
  */
 public class UserListActivity extends AppCompatActivity {
 
-
     private DBHelper db;
     private List<UserAccount> allUserList;
     private List<UserAccount> filteredUserList;
@@ -48,8 +47,6 @@ public class UserListActivity extends AppCompatActivity {
         userListView.setAdapter(userListAdapter);
 
         searchUsernameEditText.addTextChangedListener(usernameSearchTextWatcher);
-
-
     }
 
     /**

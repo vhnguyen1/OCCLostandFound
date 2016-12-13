@@ -146,4 +146,21 @@
     <string name="passwords_do_not_match">Your new password does not match.</string>
     <string name="old_password_incorrect">Your old password is incorrect.</string>
     <string name="contact_info_text">Contact Info.</string>
+    <string name="loading_campus_map_text">Loading Campus Map...</string>
+    <string name="found">Found</string>
+    <string name="your_item_has_been_found_text">Your item have been found. Visit ASSOCC to verify.</string>
+    <string name="frequently_asked_questions_text">Frequently Asked Questions</string>
+    <string name="q">Q:</string>
+    <string name="question_where_are_asocc_offices">Where are  the ASOCC offices located?</string>
+    <string name="a">A:</string>
+    <string name="answer_asocc_location">The ASOCC offices are located at the Student Services Center near Watson Hall.
+        Enter from the main entrance and they will be located at the first door to the right.</string>
+    <string name="question_where_is_lost_and_found">Where is the Lost and Found at OCC?</string>
+    <string name="answer_lost_and_found_location">There are a total of two lost and found locations at OCC.
+        The main center is located at the ASOCC office (location explained above), while the second is located
+        at the OCC Campus Safety Office located in E Lot. To see the OCC campus map, click</string>
+    <string name="question_how_to_pick_up_item">How do I retrieve my items?</string>
+    <string name="answer_pick_up_items">To retrieve your lost items, head to the lost and found centers
+        (starting with the ASOCC). Be sure to bring some sort of identification with you
+        (whether it be a driver\'s license, student ID, etc).</string>
 </resources>

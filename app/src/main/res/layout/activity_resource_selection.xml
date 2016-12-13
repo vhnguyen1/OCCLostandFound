@@ -46,7 +46,10 @@
         android:layout_alignLeft="@+id/imageView4"
         android:layout_alignStart="@+id/imageView4"
         android:clickable="true"
-        android:onClick="openFAQ" />
+        android:onClick="openFAQ"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:scaleType="fitCenter" />
 
     <ImageView
         app:srcCompat="@drawable/about_icon"
@@ -56,17 +59,10 @@
         android:layout_alignBottom="@+id/imageView7"
         android:layout_alignLeft="@+id/imageView6"
         android:layout_alignStart="@+id/imageView6"
-        android:onClick="openAbout" />
-
-    <ImageView
-        app:srcCompat="@drawable/contact_info_icon"
-        android:id="@+id/imageView6"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
-        android:layout_above="@+id/textView27"
-        android:layout_alignLeft="@+id/textView27"
-        android:layout_alignStart="@+id/textView27"
-        android:onClick="openContactInfo" />
+        android:onClick="openAbout"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:cropToPadding="true" />
 
     <ImageView
         android:layout_width="80dp"
@@ -123,4 +119,18 @@
         android:layout_marginLeft="22dp"
         android:layout_marginStart="22dp"
         android:onClick="openAbout" />
+
+    <ImageView
+        app:srcCompat="@drawable/contact_info_icon"
+        android:id="@+id/imageView6"
+        android:onClick="openContactInfo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignTop="@+id/imageView4"
+        android:layout_alignLeft="@+id/textView27"
+        android:layout_alignStart="@+id/textView27"
+        android:paddingBottom="15dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:cropToPadding="true" />
 </RelativeLayout>

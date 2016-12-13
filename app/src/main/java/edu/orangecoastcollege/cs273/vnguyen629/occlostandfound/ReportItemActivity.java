@@ -247,6 +247,7 @@ public class ReportItemActivity extends AppCompatActivity {
                 Toast.makeText(this, getString(R.string.must_be_signed_in_text),
                         Toast.LENGTH_SHORT).show();
 
+            startActivity(new Intent(ReportItemActivity.this, ItemsListActivity.class));
             this.finish();
         }
     }

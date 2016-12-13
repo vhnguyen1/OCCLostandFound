@@ -92,6 +92,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         startActivity(new Intent(MapActivity.this, CampusMapActivity.class));
     }
 
+
     /**
      * When the user re-enters the app, the sensors start back up and begin
      * monitoring device movements/g-forces in a 3D (x-y-z) span.
