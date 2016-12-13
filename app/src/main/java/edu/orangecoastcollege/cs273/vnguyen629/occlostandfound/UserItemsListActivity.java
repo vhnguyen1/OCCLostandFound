@@ -137,7 +137,6 @@ public class UserItemsListActivity extends AppCompatActivity {
             }
 
             if (input.equals("")) {
-
                 for (Item item : itemList)
                     itemListAdapter.add(item);
             }
