@@ -71,7 +71,6 @@ public class AdminMainMenuActivity extends AppCompatActivity {
      */
     public void viewAdminSettings(View view) {
         startActivity(new Intent(this, AdminSettingsActivity.class).putExtra("Account", account));
-        this.finish();
     }
 
     /**
@@ -79,8 +78,7 @@ public class AdminMainMenuActivity extends AppCompatActivity {
      * @param view The view all users button
      */
     public void adminSignOut(View view) {
-        startActivity(new Intent(this, MainMenuActivity.class));
-        this.finish();
+        startActivity(new Intent(this, MainMenuActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 
     /**

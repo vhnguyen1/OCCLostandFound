@@ -42,7 +42,6 @@ public class UserMenuActivity extends AppCompatActivity {
     public void userReportItem(View view) {
         startActivity(new Intent(UserMenuActivity.this,
                 ReportItemActivity.class).putExtra("Account", loggedInAccount));
-        this.finish();
     }
 
     /**
@@ -52,7 +51,6 @@ public class UserMenuActivity extends AppCompatActivity {
     public void userViewSettings(View view) {
         startActivity(new Intent(UserMenuActivity.this,
                 UserSettingsActivity.class).putExtra("Account", loggedInAccount));
-        this.finish();
     }
 
     /**
@@ -68,7 +66,6 @@ public class UserMenuActivity extends AppCompatActivity {
      *
      */
     public void userSignOut(View view) {
-        startActivity(new Intent(this, MainMenuActivity.class));
-        this.finish();
+        startActivity(new Intent(this, MainMenuActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 }

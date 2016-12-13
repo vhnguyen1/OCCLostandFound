@@ -18,6 +18,8 @@ public class FeedbackActivity extends AppCompatActivity {
 
     private EditText feedbackEditText;
 
+    DBHelper db;
+
     /**
      * Links up the view widgets
      * @param savedInstanceState The state of the application saved into a bundle.
@@ -26,6 +28,8 @@ public class FeedbackActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
+
+        db = new DBHelper(this);
 
         feedbackEditText = (EditText) findViewById(R.id.feedbackEditText);
     }
@@ -44,6 +48,7 @@ public class FeedbackActivity extends AppCompatActivity {
                         + " - " + DateFormat.getDateTimeInstance().format(new Date()) + ": "
                         + feedbackEditText.getText().toString();
                 account.setFeedBack(feedback);
+                db.updateAccount(account);
                 Toast.makeText(this, "Feedback sent", Toast.LENGTH_SHORT).show();
                 feedbackEditText.setText("");
             } else {
@@ -51,6 +56,7 @@ public class FeedbackActivity extends AppCompatActivity {
                         + " - " + DateFormat.getDateTimeInstance().format(new Date()) + ": "
                         + feedbackEditText.getText().toString();
                 account.setFeedBack(feedback);
+                db.updateAccount(account);
                 Toast.makeText(this, "Feedback sent", Toast.LENGTH_SHORT).show();
                 feedbackEditText.setText("");
             }

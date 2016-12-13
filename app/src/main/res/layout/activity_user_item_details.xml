@@ -138,10 +138,4 @@
 
     </LinearLayout>
 
-    <CheckBox
-        android:text="@string/allow_sms_notification"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/userItemSMSCheckBox" />
-
 </LinearLayout>

@@ -24,8 +24,6 @@ public class UserAccountCreateActivity extends AppCompatActivity {
     private EditText emailEditText;
     private EditText idEditText;
 
-    //private TextView renterPasswordTextView;
-    //private TextView emailTextView;
     private DBHelper database;
     private List<UserAccount> accounts;
 
@@ -46,8 +44,6 @@ public class UserAccountCreateActivity extends AppCompatActivity {
         reenterPasswordEditText = (EditText) findViewById(R.id.reenterPasswordEditText);
         emailEditText = (EditText) findViewById(R.id.emailEditText);
         idEditText = (EditText) findViewById(R.id.idEditText);
-        //renterPasswordTextView = (TextView) findViewById(R.id.reenterPassTextView);
-        //emailTextView = (TextView) findViewById(emailTextView);
 
         database = new DBHelper(this);
         accounts = database.getAllUserAccount();

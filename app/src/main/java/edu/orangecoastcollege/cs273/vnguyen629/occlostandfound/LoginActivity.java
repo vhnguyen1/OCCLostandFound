@@ -48,6 +48,13 @@ public class LoginActivity extends AppCompatActivity {
         accountList = database.getAllUserAccount();
     }
 
+    @Override
+    public void onRestart() {
+        super.onResume();
+        setContentView(R.layout.activity_login);
+
+        recreate();
+    }
     /**
      * Allows the user to login to their account if the information they
      * provided is appropriate.

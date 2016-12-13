@@ -81,6 +81,12 @@ public class UserItemsListActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onRestart(){
+        super.onRestart();
+        recreate();
+    }
+
     /**
      * Select and launch selected item account
      * @param view
@@ -129,23 +135,22 @@ public class UserItemsListActivity extends AppCompatActivity {
          */
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            /*String input = charSequence.toString().toLowerCase();
-            itemListAdapter.clear();
-
-            for (Report report : reportList) {
-                itemList.add(report.getItem());
-            }
-
-            if (input.equals("")) {
-                for (Item item : itemList)
-                    itemListAdapter.add(item);
+            String input = charSequence.toString();
+            if(input.equals(""))
+            {
+                itemListAdapter.clear();
+                for (Report report : reportList)
+                {
+                    itemList.add(report.getItem());
+                }
             }
             else {
-                for (Item item : itemList) {
-                    if (item.getName().toLowerCase().contains(input))
-                        itemListAdapter.add(item);
+                itemListAdapter.clear();
+                for (Report report : reportList) {
+                    if (report.getItem().getName().toLowerCase().contains(input))
+                        itemList.add(report.getItem());
                 }
-            }*/
+            }
         }
 
         /**

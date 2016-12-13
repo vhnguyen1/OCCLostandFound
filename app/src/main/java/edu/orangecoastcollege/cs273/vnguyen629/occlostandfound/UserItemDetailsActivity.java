@@ -15,7 +15,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -28,6 +27,7 @@ public class UserItemDetailsActivity extends AppCompatActivity {
     private final static int REQUEST_CODE_SEND_SMS = 101;
 
     private UserAccount selectedAccount;
+    private Item selectedItem;
 
     private Spinner userItemStatusSpinner;
     private TextView userItemDetailsNameTextView;
@@ -42,10 +42,11 @@ public class UserItemDetailsActivity extends AppCompatActivity {
     private SensorManager sensorManager;
     private ShakeDetector shakeDetector;
 
-    private CheckBox userItemSMSCheckBox;
+    private String MESSAGE;
 
     private ArrayList<Report> reportedItemList;
     private DBHelper database;
+
 
     /**
      * Starts up the activity and loads up the intent data from the ItemListActivity
@@ -64,16 +65,14 @@ public class UserItemDetailsActivity extends AppCompatActivity {
 
         database = new DBHelper(this);
 
-        final String MESSAGE = getString(R.string.your_item_has_been_found_text);
+        MESSAGE = getString(R.string.your_item_has_been_found_text);
 
         selectedAccount = getIntent().getExtras().getParcelable("Account");
 
-        Item selectedItem = getIntent().getExtras().getParcelable("Item");
-
-        userItemSMSCheckBox = (CheckBox) findViewById(R.id.userItemSMSCheckBox);
+        selectedItem = getIntent().getExtras().getParcelable("Item");
 
         userItemStatusSpinner = (Spinner) findViewById(R.id.userItemStatusSpinner);
-        final String[] strings = {getString(R.string.not_found), getString(R.string.found)};
+        String[] strings = {getString(R.string.not_found), getString(R.string.found)};
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.status_choices, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -105,40 +104,42 @@ public class UserItemDetailsActivity extends AppCompatActivity {
         });
 
         Log.i("Accountdetails", selectedAccount.toString());
-
-        if (selectedAccount.getAllowSms()) {
-            userItemStatusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                /**
-                 * @param parent
-                 * @param view
-                 * @param position
-                 * @param id
-                 */
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    String selectedStatus = String.valueOf(parent.getItemAtPosition(position));
-                    if (selectedStatus.equals(strings[1])) {
-                        userItemDetailsImageView.setAnimation(colorChange);
-                        if (ActivityCompat.checkSelfPermission(UserItemDetailsActivity.this, android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
-                            ActivityCompat.requestPermissions(UserItemDetailsActivity.this, new String[]{android.Manifest.permission.SEND_SMS}, REQUEST_CODE_SEND_SMS);
-                        } else {
-                            SmsManager manager = SmsManager.getDefault();
-                            manager.sendTextMessage(selectedAccount.getStudentPhoneNum(), null, MESSAGE, null, null);
-                            Toast.makeText(UserItemDetailsActivity.this, "Item Status Updated", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-
-                /**
-                 * @param parent
-                 */
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                    parent.setSelection(0);
-                }
-            });
-        }
+        userItemStatusSpinner.setOnItemSelectedListener(statusSpinnerListener);
     }
+
+    public AdapterView.OnItemSelectedListener statusSpinnerListener = new AdapterView.OnItemSelectedListener() {
+        /**
+         * @param parent
+         * @param view
+         * @param position
+         * @param id
+         */
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            String[] strings = {getString(R.string.not_found), getString(R.string.found)};
+            String selectedStatus = String.valueOf(parent.getItemAtPosition(position));
+            if (selectedStatus.equals(strings[1])) {
+                userItemDetailsImageView.setAnimation(colorChange);
+                selectedItem.setStatus(true);
+                if (ActivityCompat.checkSelfPermission(UserItemDetailsActivity.this, android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(UserItemDetailsActivity.this, new String[]{android.Manifest.permission.SEND_SMS}, REQUEST_CODE_SEND_SMS);
+                } else {
+                    SmsManager manager = SmsManager.getDefault();
+                    manager.sendTextMessage(selectedAccount.getStudentPhoneNum(), null, MESSAGE, null, null);
+                    Toast.makeText(UserItemDetailsActivity.this, selectedItem.toString(), Toast.LENGTH_SHORT).show();
+                    database.updateItem(selectedItem);
+                }
+            }
+        }
+
+        /**
+         * @param parent
+         */
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+            parent.setSelection(0);
+        }
+    };
 
     /**
      * When the user re-enters the app, the sensors start back up and begin

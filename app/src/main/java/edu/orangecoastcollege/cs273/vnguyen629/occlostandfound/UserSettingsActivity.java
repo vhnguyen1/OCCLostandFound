@@ -23,6 +23,8 @@ public class UserSettingsActivity extends AppCompatActivity {
     private CheckBox accountSettingShakeCheckBox;
     private CheckBox accountSettingSmsCheckBox;
 
+    UserAccount account;
+
     /**
      * Loads up the database while linking up and initializing the fields of the
      * user input EditTexts to the information associated with their account.
@@ -35,19 +37,17 @@ public class UserSettingsActivity extends AppCompatActivity {
 
         database = new DBHelper(this);
 
+        account  = getIntent().getExtras().getParcelable("Account");
+
         accountInfoEmailEditText = (EditText) findViewById(R.id.settingEmailEditText);
         accountInfoPhoneNumberEditText = (EditText)findViewById(R.id.settingPhoneNumberEditText);
         accountSettingShakeCheckBox = (CheckBox) findViewById(R.id.shakeCheckBox);
         accountSettingSmsCheckBox = (CheckBox) findViewById(R.id.smsCheckBox);
 
-        //accountInfoEmailEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentEmail());
-       // accountInfoPhoneNumberEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentPhoneNum());
-        //accountSettingShakeCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowShake());
-        //accountSettingSmsCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowSms());
-        /*accountInfoEmailEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentEmail());
-        accountInfoPhoneNumberEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentPhoneNum());
-        accountSettingShakeCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowShake());
-        accountSettingSmsCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowSms());*/
+        accountSettingSmsCheckBox.setChecked(account.getAllowSms());
+        accountSettingShakeCheckBox.setChecked(account.getAllowShake());
+        accountInfoEmailEditText.setText(account.getStudentEmail());
+        accountInfoPhoneNumberEditText.setText(account.getStudentPhoneNum());
     }
 
     /**
@@ -56,9 +56,6 @@ public class UserSettingsActivity extends AppCompatActivity {
      */
     public void saveInfo(View view)
     {
-        UserAccount account = getIntent().getExtras().getParcelable("Account");
-
-        //account = database.getUserAccount(singedInUserAccountName);
         account.setStudentEmail(accountInfoEmailEditText.getText().toString());
         account.setStudentPhoneNum(accountInfoPhoneNumberEditText.getText().toString());
 
@@ -78,6 +75,7 @@ public class UserSettingsActivity extends AppCompatActivity {
 
         startActivity(new Intent(this,
                 UserMenuActivity.class).putExtra("Account", account));
+        this.finish();
     }
 
     /**
