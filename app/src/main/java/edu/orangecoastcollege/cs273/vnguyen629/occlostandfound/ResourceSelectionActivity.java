@@ -58,7 +58,7 @@ public class ResourceSelectionActivity extends AppCompatActivity {
      * @param view The open FAQ button
      */
     public void openFAQ(View view) {
-        startActivity(new Intent(this, FAQActivity.class));
+        startActivity(new Intent(ResourceSelectionActivity.this, FAQActivity.class));
     }
 
     /**
