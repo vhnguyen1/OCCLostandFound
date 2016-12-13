@@ -6,13 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 /**
- *
+ *  UserMenuActivity
+ *  User Main Menu allow use to access other layout
  */
 public class UserMenuActivity extends AppCompatActivity {
 
     private UserAccount loggedInAccount;
     /**
-     *
+     *  Create and init varible
      * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
@@ -24,7 +25,7 @@ public class UserMenuActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Start User Item Intent
      * @param view
      */
     public void userViewItems(View view) {
@@ -33,7 +34,7 @@ public class UserMenuActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Start User Report Intent
      * @param view
      */
     public void userReportItem(View view) {
@@ -42,7 +43,7 @@ public class UserMenuActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Start User Setting Intent
      * @param view
      */
     public void userViewSettings(View view) {
@@ -51,7 +52,7 @@ public class UserMenuActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Start User FeedBack Intent
      * @param view
      */
     public void userViewFeedback(View view) {

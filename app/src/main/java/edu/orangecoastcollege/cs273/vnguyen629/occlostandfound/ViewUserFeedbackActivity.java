@@ -15,7 +15,7 @@ public class ViewUserFeedbackActivity extends AppCompatActivity {
     private TextView userFeedbackTextView;
 
     /**
-     *
+     * create and init varible
      * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override

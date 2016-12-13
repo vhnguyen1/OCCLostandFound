@@ -33,7 +33,7 @@ public class UserItemsListActivity extends AppCompatActivity {
     private ShakeDetector shakeDetector;
 
     /**
-     *
+     * Create Init all varible
      * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
@@ -77,7 +77,7 @@ public class UserItemsListActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Select and launch seleted item account
      * @param view
      */
     public void viewUserItemDetails(View view) {
