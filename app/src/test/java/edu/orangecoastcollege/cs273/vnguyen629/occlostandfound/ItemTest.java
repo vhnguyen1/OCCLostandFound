@@ -29,7 +29,6 @@ public class ItemTest {
         mItem.setLastLocation("4");
         mItem.setStatus(false);
         mItem.setImageURI(Uri.parse("5"));
-        mItem.setReportedUsername("6");
     }
 
     /**
@@ -145,24 +144,5 @@ public class ItemTest {
     public void setImageURI() throws Exception {
         mItem.setImageURI(Uri.parse("5"));
         assertEquals("Error Found!", "5", mItem.getImageUri().toString());
-    }
-
-    /**
-     * Tests the return method for retrieving the <code>Item</code> object's reporting user
-     * @throws Exception If getReportingUser doesn't exist
-     */
-    @Test
-    public void getReportingUser() throws Exception {
-        assertEquals("Error Found!", "6", mItem.getReportedUsername());
-    }
-
-    /**
-     * Tests the mutator method for setting the <code>Item</code> object's reporting user
-     * @throws Exception If setReportingUser doesn't exist
-     */
-    @Test
-    public void setReportingUser() throws Exception {
-        mItem.setReportedUsername("6");
-        assertEquals("Error Found!", "6", mItem.getReportedUsername());
     }
 }

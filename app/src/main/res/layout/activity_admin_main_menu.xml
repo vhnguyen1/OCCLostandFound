@@ -35,7 +35,8 @@
             android:id="@+id/userMenuViewItemsButton"
             android:layout_weight="5"
             android:background="@drawable/gradient_background"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:onClick="viewAllItems" />
 
     </LinearLayout>
 

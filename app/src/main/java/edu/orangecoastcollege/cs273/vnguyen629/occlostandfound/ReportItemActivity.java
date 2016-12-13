@@ -14,6 +14,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -47,8 +48,6 @@ public class ReportItemActivity extends AppCompatActivity {
     private static String day;
     private static final String YEAR = "2016";
 
-    private UserAccount loggedInAccount;
-
     private static final int REPORT_ITEM_REQUEST_CODE = 13;
 
     /**
@@ -65,8 +64,6 @@ public class ReportItemActivity extends AppCompatActivity {
         day = getString(R.string.day_text);
 
         database = new DBHelper(this);
-
-        loggedInAccount = getIntent().getExtras().getParcelable("UserAccount");
 
         reportItemImageView = (ImageView) findViewById(R.id.reportItemImageView);
         reportItemNameEditText = (EditText) findViewById(R.id.reportItemNameEditText);
@@ -231,12 +228,16 @@ public class ReportItemActivity extends AppCompatActivity {
                 Item newItem = new Item(NEW_ITEM_NAME, NEW_ITEM_DESCRIPTION, NEW_ITEM_DATE_LOST,
                         NEW_ITEM_LAST_LOCATION, false, imageUri);
 
-                Report newReport = new Report(ACCOUNT, newItem, SMS_NOTIFICATIONS);
+
 
                 database.addItem(newItem);
+                Log.i("getmostrecentitem", database.getMostRecentItem().toString());
                 //ItemsListActivity.allItemsList.add(newItem);
                 //ItemsListActivity.itemsListAdapter.add(newItem);
                 //ItemsListActivity.itemsListAdapter.notifyDataSetChanged();
+
+                Report newReport = new Report(ACCOUNT, database.getMostRecentItem(), SMS_NOTIFICATIONS);
+
                 database.addReport(newReport);
 
                 Toast.makeText(this, newItem.getName() + " "

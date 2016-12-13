@@ -66,7 +66,8 @@
         <activity android:name=".ViewUserFeedbackActivity" />
         <activity android:name=".ViewAllFeedbacksActivity" />
         <activity android:name=".ResourceSelectionActivity" />
-        <activity android:name=".ReportListAdapter"></activity>
+        <activity android:name=".UserSettingsActivity"></activity>
+        <activity android:name=".FAQActivity"></activity>
     </application>
 
 </manifest>

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Allows the user to change his/her settings and preferences.
@@ -55,9 +56,10 @@ public class UserSettingsActivity extends AppCompatActivity {
      */
     public void saveInfo(View view)
     {
-        /*UserAccount account;
+        UserAccount account = getIntent().getExtras().getParcelable("Account");
 
-        account = database.getUserAccount(singedInUserAccountName);
+        //account = database.getUserAccount(singedInUserAccountName);
+        account.setStudentEmail(accountInfoEmailEditText.getText().toString());
         account.setStudentPhoneNum(accountInfoPhoneNumberEditText.getText().toString());
 
         if(accountSettingShakeCheckBox.isChecked())
@@ -70,7 +72,10 @@ public class UserSettingsActivity extends AppCompatActivity {
         else
             account.setmAllowSms(false);
 
-        database.updateAccount(account);*/
+        database.updateAccount(account);
+        Toast.makeText(this, "Saved successfullly", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this,
+                UserMenuActivity.class).putExtra("Account", account));
     }
 
     /**

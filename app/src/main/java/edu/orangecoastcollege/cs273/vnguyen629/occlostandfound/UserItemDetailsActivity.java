@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 public class UserItemDetailsActivity extends AppCompatActivity {
 
-    private final String MESSAGE = getString(R.string.your_item_has_been_found_text);
 
     private UserAccount loggedInAccount;
 
@@ -37,6 +36,7 @@ public class UserItemDetailsActivity extends AppCompatActivity {
      * that the user selects from the ListView, displaying the data. It also
      * prepares the ShakeDetector to monitor any movements that constitute as shakes
      * where the ListItemActivity may load up if found.
+     *
      * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
@@ -44,11 +44,13 @@ public class UserItemDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_item_details);
 
-        loggedInAccount = getIntent().getExtras().getParcelable("LoggedInAccount");
+        final String MESSAGE = getString(R.string.your_item_has_been_found_text);
 
-        Item selectedItem = getIntent().getExtras().getParcelable("SelectedItem");
+        loggedInAccount = getIntent().getExtras().getParcelable("Account");
 
-        userItemSMSCheckBox = (CheckBox)findViewById(R.id.userItemSMSCheckBox);
+        Item selectedItem = getIntent().getExtras().getParcelable("Item");
+
+        userItemSMSCheckBox = (CheckBox) findViewById(R.id.userItemSMSCheckBox);
 
         userItemStatusSpinner = (Spinner) findViewById(R.id.userItemStatusSpinner);
         final String[] strings = {getString(R.string.not_found), getString(R.string.found)};
@@ -89,6 +91,7 @@ public class UserItemDetailsActivity extends AppCompatActivity {
                     manager.sendTextMessage(loggedInAccount.getStudentPhoneNum(), null, MESSAGE, null, null);
                 }
             }
+
             /**
              *
              * @param parent

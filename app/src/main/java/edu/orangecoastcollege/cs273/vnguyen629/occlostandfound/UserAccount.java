@@ -74,6 +74,28 @@ public class UserAccount implements Parcelable {
      * @param mStudentPhoneNum
      * @param mStudentEmail
      * @param mStudentID
+     */
+    public UserAccount(String mStudentUserName, String mStudentPassword, String mStudentPhoneNum,
+                       String mStudentEmail, String mStudentID, boolean isAdmin) {
+        this.mStudentUserName = mStudentUserName;
+        this.mStudentPassword = mStudentPassword;
+        this.mStudentPhoneNum = mStudentPhoneNum;
+        this.mStudentEmail = mStudentEmail;
+        this.mStudentID = mStudentID;
+        this.mStudentProfilePic = Uri.parse("android.resource://edu.orangecoastcollege.cs273.vnguyen629.occlostandfound/drawable/image_name");;
+        this.mIsAdmin = isAdmin;
+        this.mAllowShake = false;
+        this.mAllowSms = false;
+        this.mFeedBack = "";
+    }
+
+    /**
+     *
+     * @param mStudentUserName
+     * @param mStudentPassword
+     * @param mStudentPhoneNum
+     * @param mStudentEmail
+     * @param mStudentID
      * @param mStudentProfilePic
      */
     public UserAccount(String mStudentUserName, String mStudentPassword, String mStudentPhoneNum,

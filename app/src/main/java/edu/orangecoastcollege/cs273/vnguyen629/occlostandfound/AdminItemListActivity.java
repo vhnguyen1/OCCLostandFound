@@ -4,8 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Displays the item list of all the <code>Item</code> objects, but
@@ -15,6 +22,15 @@ import android.os.Bundle;
  * @author Benjamin Nguyen
  */
 public class AdminItemListActivity extends AppCompatActivity {
+
+    private DBHelper database;
+    public static List<Report> allReportList;
+    public static List<Report> filteredReportList;
+    public static ReportListAdapter reportListAdapter;
+    private ListView reportListView;
+
+    private EditText adminSearchItemEditText;
+    private EditText adminSearchUserEditText;
 
     private Sensor accelerometer;
     private SensorManager sensorManager;
@@ -43,6 +59,14 @@ public class AdminItemListActivity extends AppCompatActivity {
                 startActivity(new Intent(AdminItemListActivity.this, ReportItemActivity.class));
             }
         });
+
+        database = new DBHelper(this);
+        allReportList = database.getAllReports();
+        filteredReportList = new ArrayList<>(allReportList);
+
+        reportListView = (ListView) findViewById(R.id.reportListView);
+        reportListAdapter = new ReportListAdapter(this, R.layout.list_report, allReportList);
+        reportListView.setAdapter(reportListAdapter);
     }
 
     /**
@@ -68,5 +92,18 @@ public class AdminItemListActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         sensorManager.unregisterListener(shakeDetector);
+    }
+
+    public void adminViewItem(View view) {
+        if (view instanceof LinearLayout) {
+            final Item item = (Item) view.getTag();
+
+            UserAccount account = getIntent().getExtras().getParcelable("Account");
+
+            Intent intent = new Intent(this, UserItemDetailsActivity.class);
+            intent.putExtra("Item", item);
+            intent.putExtra("Account", account);
+            startActivity(intent);
+        }
     }
 }

@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,6 +45,8 @@ public class UserItemsListActivity extends AppCompatActivity {
 
         loggedInAccount = getIntent().getExtras().getParcelable("Account");
 
+        itemList = new ArrayList<Item>();
+
         //db.addItem(new Item("name", "des", "date", "loc", false, Uri.parse("android.resource://edu.orangecoastcollege.cs273.vnguyen629.occlostandfound/" + R.drawable.default_image), "user"));
         //db.addItem(new Item("name", "des", "date", "loc", false,
         // Uri.parse("android.resource://edu.orangecoastcollege.cs273.vnguyen629.occlostandfound/"
@@ -51,8 +54,9 @@ public class UserItemsListActivity extends AppCompatActivity {
 
         reportList = db.getAllReportsFromUser(loggedInAccount);
 
-        for (Report report : reportList)
+        for (Report report : reportList) {
             itemList.add(report.getItem());
+        }
 
         itemListView = (ListView) findViewById(R.id.userItemsListView);
         itemListAdapter = new ItemListAdapter(this, R.layout.list_item, itemList);
