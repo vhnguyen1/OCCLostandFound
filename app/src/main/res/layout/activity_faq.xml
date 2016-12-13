@@ -23,7 +23,8 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/faqTitleTextView"
         android:textColor="@android:color/holo_orange_dark"
-        android:textSize="30sp" />
+        android:textSize="26dp"
+        android:gravity="center" />
 
     <TextView
         android:text="@string/question_where_are_asocc_offices"
@@ -68,7 +69,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView32"
         android:textSize="18sp"
-        android:textColor="@android:color/holo_red_dark"
+        android:textColor="@color/red"
         android:layout_alignTop="@+id/textView31"
         android:layout_alignLeft="@+id/answer1TextView"
         android:layout_alignStart="@+id/answer1TextView" />
@@ -149,7 +150,7 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="@string/answer_pick_up_items"
+        android:text="@string/answer_pick_up_item_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView40"

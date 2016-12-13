@@ -160,9 +160,5 @@
         The main center is located at the ASOCC office (location explained above), while the second is located
         at the OCC Campus Safety Office located in E Lot. To see the OCC campus map, click</string>
     <string name="question_how_to_pick_up_item">How do I retrieve my items?</string>
-    <string name="answer_pick_up_items">To retrieve your lost items, head to the lost and found centers
-        (starting with the ASOCC). Be sure to bring some sort of identification with you
-        (whether it be a driver's license, student ID, etc). Depending on the item, the ASOCC staff
-        may need to perform extra steps to verify that the item is yours. NOTE: If you retrieved your item
-        at the ASOCC office, there is no need to visit hte OCC Campus safety office.</string>
+    <string name="answer_pick_up_item_text">To retrieve your lost items, head to the lost and found centers         (starting with the ASOCC). Be sure to bring some sort of identification with you         (whether it be a driver\'s license, student ID, etc). Depending on the item, the ASOCC staff         may need to perform extra steps to verify that the item is yours. NOTE: If you retrieved your item         at the ASOCC office, there is no need to visit hte OCC Campus safety office.</string>
 </resources>
