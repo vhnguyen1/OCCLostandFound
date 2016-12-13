@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class UserItemDetailsActivity extends AppCompatActivity {
 
-    private static final String MESSAGE = "Your item have been found. Visit ASSOCC to verify.";
+    private final String MESSAGE = getString(R.string.your_item_has_been_found_text);
 
     private UserAccount loggedInAccount;
 
@@ -51,8 +51,9 @@ public class UserItemDetailsActivity extends AppCompatActivity {
         userItemSMSCheckBox = (CheckBox)findViewById(R.id.userItemSMSCheckBox);
 
         userItemStatusSpinner = (Spinner) findViewById(R.id.userItemStatusSpinner);
-        String[] strings = {"Not Found", "Found"};
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.status_choices, android.R.layout.simple_spinner_item);
+        final String[] strings = {getString(R.string.not_found), getString(R.string.found)};
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.status_choices, android.R.layout.simple_spinner_item);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -72,14 +73,29 @@ public class UserItemDetailsActivity extends AppCompatActivity {
         });
 
         userItemStatusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            /**
+             *
+             * @param parent
+             * @param view
+             * @param position
+             * @param id
+             */
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedStatus = String.valueOf(parent.getItemAtPosition(position));
 
+                if (selectedStatus.equals(strings[1])) {
+                    SmsManager manager = SmsManager.getDefault();
+                    manager.sendTextMessage(loggedInAccount.getStudentPhoneNum(), null, MESSAGE, null, null);
+                }
             }
-
+            /**
+             *
+             * @param parent
+             */
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                parent.setSelection(0);
             }
         });
 

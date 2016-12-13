@@ -146,4 +146,7 @@
     <string name="passwords_do_not_match">Your new password does not match.</string>
     <string name="old_password_incorrect">Your old password is incorrect.</string>
     <string name="contact_info_text">Contact Info.</string>
+    <string name="loading_campus_map_text">Loading Campus Map...</string>
+    <string name="found">Found</string>
+    <string name="your_item_has_been_found_text">Your item have been found. Visit ASSOCC to verify.</string>
 </resources>
