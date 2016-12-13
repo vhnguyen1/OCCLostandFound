@@ -44,14 +44,14 @@ public class FeedbackActivity extends AppCompatActivity {
                         + " - " + DateFormat.getDateTimeInstance().format(new Date()) + ": "
                         + feedbackEditText.getText().toString();
                 account.setFeedBack(feedback);
-                Toast.makeText(this, account.getFeedBack(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Feedback sent", Toast.LENGTH_SHORT).show();
                 feedbackEditText.setText("");
             } else {
                 String feedback = account.getStudentUserName()
                         + " - " + DateFormat.getDateTimeInstance().format(new Date()) + ": "
                         + feedbackEditText.getText().toString();
                 account.setFeedBack(feedback);
-                Toast.makeText(this, account.getFeedBack(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Feedback sent", Toast.LENGTH_SHORT).show();
                 feedbackEditText.setText("");
             }
         }
