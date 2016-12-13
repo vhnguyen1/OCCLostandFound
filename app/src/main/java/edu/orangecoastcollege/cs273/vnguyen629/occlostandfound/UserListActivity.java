@@ -11,8 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *  UserListActicity
+ *  UserListActivity
  *  Get UserAccount and put it into a list
+ *
+ *  @author Benjamin Nguyen
  */
 public class UserListActivity extends AppCompatActivity {
 
@@ -27,7 +29,7 @@ public class UserListActivity extends AppCompatActivity {
     private UserAccount loggedInAccount;
 
     /**
-     * Create and init varible
+     * Create and init variable
      * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override

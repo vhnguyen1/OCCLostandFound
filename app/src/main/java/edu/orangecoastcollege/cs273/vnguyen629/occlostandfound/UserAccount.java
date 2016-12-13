@@ -5,8 +5,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Student Account info class
- * Creates a <code>Student</code> account with Student info
+ * UserAccount info class
+ * Creates a <code>UserAccount</code> account with their Student info
  *
  * @author Vu Nguyen
  */
