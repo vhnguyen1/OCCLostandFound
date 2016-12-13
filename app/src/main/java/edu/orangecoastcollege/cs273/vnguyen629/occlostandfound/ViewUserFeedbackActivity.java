@@ -23,9 +23,9 @@ public class ViewUserFeedbackActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_user_feedback);
 
-        userFeedbackTextView = (TextView) findViewById(R.id.userFeedbackTextView);
-
         final UserAccount user = getIntent().getExtras().getParcelable("SelectedUser");
+
+        userFeedbackTextView = (TextView) findViewById(R.id.userFeedbackTextView);
 
         userFeedbackTextView.setText(user.getFeedBack());
     }
