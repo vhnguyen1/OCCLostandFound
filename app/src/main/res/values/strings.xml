@@ -172,4 +172,5 @@
     <string name="filter_by_username">Filter By Username</string>
     <string name="enter_username">Enter Username</string>
     <string name="error_selecting_item_text">Error selecting item.</string>
+    <string name="change_password_text">Change Password</string>
 </resources>
