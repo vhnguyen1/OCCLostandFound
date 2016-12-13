@@ -162,5 +162,7 @@
     <string name="question_how_to_pick_up_item">How do I retrieve my items?</string>
     <string name="answer_pick_up_items">To retrieve your lost items, head to the lost and found centers
         (starting with the ASOCC). Be sure to bring some sort of identification with you
-        (whether it be a driver\'s license, student ID, etc).</string>
+        (whether it be a driver's license, student ID, etc). Depending on the item, the ASOCC staff
+        may need to perform extra steps to verify that the item is yours. NOTE: If you retrieved your item
+        at the ASOCC office, there is no need to visit hte OCC Campus safety office.</string>
 </resources>
