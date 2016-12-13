@@ -137,7 +137,7 @@
             android:layout_height="match_parent"
             android:id="@+id/userMenuLogoutButton"
             android:layout_weight="5"
-            android:onClick="userViewFeedback"
+            android:onClick="userSignOut"
             android:background="@drawable/gradient_background"
             android:textSize="18sp" />
 

@@ -66,7 +66,7 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <!--<LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -89,7 +89,7 @@
             android:background="@drawable/gradient_background"
             android:textSize="18sp" />
 
-    </LinearLayout>
+    </LinearLayout>-->
 
     <LinearLayout
         android:orientation="horizontal"
@@ -112,7 +112,8 @@
             android:id="@+id/userMenuFeedbackButton"
             android:layout_weight="5"
             android:background="@drawable/gradient_background"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:onClick="viewAdminSettings" />
 
     </LinearLayout>
 
@@ -136,7 +137,7 @@
             android:layout_height="match_parent"
             android:id="@+id/userMenuLogoutButton"
             android:layout_weight="5"
-            android:onClick="userViewFeedback"
+            android:onClick="adminSignOut"
             android:background="@drawable/gradient_background"
             android:textSize="18sp" />
 

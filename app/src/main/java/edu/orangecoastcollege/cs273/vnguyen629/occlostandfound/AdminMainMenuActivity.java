@@ -66,6 +66,24 @@ public class AdminMainMenuActivity extends AppCompatActivity {
     }
 
     /**
+     * Allows the admin to view the list of all the <code>UserAccount</code> objects
+     * @param view The view all users button
+     */
+    public void viewAdminSettings(View view) {
+        startActivity(new Intent(this, AdminSettingsActivity.class).putExtra("Account", account));
+        this.finish();
+    }
+
+    /**
+     * Allows the admin to view the list of all the <code>UserAccount</code> objects
+     * @param view The view all users button
+     */
+    public void adminSignOut(View view) {
+        startActivity(new Intent(this, MainMenuActivity.class));
+        this.finish();
+    }
+
+    /**
      * When the user re-enters the app, the sensors start back up and begin
      * monitoring device movements/g-forces in a 3D (x-y-z) span.
      */

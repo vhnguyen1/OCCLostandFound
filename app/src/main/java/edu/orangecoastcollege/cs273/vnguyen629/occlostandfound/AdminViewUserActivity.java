@@ -6,8 +6,10 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Allows an administrator to view any the details of a user account
@@ -72,6 +74,9 @@ public class AdminViewUserActivity extends AppCompatActivity {
      * @param view The view feedback button
      */
     public void viewFeedback(View view) {
+        selectedUser = getIntent().getExtras().getParcelable("SelectedUser");
+        Log.i("selecteduser", selectedUser.toString());
+        Toast.makeText(this, selectedUser.toString(), Toast.LENGTH_SHORT);
         startActivity(new Intent(this, ViewUserFeedbackActivity.class).putExtra("Account", account).putExtra("SelectedUser", selectedUser));
     }
 

@@ -124,15 +124,17 @@
             android:layout_height="wrap_content"
             android:id="@+id/button"
             android:layout_weight="1"
-            android:onClick="saveInfo" />
+            android:onClick="saveInfo"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp" />
 
-        <Button
+        <!--<Button
             android:text="Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/button3"
             android:layout_weight="1"
-            android:onClick="changePassword" />
+            android:onClick="changePassword" />-->
     </LinearLayout>
 
 </LinearLayout>

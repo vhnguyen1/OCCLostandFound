@@ -129,7 +129,7 @@ public class UserItemsListActivity extends AppCompatActivity {
          */
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            String input = charSequence.toString().toLowerCase();
+            /*String input = charSequence.toString().toLowerCase();
             itemListAdapter.clear();
 
             for (Report report : reportList) {
@@ -145,7 +145,7 @@ public class UserItemsListActivity extends AppCompatActivity {
                     if (item.getName().toLowerCase().contains(input))
                         itemListAdapter.add(item);
                 }
-            }
+            }*/
         }
 
         /**

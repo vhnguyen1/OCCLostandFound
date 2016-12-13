@@ -169,5 +169,7 @@
     <string name="account_found_text">Account Found.</string>
     <string name="user_list_title">User List</string>
     <string name="search_item_name_hint">Search using item name...</string>
+    <string name="filter_by_username">Filter By Username</string>
+    <string name="enter_username">Enter Username</string>
     <string name="error_selecting_item_text">Error selecting item.</string>
 </resources>

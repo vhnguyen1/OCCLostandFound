@@ -40,14 +40,6 @@ public class AdminSettingsActivity extends AppCompatActivity {
         accountSettingShakeCheckBox = (CheckBox) findViewById(R.id.shakeCheckBox);
         accountSettingSmsCheckBox = (CheckBox) findViewById(R.id.smsCheckBox);
 
-        //accountInfoEmailEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentEmail());
-        // accountInfoPhoneNumberEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentPhoneNum());
-        //accountSettingShakeCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowShake());
-        //accountSettingSmsCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowSms());
-        /*accountInfoEmailEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentEmail());
-        accountInfoPhoneNumberEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentPhoneNum());
-        accountSettingShakeCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowShake());
-        accountSettingSmsCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowSms());*/
     }
 
     /**
@@ -57,7 +49,6 @@ public class AdminSettingsActivity extends AppCompatActivity {
     public void saveInfo(View view) {
         UserAccount account = getIntent().getExtras().getParcelable("Account");
 
-        //account = database.getUserAccount(singedInUserAccountName);
         account.setStudentEmail(accountInfoEmailEditText.getText().toString());
         account.setStudentPhoneNum(accountInfoPhoneNumberEditText.getText().toString());
 
@@ -76,7 +67,8 @@ public class AdminSettingsActivity extends AppCompatActivity {
                 Toast.LENGTH_SHORT).show();
 
         startActivity(new Intent(this,
-                UserMenuActivity.class).putExtra("Account", account));
+                AdminMainMenuActivity.class).putExtra("Account", account));
+        this.finish();
     }
 
     /**
