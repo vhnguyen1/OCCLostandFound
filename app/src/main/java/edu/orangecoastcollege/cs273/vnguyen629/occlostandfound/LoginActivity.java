@@ -53,18 +53,20 @@ public class LoginActivity extends AppCompatActivity {
      */
     public void login(View view)
     {
-        boolean found = false;
+        //boolean found = false;
         //Intent intent = new Intent(this, MainMenuActivity.class);
         //Intent adminIntent = new Intent(this, AdminMainMenuActivity.class);
+        //int pos = 0;
+
         shakeAnim = AnimationUtils.loadAnimation(this, R.anim.shake_anim);
-        int pos = 0;
 
         String username = usernameLoginEditText.getText().toString().trim();
         String password = passwordLoginEditText.getText().toString().trim();
 
         for (UserAccount account : accountList) {
             if (account.getStudentUserName().equals(username) && account.getStudentPassword().equals(password)) {
-                Toast.makeText(this, "Account found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.account_found_text),
+                        Toast.LENGTH_SHORT).show();
                 UserAccount.isLoggedIn = true;
                 UserAccount.singedInUserAccountName = username;
 

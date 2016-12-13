@@ -6,7 +6,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -25,8 +24,8 @@ public class UserAccountCreateActivity extends AppCompatActivity {
     private EditText emailEditText;
     private EditText idEditText;
 
-    private TextView renterPasswordTextView;
-    private TextView emailTextView;
+    //private TextView renterPasswordTextView;
+    //private TextView emailTextView;
     private DBHelper database;
     private List<UserAccount> accounts;
 
@@ -47,12 +46,11 @@ public class UserAccountCreateActivity extends AppCompatActivity {
         reenterPasswordEditText = (EditText) findViewById(R.id.reenterPasswordEditText);
         emailEditText = (EditText) findViewById(R.id.emailEditText);
         idEditText = (EditText) findViewById(R.id.idEditText);
-        renterPasswordTextView = (TextView) findViewById(R.id.reenterPassTextView);
-        emailTextView = (TextView) findViewById(R.id.emailTextView);
+        //renterPasswordTextView = (TextView) findViewById(R.id.reenterPassTextView);
+        //emailTextView = (TextView) findViewById(emailTextView);
 
         database = new DBHelper(this);
         accounts = database.getAllUserAccount();
-
     }
 
     /**
@@ -75,7 +73,8 @@ public class UserAccountCreateActivity extends AppCompatActivity {
         String studentID = idEditText.getText().toString().trim();
         if (username.isEmpty() || password.isEmpty() || rePassword.isEmpty() || email.isEmpty()
                 || studentID.isEmpty())
-            Toast.makeText(this, "All fields must not be filled out!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.all_fields_filled_out_text),
+                    Toast.LENGTH_SHORT).show();
         else
         {
             for (UserAccount account : accounts)
@@ -88,13 +87,16 @@ public class UserAccountCreateActivity extends AppCompatActivity {
                     if (email.endsWith(getString(R.string.student_cccd_edu))) {
                         UserAccount account = new UserAccount(username, password, email, email, studentID);
                         database.addAccount(account);
-                        Toast.makeText(this, "Account created", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getString(R.string.account_created_text),
+                                Toast.LENGTH_SHORT).show();
                         this.finish();
                     } else {
-                        Toast.makeText(this, "Must be a .cccd email", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, getString(R.string.must_be_cccd_email),
+                                Toast.LENGTH_SHORT).show();
                     }
                 else {
-                    Toast.makeText(UserAccountCreateActivity.this, "Passwords do not match!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserAccountCreateActivity.this, getString(R.string.passwords_do_not_match),
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         }

@@ -9,13 +9,17 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.AdminItemListActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:focusableInTouchMode = "true">
 
     <ImageView
         android:layout_width="match_parent"
         android:src="@drawable/lost_and_found_display"
         android:layout_marginBottom="10dp"
-        android:layout_height="100dp" />
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:scaleType="fitCenter" />
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -11,7 +11,7 @@ import android.os.Bundle;
 public class ViewAllFeedbacksActivity extends AppCompatActivity {
 
     /**
-     * Create and init varible
+     * Create and init variable
      * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override

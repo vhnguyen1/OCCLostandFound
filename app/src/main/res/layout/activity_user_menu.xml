@@ -127,7 +127,7 @@
         <ImageView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/about_icon"
+            app:srcCompat="@drawable/login_button_icon"
             android:layout_weight="1"
             android:background="@drawable/gradient_background" />
 

@@ -1,19 +1,19 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 /**
- * Allows the user to change his/her settings and preferences.
+ * Allows administrators to change their preferred application settings.
  *
- * @author Vu Nguyen
+ * @author Vincent Nguyen
  */
-public class UserSettingsActivity extends AppCompatActivity {
+public class AdminSettingsActivity extends AppCompatActivity {
 
     private DBHelper database;
 
@@ -31,7 +31,7 @@ public class UserSettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_settings);
+        setContentView(R.layout.activity_admin_settings);
 
         database = new DBHelper(this);
 
@@ -41,7 +41,7 @@ public class UserSettingsActivity extends AppCompatActivity {
         accountSettingSmsCheckBox = (CheckBox) findViewById(R.id.smsCheckBox);
 
         //accountInfoEmailEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentEmail());
-       // accountInfoPhoneNumberEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentPhoneNum());
+        // accountInfoPhoneNumberEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentPhoneNum());
         //accountSettingShakeCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowShake());
         //accountSettingSmsCheckBox.setChecked(database.getUserAccount(singedInUserAccountName).getAllowSms());
         /*accountInfoEmailEditText.setText(database.getUserAccount(singedInUserAccountName).getStudentEmail());

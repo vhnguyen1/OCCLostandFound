@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.UserSettingsActivity"
+    tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.AdminSettingsActivity"
     android:orientation="vertical"
     android:focusableInTouchMode = "true">
 
@@ -39,8 +39,7 @@
             android:ems="10"
             android:id="@+id/settingEmailEditText"
             android:layout_weight="1"
-            android:editable="false"
-            android:singleLine="true" />
+            android:editable="false" />
     </LinearLayout>
 
     <LinearLayout
@@ -62,8 +61,7 @@
             android:inputType="phone"
             android:ems="10"
             android:id="@+id/settingPhoneNumberEditText"
-            android:layout_weight="1"
-            android:singleLine="true" />
+            android:layout_weight="1" />
 
     </LinearLayout>
 

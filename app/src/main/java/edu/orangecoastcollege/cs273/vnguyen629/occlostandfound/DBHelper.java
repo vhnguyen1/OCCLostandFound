@@ -119,6 +119,11 @@ class DBHelper extends SQLiteOpenHelper {
                 + "FOREIGN KEY(" + FIELD_REPORT_ITEM_ID + ") REFERENCES "
                 + ITEMS_TABLE + "(" + ITEM_KEY_FIELD_ID + "))";
         db.execSQL(table);
+
+        table = "CREATE TABLE " + FEEDBACK_TABLE + "("
+                + FIELD_FEEDBACK_USERNAME + " TEXT PRIMARY KEY, "
+                + FIELD_FEEDBACK_CONTENT + " TEXT" + ")";
+        db.execSQL(table);
     }
 
     /**
@@ -134,6 +139,7 @@ class DBHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + ITEMS_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + ACCOUNT_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + REPORT_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + FEEDBACK_TABLE);
         onCreate(db);
     }
 
@@ -681,4 +687,8 @@ class DBHelper extends SQLiteOpenHelper {
         }
         return true;
     }
+
+    /************* Feedback database functions *************/
+
+
 }

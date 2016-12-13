@@ -8,12 +8,14 @@ import android.view.View;
 /**
  *  UserMenuActivity
  *  User Main Menu allow use to access other layout
+ *
+ *  @author Vu Nguyen
  */
 public class UserMenuActivity extends AppCompatActivity {
 
     private UserAccount loggedInAccount;
     /**
-     *  Create and init varible
+     *  Create and init variable
      * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override
