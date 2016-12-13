@@ -1,5 +1,6 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -41,11 +42,20 @@ public class FeedbackActivity extends AppCompatActivity {
         if (feedbackEditText.getText().toString().isEmpty())
             Toast.makeText(this, "Feedback cannot be empty!", Toast.LENGTH_SHORT).show();
         else {
-            UserAccount account = getIntent().getExtras().getParcelable("LoggedInAccount");
-            String feedback = account.getFeedBack() + "\n\n" + account.getStudentUserName()
-                    + " - " + DateFormat.getDateTimeInstance().format(new Date()) + ": "
-                    + feedbackEditText.getText().toString();
-            account.setFeedBack(feedback);
+            UserAccount account = getIntent().getExtras().getParcelable("Account");
+            if (account.getFeedBack() != null) {
+                String feedback = account.getFeedBack() + "\n\n" + account.getStudentUserName()
+                        + " - " + DateFormat.getDateTimeInstance().format(new Date()) + ": "
+                        + feedbackEditText.getText().toString();
+                account.setFeedBack(feedback);
+            } else {
+                String feedback = account.getStudentUserName()
+                        + " - " + DateFormat.getDateTimeInstance().format(new Date()) + ": "
+                        + feedbackEditText.getText().toString();
+                account.setFeedBack(feedback);
+            }
+
+            startActivity(new Intent(this, UserMenuActivity.class).putExtra("Account", account));
             this.finish();
         }
     }

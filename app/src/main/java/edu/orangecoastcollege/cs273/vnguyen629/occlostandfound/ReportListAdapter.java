@@ -2,7 +2,6 @@ package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
 import android.app.Activity;
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,23 +23,23 @@ public class ReportListAdapter extends ArrayAdapter<Report> {
     private Context mContext;
     private List<Report> mReportList = new ArrayList<>();
 
-    private LinearLayout itemListLinearLayout;
-    private ImageView itemListImageView;
-    private TextView itemListNameTextView;
-    private TextView itemListStatusTextView;
+    private LinearLayout reportListLinearLayout;
+    private ImageView reportListImageView;
+    private TextView reportUserNameTextView;
+    private TextView reportItemNameTextView;
 
     /**
      * Creates a new <code>ItemListAdapter</code> given a mContext, resource id
      * and list of lost items.
      * @param c The mContext for which the adapter is being used (typically an activity).
      * @param rId The resource id (typically the layout file name).
-     * @param lostItems The list of items to display.
+     * @param reportList The list of items to display.
      */
-    public ReportListAdapter(Context c, int rId, List<Item> lostItems) {
-        super(c, rId, lostItems);
+    public ReportListAdapter(Context c, int rId, List<Report> reportList) {
+        super(c, rId, reportList);
         this.mContext = c;
         this.mResourceId = rId;
-        this.mLostItemsList = lostItems;
+        this.mReportList = reportList;
     }
 
     /**
@@ -56,22 +55,20 @@ public class ReportListAdapter extends ArrayAdapter<Report> {
                 (LayoutInflater) this.mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(this.mResourceId, null);
 
-        final Item ITEM = this.mLostItemsList.get(pos);
+        final Report report = this.mReportList.get(pos);
 
-        final Uri IMAGE_URI = ITEM.getImageUri();
-        final String NAME = ITEM.getName();
-        final String STATUS = ((ITEM.getStatus())? mContext.getString(R.string.found_text)
-                : mContext.getString(R.string.not_found_text));
+        Item item = report.getItem();
 
-        itemListLinearLayout = (LinearLayout) view.findViewById(R.id.itemListLinearLayout);
-        itemListImageView = (ImageView) view.findViewById(R.id.itemListImageView);
-        itemListNameTextView = (TextView) view.findViewById(R.id.itemListNameTextView);
-        itemListStatusTextView = (TextView) view.findViewById(R.id.itemListStatusTextView);
+        reportListLinearLayout = (LinearLayout) view.findViewById(R.id.reportListLinearLayout);
+        reportListImageView = (ImageView) view.findViewById(R.id.reportImageView);
+        reportUserNameTextView = (TextView) view.findViewById(R.id.reportUserNameTextView);
+        reportItemNameTextView = (TextView) view.findViewById(R.id.reportItemNameTextView);
 
-        itemListImageView.setImageURI(IMAGE_URI);
-        itemListNameTextView.setText(NAME);
-        itemListStatusTextView.setText(STATUS);
-        itemListLinearLayout.setTag(ITEM);
+        reportListImageView.setImageURI(item.getImageUri());
+        reportUserNameTextView.setText(report.getAccount().getStudentUserName());
+        reportItemNameTextView.setText(item.getName());
+
+        reportListLinearLayout.setTag(item);
 
         return view;
     }

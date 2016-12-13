@@ -19,6 +19,9 @@ public class AdminMainMenuActivity extends AppCompatActivity {
     private SensorManager sensorManager;
     private ShakeDetector shakeDetector;
 
+    UserAccount account;
+
+
     /**
      * Starts up the activity and prepares the ShakeDetector to monitor any
      * movements that constitute as shakes where the AdminItemListActivity may load
@@ -42,6 +45,8 @@ public class AdminMainMenuActivity extends AppCompatActivity {
                 startActivity(new Intent(AdminMainMenuActivity.this, AdminItemListActivity.class));
             }
         });
+
+        account = getIntent().getExtras().getParcelable("Account");
     }
 
     /**
@@ -50,7 +55,7 @@ public class AdminMainMenuActivity extends AppCompatActivity {
      * @param view The view all items button
      */
     public void viewAllItems(View view) {
-        startActivity(new Intent(AdminMainMenuActivity.this, AdminItemListActivity.class));
+        startActivity(new Intent(this, AdminItemListActivity.class).putExtra("Account", account));
     }
 
     /**

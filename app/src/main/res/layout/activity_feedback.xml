@@ -44,6 +44,7 @@
         android:layout_marginTop="33dp"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        android:layout_width="200dp" />
+        android:layout_width="200dp"
+        android:onClick="submitFeedback" />
 
 </RelativeLayout>

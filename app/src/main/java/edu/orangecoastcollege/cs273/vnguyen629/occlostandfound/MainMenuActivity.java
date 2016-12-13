@@ -35,6 +35,10 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
+        /*UserAccount account = new UserAccount("admin", "1", "", "admin@student.cccd.edu", "admin", true);
+        DBHelper db = new DBHelper(this);
+        db.addAccount(account);*/
+
         mainMenuImageView = (ImageView) findViewById(R.id.menuMainImageView);
         mainMenuImageView.setBackgroundResource(R.drawable.frame_anim);
         frameAnim = (AnimationDrawable) mainMenuImageView.getBackground();

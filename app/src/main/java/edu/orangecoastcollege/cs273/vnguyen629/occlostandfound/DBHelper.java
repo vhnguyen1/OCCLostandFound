@@ -328,6 +328,34 @@ class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
+    public Item getMostRecentItem() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(
+                ITEMS_TABLE,
+                new String[]{ITEM_KEY_FIELD_ID, FIELD_ITEM_NAME, FIELD_ITEM_DESCRIPTION,
+                        FIELD_ITEM_DATE_LOST, FIELD_ITEM_LAST_LOCATION, FIELD_ITEM_STATUS,
+                        FIELD_ITEM_IMAGE_URI},
+                null,
+                null,
+                null, null, null, null );
+
+        if (cursor != null)
+            cursor.moveToLast();
+
+        int itemID = cursor.getInt(0);
+        String name = cursor.getString(1);
+        String description = cursor.getString(2);
+        String dateLost = cursor.getString(3);
+        String lastLocation = cursor.getString(4);
+        boolean status = (cursor.getInt(5) == 1);
+        Uri imageUri = Uri.parse(cursor.getString(6));
+
+        final Item ITEM = new Item(itemID, name, description, dateLost, lastLocation,
+                status, imageUri);
+
+        return ITEM;
+    }
+
     /************* User Account database functions *************/
 
     /**
@@ -530,6 +558,7 @@ class DBHelper extends SQLiteOpenHelper {
                 Log.i("useraccount", account.getStudentUserName());
                 Log.i("itemid", cursor.getString(2));
                 Item item = getItem(Integer.parseInt(cursor.getString(2)));
+                Log.i("item", item.toString());
                 int reportID = cursor.getInt(0);
                 int smsCheck = cursor.getInt(3);
 
