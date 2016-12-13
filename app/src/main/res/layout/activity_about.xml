@@ -31,5 +31,6 @@
         android:id="@+id/appAboutDescriptionTextView"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:textSize="18sp" />
 </RelativeLayout>

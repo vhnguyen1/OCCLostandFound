@@ -56,6 +56,11 @@ public class ItemDetailsActivity extends AppCompatActivity {
         itemDetailsStatusTextView.setText((ITEM.getStatus())? getString(R.string.found_text)
                 : getString(R.string.not_found_text));
 
+        if (ITEM.getStatus())
+            itemDetailsStatusTextView.setTextColor(getResources().getColorStateList(R.color.green));
+        else
+            itemDetailsStatusTextView.setTextColor(getResources().getColorStateList(R.color.red));
+
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         shakeDetector = new ShakeDetector(new ShakeDetector.OnShakeListener() {

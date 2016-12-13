@@ -39,10 +39,10 @@ public class UserAccount implements Parcelable {
         this.mStudentEmail      = source.readString();
         this.mStudentID         = source.readString();
         this.mStudentProfilePic = Uri.parse(source.readString());
-        this.mIsAdmin            = source.readByte() != 0;
-        this.mAllowShake        = source.readByte() != 0;
-        this.mAllowSms          = source.readByte() != 0;
-        this.mFeedBack = source.readString();
+        this.mIsAdmin           = ((source.readInt()== 1)? true : false);
+        this.mAllowShake        = ((source.readInt()== 1)? true : false);
+        this.mAllowSms          = ((source.readInt()== 1)? true : false);
+        this.mFeedBack          = source.readString();
     }
 
     /**
@@ -303,6 +303,10 @@ public class UserAccount implements Parcelable {
         dest.writeString(mStudentEmail);
         dest.writeString(mStudentID);
         dest.writeString(mStudentProfilePic.toString());
+        dest.writeInt((mIsAdmin)? 1 : 0);
+        dest.writeInt((mAllowShake)? 1 : 0);
+        dest.writeInt((mAllowSms)? 1 : 0);
+        dest.writeString(mFeedBack);
     }
 
     /**
