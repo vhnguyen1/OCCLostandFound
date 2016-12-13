@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 public class UserItemDetailsActivity extends AppCompatActivity {
 
-
     private UserAccount loggedInAccount;
 
     private Spinner userItemStatusSpinner;
@@ -76,11 +75,12 @@ public class UserItemDetailsActivity extends AppCompatActivity {
 
         userItemStatusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             /**
-             *
-             * @param parent
-             * @param view
-             * @param position
-             * @param id
+             * If the user selects a valid category, it displays all the
+             * objects that meet the specified criteria.
+             * @param parent Unused
+             * @param view Unused
+             * @param position Unused
+             * @param id Unused
              */
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -88,13 +88,15 @@ public class UserItemDetailsActivity extends AppCompatActivity {
 
                 if (selectedStatus.equals(strings[1])) {
                     SmsManager manager = SmsManager.getDefault();
-                    manager.sendTextMessage(loggedInAccount.getStudentPhoneNum(), null, MESSAGE, null, null);
+                    manager.sendTextMessage(loggedInAccount.getStudentPhoneNum(),
+                            null, MESSAGE, null, null);
                 }
             }
 
             /**
-             *
-             * @param parent
+             * If the user clicks on the category filter spinner but ends up not choosing a
+             * category, the default value is set.
+             * @param parent The category filter spinner
              */
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
