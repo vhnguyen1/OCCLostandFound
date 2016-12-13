@@ -7,6 +7,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -74,6 +75,8 @@ public class UserItemDetailsActivity extends AppCompatActivity {
                 startActivity(new Intent(UserItemDetailsActivity.this, UserItemsListActivity.class));
             }
         });
+
+        Log.i("Accountdetails", selectedAccount.toString());
 
         if (selectedAccount.getAllowSms()) {
             userItemStatusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
