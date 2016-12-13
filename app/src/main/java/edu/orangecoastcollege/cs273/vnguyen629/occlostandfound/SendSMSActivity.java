@@ -50,6 +50,10 @@ public class SendSMSActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Select User and send a SMS if item have been found
+     * @param view
+     */
     public void selectUserSMS(View view) {
         String message = getIntent().getExtras().getString("MESSAGE");
 

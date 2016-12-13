@@ -170,7 +170,8 @@ public class ItemsListActivity extends AppCompatActivity {
     };
 
     /**
-     *
+     * AdapterView
+     * OnItemSelectedListener for item selected listenerner
      */
     public AdapterView.OnItemSelectedListener categoryFilterSpinnerListener =
             new AdapterView.OnItemSelectedListener() {

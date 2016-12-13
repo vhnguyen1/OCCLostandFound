@@ -76,7 +76,7 @@ public class UserItemDetailsActivity extends AppCompatActivity {
 
         userItemStatusSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             /**
-             *
+             * Om seleted Item and send message
              * @param parent
              * @param view
              * @param position
@@ -93,7 +93,7 @@ public class UserItemDetailsActivity extends AppCompatActivity {
             }
 
             /**
-             *
+             *unused
              * @param parent
              */
             @Override

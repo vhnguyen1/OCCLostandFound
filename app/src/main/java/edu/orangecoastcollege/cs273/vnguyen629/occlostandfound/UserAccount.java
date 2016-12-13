@@ -46,7 +46,7 @@ public class UserAccount implements Parcelable {
     }
 
     /**
-     *
+     * Constuctor for UserAccount. Set anything to it new value and some to it defalut value
      * @param mStudentUserName
      * @param mStudentPassword
      * @param mStudentPhoneNum
@@ -68,7 +68,7 @@ public class UserAccount implements Parcelable {
     }
 
     /**
-     *
+     * Constuctor for UserAccount. Set anything to it new value an
      * @param mStudentUserName
      * @param mStudentPassword
      * @param mStudentPhoneNum
@@ -113,7 +113,7 @@ public class UserAccount implements Parcelable {
     }
 
     /**
-     *
+     *default constuctor
      */
     public UserAccount() {
         this("", "", "", "", "",null, false, false, false, "");
@@ -176,29 +176,33 @@ public class UserAccount implements Parcelable {
     }
 
     /**
-     *
-     * @return
+     *  get Admin
+     * @return mIsAdmin
      */
     public boolean getIsAdmin() {
         return mIsAdmin;
     }
 
     /**
-     *
-     * @return
+     * get Shake
+     * @return mAllowShake
      */
     public boolean getAllowShake() {
         return mAllowShake;
     }
 
     /**
-     *
-     * @return
+     *get SMS
+     * @return mAllowSms
      */
     public boolean getAllowSms() {
         return mAllowSms;
     }
 
+    /**
+     * get Feedback
+     * @return mFeedBack
+     */
     public String getFeedBack() {
         return mFeedBack;
     }
@@ -245,7 +249,7 @@ public class UserAccount implements Parcelable {
 
 
     /**
-     *
+     * set admin
      * @param mIsAdmin
      */
     public void setmIsAdmin(boolean mIsAdmin) {
@@ -253,7 +257,7 @@ public class UserAccount implements Parcelable {
     }
 
     /**
-     *
+     * to shake or not to shake
      * @param mAllowShake
      */
     public void setmAllowShake(boolean mAllowShake) {
@@ -261,7 +265,7 @@ public class UserAccount implements Parcelable {
     }
 
     /**
-     *
+     *  set if aloow sms
      * @param mAllowSms
      */
     public void setmAllowSms(boolean mAllowSms) {
@@ -311,11 +315,11 @@ public class UserAccount implements Parcelable {
     }
 
     /**
-     *
+     *Unused
      */
     public static final Parcelable.Creator<UserAccount> CREATOR = new Parcelable.Creator<UserAccount>() {
         /**
-         *
+         * Unused
          * @param source
          * @return
          */
@@ -325,7 +329,7 @@ public class UserAccount implements Parcelable {
         }
 
         /**
-         *
+         *Unused
          * @param size
          * @return
          */
