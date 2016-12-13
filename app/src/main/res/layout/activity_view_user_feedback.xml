@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_view_user_feedback"
     android:layout_width="match_parent"
@@ -10,10 +11,35 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.ViewUserFeedbackActivity">
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/userFeedbackTextView"
-        android:layout_weight="1" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            app:srcCompat="@drawable/lost_and_found_display"
+            android:id="@+id/imageView6"
+            android:layout_width="75dp"
+            android:layout_height="75dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="75dp">
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/titleTextView"
+                android:textStyle="normal|bold"
+                android:textSize="24sp" />
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:id="@+id/feedbackTextView"
+                android:layout_height="50dp" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
