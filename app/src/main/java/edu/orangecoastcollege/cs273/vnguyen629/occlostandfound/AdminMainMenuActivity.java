@@ -62,7 +62,7 @@ public class AdminMainMenuActivity extends AppCompatActivity {
      * @param view The view all users button
      */
     public void viewAllUsers(View view) {
-        startActivity(new Intent(AdminMainMenuActivity.this, AdminViewUserActivity.class));
+        startActivity(new Intent(this, AdminUserListActivity.class).putExtra("Account", account));
     }
 
     /**

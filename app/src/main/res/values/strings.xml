@@ -167,4 +167,5 @@
     <string name="account_created_text">Account Created!</string>
     <string name="all_fields_filled_out_text">All fields must not be filled out!</string>
     <string name="account_found_text">Account Found.</string>
+    <string name="user_list_title">User List</string>
 </resources>

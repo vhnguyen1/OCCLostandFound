@@ -25,6 +25,9 @@ public class AdminViewUserActivity extends AppCompatActivity {
     private SensorManager sensorManager;
     private ShakeDetector shakeDetector;
 
+    UserAccount account, selectedUser;
+
+
     /**
      * Starts up the activity and links up the TextViews and sets them up with
      * the user's information. Also prepares the ShakeDetector to monitor any
@@ -37,17 +40,18 @@ public class AdminViewUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_view_user);
 
-        final UserAccount user = getIntent().getExtras().getParcelable("SelectedUser");
+        account = getIntent().getExtras().getParcelable("Account");
+        selectedUser = getIntent().getExtras().getParcelable("SelectedUser");
 
         adminViewUsernameTextView = (TextView) findViewById(R.id.adminViewUsernameTextView);
         adminViewStudentIDTextView = (TextView) findViewById(R.id.adminViewStudentIDTextView);
         adminViewEmailTextView = (TextView) findViewById(R.id.adminViewEmailTextView);
         adminViewPhoneTextView = (TextView) findViewById(R.id.adminViewPhoneTextView);
 
-        adminViewPhoneTextView.setText(user.getStudentUserName());
-        adminViewStudentIDTextView.setText(user.getStudentID());
-        adminViewEmailTextView.setText(user.getStudentEmail());
-        adminViewPhoneTextView.setText(user.getStudentPhoneNum());
+        adminViewUsernameTextView.setText(selectedUser.getStudentUserName());
+        adminViewPhoneTextView.setText(selectedUser.getStudentPhoneNum());
+        adminViewStudentIDTextView.setText(selectedUser.getStudentID());
+        adminViewEmailTextView.setText(selectedUser.getStudentEmail());
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -64,24 +68,15 @@ public class AdminViewUserActivity extends AppCompatActivity {
     }
 
     /**
-     * Allows the admin to send an SMS message to the user
-     * @param view The send SMS button
-     */
-    public void sendSMS(View view) {
-        Intent smsIntent = new Intent(AdminViewUserActivity.this, SendSMSActivity.class);
-        smsIntent.putExtra("UserPhoneNumber", adminViewPhoneTextView.getText().toString());
-        startActivity(smsIntent);
-    }
-
-    /**
      * Allows the admin to view the feedback the specific user made
      * @param view The view feedback button
      */
     public void viewFeedback(View view) {
-        final UserAccount user = getIntent().getExtras().getParcelable("SelectedUser");
-        Intent viewFeedbackIntent = new Intent(this, ViewUserFeedbackActivity.class);
-        viewFeedbackIntent.putExtra("UserFeedback", user);
-        startActivity(viewFeedbackIntent);
+        startActivity(new Intent(this, ViewUserFeedbackActivity.class).putExtra("Account", account).putExtra("SelectedUser", selectedUser));
+    }
+
+    public void viewSendSMS(View view) {
+        startActivity(new Intent(this, SendSMSActivity.class).putExtra("Account", account).putExtra("SelectedUser", selectedUser));
     }
 
     /**

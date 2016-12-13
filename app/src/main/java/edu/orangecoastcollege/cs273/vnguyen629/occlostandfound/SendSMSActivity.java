@@ -1,15 +1,12 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 /**
@@ -23,6 +20,8 @@ public class SendSMSActivity extends AppCompatActivity {
 
     private EditText smsSenderEditText;
 
+    UserAccount selectedAccount;
+
     /**
      * Links up the EditText for the message
      * @param savedInstanceState The state of the application saved into a bundle.
@@ -31,6 +30,8 @@ public class SendSMSActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_sms);
+
+        selectedAccount = getIntent().getExtras().getParcelable("SelectedUser");
 
         smsSenderEditText = (EditText) findViewById(R.id.smsSenderEditText);
     }
@@ -44,9 +45,13 @@ public class SendSMSActivity extends AppCompatActivity {
         if (message.isEmpty())
             Toast.makeText(this, "Message cannot be empty.", Toast.LENGTH_SHORT).show();
         else {
-            Intent smsIntent = new Intent(SendSMSActivity.this, UserListActivity.class);
-            smsIntent.putExtra("MESSAGE", message);
-            startActivity(smsIntent);
+            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[] {android.Manifest.permission.SEND_SMS}, REQUEST_CODE_SEND_SMS);
+            } else {
+                SmsManager manager = SmsManager.getDefault();
+                manager.sendTextMessage(selectedAccount.getStudentPhoneNum(), null, message, null, null);
+                Toast.makeText(this, "SMS Sent.", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -54,7 +59,7 @@ public class SendSMSActivity extends AppCompatActivity {
      * Select User and send a SMS if item have been found
      * @param view
      */
-    public void selectUserSMS(View view) {
+    /*public void selectUserSMS(View view) {
         String message = getIntent().getExtras().getString("MESSAGE");
 
         if (view instanceof LinearLayout) {
@@ -72,5 +77,5 @@ public class SendSMSActivity extends AppCompatActivity {
                 Toast.makeText(this, "Message sent to: " + user.getStudentUserName(), Toast.LENGTH_SHORT).show();
             }
         }
-    }
+    }*/
 }

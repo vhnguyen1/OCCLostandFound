@@ -96,7 +96,8 @@
         android:textSize="24sp"
         android:layout_below="@+id/adminViewSendSMSButton"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/feedback_icon" />
+        android:background="@drawable/feedback_icon"
+        android:onClick="viewFeedback" />
 
     <Button
         android:layout_marginTop="83dp"
@@ -109,5 +110,6 @@
         android:layout_alignRight="@+id/adminViewFeedbackButton"
         android:layout_alignEnd="@+id/adminViewFeedbackButton"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content" />
+        android:layout_width="wrap_content"
+        android:onClick="viewSendSMS" />
 </RelativeLayout>

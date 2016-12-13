@@ -82,14 +82,20 @@ public class UserItemsListActivity extends AppCompatActivity {
      * Select and launch secleted item account
      * @param view
      */
-    public void viewUserItemDetails(View view) {
+    public void viewItemDetails(View view) {
         if (view instanceof LinearLayout) {
+            UserAccount account = getIntent().getExtras().getParcelable("Account");
             final Item SELECTED_ITEM = (Item) view.getTag();
             Log.i("OCC Lost and Found", SELECTED_ITEM.toString());
 
-            Intent detailsIntent = new Intent(this, UserItemDetailsActivity.class);
-            detailsIntent.putExtra("Selected", SELECTED_ITEM);
-            startActivity(detailsIntent);
+            if (account != null) {
+                Intent detailsIntent = new Intent(this, UserItemDetailsActivity.class);
+                detailsIntent.putExtra("Item", SELECTED_ITEM);
+                detailsIntent.putExtra("Account", account);
+                startActivity(detailsIntent);
+            } else {
+                startActivity(new Intent(this, ItemDetailsActivity.class).putExtra("Item", SELECTED_ITEM));
+            }
         } else
             Toast.makeText(this, "Error selecting item.", Toast.LENGTH_SHORT).show();
     }

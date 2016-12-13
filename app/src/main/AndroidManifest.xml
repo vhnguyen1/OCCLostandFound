@@ -58,13 +58,12 @@
         <activity android:name=".FeedbackActivity" />
         <activity android:name=".AdminItemListActivity" />
         <activity android:name=".SendSMSActivity" />
-        <activity android:name=".UserListActivity" />
+        <activity android:name=".AdminUserListActivity" />
         <activity android:name=".UserAccountCreateActivity" />
         <activity android:name=".PasswordChangeActivity" />
         <activity android:name=".AccountInfoActivity" />
         <activity android:name=".AdminViewUserActivity" />
         <activity android:name=".ViewUserFeedbackActivity" />
-        <activity android:name=".ViewAllFeedbacksActivity" />
         <activity android:name=".ResourceSelectionActivity" />
         <activity android:name=".UserSettingsActivity" />
         <activity android:name=".AdminSettingsActivity"></activity>

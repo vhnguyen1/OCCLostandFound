@@ -61,7 +61,8 @@
             android:id="@+id/userMenuReportItemButton"
             android:layout_weight="5"
             android:background="@drawable/gradient_background"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:onClick="viewAllUsers" />
 
     </LinearLayout>
 
