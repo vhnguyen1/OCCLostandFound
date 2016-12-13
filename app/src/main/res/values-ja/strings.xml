@@ -147,4 +147,7 @@
     <string name="app_about_description_text">" OCCのLost and Foundアプリは、シンプルさ、利便性、そしてほとんどすべての効率の重要性を強調しています。財布を紛失するほどの身分証明書を失うような単純なものであれ、私たちの目標はOCCの学生が自分の所持品を見つけて回収するのを助けることです。アカウントベースのログインシステムにより、ユーザーは報告されたすべてのアイテムを容易に追跡できます"</string>
     <string name="saved_successfully_text">" 成功裏に保存されました！"</string>
     <string name="must_be_cccd_email">" .cccd電子メールでなければならない"</string>
+    <string name="error_selecting_item_text">アイテムを選択する際にエラー</string>
+    <string name="search_item_name_hint">アイテム名を使用して検索...</string>
+    <string name="user_list_title">ユーザーリスト</string>
 </resources>
