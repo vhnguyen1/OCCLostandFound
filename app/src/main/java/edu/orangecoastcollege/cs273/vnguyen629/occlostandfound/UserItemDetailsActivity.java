@@ -49,7 +49,7 @@ public class UserItemDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_item_details);
 
-        database  = new DBHelper(this);
+        database = new DBHelper(this);
 
         final String MESSAGE = getString(R.string.your_item_has_been_found_text);
 
@@ -96,7 +96,7 @@ public class UserItemDetailsActivity extends AppCompatActivity {
                     String selectedStatus = String.valueOf(parent.getItemAtPosition(position));
                     if (selectedStatus.equals(strings[1])) {
                         if (ActivityCompat.checkSelfPermission(UserItemDetailsActivity.this, android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
-                            ActivityCompat.requestPermissions(UserItemDetailsActivity.this, new String[] {android.Manifest.permission.SEND_SMS}, REQUEST_CODE_SEND_SMS);
+                            ActivityCompat.requestPermissions(UserItemDetailsActivity.this, new String[]{android.Manifest.permission.SEND_SMS}, REQUEST_CODE_SEND_SMS);
                         } else {
                             SmsManager manager = SmsManager.getDefault();
                             manager.sendTextMessage(selectedAccount.getStudentPhoneNum(), null, MESSAGE, null, null);
@@ -114,7 +114,7 @@ public class UserItemDetailsActivity extends AppCompatActivity {
                 }
             });
         }
-
+    }
         /*reportedItemList = database.getAllReports();
 
         for (Report report : reportedItemList)

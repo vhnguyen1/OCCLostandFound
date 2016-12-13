@@ -29,6 +29,8 @@ public class LoginActivity extends AppCompatActivity {
     private List<UserAccount> accountList;
     private Animation shakeAnim;
 
+    private boolean userFound = false;
+
     /**
      * Loads up the databases and links up the view widgets.
      * @param savedInstanceState The state of the application saved into a bundle
@@ -53,11 +55,6 @@ public class LoginActivity extends AppCompatActivity {
      */
     public void login(View view)
     {
-        //boolean found = false;
-        //Intent intent = new Intent(this, MainMenuActivity.class);
-        //Intent adminIntent = new Intent(this, AdminMainMenuActivity.class);
-        //int pos = 0;
-
         shakeAnim = AnimationUtils.loadAnimation(this, R.anim.shake_anim);
 
         String username = usernameLoginEditText.getText().toString().trim();
@@ -70,64 +67,24 @@ public class LoginActivity extends AppCompatActivity {
                 UserAccount.isLoggedIn = true;
                 UserAccount.singedInUserAccountName = username;
 
-                if (account.getIsAdmin())
+                if (account.getIsAdmin()) {
                     startActivity(new Intent(this, AdminMainMenuActivity.class).putExtra("Account", account));
-                else
+                    this.finish();
+                }
+                else {
                     startActivity(new Intent(this, UserMenuActivity.class).putExtra("Account", account));
+                    this.finish();
+                }
+
+                userFound = true;
             }
         }
 
-        loginButtonImageView.startAnimation(shakeAnim);
-        Toast.makeText(this, getString(R.string.invalid_username_password_text),
-                Toast.LENGTH_SHORT).show();
-
-        /*for(UserAccount userAccount : accountList)
-        {
-            if(userAccount.getStudentUserName().equals(usernameLoginEditText.getText()
-                    .toString().trim())) {
-                found = true;
-                break;
-            }
-            else
-                pos++;
-        }
-
-        if(found)
-        {
-            if(passwordLoginEditText.getText().toString().equals(accountList.get(pos).getStudentPassword())) {
-                isLoggedIn = true;
-                singedInUserAccountName = usernameLoginEditText.getText().toString();
-                if(accountList.get(pos).getIsAdmin())
-                    startActivity(adminIntent);
-                else
-                    startActivity(intent);
-            }
-            else {
-                loginButtonImageView.startAnimation(shakeAnim);
-                Toast.makeText(this, getString(R.string.invalid_username_password_text),
-                        Toast.LENGTH_SHORT).show();
-            }
-        }
-        else {
+        if (!userFound) {
             loginButtonImageView.startAnimation(shakeAnim);
             Toast.makeText(this, getString(R.string.invalid_username_password_text),
                     Toast.LENGTH_SHORT).show();
-        }*/
-
-        /*String username = usernameLoginEditText.getText().toString().trim();
-        String password = passwordLoginEditText.getText().toString().trim();
-
-        for (UserAccount account : accountList) {
-            if (account.getStudentUserName().equals(username) && account.getStudentPassword().equals(password)) {
-                if (account.getIsAdmin())
-                    startActivity(new Intent(this, AdminMainMenuActivity.class).putExtra("Account", account));
-                else
-                    startActivity(new Intent(this, UserMenuActivity.class).putExtra("Account", account));
-                found = true;
-            }
         }
-        if (!found)
-            Toast.makeText(this, "Invalid username or password.", Toast.LENGTH_SHORT).show();*/
     }
 
     /**

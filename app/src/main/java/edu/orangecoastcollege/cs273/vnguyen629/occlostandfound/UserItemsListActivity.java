@@ -6,8 +6,11 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -30,6 +33,8 @@ public class UserItemsListActivity extends AppCompatActivity {
 
     private UserAccount loggedInAccount;
 
+    private EditText userItemSearchEditText;
+
     private Sensor accelerometer;
     private SensorManager sensorManager;
     private ShakeDetector shakeDetector;
@@ -49,11 +54,6 @@ public class UserItemsListActivity extends AppCompatActivity {
 
         itemList = new ArrayList<Item>();
 
-        //db.addItem(new Item("name", "des", "date", "loc", false, Uri.parse("android.resource://edu.orangecoastcollege.cs273.vnguyen629.occlostandfound/" + R.drawable.default_image), "user"));
-        //db.addItem(new Item("name", "des", "date", "loc", false,
-        // Uri.parse("android.resource://edu.orangecoastcollege.cs273.vnguyen629.occlostandfound/"
-        // + R.drawable.default_image), "user"));
-
         reportList = db.getAllReportsFromUser(loggedInAccount);
 
         for (Report report : reportList) {
@@ -63,6 +63,9 @@ public class UserItemsListActivity extends AppCompatActivity {
         itemListView = (ListView) findViewById(R.id.userItemsListView);
         itemListAdapter = new ItemListAdapter(this, R.layout.list_item, itemList);
         itemListView.setAdapter(itemListAdapter);
+
+        userItemSearchEditText = (EditText) findViewById(R.id.userItemSearchEditText);
+        userItemSearchEditText.addTextChangedListener(itemNameSearchTextWatcher);
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -99,6 +102,54 @@ public class UserItemsListActivity extends AppCompatActivity {
         } else
             Toast.makeText(this, "Error selecting item.", Toast.LENGTH_SHORT).show();
     }
+
+    /**
+     * Monitors the EditText for searching item names in the database. It displays results
+     * as the text is typed/deleted accordingly.
+     */
+    public TextWatcher itemNameSearchTextWatcher = new TextWatcher() {
+        /**
+         * Unused
+         * @param charSequence Unused
+         * @param i Unused
+         * @param i1 Unused
+         * @param i2 Unused
+         */
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+        /**
+         * Monitors the EditText for searching item names in the database. It displays results
+         * as the text is typed/deleted accordingly.
+         * @param charSequence The input from the EditText.
+         * @param i Unused
+         * @param i1 Unused
+         * @param i2 Unused
+         */
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            String input = charSequence.toString().toLowerCase();
+            itemListAdapter.clear();
+
+            if (input.equals(""))
+                for (Item item: itemList)
+                    itemListAdapter.add(item);
+            else {
+                String itemName;
+                for (Item item : itemList) {
+                    if (item.getName().toLowerCase().contains(input))
+                        itemListAdapter.add(item);
+                }
+            }
+        }
+
+        /**
+         * Unused
+         * @param editable Unused
+         */
+        @Override
+        public void afterTextChanged(Editable editable) {}
+    };
 
     /**
      * When the user re-enters the app, the sensors start back up and begin
