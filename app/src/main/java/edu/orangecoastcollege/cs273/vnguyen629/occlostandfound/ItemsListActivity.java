@@ -60,10 +60,8 @@ public class ItemsListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items_list);
 
-/*
         if (UserAccount.isLoggedIn)
             account = getIntent().getExtras().getParcelable("Account");
-*/
 
         //this.deleteDatabase(DBHelper.DATABASE_NAME);
         database = new DBHelper(this);

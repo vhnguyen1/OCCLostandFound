@@ -82,7 +82,7 @@ public class UserItemsListActivity extends AppCompatActivity {
     }
 
     /**
-     * Select and launch secleted item account
+     * Select and launch selected item account
      * @param view
      */
     public void viewItemDetails(View view) {
@@ -135,7 +135,7 @@ public class UserItemsListActivity extends AppCompatActivity {
                 for (Item item: itemList)
                     itemListAdapter.add(item);
             else {
-                String itemName;
+                //String itemName;
                 for (Item item : itemList) {
                     if (item.getName().toLowerCase().contains(input))
                         itemListAdapter.add(item);

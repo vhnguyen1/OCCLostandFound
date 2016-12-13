@@ -14,24 +14,33 @@ import static junit.framework.Assert.*;
  */
 public class ReportTest {
     private Report mReport;
-    UserAccount account = new UserAccount();
-    Item newItem = new Item();
+    UserAccount account;
+    Item newItem;
+
+/*    private int mID;
+    private UserAccount mAccount;
+    private Item mItem;
+    private int mSmsCheck;*/
 
     /**
-     *
-     * @throws Exception
+     * Starts before everything else does, setting up the testing
+     * @throws Exception If report doesn't exist
      */
     @Before
     public void setUp() throws Exception {
-        //mReport = new Report();
-        //mReport.setAccount("Test Report Account");
-        //mReport.setName("Test Report Name");
-        //mReport.setDateLost("Test Report Date Lost");
+        mReport = new Report();
+
+        account = new UserAccount();
+        newItem = new Item();
+
+        mReport.setAccount(account);
+        mReport.setItem(newItem);
+        mReport.setSmsCheck(1);
     }
 
     /**
-     *
-     * @throws Exception
+     * Unused
+     * @throws Exception Unused
      */
     @After
     public void tearDown() throws Exception {}
@@ -42,12 +51,12 @@ public class ReportTest {
      */
     @Test
     public void getAccount() throws Exception {
-        //mReport.setAccount("Test Report Account");
-        //assertEquals("Error Found!", "Test Report Account", mReport.getAccount());
+        mReport.setAccount(account);
+        assertEquals("Error Found!", "", mReport.getAccount().getStudentUserName());
     }
 
     /**
-     *Test set and get mAccount
+     * Test set and get mAccount
      * @throws Exception
      */
     @Test
@@ -57,7 +66,7 @@ public class ReportTest {
     }
 
     /**
-     *Test set and get mItem
+     * Test set and get mItem
      * @throws Exception
      */
     @Test
@@ -67,7 +76,7 @@ public class ReportTest {
     }
 
     /**
-     *Test set and get smsCheck
+     *T est set and get smsCheck
      * @throws Exception
      */
     @Test
