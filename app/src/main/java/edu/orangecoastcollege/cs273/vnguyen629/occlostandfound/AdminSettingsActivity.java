@@ -54,8 +54,7 @@ public class AdminSettingsActivity extends AppCompatActivity {
      * Saves the user input changes for their account.
      * @param view The save button.
      */
-    public void saveInfo(View view)
-    {
+    public void saveInfo(View view) {
         UserAccount account = getIntent().getExtras().getParcelable("Account");
 
         //account = database.getUserAccount(singedInUserAccountName);
@@ -85,8 +84,7 @@ public class AdminSettingsActivity extends AppCompatActivity {
      * change password page.
      * @param view The change password button.
      */
-    public void changePassword(View view)
-    {
+    public void changePassword(View view) {
         Intent intent = new Intent(this, PasswordChangeActivity.class);
         startActivity(intent);
     }
