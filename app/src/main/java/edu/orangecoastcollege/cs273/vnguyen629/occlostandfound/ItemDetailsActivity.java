@@ -9,8 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import static edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.R.id.userEditText;
-
 /**
  * Loads intent data from the ItemListActivity, displaying the selected
  * item's data more specifically
