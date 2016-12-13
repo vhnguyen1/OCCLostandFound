@@ -65,6 +65,8 @@ public class ShakeDetector implements SensorEventListener {
 
     /**
      * Unused
+     * @param sensor Unused
+     * @param i Unused
      */
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {}

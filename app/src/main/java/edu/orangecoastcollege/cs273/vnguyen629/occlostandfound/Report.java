@@ -58,6 +58,10 @@ public class Report implements Parcelable {
         this(-1, other.mAccount, other.mItem, other.mSmsCheck);
     }
 
+    /**
+     * Creates a parcelable <code>Report</code> object
+     * @param in Parcelable object
+     */
     protected Report(Parcel in) {
         mID = in.readInt();
         mAccount = in.readParcelable(UserAccount.class.getClassLoader());
@@ -65,6 +69,11 @@ public class Report implements Parcelable {
         mSmsCheck = in.readInt();
     }
 
+    /**
+     * Writes the member variable data to a parcelable object
+     * @param dest The parcelable object
+     * @param flags Unused
+     */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(mID);
@@ -73,17 +82,34 @@ public class Report implements Parcelable {
         dest.writeInt(mSmsCheck);
     }
 
+    /**
+     * Returns 0
+     * @return An integer of 0
+     */
     @Override
     public int describeContents() {
         return 0;
     }
 
+    /**
+     * Creates a parcelable <code>Report</code> object
+     */
     public static final Creator<Report> CREATOR = new Creator<Report>() {
+        /**
+         * Creates a Parcelable <code>Report</code> object
+         * @param in Parcelable object
+         * @return A parcelable <code>Report</code> object
+         */
         @Override
         public Report createFromParcel(Parcel in) {
             return new Report(in);
         }
 
+        /**
+         * Returns an array of parcelable <code>Report</code> objects
+         * @param size Size of the array
+         * @return an array of <code>Report</code> objects
+         */
         @Override
         public Report[] newArray(int size) {
             return new Report[size];
@@ -114,8 +140,6 @@ public class Report implements Parcelable {
         return this.mItem;
     }
 
-
-
     /**
      * Gets the name of the <code>Report</code>.
      * @return The date lost of the missing item
@@ -123,7 +147,6 @@ public class Report implements Parcelable {
     public int getSmsCheck() {
         return this.mSmsCheck;
     }
-
 
     /**
      * Sets the associated account of the <code>Report</code>.
@@ -140,7 +163,6 @@ public class Report implements Parcelable {
     public void setItem(Item newItem) {
         this.mItem = newItem;
     }
-
 
     /**
      * Sets the date lost of the <code>Report</code>.

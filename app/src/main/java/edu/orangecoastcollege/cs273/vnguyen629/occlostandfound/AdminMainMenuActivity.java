@@ -21,7 +21,6 @@ public class AdminMainMenuActivity extends AppCompatActivity {
 
     UserAccount account;
 
-
     /**
      * Starts up the activity and prepares the ShakeDetector to monitor any
      * movements that constitute as shakes where the AdminItemListActivity may load

@@ -12,10 +12,10 @@ import android.view.View;
  *  @author Vu Nguyen
  */
 public class UserMenuActivity extends AppCompatActivity {
-
     private UserAccount loggedInAccount;
+
     /**
-     *  Create and init variable
+     *  Create and initialize variable
      * @param savedInstanceState The state of the application saved into a bundle.
      */
     @Override

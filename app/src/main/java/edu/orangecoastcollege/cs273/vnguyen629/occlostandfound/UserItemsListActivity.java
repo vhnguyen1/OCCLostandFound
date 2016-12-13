@@ -17,6 +17,8 @@ import java.util.List;
 
 /**
  *
+ *
+ * @author Benjamin Nguyen
  */
 public class UserItemsListActivity extends AppCompatActivity {
 
@@ -77,7 +79,7 @@ public class UserItemsListActivity extends AppCompatActivity {
     }
 
     /**
-     * Select and launch seleted item account
+     * Select and launch secleted item account
      * @param view
      */
     public void viewUserItemDetails(View view) {

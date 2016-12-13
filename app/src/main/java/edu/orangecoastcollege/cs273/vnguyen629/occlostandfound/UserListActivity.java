@@ -53,7 +53,8 @@ public class UserListActivity extends AppCompatActivity {
     }
 
     /**
-     *
+     * Monitors the username search EditText for user input
+     * and acts accordingly.
      */
     public TextWatcher usernameSearchTextWatcher = new TextWatcher() {
         /**
@@ -69,18 +70,18 @@ public class UserListActivity extends AppCompatActivity {
         }
 
         /**
-         *  Check on Text Change for search function
-         * @param s
-         * @param start
-         * @param before
-         * @param count
+         * Check on Text Change for search function
+         * @param s The user input
+         * @param start Unused
+         * @param before Unused
+         * @param count Unused
          */
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             String input = s.toString().toLowerCase();
             userListAdapter.clear();
 
-            if (input == "")
+            if (input.equals(""))
                 for (UserAccount user : allUserList)
                     userListAdapter.add(user);
             else {

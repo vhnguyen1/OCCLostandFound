@@ -690,5 +690,4 @@ class DBHelper extends SQLiteOpenHelper {
 
     /************* Feedback database functions *************/
 
-
 }
