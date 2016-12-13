@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -124,6 +125,7 @@ public class UserItemDetailsActivity extends AppCompatActivity {
                 } else {
                     SmsManager manager = SmsManager.getDefault();
                     manager.sendTextMessage(selectedAccount.getStudentPhoneNum(), null, MESSAGE, null, null);
+                    Toast.makeText(UserItemDetailsActivity.this, "Item Status Updated!", Toast.LENGTH_SHORT).show();
                 }
             }
             database.updateItem(selectedItem);
