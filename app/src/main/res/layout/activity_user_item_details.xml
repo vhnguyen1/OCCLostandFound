@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         app:srcCompat="@drawable/default_image"
-        android:id="@+id/imageView3"
+        android:id="@+id/userItemDetailsImageView"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter" />
 
@@ -24,7 +24,7 @@
         android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView16"
+        android:id="@+id/userItemDetailsNameTextView"
         android:gravity="center_horizontal"
         android:textSize="30sp"
         android:textStyle="normal|bold"

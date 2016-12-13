@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.text.DateFormat;
@@ -19,7 +18,6 @@ import java.util.Date;
 public class FeedbackActivity extends AppCompatActivity {
 
     private EditText feedbackEditText;
-    private ImageView feedbackSubmitImageView;
 
     /**
      * Links up the view widgets
@@ -31,7 +29,6 @@ public class FeedbackActivity extends AppCompatActivity {
         setContentView(R.layout.activity_feedback);
 
         feedbackEditText = (EditText) findViewById(R.id.feedbackEditText);
-        feedbackSubmitImageView = (ImageView) findViewById(R.id.feedbackSubmitImageView);
     }
 
     /**

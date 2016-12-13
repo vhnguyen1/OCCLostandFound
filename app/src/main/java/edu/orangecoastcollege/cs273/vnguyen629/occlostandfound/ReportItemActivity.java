@@ -14,7 +14,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -206,6 +205,8 @@ public class ReportItemActivity extends AppCompatActivity {
         final String NAME = reportItemNameEditText.getText().toString().replaceAll("\\s+", "");
         final String LAST_LOCATION = reportItemLastLocationEditText.getText().toString().replaceAll("\\s+", "");
 
+        final UserAccount ACCOUNT = getIntent().getExtras().getParcelable("Account");
+
         if (NAME.equals("") || LAST_LOCATION.equals("") || day.equals(R.string.day_text)
                 || month.equals(getString(R.string.month_text)))
             Toast.makeText(this, getString(R.string.all_fields_mandatory_text),
@@ -222,19 +223,12 @@ public class ReportItemActivity extends AppCompatActivity {
                 if (imageUri == null || imageUri.toString().equals(""))
                     imageUri = getUriToResource(this, R.drawable.default_image);
 
-                final UserAccount ACCOUNT = getIntent().getExtras().getParcelable("Account");
                 //UserAccount account = database.getUserAccount(singedInUserAccountName);
 
                 Item newItem = new Item(NEW_ITEM_NAME, NEW_ITEM_DESCRIPTION, NEW_ITEM_DATE_LOST,
                         NEW_ITEM_LAST_LOCATION, false, imageUri);
 
-
-
                 database.addItem(newItem);
-                Log.i("getmostrecentitem", database.getMostRecentItem().toString());
-                //ItemsListActivity.allItemsList.add(newItem);
-                //ItemsListActivity.itemsListAdapter.add(newItem);
-                //ItemsListActivity.itemsListAdapter.notifyDataSetChanged();
 
                 Report newReport = new Report(ACCOUNT, database.getMostRecentItem(), SMS_NOTIFICATIONS);
 
@@ -247,7 +241,8 @@ public class ReportItemActivity extends AppCompatActivity {
                 Toast.makeText(this, getString(R.string.must_be_signed_in_text),
                         Toast.LENGTH_SHORT).show();
 
-            startActivity(new Intent(ReportItemActivity.this, ItemsListActivity.class));
+            startActivity(new Intent(ReportItemActivity.this, ItemsListActivity.class)
+                    .putExtra("Account", ACCOUNT));
             this.finish();
         }
     }

@@ -11,10 +11,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -26,6 +30,13 @@ public class UserItemDetailsActivity extends AppCompatActivity {
     private UserAccount selectedAccount;
 
     private Spinner userItemStatusSpinner;
+    private TextView userItemDetailsNameTextView;
+    private TextView userItemDetailsDateTextView;
+    private TextView userItemDetailsLocationTextView;
+    private TextView userItemDetailsDescriptionTextView;
+    private ImageView userItemDetailsImageView;
+
+    private Animation colorChange;
 
     private Sensor accelerometer;
     private SensorManager sensorManager;
@@ -49,6 +60,8 @@ public class UserItemDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_item_details);
 
+        colorChange = AnimationUtils.loadAnimation(this, R.anim.color_change);
+
         database = new DBHelper(this);
 
         final String MESSAGE = getString(R.string.your_item_has_been_found_text);
@@ -63,10 +76,20 @@ public class UserItemDetailsActivity extends AppCompatActivity {
         final String[] strings = {getString(R.string.not_found), getString(R.string.found)};
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.status_choices, android.R.layout.simple_spinner_item);
-
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         userItemStatusSpinner.setAdapter(adapter);
+
+        userItemDetailsNameTextView = (TextView) findViewById(R.id.userItemDetailsNameTextView);
+        userItemDetailsDateTextView = (TextView) findViewById(R.id.userItemDetailsDateTextView);
+        userItemDetailsLocationTextView = (TextView) findViewById(R.id.userItemDetailsLocationTextView);
+        userItemDetailsDescriptionTextView = (TextView) findViewById(R.id.userItemDetailsDescriptionTextView);
+        userItemDetailsImageView = (ImageView) findViewById(R.id.userItemDetailsImageView);
+
+        userItemDetailsNameTextView.setText(selectedItem.getName());
+        userItemDetailsDateTextView.setText(selectedItem.getDateLost());
+        userItemDetailsLocationTextView.setText(selectedItem.getLastLocation());
+        userItemDetailsDescriptionTextView.setText(selectedItem.getDescription());
+
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -95,6 +118,7 @@ public class UserItemDetailsActivity extends AppCompatActivity {
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     String selectedStatus = String.valueOf(parent.getItemAtPosition(position));
                     if (selectedStatus.equals(strings[1])) {
+                        userItemDetailsImageView.setAnimation(colorChange);
                         if (ActivityCompat.checkSelfPermission(UserItemDetailsActivity.this, android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
                             ActivityCompat.requestPermissions(UserItemDetailsActivity.this, new String[]{android.Manifest.permission.SEND_SMS}, REQUEST_CODE_SEND_SMS);
                         } else {
@@ -113,20 +137,6 @@ public class UserItemDetailsActivity extends AppCompatActivity {
                     parent.setSelection(0);
                 }
             });
-        }
-    }
-        /*reportedItemList = database.getAllReports();
-
-        for (Report report : reportedItemList)
-        {
-            if(report.getItem().getName().equals(selectedItem.getName()))
-            {
-                if(userItemSMSCheckBox.isChecked())
-                {
-                    SmsManager manager = SmsManager.getDefault();
-                    manager.sendTextMessage(loggedInAccount.getStudentPhoneNum(), null, MESSAGE, null, null);
-                }
-            }
         }
     }
 
