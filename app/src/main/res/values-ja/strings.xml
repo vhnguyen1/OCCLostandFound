@@ -141,4 +141,10 @@
     <string name="question_where_is_lost_and_found">" OCCでの紛失と発見はどこですか？"</string>
     <string name="answer_lost_and_found_location">There are a total of two lost and found locations at OCC.         The main center is located at the ASOCC office (location explained above), while the second is located         at the OCC Campus Safety Office located in E Lot. To see the OCC campus map, click</string>
     <string name="answer_asocc_location">There are a total of two lost and found locations at OCC.         The main center is located at the ASOCC office (location explained above), while the second is located         at the OCC Campus Safety Office located in E Lot. To see the OCC campus map, click</string>
+    <string name="account_created_text">アカウントが作成されました！</string>
+    <string name="account_found_text">アカウントが見つかりました。</string>
+    <string name="all_fields_filled_out_text">" すべてのフィールドには記入しないでください！"</string>
+    <string name="app_about_description_text">" OCCのLost and Foundアプリは、シンプルさ、利便性、そしてほとんどすべての効率の重要性を強調しています。財布を紛失するほどの身分証明書を失うような単純なものであれ、私たちの目標はOCCの学生が自分の所持品を見つけて回収するのを助けることです。アカウントベースのログインシステムにより、ユーザーは報告されたすべてのアイテムを容易に追跡できます"</string>
+    <string name="saved_successfully_text">" 成功裏に保存されました！"</string>
+    <string name="must_be_cccd_email">" .cccd電子メールでなければならない"</string>
 </resources>

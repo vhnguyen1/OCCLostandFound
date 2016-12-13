@@ -127,7 +127,7 @@ public class UserItemDetailsActivity extends AppCompatActivity {
                     manager.sendTextMessage(loggedInAccount.getStudentPhoneNum(), null, MESSAGE, null, null);
                 }
             }
-        }*/
+        }
     }
 
     /**
