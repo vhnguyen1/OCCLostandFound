@@ -17,11 +17,6 @@ public class ReportTest {
     UserAccount account;
     Item newItem;
 
-/*    private int mID;
-    private UserAccount mAccount;
-    private Item mItem;
-    private int mSmsCheck;*/
-
     /**
      * Starts before everything else does, setting up the testing
      * @throws Exception If report doesn't exist
@@ -47,7 +42,7 @@ public class ReportTest {
 
     /**
      *
-     * @throws Exception
+     * @throws Exception if setAccount doesn't exist
      */
     @Test
     public void getAccount() throws Exception {
@@ -57,7 +52,7 @@ public class ReportTest {
 
     /**
      * Test set and get mAccount
-     * @throws Exception
+     * @throws Exception if setAccount doesn't exist
      */
     @Test
     public void setAccount() throws Exception {
@@ -67,7 +62,7 @@ public class ReportTest {
 
     /**
      * Test set and get mItem
-     * @throws Exception
+     * @throws Exception if setItem doesn't exist
      */
     @Test
     public void setItem() throws Exception {
@@ -76,8 +71,8 @@ public class ReportTest {
     }
 
     /**
-     *T est set and get smsCheck
-     * @throws Exception
+     * Test set and get smsCheck
+     * @throws Exception if smsCheck doesn't exist
      */
     @Test
     public void setSMSCheck() throws Exception {

@@ -100,7 +100,8 @@ public class UserItemsListActivity extends AppCompatActivity {
                 startActivity(new Intent(this, ItemDetailsActivity.class).putExtra("Item", SELECTED_ITEM));
             }
         } else
-            Toast.makeText(this, "Error selecting item.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.error_selecting_item_text),
+                    Toast.LENGTH_SHORT).show();
     }
 
     /**

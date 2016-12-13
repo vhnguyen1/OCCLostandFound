@@ -13,7 +13,7 @@ import java.util.Date;
 /**
  * Allows users to provide feedback for the application.
  *
- * @author Benjamin Nguyen
+ * @author Vu Nguyen
  */
 public class FeedbackActivity extends AppCompatActivity {
 
