@@ -6,6 +6,8 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -65,9 +67,118 @@ public class AdminItemListActivity extends AppCompatActivity {
         filteredReportList = new ArrayList<>(allReportList);
 
         reportListView = (ListView) findViewById(R.id.reportListView);
-        reportListAdapter = new ReportListAdapter(this, R.layout.list_report, allReportList);
+        reportListAdapter = new ReportListAdapter(this, R.layout.list_report, filteredReportList);
         reportListView.setAdapter(reportListAdapter);
+
+        adminSearchUserEditText = (EditText) findViewById(R.id.adminSearchUserEditText);
+        adminSearchItemEditText = (EditText) findViewById(R.id.adminSearchNameEditText);
+
+        adminSearchUserEditText.addTextChangedListener(userNameSearchTextWatcher);
+        adminSearchItemEditText.addTextChangedListener(adminNameSearchTextWatcher);
     }
+
+    /**
+     * Monitors the EditText for searching item names in the database. It displays results
+     * as the text is typed/deleted accordingly.
+     */
+    public TextWatcher adminNameSearchTextWatcher = new TextWatcher() {
+        /**
+         * Unused
+         * @param charSequence Unused
+         * @param i Unused
+         * @param i1 Unused
+         * @param i2 Unused
+         */
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+        /**
+         * Monitors the EditText for searching item names in the database. It displays results
+         * as the text is typed/deleted accordingly.
+         * @param charSequence The input from the EditText.
+         * @param i Unused
+         * @param i1 Unused
+         * @param i2 Unused
+         */
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            String input = charSequence.toString();
+            if(input.equals(""))
+            {
+                reportListAdapter.clear();
+                for (Report report : allReportList)
+                {
+                    filteredReportList.add(report);
+                }
+            }
+            else {
+                reportListAdapter.clear();
+                for (Report report : allReportList) {
+                    if (report.getItem().getName().toLowerCase().contains(input))
+                        filteredReportList.add(report);
+                }
+            }
+        }
+
+        /**
+         * Unused
+         * @param editable Unused
+         */
+        @Override
+        public void afterTextChanged(Editable editable) {}
+    };
+
+    /**
+     * Monitors the EditText for searching item names in the database. It displays results
+     * as the text is typed/deleted accordingly.
+     */
+    public TextWatcher userNameSearchTextWatcher = new TextWatcher() {
+        /**
+         * Unused
+         * @param charSequence Unused
+         * @param i Unused
+         * @param i1 Unused
+         * @param i2 Unused
+         */
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+        /**
+         * Monitors the EditText for searching item names in the database. It displays results
+         * as the text is typed/deleted accordingly.
+         * @param charSequence The input from the EditText.
+         * @param i Unused
+         * @param i1 Unused
+         * @param i2 Unused
+         */
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            String input = charSequence.toString();
+            if(input.equals(""))
+            {
+                reportListAdapter.clear();
+                for (Report report : allReportList)
+                {
+                    filteredReportList.add(report);
+                }
+            }
+            else {
+                reportListAdapter.clear();
+                for (Report report : allReportList) {
+                    if (report.getAccount().getStudentUserName().toLowerCase().contains(input))
+                        filteredReportList.add(report);
+                }
+            }
+        }
+
+        /**
+         * Unused
+         * @param editable Unused
+         */
+        @Override
+        public void afterTextChanged(Editable editable) {}
+    };
+
 
     /**
      * When the user re-enters the app, the sensors start back up and begin

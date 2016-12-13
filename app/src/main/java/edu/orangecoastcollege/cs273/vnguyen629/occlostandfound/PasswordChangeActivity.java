@@ -1,12 +1,11 @@
 package edu.orangecoastcollege.cs273.vnguyen629.occlostandfound;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import static edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.UserAccount.singedInUserAccountName;
 
 /**
  * Allows the user to change their account password if needed
@@ -43,14 +42,18 @@ public class PasswordChangeActivity extends AppCompatActivity {
      */
     public void saveNewPassword(View view)
     {
-        UserAccount account = database.getUserAccount(singedInUserAccountName);
+        //UserAccount account = database.getUserAccount(singedInUserAccountName);
+        UserAccount account = getIntent().getExtras().getParcelable("Account");
 
-        if(account.getStudentPassword() == oldPasswordEditText.getText().toString())
+        if(account.getStudentPassword().equals(oldPasswordEditText.getText().toString()))
         {
-            if(newPasswordEditText.getText().toString() == reNewPasswordEditText.getText().toString())
+            if(newPasswordEditText.getText().toString().equals(reNewPasswordEditText.getText().toString()))
             {
                account.setStudentPassword(newPasswordEditText.getText().toString());
                 database.updateAccount(account);
+                startActivity(new Intent(this, UserMenuActivity.class)
+                        .putExtra("Account", account));
+                this.finish();
             }
             else
                 Toast.makeText(this, getString(R.string.passwords_do_not_match),

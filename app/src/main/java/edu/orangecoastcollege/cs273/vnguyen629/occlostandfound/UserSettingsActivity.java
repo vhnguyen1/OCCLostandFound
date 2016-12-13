@@ -85,7 +85,7 @@ public class UserSettingsActivity extends AppCompatActivity {
      */
     public void changePassword(View view)
     {
-        Intent intent = new Intent(this, PasswordChangeActivity.class);
+        Intent intent = new Intent(this, PasswordChangeActivity.class).putExtra("Account", account);
         startActivity(intent);
     }
 }

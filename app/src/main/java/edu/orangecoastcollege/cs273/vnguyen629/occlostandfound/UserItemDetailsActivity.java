@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -102,8 +101,6 @@ public class UserItemDetailsActivity extends AppCompatActivity {
             }
         });
 
-        Log.i("Accountdetails", selectedAccount.toString());
-
         userItemStatusSpinner.setSelection((selectedItem.getStatus() ? 1 : 0));
         userItemStatusSpinner.setOnItemSelectedListener(statusSpinnerListener);
     }
@@ -117,19 +114,19 @@ public class UserItemDetailsActivity extends AppCompatActivity {
          */
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            selectedItem.setStatus(position == 1);
             String[] strings = {getString(R.string.not_found), getString(R.string.found)};
             String selectedStatus = String.valueOf(parent.getItemAtPosition(position));
             if (selectedStatus.equals(strings[1])) {
                 userItemDetailsImageView.setAnimation(colorChange);
-                selectedItem.setStatus(true);
                 if (ActivityCompat.checkSelfPermission(UserItemDetailsActivity.this, android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(UserItemDetailsActivity.this, new String[]{android.Manifest.permission.SEND_SMS}, REQUEST_CODE_SEND_SMS);
                 } else {
                     SmsManager manager = SmsManager.getDefault();
                     manager.sendTextMessage(selectedAccount.getStudentPhoneNum(), null, MESSAGE, null, null);
-                    database.updateItem(selectedItem);
                 }
             }
+            database.updateItem(selectedItem);
         }
 
         /**
