@@ -499,6 +499,8 @@ class DBHelper extends SQLiteOpenHelper {
     /************* Report database functions *******************/
 
     /**
+     * @author: Benjamin Nguyen
+     *
      * Adds a new <code>Report</code> into the current database
      * @param newReport New <code>Report</code> to be added too the database
      */
@@ -688,6 +690,6 @@ class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    /************* Feedback database functions *************/
+    /************* Report database functions end *************/
 
 }

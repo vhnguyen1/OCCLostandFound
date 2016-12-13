@@ -11,7 +11,7 @@ import android.os.Bundle;
  * The activity where the user can view various information
  * in regards to the application's features, functionality, and purpose.
  *
- * @author Vincent Nguyen
+ * @author Benjamin Nguyen
  */
 public class AboutActivity extends AppCompatActivity {
     private Sensor accelerometer;

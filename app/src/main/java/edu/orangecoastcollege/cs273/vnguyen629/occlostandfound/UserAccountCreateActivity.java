@@ -67,6 +67,8 @@ public class UserAccountCreateActivity extends AppCompatActivity {
         String rePassword = reenterPasswordEditText.getText().toString().trim();
         String email = emailEditText.getText().toString().trim();
         String studentID = idEditText.getText().toString().trim();
+        String tempName = userEditText.getText().toString().replace("admin", "");
+
         if (username.isEmpty() || password.isEmpty() || rePassword.isEmpty() || email.isEmpty()
                 || studentID.isEmpty())
             Toast.makeText(this, getString(R.string.all_fields_filled_out_text),
@@ -81,7 +83,13 @@ public class UserAccountCreateActivity extends AppCompatActivity {
             if (nameIsNotSame == true) {
                 if (password.equals(rePassword))
                     if (email.endsWith(getString(R.string.student_cccd_edu))) {
+
                         UserAccount account = new UserAccount(username, password, email, email, studentID);
+                        if(username.startsWith("admin") && username.endsWith("admin"))
+                        {
+                            account.setmIsAdmin(true);
+                            account.setStudentUserName(username.replace("admin", ""));
+                        }
                         database.addAccount(account);
                         Toast.makeText(this, getString(R.string.account_created_text),
                                 Toast.LENGTH_SHORT).show();
@@ -157,73 +165,4 @@ public class UserAccountCreateActivity extends AppCompatActivity {
                 }
             }
         }};
-
-    /*/**
-     * Creates an account with the user input/data
-     * @param view The create account button
-     *//*
-    public void createAccount(View view)
-    {
-        UserAccount newAccount = new UserAccount();
-        boolean noError = true;
-        String name = "";
-        String password = "";
-        String email = "";
-        String id = "";
-        String tempName = userEditText.getText().toString().replace("admin", "");
-
-        for(UserAccount account : accounts)
-        {
-            if(account.getStudentUserName().toLowerCase().startsWith(tempName))
-            {
-                Toast.makeText(this, getString(R.string.admin_name_taken_text),
-                        Toast.LENGTH_SHORT).show();
-                nameIsNotSame = true;
-            }
-        }
-
-        if(!noError)
-        {
-            if(nameIsNotSame) {
-                name = userEditText.getText().toString();
-            }
-            else
-                noError = false;
-            password = passwordEditText.getText().toString();
-            if(password != reenterPasswordEditText.getText().toString())
-            {
-                noError = false;
-                renterPasswordTextView.setText(getString(R.string.password_same_text));
-                renterPasswordTextView.setTextColor(getResources().getColor(R.color.red));
-
-            }
-            if(emailEditText.getText().toString().endsWith(getString(R.string.student_cccd_edu)))
-                email = emailEditText.getText().toString();
-            else
-            {
-                noError = false;
-                emailTextView.setText(getString(R.string.must_be_email_text));
-                emailTextView.setTextColor(getResources().getColor(R.color.red));
-            }
-            id = idEditText.getText().toString();
-
-        }
-
-        if(noError)
-        {
-            if(name.startsWith("admin") && name.endsWith("admin"))
-            {
-                newAccount.setmIsAdmin(true);
-                name.replace("admin", "");
-            }
-
-            newAccount.setStudentUserName(name);
-            newAccount.setStudentPassword(password);
-            newAccount.setStudentEmail(email);
-            newAccount.setStudentID(id);
-
-            database.addAccount(newAccount);
-            Toast.makeText(this, "Account created!", Toast.LENGTH_SHORT).show();
-        }
-    }*/
 }

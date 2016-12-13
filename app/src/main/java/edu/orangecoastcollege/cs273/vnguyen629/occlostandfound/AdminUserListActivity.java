@@ -38,7 +38,7 @@ public class AdminUserListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_list);
+        setContentView(R.layout.activity_admin_user_list);
 
         db = new DBHelper(this);
         loggedInAccount = getIntent().getExtras().getParcelable("Account");
@@ -50,7 +50,6 @@ public class AdminUserListActivity extends AppCompatActivity {
         for (UserAccount user : allUserList)
             if (user.getIsAdmin() == false)
                 filteredUserList.add(user);
-        //filteredUserList = new ArrayList<>(allUserList);
 
         userListView = (ListView) findViewById(R.id.userListView);
         userListAdapter = new UserListAdapter(this, R.layout.list_user, filteredUserList);
@@ -88,15 +87,19 @@ public class AdminUserListActivity extends AppCompatActivity {
             String input = s.toString().toLowerCase();
             userListAdapter.clear();
 
-            if (input.equals(""))
+            if (input.equals("")) {
                 for (UserAccount user : allUserList)
-                    userListAdapter.add(user);
+                    if (user.getIsAdmin() == false)
+                        userListAdapter.add(user);
+            }
             else {
                 String username;
                 for (UserAccount user : allUserList) {
-                    username = user.getStudentUserName();
-                    if (username.toLowerCase().contains(input))
-                        userListAdapter.add(user);
+                    if (!(user.getIsAdmin())) {
+                        username = user.getStudentUserName();
+                        if (username.toLowerCase().contains(input))
+                            userListAdapter.add(user);
+                    }
                 }
             }
         }

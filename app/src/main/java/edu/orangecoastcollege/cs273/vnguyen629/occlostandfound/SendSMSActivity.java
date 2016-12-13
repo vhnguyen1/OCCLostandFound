@@ -58,28 +58,4 @@ public class SendSMSActivity extends AppCompatActivity {
             }
         }
     }
-
-    /**
-     * Select User and send a SMS if item have been found
-     * @param view
-     */
-    /*public void selectUserSMS(View view) {
-        String message = getIntent().getExtras().getString("MESSAGE");
-
-        if (view instanceof LinearLayout) {
-            final UserAccount user = (UserAccount) view.getTag();
-            Log.i("OCC Lost and Found", user.toString());
-            //Ask for permission to send text message
-            if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.SEND_SMS}, REQUEST_CODE_SEND_SMS);
-            } else {
-                //Define a reference to SmsManager (manages text messages)
-                SmsManager smsManager = SmsManager.getDefault();
-
-                smsManager.sendTextMessage(user.getStudentPhoneNum(), "ASOCC ", message, null, null);
-
-                Toast.makeText(this, "Message sent to: " + user.getStudentUserName(), Toast.LENGTH_SHORT).show();
-            }
-        }
-    }*/
 }

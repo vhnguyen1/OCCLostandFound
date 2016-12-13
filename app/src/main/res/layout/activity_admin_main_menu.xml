@@ -66,31 +66,6 @@
 
     </LinearLayout>
 
-    <!--<LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_margin="10dp">
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/gradient_background"
-            app:srcCompat="@drawable/contact_info_icon" />
-
-        <Button
-            android:text="@string/send_sms"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/userMenuViewSettingsButton"
-            android:layout_weight="5"
-            android:background="@drawable/gradient_background"
-            android:textSize="18sp" />
-
-    </LinearLayout>-->
-
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

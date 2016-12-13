@@ -26,6 +26,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import static edu.orangecoastcollege.cs273.vnguyen629.occlostandfound.UserAccount.isLoggedIn;
+
 /**
  * Displays a list of reported lost items to the user, where they can
  * either click on the item to view the specific details related to the item
@@ -60,14 +62,12 @@ public class ItemsListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_items_list);
 
-        if (UserAccount.isLoggedIn)
+        isLoggedIn = false;
+
+        if (isLoggedIn)
             account = getIntent().getExtras().getParcelable("Account");
 
-        //this.deleteDatabase(DBHelper.DATABASE_NAME);
         database = new DBHelper(this);
-
-        database.addItem(new Item("LV Wallet", "Brown Wallet", "October", "Tech Center", false,
-                getUriToResource(this, R.drawable.default_image)));
 
         searchNameFilterEditText = (EditText) findViewById(R.id.searchNameFilterEditText);
         searchNameFilterEditText.addTextChangedListener(itemNameSearchTextWatcher);
@@ -97,12 +97,6 @@ public class ItemsListActivity extends AppCompatActivity {
                 startActivity(new Intent(ItemsListActivity.this, ReportItemActivity.class));
             }
         });
-
-        //database.deleteAllItems();
-        //database.deleteAllReports();
-        //database.deleteAllUserAccounts();
-        //allItemsList.clear();
-        //itemsListAdapter.notifyDataSetChanged();
     }
 
     /**
@@ -192,7 +186,7 @@ public class ItemsListActivity extends AppCompatActivity {
                     if (selectedCategory.equals(getString(R.string.all_reported_items_text)))
                         for (Item item : allItemsList)
                             itemsListAdapter.add(item);
-                    else if (UserAccount.isLoggedIn) {
+                    else if (isLoggedIn) {
                         for (Item item : allItemsList) {
                             //if (item.getReportedUsername().equals(
                                     //UserAccount.singedInUserAccountName)) {
@@ -258,7 +252,7 @@ public class ItemsListActivity extends AppCompatActivity {
      * @param view The Button that loads up the ReportItemActivity.
      */
     public void reportLostItem(View view) {
-        if (UserAccount.isLoggedIn)
+        if (isLoggedIn)
             startActivity(new Intent(ItemsListActivity.this, ReportItemActivity.class));
         else
             Toast.makeText(this, getString(R.string.must_be_signed_in_text),
@@ -283,7 +277,7 @@ public class ItemsListActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (UserAccount.isLoggedIn) {
+        if (isLoggedIn) {
             sensorManager.registerListener(shakeDetector, accelerometer,
                     SensorManager.SENSOR_DELAY_UI);
         }

@@ -18,7 +18,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -104,6 +103,8 @@ public class UserItemDetailsActivity extends AppCompatActivity {
         });
 
         Log.i("Accountdetails", selectedAccount.toString());
+
+        userItemStatusSpinner.setSelection((selectedItem.getStatus() ? 1 : 0));
         userItemStatusSpinner.setOnItemSelectedListener(statusSpinnerListener);
     }
 
@@ -126,7 +127,6 @@ public class UserItemDetailsActivity extends AppCompatActivity {
                 } else {
                     SmsManager manager = SmsManager.getDefault();
                     manager.sendTextMessage(selectedAccount.getStudentPhoneNum(), null, MESSAGE, null, null);
-                    Toast.makeText(UserItemDetailsActivity.this, selectedItem.toString(), Toast.LENGTH_SHORT).show();
                     database.updateItem(selectedItem);
                 }
             }

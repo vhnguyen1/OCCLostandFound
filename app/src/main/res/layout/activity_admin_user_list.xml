@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_sms_user_list"
     android:layout_width="match_parent"
@@ -14,7 +14,7 @@
     <TextView
         android:text="@string/user_list_title"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:id="@+id/textView43"
         android:layout_weight="1"
         android:gravity="center_vertical|center_horizontal"
@@ -22,19 +22,32 @@
         android:textStyle="normal|bold"
         android:textColor="@android:color/holo_orange_dark" />
 
-    <EditText
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/searchUsernameEditText"
-        android:layout_weight="1"
-        android:hint="@string/search_username" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/textView43"
+        android:layout_centerHorizontal="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/searchUsernameEditText"
+            android:layout_weight="1"
+            android:hint="@string/search_username" />
+    </LinearLayout>
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="8"
-        android:id="@+id/userListView" />
+        android:id="@+id/userListView"
+        android:layout_marginTop="123dp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-</LinearLayout>
+</RelativeLayout>

@@ -9,7 +9,7 @@ import android.view.View;
  *  UserMenuActivity
  *  User Main Menu allow use to access other layout
  *
- *  @author Vu Nguyen
+ *  @author Benjamin Nguyen
  */
 public class UserMenuActivity extends AppCompatActivity {
     private UserAccount loggedInAccount;

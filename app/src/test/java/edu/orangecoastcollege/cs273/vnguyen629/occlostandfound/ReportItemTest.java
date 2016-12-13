@@ -12,7 +12,7 @@ import static junit.framework.Assert.*;
  *
  * @author Benjamin Nguyen
  */
-public class ReportTest {
+public class ReportItemTest {
     private Report mReport;
     UserAccount account;
     Item newItem;
