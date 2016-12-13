@@ -46,7 +46,7 @@ public class UserAccount implements Parcelable {
     }
 
     /**
-     * Constuctor for UserAccount. Set anything to it new value and some to it defalut value
+     * Constructor for UserAccount. Set anything to it new value and some to it defalut value
      * @param mStudentUserName
      * @param mStudentPassword
      * @param mStudentPhoneNum
@@ -68,12 +68,12 @@ public class UserAccount implements Parcelable {
     }
 
     /**
-     * Constuctor for UserAccount. Set anything to it new value an
-     * @param mStudentUserName
-     * @param mStudentPassword
-     * @param mStudentPhoneNum
-     * @param mStudentEmail
-     * @param mStudentID
+     * Constructor for UserAccount. Set anything to it new value
+     * @param mStudentUserName The new student name
+     * @param mStudentPassword The new student password
+     * @param mStudentPhoneNum The new student phone number
+     * @param mStudentEmail The new student email address
+     * @param mStudentID The new student ID
      */
     public UserAccount(String mStudentUserName, String mStudentPassword, String mStudentPhoneNum,
                        String mStudentEmail, String mStudentID, boolean isAdmin) {
@@ -90,13 +90,13 @@ public class UserAccount implements Parcelable {
     }
 
     /**
-     *
-     * @param mStudentUserName
-     * @param mStudentPassword
-     * @param mStudentPhoneNum
-     * @param mStudentEmail
-     * @param mStudentID
-     * @param mStudentProfilePic
+     * Constructor for UserAccount. Set anything to it new value
+     * @param mStudentUserName The new student name
+     * @param mStudentPassword The new student password
+     * @param mStudentPhoneNum The new student phone number
+     * @param mStudentEmail The new student email address
+     * @param mStudentID The new student ID
+     * @param mStudentProfilePic The new student image URI
      */
     public UserAccount(String mStudentUserName, String mStudentPassword, String mStudentPhoneNum,
                        String mStudentEmail, String mStudentID, Uri mStudentProfilePic, boolean isAdmin, boolean allowShake, boolean allowSms, String feedback) {
@@ -113,7 +113,7 @@ public class UserAccount implements Parcelable {
     }
 
     /**
-     *default constuctor
+     * Default constructor
      */
     public UserAccount() {
         this("", "", "", "", "",null, false, false, false, "");
@@ -209,7 +209,7 @@ public class UserAccount implements Parcelable {
 
     /**
      * setStudentPassword function
-     * @param mStudentPassword
+     * @param mStudentPassword The new password
      */
     public void setStudentPassword(String mStudentPassword) {
         this.mStudentPassword = mStudentPassword;
@@ -217,7 +217,7 @@ public class UserAccount implements Parcelable {
 
     /**
      * setStudentPhoneNum function
-     * @param mStudentPhoneNum
+     * @param mStudentPhoneNum The new phone number
      */
     public void setStudentPhoneNum(String mStudentPhoneNum) {
         this.mStudentPhoneNum = mStudentPhoneNum;
@@ -225,7 +225,7 @@ public class UserAccount implements Parcelable {
 
     /**
      * setStudentEmail function
-     * @param mStudentEmail
+     * @param mStudentEmail The new email address
      */
     public void setStudentEmail(String mStudentEmail) {
         this.mStudentEmail = mStudentEmail;
@@ -233,7 +233,7 @@ public class UserAccount implements Parcelable {
 
     /**
      * setStudentID function
-     * @param mStudentID
+     * @param mStudentID The new studnet ID
      */
     public void setStudentID(String mStudentID) {
         this.mStudentID = mStudentID;
@@ -241,16 +241,15 @@ public class UserAccount implements Parcelable {
 
     /**
      * setStudentProfilePic function
-     * @param mStudentProfilePic
+     * @param mStudentProfilePic The new image URI
      */
     public void setStudentProfilePic(Uri mStudentProfilePic) {
         this.mStudentProfilePic = mStudentProfilePic;
     }
 
-
     /**
      * set admin
-     * @param mIsAdmin
+     * @param mIsAdmin New rights
      */
     public void setmIsAdmin(boolean mIsAdmin) {
         this.mIsAdmin = mIsAdmin;
@@ -258,15 +257,15 @@ public class UserAccount implements Parcelable {
 
     /**
      * to shake or not to shake
-     * @param mAllowShake
+     * @param mAllowShake New shake settings
      */
     public void setmAllowShake(boolean mAllowShake) {
         this.mAllowShake = mAllowShake;
     }
 
     /**
-     *  set if aloow sms
-     * @param mAllowSms
+     *  set if allow sms
+     * @param mAllowSms New SMS settings
      */
     public void setmAllowSms(boolean mAllowSms) {
         this.mAllowSms = mAllowSms;
@@ -278,7 +277,7 @@ public class UserAccount implements Parcelable {
 
     /**
      * toString function
-     * @return string
+     * @return string value of object
      */
     public String toString() {
         return "UserAccount{" +
@@ -292,8 +291,8 @@ public class UserAccount implements Parcelable {
 
     /**
      * writeToParcel function
-     * @param dest
-     * @param flags
+     * @param dest Parcelable object
+     * @param flags Unused
      */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
@@ -319,12 +318,12 @@ public class UserAccount implements Parcelable {
     }
 
     /**
-     *Unused
+     * Creates a parcelable UserAccounts
      */
     public static final Parcelable.Creator<UserAccount> CREATOR = new Parcelable.Creator<UserAccount>() {
         /**
-         * Unused
-         * @param source
+         * Creates a parcelable object
+         * @param source Parcelable object
          * @return
          */
         @Override
@@ -333,9 +332,9 @@ public class UserAccount implements Parcelable {
         }
 
         /**
-         *Unused
-         * @param size
-         * @return
+         * Creates an array of UserAccounts
+         * @param size size of the UserAccounts Array
+         * @return Array of UserAccounts
          */
         @Override
         public UserAccount[] newArray(int size) {
