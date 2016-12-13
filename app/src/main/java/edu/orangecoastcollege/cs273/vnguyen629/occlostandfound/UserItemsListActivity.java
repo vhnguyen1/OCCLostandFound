@@ -132,19 +132,16 @@ public class UserItemsListActivity extends AppCompatActivity {
             String input = charSequence.toString().toLowerCase();
             itemListAdapter.clear();
 
+            for (Report report : reportList) {
+                itemList.add(report.getItem());
+            }
+
             if (input.equals("")) {
-                for (Report report : reportList) {
-                    itemList.add(report.getItem());
-                }
 
                 for (Item item : itemList)
                     itemListAdapter.add(item);
             }
             else {
-                for (Report report : reportList) {
-                    itemList.add(report.getItem());
-                }
-
                 for (Item item : itemList) {
                     if (item.getName().toLowerCase().contains(input))
                         itemListAdapter.add(item);
