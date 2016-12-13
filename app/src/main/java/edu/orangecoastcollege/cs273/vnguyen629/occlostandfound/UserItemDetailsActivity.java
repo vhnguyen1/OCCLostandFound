@@ -86,7 +86,8 @@ public class UserItemDetailsActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedStatus = String.valueOf(parent.getItemAtPosition(position));
 
-                if (selectedStatus.equals(strings[1])) {
+                //if (selectedStatus.equals(strings[1])) {
+                if (selectedStatus.equals(getString(R.string.found))) {
                     SmsManager manager = SmsManager.getDefault();
                     manager.sendTextMessage(loggedInAccount.getStudentPhoneNum(),
                             null, MESSAGE, null, null);
