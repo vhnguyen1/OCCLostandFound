@@ -150,9 +150,9 @@
     <string name="found">Found</string>
     <string name="your_item_has_been_found_text">Your item have been found. Visit ASSOCC to verify.</string>
     <string name="frequently_asked_questions_text">Frequently Asked Questions</string>
-    <string name="q">Q:</string>
+    <string name="q" translatable="false">Q:</string>
     <string name="question_where_are_asocc_offices">Where are  the ASOCC offices located?</string>
-    <string name="a">A:</string>
+    <string name="a" translatable="false">A:</string>
     <string name="answer_asocc_location">The ASOCC offices are located at the Student Services Center near Watson Hall.
         Enter from the main entrance and they will be located at the first door to the right.</string>
     <string name="question_where_is_lost_and_found">Where is the Lost and Found at OCC?</string>
