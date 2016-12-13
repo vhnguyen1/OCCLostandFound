@@ -173,7 +173,9 @@
         android:layout_alignLeft="@+id/textView36"
         android:layout_alignStart="@+id/textView36"
         android:layout_marginLeft="86dp"
-        android:layout_marginStart="86dp" />
+        android:layout_marginStart="86dp"
+        android:onClick="showCampusMap"
+        android:paddingRight="10dp" />
 
     <TextView
         android:text="@string/q"
