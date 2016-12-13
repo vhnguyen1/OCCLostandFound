@@ -76,7 +76,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/gradient_background" />
+            android:background="@drawable/gradient_background"
+            app:srcCompat="@drawable/contact_info_icon" />
 
         <Button
             android:text="@string/send_sms"
@@ -100,7 +101,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/gradient_background" />
+            android:background="@drawable/gradient_background"
+            app:srcCompat="@drawable/settings_icon" />
 
         <Button
             android:text="@string/settings_text"
@@ -124,7 +126,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/gradient_background" />
+            android:background="@drawable/gradient_background"
+            app:srcCompat="@drawable/login_button_icon" />
 
         <Button
             android:text="@string/sign_out_text"

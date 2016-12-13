@@ -17,14 +17,20 @@
         android:layout_width="wrap_content"
         android:layout_height="149dp"
         app:srcCompat="@drawable/occ_image"
-        android:id="@+id/imageView4" />
+        android:id="@+id/imageView4"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:scaleType="fitCenter"
+        android:layout_margin="10dp"
+        android:layout_gravity="center" />
 
     <TextView
         android:text="@string/enter_username_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:layout_weight="0" />
+        android:layout_weight="0"
+        android:layout_marginTop="10dp" />
 
     <EditText
         android:layout_width="match_parent"
